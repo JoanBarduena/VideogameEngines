@@ -1,0 +1,26 @@
+﻿  Application.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xlocale(319): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+  log.cpp
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleFonts.cpp
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulefonts.cpp(104): warning C4018: '<': no coinciden signed/unsigned
+  ModuleInput.cpp
+  ModulePhysics.cpp
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulephysics.cpp(103): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulephysics.cpp(104): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulephysics.cpp(147): warning C4018: '<': no coinciden signed/unsigned
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulephysics.cpp(366): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulephysics.cpp(367): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\joanm\documents\github\7up-pinball\7up-pinball\modulephysics.cpp(373): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
+  ModulePlayer.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xlocale(319): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+  ModuleRender.cpp
+  ModuleSceneIntro.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xlocale(319): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+  Generando código
+  All 223 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  SDL Game.vcxproj -> C:\Users\joanm\Documents\GitHub\7UP-PINBALL\7UP-PINBALL\Release\7UpPinball.exe
