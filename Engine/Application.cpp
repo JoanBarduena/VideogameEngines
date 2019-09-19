@@ -4,14 +4,10 @@ Application::Application()
 {
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
-	audio = new ModuleAudio(this, true);
 	scene_intro = new ModuleSceneIntro(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
-	physics = new ModulePhysics3D(this);
-	player = new ModulePlayer(this);
-	player2 = new ModulePlayer2(this); 
-
+ 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
 	// They will CleanUp() in reverse order
@@ -20,15 +16,9 @@ Application::Application()
 	AddModule(window);
 	AddModule(camera);
 	AddModule(input);
-	AddModule(audio);
-	AddModule(physics);
 	
 	// Scenes
 	AddModule(scene_intro);
-	AddModule(player);
-	AddModule(player2); 
-
-	player2->enabled = false; 
 
 	// Renderer last!
 	AddModule(renderer3D);
