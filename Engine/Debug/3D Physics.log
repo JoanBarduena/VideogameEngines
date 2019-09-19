@@ -1,2 +1,2 @@
-﻿  ModuleSceneIntro.cpp
-  3D Physics.vcxproj -> C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\Debug\3D Physics.exe
+﻿  Main.cpp
+LINK : fatal error LNK1104: cannot open file 'glut/glut32.lib'
