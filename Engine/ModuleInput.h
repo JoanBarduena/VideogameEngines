@@ -3,15 +3,13 @@
 #include "Globals.h"
 
 #define MAX_MOUSE_BUTTONS 5
-#define MAX_KEYS 300
 
 enum KEY_STATE
 {
 	KEY_IDLE = 0,
 	KEY_DOWN,
 	KEY_REPEAT,
-	KEY_UP,
-	KEY_ERROR
+	KEY_UP
 };
 
 class ModuleInput : public Module
@@ -22,17 +20,17 @@ public:
 	~ModuleInput();
 
 	bool Init();
-	update_status PreUpdate();
+	update_status PreUpdate(float dt);
 	bool CleanUp();
 
-	KEY_STATE GetKey(uint id) const
+	KEY_STATE GetKey(int id) const
 	{
-		return (id < MAX_KEYS) ? keyboard[id] : KEY_ERROR;
+		return keyboard[id];
 	}
 
-	KEY_STATE GetMouseButton(uint id) const
+	KEY_STATE GetMouseButton(int id) const
 	{
-		return (id < MAX_MOUSE_BUTTONS) ? mouse_buttons[id] : KEY_ERROR;
+		return mouse_buttons[id];
 	}
 
 	int GetMouseX() const
@@ -45,9 +43,28 @@ public:
 		return mouse_y;
 	}
 
+	int GetMouseZ() const
+	{
+		return mouse_z;
+	}
+
+	int GetMouseXMotion() const
+	{
+		return mouse_x_motion;
+	}
+
+	int GetMouseYMotion() const
+	{
+		return mouse_y_motion;
+	}
+
 private:
 	KEY_STATE* keyboard;
 	KEY_STATE mouse_buttons[MAX_MOUSE_BUTTONS];
 	int mouse_x;
 	int mouse_y;
+	int mouse_z;
+	int mouse_x_motion;
+	int mouse_y_motion;
+	//int mouse_z_motion;
 };

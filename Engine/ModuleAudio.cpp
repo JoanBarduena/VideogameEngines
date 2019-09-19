@@ -1,8 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleAudio.h"
-#include "SDL\include\SDL.h"
-#include "SDL_mixer\include\SDL_mixer.h"
 
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
@@ -23,8 +21,7 @@ bool ModuleAudio::Init()
 	if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
 		LOG("SDL_INIT_AUDIO could not initialize! SDL_Error: %s\n", SDL_GetError());
-		Disable();
-		return true; // Ugly patch for class computers without audio :(
+		ret = false;
 	}
 
 	// load support for the OGG format
@@ -41,7 +38,7 @@ bool ModuleAudio::Init()
 	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		LOG("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-		ret = true;
+		ret = false;
 	}
 
 	return ret;
@@ -74,9 +71,6 @@ bool ModuleAudio::CleanUp()
 // Play a music file
 bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 {
-	if(IsEnabled() == false)
-		return false;
-
 	bool ret = true;
 	
 	if(music != NULL)
@@ -128,9 +122,6 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 // Load WAV
 unsigned int ModuleAudio::LoadFx(const char* path)
 {
-	if(IsEnabled() == false)
-		return 0;
-
 	unsigned int ret = 0;
 
 	Mix_Chunk* chunk = Mix_LoadWAV(path);
@@ -151,9 +142,6 @@ unsigned int ModuleAudio::LoadFx(const char* path)
 // Play WAV
 bool ModuleAudio::PlayFx(unsigned int id, int repeat)
 {
-	if(IsEnabled() == false)
-		return false;
-
 	bool ret = false;
 
 	Mix_Chunk* chunk = NULL;

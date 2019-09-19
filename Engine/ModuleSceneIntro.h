@@ -1,12 +1,47 @@
 #pragma once
 #include "Module.h"
-#include "p2List.h"
-#include "p2Point.h"
+#include "p2DynArray.h"
 #include "Globals.h"
-#include "Animation.h"
-#include "ModuleAudio.h"
+#include "Primitive.h"
+#include "Timer.h"
 
-class PhysBody;
+//Walls
+#define MAX_WALLS 23
+#define WALL_DISTANCE 60
+#define WALL_SIZE {30,5,3}
+
+//Columns - first obstacle stage
+#define COLUMNS_PER_LINE 5
+#define COLUMNS_LINES 10
+#define COLUMS_DISTANCE 11
+
+//RAMP - second obstacle
+#define	ACCELERATOR_SIZE {1,5,100}
+#define BALLS_NUMBER 9
+#define PENDULUM1_POSITION STAGE2_POSITION + 30
+#define PENDULUM2_POSITION PENDULUM1_POSITION + 50
+#define PENDULUM3_POSITION PENDULUM2_POSITION + 50
+#define PENDULUM4_POSITION PENDULUM3_POSITION + 50
+#define PENDULUM5_POSITION PENDULUM4_POSITION + 50
+
+//SNAKES - Third obstacle
+#define SNAKE_SIZE 4
+#define SNAKE_RADIUS 6 
+
+//Stages positions
+#define STAGE1_POSITION 20
+#define STAGE2_POSITION COLUMNS_LINES*COLUMS_DISTANCE+50 + STAGE1_POSITION
+#define STAGE3_POSITION PENDULUM5_POSITION + 50
+
+struct PhysBody3D;
+struct PhysMotor3D;
+
+enum class Stage
+{
+	first_stage, 
+	second_stage,
+	third_stage
+};
 
 class ModuleSceneIntro : public Module
 {
@@ -15,63 +50,135 @@ public:
 	~ModuleSceneIntro();
 
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	bool CleanUp();
-	//void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
-	void DrawColliders();
-	void DrawLights();
-	void IncreaseScore(int points);
+
+	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
+	void Player_Timer(int milisec); 
 
 public:
+	//Cube to simulate a road
+	Cube road;
 
-	p2List<PhysBody*> circles;
-	p2List<PhysBody*> boxes;
-	p2List<PhysBody*> ricks;
+	//Cubes to limitate beggning and end
 
-	//Collider Bodies
-	PhysBody* map_;
-	PhysBody* top_left_1; 
-	PhysBody* top_left_2;
-	PhysBody* top_left_3; 
-	PhysBody* middle_top_1; 
-	PhysBody* middle_top_2; 
-	PhysBody* middle_;
-	PhysBody* top_right_1;
-	PhysBody* bottom_right_1; 
-	PhysBody* bottom_right_2; 
-	PhysBody* bottom_left_1; 
-	PhysBody* bottom_left_2; 
-	PhysBody* football_1; 
-	PhysBody* football_2; 
-	PhysBody* football_3; 
-	PhysBody* football_4; 
-	PhysBody* ball_corridor_1; 
-	PhysBody* ball_corridor_2; 
+	Cube front_wall_primitive;
+	PhysBody3D* front_wall_body;
 
-	SDL_Texture* ball;
-	SDL_Texture* box;
-	SDL_Texture* rick;
-	SDL_Texture* map; 
-	uint bonus_fx;
+	Cube back_wall_primitive;
+	PhysBody3D* back_wall_body;
 
-	//Score system
-	int score;				//score
-	int font_score=-1;		//Load the score here
-	char score_text[13];
-	int combo;				//This will multiply the points income
+	//Circuit walls
+	PhysBody3D* left_walls_bodies[MAX_WALLS];
+	Cube		left_walls_primitives[MAX_WALLS];
 
-	//Light Animations
-	SDL_Texture* lights_texture;
-	Animation middle_lights;
-	Animation left_lights;
-	Animation top_left_lights;
-	Animation right_lights;
-	Animation top_right_lights;
+	PhysBody3D* right_walls_bodies[MAX_WALLS];
+	Cube		right_walls_primitives[MAX_WALLS];
+	
+	//COLUMNS - first obstacle
+	PhysBody3D* columns_bodies[COLUMNS_LINES][COLUMNS_PER_LINE];
+	Cylinder	columns_primitives[COLUMNS_LINES][COLUMNS_PER_LINE];
 
-	//Music
-	Mix_Music* music;
+	//PENDULUM - second obstacle
+	//PENDULUM 1
+	PhysBody3D* pendulum1_balls_bodies[BALLS_NUMBER];
+	Sphere		pendulum1_balls_primitives[BALLS_NUMBER];
+
+	PhysBody3D* pendulum1_body;
+	Cylinder	pendulum1_primitive;
+
+	Cube	pendulum1_accelerator_primitive;
+	PhysBody3D* pendulum1_accelerator_body;
+
+	//PENDULUM 2
+	PhysBody3D* pendulum2_balls_bodies[BALLS_NUMBER];
+	Sphere		pendulum2_balls_primitives[BALLS_NUMBER];
+
+	PhysBody3D* pendulum2_body;
+	Cylinder	pendulum2_primitive;
+
+	Cube		pendulum2_accelerator_primitive;
+	PhysBody3D* pendulum2_accelerator_body;
+
+	//PENDULUM 3
+	PhysBody3D* pendulum3_balls_bodies[BALLS_NUMBER];
+	Sphere		pendulum3_balls_primitives[BALLS_NUMBER];
+
+	PhysBody3D* pendulum3_body;
+	Cylinder	pendulum3_primitive;
+
+	Cube		pendulum3_accelerator_primitive;
+	PhysBody3D* pendulum3_accelerator_body;
+
+	//PENDULUM 4
+	PhysBody3D* pendulum4_balls_bodies[BALLS_NUMBER];
+	Sphere		pendulum4_balls_primitives[BALLS_NUMBER];
+
+	PhysBody3D* pendulum4_body;
+	Cylinder	pendulum4_primitive;
+
+	Cube		pendulum4_accelerator_primitive;
+	PhysBody3D* pendulum4_accelerator_body;
+
+	//PENDULUM 5
+	PhysBody3D* pendulum5_balls_bodies[BALLS_NUMBER];
+	Sphere		pendulum5_balls_primitives[BALLS_NUMBER];
+
+	PhysBody3D* pendulum5_body;
+	Cylinder	pendulum5_primitive;
+	
+	Cube		pendulum5_accelerator_primitive;
+	PhysBody3D* pendulum5_accelerator_body;
+
+	//SNAKES - Third obstacle
+	Sphere		snake1_primitives[SNAKE_SIZE];
+	PhysBody3D* snake1_bodies[SNAKE_SIZE];
+
+	Sphere		snake2_primitives[SNAKE_SIZE];
+	PhysBody3D* snake2_bodies[SNAKE_SIZE];
+
+	Sphere		snake3_primitives[SNAKE_SIZE];
+	PhysBody3D* snake3_bodies[SNAKE_SIZE];
+
+	Sphere		snake4_primitives[SNAKE_SIZE];
+	PhysBody3D* snake4_bodies[SNAKE_SIZE];
+
+	Sphere		snake5_primitives[SNAKE_SIZE];
+	PhysBody3D* snake5_bodies[SNAKE_SIZE];
+
+	Timer timer; 
+	int TotalTime_p1 = 0; 
+	int TotalTime_p2 = 0; 
+	bool wins_p1 = true; 
+
+	bool game_ends = false; 
+
+	//Car
+	PhysBody3D* pb_chassis;
+	Cube p_chassis;
+
+	PhysBody3D* pb_wheel;
+	Cylinder p_wheel;
+
+	PhysBody3D* pb_wheel2;
+	Cylinder p_wheel2;
+
+	PhysMotor3D* left_wheel;
+	PhysMotor3D* right_wheel;
+
+	//Adding Fx sounds
+	uint motor_fx;
+	uint engine_acc_fx; 
 
 private:
-	bool debug = false;
 
+	//Adding sensors
+	PhysBody3D* sens_1; 
+	Cube* cube_1; 
+
+	PhysBody3D* sens_2; 
+	Cube* cube_2; 
+
+	PhysBody3D* sens_3; 
+	Cube* cube_3; 
 };

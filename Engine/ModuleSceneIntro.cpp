@@ -1,54 +1,12 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleRender.h"
 #include "ModuleSceneIntro.h"
-#include "ModuleInput.h"
-#include "ModuleTextures.h"
-#include "ModuleAudio.h"
-#include "ModulePhysics.h"
-#include "ModuleFonts.h"
-#include "ModulePlayer.h"
+#include "Primitive.h"
+#include "PhysBody3D.h"
+#include "PhysVehicle3D.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	map = ball = box = rick = NULL;
-
-	//Animations
-	//Pushbacks
-	/*In order to have some coordination between some animations,
-	i've added a few of extra pusbacks to some of them in which the light will be off,*/
-	for (int i = 0; i < 9; ++i) {
-		middle_lights.PushBack({32*i,0,32,181});		
-	}
-
-	for (int i = 0; i < 4; ++i) {						//lights off
-		top_right_lights.PushBack({ 213,274,71,41 });
-		top_left_lights.PushBack({271, 240, 57, 34 });
-	}
-
-	for (int i = 0; i < 3; ++i) {
-		left_lights.PushBack({ 54 * i,181,54,59 });
-		top_left_lights.PushBack({57*i, 240, 57, 34});
-		top_right_lights.PushBack({71*i,274,71,41});
-		right_lights.PushBack({37*i,315,37,54});
-	}
-
-	for (int i = 0; i < 4; ++i) {						//lights off
-		right_lights.PushBack({ 111,315,37,54 });
-	}
-
-	//Loops
-	middle_lights.loop = true;
-	top_left_lights.loop = true;
-	top_right_lights.loop = true;
-	right_lights.loop = true;
-	left_lights.loop = true;
-
-	//Animation velocity
-	middle_lights.speed = 0.17f;
-	left_lights.speed =0.10f;
-	top_right_lights.speed = right_lights.speed = top_left_lights.speed = 0.11f;
-	
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -60,24 +18,311 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->audio->PlayMusic("Audio/Pinball_Music.ogg");							//Play music
+	//Build road
+	float road_lenght = 680;
+	road.size = {road_lenght,0.1,WALL_DISTANCE };
+	road.SetPos(road_lenght/2 - 10,-0.15, WALL_DISTANCE / 2);
+	road.color = White; 
 
-	App->renderer->camera.x = App->renderer->camera.y = 0;
+	//Build walls
+	for (int i = 0; i < MAX_WALLS; ++i)
+	{
+		//Left walls
+		left_walls_primitives[i].size = WALL_SIZE;
+		left_walls_primitives[i].SetPos(left_walls_primitives[i].size.x*i,0, 0);
 
-	ball = App->textures->Load("Images/redball.png"); 
-	bonus_fx = App->audio->LoadFx("Audio/bonus.wav");
-	map = App->textures->Load("Images/Pinball2.0.png"); 
+		if (i % 2 == 0)
+			left_walls_primitives[i].color = Color(1,0,0);
+		else 
+			left_walls_primitives[i].color = Color(1, 1, 1);
 
-	DrawColliders();
+		left_walls_bodies[i] = App->physics->AddBody(left_walls_primitives[i],1000000);
 
-	font_score = App->fonts->Load("Images/7UP_SCORE_FONT.png", "0123456789", 1);//Load Font texture
+		//Right walls
+		right_walls_primitives[i].size = WALL_SIZE;
+		right_walls_primitives[i].SetPos(left_walls_primitives[i].size.x*i, 00, WALL_DISTANCE);
 
-	lights_texture = App->textures->Load("Images/Lights Texture.png");			//Load lights texture
+		if (i % 2 == 0)
+			right_walls_primitives[i].color = Color(1, 0, 0);
+		else
+			right_walls_primitives[i].color = Color(1, 1, 1);
+
+		right_walls_bodies[i] = App->physics->AddBody(right_walls_primitives[i], 1000000);
+	}
+
+	back_wall_primitive.size = {58,6,6};
+	back_wall_primitive.color = Color(1,0,0);
+	back_wall_primitive.SetRotation(90,vec3(0,1,0));
+	
+	back_wall_body = App->physics->AddBody(back_wall_primitive,10000);
+	back_wall_body->SetPos(673, 3, 30);
+
+	front_wall_primitive.size = { 58,6,6 };
+	front_wall_primitive.color = Color(1, 0, 0);
+	front_wall_primitive.SetRotation(90, vec3(0, 1, 0));
+
+	front_wall_body = App->physics->AddBody(back_wall_primitive, 10000);
+	front_wall_body->SetPos(-10, 3, 30);
 
 	
+	//STAGE 1 - Build columns 
+	for (int i = 0; i <  COLUMNS_LINES; ++i)
+	{
+		for (int j = 0; j < COLUMNS_PER_LINE; ++j)
+		{
+			columns_primitives[i][j].radius = 3;				
+			columns_primitives[i][j].height = 10;
 
-	combo = 1;
-	score = 0;
+			//Position of the columns
+			if (i%2==0)
+				columns_primitives[i][j].SetPos(STAGE1_POSITION + COLUMS_DISTANCE*i+10 ,5, COLUMS_DISTANCE*j+ COLUMS_DISTANCE);
+			else 
+				columns_primitives[i][j].SetPos(STAGE1_POSITION + COLUMS_DISTANCE * i +10, 5, COLUMS_DISTANCE * j + COLUMS_DISTANCE/2);
+
+			//Color
+			if (i%2==0)
+				columns_primitives[i][j].color = Color(1, 0, 0);
+			else 
+				columns_primitives[i][j].color = Color(1, 1, 1);
+
+			columns_primitives[i][j].SetRotation(90, {0,0,1});	
+
+			columns_bodies[i][j] = App->physics->AddBody(columns_primitives[i][j],100000);
+		}
+	}
+	
+	//STAGE 2 - First pendulum
+
+	//Pendulum
+	pendulum1_primitive.color = Color(1, 1, 1);
+	pendulum1_primitive.radius = 5;
+	pendulum1_primitive.height = 180;
+	pendulum1_primitive.SetPos(PENDULUM1_POSITION, 20, 0);
+	pendulum1_primitive.SetRotation(90, vec3(0, 1, 0));
+	pendulum1_body = App->physics->AddBody(pendulum1_primitive, 0.0f); 
+
+	//Accelerator
+	pendulum1_accelerator_primitive.size = ACCELERATOR_SIZE;
+	pendulum1_accelerator_primitive.SetPos(PENDULUM1_POSITION,35,+50);
+	pendulum1_accelerator_body = App->physics->AddBody(pendulum1_accelerator_primitive,0);
+	pendulum1_accelerator_body->BodyToSensor(true);
+	pendulum1_accelerator_body->collision_listeners.add(App->scene_intro);
+
+	for (int i = 0; i < BALLS_NUMBER; ++i)
+	{
+		pendulum1_balls_primitives[i].radius = 3;
+		pendulum1_balls_primitives[i].color = Color(1,1,0);
+		pendulum1_balls_primitives[i].SetPos(PENDULUM1_POSITION+10, 30, 6 * i + 6);
+		pendulum1_balls_bodies[i] = App->physics->AddBody(pendulum1_balls_primitives[i],10000);
+		pendulum1_balls_bodies[i]->collision_listeners.add(App->scene_intro);
+
+		App->physics->AddConstraintP2P(*pendulum1_body, *pendulum1_balls_bodies[i], vec3(-i*6 -6, 0, 0), vec3(0, 16, 0));
+	}
+
+	//STAGE 2 - Second Pendulum
+	
+		pendulum2_primitive.color = Color(1, 0, 0);
+		pendulum2_primitive.radius = 5;
+		pendulum2_primitive.height = 180;
+		pendulum2_primitive.SetPos(PENDULUM2_POSITION, 20, 0);
+		pendulum2_primitive.SetRotation(90, vec3(0, 1, 0));
+		pendulum2_body = App->physics->AddBody(pendulum2_primitive, 0);
+
+		//Accelerator
+		pendulum2_accelerator_primitive.size = ACCELERATOR_SIZE;
+		pendulum2_accelerator_primitive.SetPos(PENDULUM2_POSITION, 35, +50);
+		pendulum2_accelerator_body = App->physics->AddBody(pendulum2_accelerator_primitive, 0);
+		pendulum2_accelerator_body->BodyToSensor(true);
+		pendulum2_accelerator_body->collision_listeners.add(App->scene_intro);
+
+		for (int i = 0; i < BALLS_NUMBER; ++i)
+		{
+			pendulum2_balls_primitives[i].radius = 3;
+			pendulum2_balls_primitives[i].color = Color(1, 1, 0);
+			pendulum2_balls_primitives[i].SetPos(PENDULUM2_POSITION - 10, 30, 6 * i + 6);
+			pendulum2_balls_bodies[i] = App->physics->AddBody(pendulum2_balls_primitives[i], 10000);
+			pendulum2_balls_bodies[i]->collision_listeners.add(App->scene_intro);
+
+			App->physics->AddConstraintP2P(*pendulum2_body, *pendulum2_balls_bodies[i], vec3(-i * 6 - 6, 0, 0), vec3(0, 16, 0));
+		}
+	
+	//STAGE 2 - Third pendulum
+	pendulum3_primitive.color = Color(1,1,1);
+	pendulum3_primitive.radius = 5;
+	pendulum3_primitive.height = 180;
+	pendulum3_primitive.SetPos(PENDULUM3_POSITION, 20, 0);
+	pendulum3_primitive.SetRotation(90, vec3(0, 1, 0));
+	pendulum3_body = App->physics->AddBody(pendulum3_primitive, 0);
+
+	//Accelerator
+	pendulum3_accelerator_primitive.size = ACCELERATOR_SIZE;
+	pendulum3_accelerator_primitive.SetPos(PENDULUM3_POSITION, 35, +50);
+	pendulum3_accelerator_body = App->physics->AddBody(pendulum3_accelerator_primitive, 0);
+	pendulum3_accelerator_body->BodyToSensor(true);
+	pendulum3_accelerator_body->collision_listeners.add(App->scene_intro);
+
+	for (int i = 0; i < BALLS_NUMBER; ++i)
+	{
+		pendulum3_balls_primitives[i].radius = 3;
+		pendulum3_balls_primitives[i].color = Color(1, 1, 0);
+		pendulum3_balls_primitives[i].SetPos(PENDULUM3_POSITION + 10, 30, 6 * i + 6);
+		pendulum3_balls_bodies[i] = App->physics->AddBody(pendulum3_balls_primitives[i], 10000);
+		pendulum3_balls_bodies[i]->collision_listeners.add(App->scene_intro);
+
+		App->physics->AddConstraintP2P(*pendulum3_body, *pendulum3_balls_bodies[i], vec3(-i * 6 - 6, 0, 0), vec3(0, 16, 0));
+	}
+
+	//STAGE 2 - Fourth pendulum
+	pendulum4_primitive.color = Color(1, 0, 0);
+	pendulum4_primitive.radius = 5;
+	pendulum4_primitive.height = 180;
+	pendulum4_primitive.SetPos(PENDULUM4_POSITION, 20, 0);
+	pendulum4_primitive.SetRotation(90, vec3(0, 1, 0));
+	pendulum4_body = App->physics->AddBody(pendulum4_primitive, 0);
+
+	//Accelerator
+	pendulum4_accelerator_primitive.size = ACCELERATOR_SIZE;
+	pendulum4_accelerator_primitive.SetPos(PENDULUM4_POSITION, 35, +50);
+	pendulum4_accelerator_body = App->physics->AddBody(pendulum4_accelerator_primitive, 0);
+	pendulum4_accelerator_body->BodyToSensor(true);
+	pendulum4_accelerator_body->collision_listeners.add(App->scene_intro);
+
+	for (int i = 0; i < BALLS_NUMBER; ++i)
+	{
+		pendulum4_balls_primitives[i].radius = 3;
+		pendulum4_balls_primitives[i].color = Color(1, 1, 0);
+		pendulum4_balls_primitives[i].SetPos(PENDULUM4_POSITION - 10, 30, 6 * i + 6);
+		pendulum4_balls_bodies[i] = App->physics->AddBody(pendulum4_balls_primitives[i], 10000);
+		pendulum4_balls_bodies[i]->collision_listeners.add(App->scene_intro);
+
+		App->physics->AddConstraintP2P(*pendulum4_body, *pendulum4_balls_bodies[i], vec3(-i * 6 - 6, 0, 0), vec3(0, 16, 0));
+	}
+
+	//STAGE 2 - Fifth pendulum
+	pendulum5_primitive.color = Color(1, 1, 1);
+	pendulum5_primitive.radius = 5;
+	pendulum5_primitive.height = 180;
+	pendulum5_primitive.SetPos(PENDULUM5_POSITION, 20, 0);
+	pendulum5_primitive.SetRotation(90, vec3(0, 1, 0));
+	pendulum5_body = App->physics->AddBody(pendulum5_primitive, 0);
+
+	//Accelerator
+	pendulum5_accelerator_primitive.size = ACCELERATOR_SIZE;
+	pendulum5_accelerator_primitive.SetPos(PENDULUM5_POSITION, 35, +50);
+	pendulum5_accelerator_body = App->physics->AddBody(pendulum5_accelerator_primitive, 0);
+	pendulum5_accelerator_body->BodyToSensor(true);
+	pendulum5_accelerator_body->collision_listeners.add(App->scene_intro);
+
+	for (int i = 0; i < BALLS_NUMBER; ++i)
+	{
+		pendulum5_balls_primitives[i].radius = 3;
+		pendulum5_balls_primitives[i].color = Color(1, 1, 0);
+		pendulum5_balls_primitives[i].SetPos(PENDULUM5_POSITION + 10, 30, 6 * i + 6);
+		pendulum5_balls_bodies[i] = App->physics->AddBody(pendulum5_balls_primitives[i], 10000);
+		pendulum5_balls_bodies[i]->collision_listeners.add(App->scene_intro);
+
+		App->physics->AddConstraintP2P(*pendulum5_body, *pendulum5_balls_bodies[i], vec3(-i * 6 - 6, 0, 0), vec3(0, 16, 0));
+	}
+
+	//STAGE 3 - Add Snakes
+
+	for (int i = 0; i < SNAKE_SIZE; i++)
+	{
+		//snake 1
+		snake1_primitives[i].radius = SNAKE_RADIUS;
+		snake1_primitives[i].color = Color(1,0,0);
+		snake1_bodies[i] = App->physics->AddBody(snake1_primitives[i],500);
+		if (i > 0)
+			App->physics->AddConstraintP2P(*snake1_bodies[i], *snake1_bodies[i-1], vec3(0,0,-SNAKE_RADIUS), vec3(0, 0, SNAKE_RADIUS));
+		
+		snake1_bodies[i]->SetPos(STAGE3_POSITION + 30, SNAKE_RADIUS + 10, i*SNAKE_RADIUS +15);
+
+		//snake 2
+		snake2_primitives[i].radius = SNAKE_RADIUS;
+		snake2_primitives[i].color = Color(1, 0, 0);
+		snake2_bodies[i] = App->physics->AddBody(snake2_primitives[i], 500);
+
+		if (i > 0)
+			App->physics->AddConstraintP2P(*snake2_bodies[i], *snake2_bodies[i - 1], vec3(0, 0, -SNAKE_RADIUS), vec3(0, 0, SNAKE_RADIUS));
+
+		snake2_bodies[i]->SetPos(STAGE3_POSITION + 50, SNAKE_RADIUS + 10, i*SNAKE_RADIUS + 25);
+
+		//snake 3
+		snake3_primitives[i].radius = SNAKE_RADIUS;
+		snake3_primitives[i].radius = SNAKE_RADIUS;
+		snake3_primitives[i].color = Color(1, 0, 0);
+		snake3_bodies[i] = App->physics->AddBody(snake3_primitives[i], 500);
+
+		if (i > 0)
+			App->physics->AddConstraintP2P(*snake3_bodies[i], *snake3_bodies[i - 1], vec3(0, 0, -SNAKE_RADIUS), vec3(0, 0, SNAKE_RADIUS));
+
+		snake3_bodies[i]->SetPos(STAGE3_POSITION + 70, SNAKE_RADIUS + 10, i*SNAKE_RADIUS + 15);
+
+		//snake 4
+		snake4_primitives[i].radius = SNAKE_RADIUS;
+		snake4_primitives[i].radius = SNAKE_RADIUS;
+		snake4_primitives[i].color = Color(1, 0, 0);
+		snake4_bodies[i] = App->physics->AddBody(snake4_primitives[i], 500);
+
+		if (i > 0)
+			App->physics->AddConstraintP2P(*snake4_bodies[i], *snake4_bodies[i - 1], vec3(0, 0, -SNAKE_RADIUS), vec3(0, 0, SNAKE_RADIUS));
+
+		snake4_bodies[i]->SetPos(STAGE3_POSITION + 90, SNAKE_RADIUS + 10, i*SNAKE_RADIUS + 25);
+
+		//snake 5
+		snake5_primitives[i].radius = SNAKE_RADIUS;
+		snake5_primitives[i].radius = SNAKE_RADIUS;
+		snake5_primitives[i].color = Color(1, 0, 0);
+		snake5_bodies[i] = App->physics->AddBody(snake5_primitives[i], 500);
+
+		if (i > 0)
+			App->physics->AddConstraintP2P(*snake5_bodies[i], *snake5_bodies[i - 1], vec3(0, 0, -SNAKE_RADIUS), vec3(0, 0, SNAKE_RADIUS));
+
+		snake5_bodies[i]->SetPos(STAGE3_POSITION +110, SNAKE_RADIUS + 10, i*SNAKE_RADIUS + 15);
+
+	}
+
+	//Audio
+	App->audio->SetMusicVolume(); 
+	App->audio->SetFxVolume(); 
+
+	motor_fx = App->audio->LoadFx("audio/new_motor.wav");
+	engine_acc_fx = App->audio->LoadFx("audio/engine_acceleration.wav"); 
+	App->audio->PlayMusic("audio/music.ogg"); 
+
+	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
+	App->camera->LookAt(vec3(0, 0, 0));
+
+	//First sensor as a check point after cilinders (stage 1) 
+	Cube* Sensor1 = new Cube(1.0f, 5.0f, 50.0f);
+	Sensor1->SetPos(140.0f, 2.0f, 30.0f);
+	Sensor1->color = White; 
+	cube_1 = Sensor1; 
+	
+	sens_1 = App->physics->AddBody(*cube_1, 0.0f);
+	sens_1->BodyToSensor(true); 
+	sens_1->collision_listeners.add(this); 
+
+	//Second sensor after ball pendulums 
+	Cube* Sensor2 = new Cube(1.0f, 5.0f, 50.0f);
+	Sensor2->SetPos(430.0f, 2.0f, 30.0f);
+	Sensor2->color = White;
+	cube_2 = Sensor2;
+
+	sens_2 = App->physics->AddBody(*cube_2, 0.0f);
+	sens_2->BodyToSensor(true);
+	sens_2->collision_listeners.add(this);
+
+	//Third sensor META
+	Cube* Sensor3 = new Cube(1.0f, 5.0f, 50.0f);
+	Sensor3->SetPos(660.0f, 2.0f, 30.0f);
+	Sensor3->color = White;
+	cube_3 = Sensor3;
+
+	sens_3 = App->physics->AddBody(*cube_3, 0.0f);
+	sens_3->BodyToSensor(true);
+	sens_3->collision_listeners.add(this);
+
 	return ret;
 }
 
@@ -85,536 +330,289 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
-
+	
 	return true;
 }
 
-// Update: draw background
-update_status ModuleSceneIntro::Update()
+// Update
+update_status ModuleSceneIntro::Update(float dt)
 {
-	
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-		debug = !debug;
+	Player_Timer(timer.Read()); 
 
-	App->renderer->Blit(map, 0, 0, NULL); 
-	DrawLights();
+	back_wall_body->GetTransform(&back_wall_primitive.transform);
+	back_wall_primitive.Render();
 
-	
+	front_wall_body->GetTransform(&front_wall_primitive.transform);
+	front_wall_primitive.Render();
+	//Draw road
+	road.Render();
 
-
-	// Prepare for raycast ------------------------------------------------------
-	
-	iPoint mouse;
-	mouse.x = App->input->GetMouseX();
-	mouse.y = App->input->GetMouseY();
-
-	// All draw functions ------------------------------------------------------
-	p2List_item<PhysBody*>* c = circles.getFirst();
-
-	while(c != NULL)
+	//Draw and transfrom walls
+	for (int i = 0; i < MAX_WALLS; ++i)
 	{
-		int x, y;
-		c->data->GetPosition(x, y);
-		App->renderer->Blit(ball, x, y, NULL, 1.0f, c->data->GetRotation());
-		c = c->next;
+		//Left walls
+		left_walls_bodies[i]->GetTransform(&left_walls_primitives[i].transform);
+		left_walls_primitives[i].Render();
+
+		//Right walls
+		right_walls_bodies[i]->GetTransform(&right_walls_primitives[i].transform);
+		right_walls_primitives[i].Render();
 	}
 
-	
-
-	//SCORE
-	sprintf_s(score_text, 13, "%12d", score);
-	App->fonts->BlitText(110, 34, font_score, score_text);
-
-
-	if (debug) {
-
-		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	//STAGE 1 - Draw and transform columns
+	for (int i = 0; i < COLUMNS_LINES; ++i)
+	{
+		for (int j = 0; j < COLUMNS_PER_LINE; ++j)
 		{
-			circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 9, b2_dynamicBody));
-			circles.getLast()->data->listener = App->player;
+			columns_bodies[i][j]->GetTransform(&columns_primitives[i][j].transform);
+			columns_primitives[i][j].Render();
 		}
+	}
 
-		if (App->input->GetKey(SDL_SCANCODE_M) == KEY_REPEAT)
-			IncreaseScore(10);
+	//STAGE 2 - Draw and transform balls & pendulum
+	pendulum1_primitive.Render();
+	pendulum2_primitive.Render();
+	pendulum3_primitive.Render();
+	pendulum4_primitive.Render();
+	pendulum5_primitive.Render();
 
-		if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
-			combo *= 10;
+	for (int i = 0; i < BALLS_NUMBER; ++i)
+	{
+		//pendulum 1
+		pendulum1_balls_bodies[i]->GetTransform(&pendulum1_balls_primitives[i].transform);
+		pendulum1_balls_primitives[i].Render();
 
-		if (App->input->GetKey(SDL_SCANCODE_B) == KEY_REPEAT)
-			score += 100000000;
+		//pendulum 2
+		pendulum2_balls_bodies[i]->GetTransform(&pendulum2_balls_primitives[i].transform);
+		pendulum2_balls_primitives[i].Render();
 
-		if (App->input->GetKey(SDL_SCANCODE_V) == KEY_REPEAT)
-			score = 0;
+		//pendulum 3
+		pendulum3_balls_bodies[i]->GetTransform(&pendulum3_balls_primitives[i].transform);
+		pendulum3_balls_primitives[i].Render();
+
+		//pendulum 4
+		pendulum4_balls_bodies[i]->GetTransform(&pendulum4_balls_primitives[i].transform);
+		pendulum4_balls_primitives[i].Render();
+
+		//pendulum 5
+		pendulum5_balls_bodies[i]->GetTransform(&pendulum5_balls_primitives[i].transform);
+		pendulum5_balls_primitives[i].Render();
+	}
+  
+	for (int i = 0; i < SNAKE_SIZE; i++)
+	{
+		snake1_bodies[i]->GetTransform(&snake1_primitives[i].transform);
+		snake2_bodies[i]->GetTransform(&snake2_primitives[i].transform);
+		snake3_bodies[i]->GetTransform(&snake3_primitives[i].transform);
+		snake4_bodies[i]->GetTransform(&snake4_primitives[i].transform);
+		snake5_bodies[i]->GetTransform(&snake5_primitives[i].transform);
+
+		snake1_primitives[i].Render();
+		snake2_primitives[i].Render();
+		snake3_primitives[i].Render();
+		snake4_primitives[i].Render();
+		snake5_primitives[i].Render();
+	}
+
+	//Render sensors 
+	if (App->physics->debug)
+	{
+		cube_1->Render(); 
+		cube_2->Render(); 
+		cube_3->Render(); 
+	}
+
+	//Which player wins
+	if (game_ends)
+	{
+		if (TotalTime_p1 < TotalTime_p2)
+		{
+			wins_p1 = true;
+			Player_Timer(TotalTime_p1);
+		}
+		else
+		{
+			wins_p1 = false;
+			Player_Timer(TotalTime_p2);
+		}	
 	}
 	
-
-	
+	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && game_ends)
+	{
+		App->player->CleanUp();
+		App->player2->CleanUp();
+		App->player->enabled = true; 
+		App->player2->enabled = false;	
+		App->player->player1 = true; 
+		App->player->TimeStarts = false;
+		App->player->Start();
+		App->audio->PlayMusic("audio/music.ogg");
+		game_ends = false;
+	}
 
 	return UPDATE_CONTINUE;
 }
 
-
-void ModuleSceneIntro::DrawLights() {
-
-	App->renderer->Blit(lights_texture, 140, 105, &top_left_lights.GetCurrentFrame());	//Top left lights
-	App->renderer->Blit(lights_texture, 58, 218, &left_lights.GetCurrentFrame());		//Left lights
-	App->renderer->Blit(lights_texture, 285, 102, &top_right_lights.GetCurrentFrame());	//Top right lights
-	App->renderer->Blit(lights_texture, 351, 192, &right_lights.GetCurrentFrame());		//Right lights
-	App->renderer->Blit(lights_texture, 226, 328, &middle_lights.GetCurrentFrame());	//Middle lights
-}
-
-void ModuleSceneIntro::IncreaseScore(int points) {
-	score += points * combo;
-}
-
-void ModuleSceneIntro::DrawColliders()
+void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	int Map[230] = {
-		443, 266,
-		444, 234,
-		450, 225,
-		482, 189,
-		494, 173,
-		500, 156,
-		503, 138,
-		503, 123,
-		497, 105,
-		482, 86,
-		466, 77,
-		450, 72,
-		433, 73,
-		418, 78,
-		402, 89,
-		389, 106,
-		385, 114,
-		371, 114,
-		353, 105,
-		321, 98,
-		287, 93,
-		281, 81,
-		205, 81,
-		198, 94,
-		180, 96,
-		158, 105,
-		141, 115,
-		126, 127,
-		116, 121,
-		106, 117,
-		95, 115,
-		84, 115,
-		70, 119,
-		59, 124,
-		48, 133,
-		40, 144,
-		35, 157,
-		34, 168,
-		34, 182,
-		38, 195,
-		47, 210,
-		57, 224,
-		68, 240,
-		91, 273,
-		102, 292,
-		109, 313,
-		114, 335,
-		115, 355,
-		114, 376,
-		111, 396,
-		109, 414,
-		109, 427,
-		113, 452,
-		122, 476,
-		135, 495,
-		155, 517,
-		179, 534,
-		196, 541,
-		201, 542,
-		201, 570,
-		286, 570,
-		286, 543,
-		303, 536,
-		326, 522,
-		345, 503,
-		362, 478,
-		368, 463,
-		373, 445,
-		375, 427,
-		375, 406,
-		372, 387,
-		368, 369,
-		368, 336,
-		370, 325,
-		374, 310,
-		381, 295,
-		390, 281,
-		400, 270,
-		402, 264,
-		401, 256,
-		397, 250,
-		391, 248,
-		385, 248,
-		380, 252,
-		375, 257,
-		372, 261,
-		369, 265,
-		364, 267,
-		362, 265,
-		365, 253,
-		377, 227,
-		390, 201,
-		400, 180,
-		406, 167,
-		408, 157,
-		407, 148,
-		405, 140,
-		405, 130,
-		413, 115,
-		428, 101,
-		443, 98,
-		456, 101,
-		468, 110,
-		476, 123,
-		478, 137,
-		477, 149,
-		473, 160,
-		468, 168,
-		458, 180,
-		446, 192,
-		433, 206,
-		425, 215,
-		421, 231,
-		418, 245,
-		418, 265
-	};
-	map_ = App->physics->CreateChain(0, 0, Map, 230); 
+	if (game_ends == false)
+	{
+		if (body1 == sens_1)
+		{
+			if (App->player->player1)
+			{
+				App->player->actual_stage = Stage::second_stage;
+			}
+			else
+			{
+				App->player2->actual_stage = Stage::second_stage;
+			}
+		}
 
-	int top_left1[30] = {
-	91, 229,
-	98, 241,
-	103, 249,
-	109, 257,
-	114, 262,
-	118, 266,
-	123, 267,
-	124, 262,
-	121, 253,
-	117, 244,
-	113, 235,
-	109, 227,
-	100, 228,
-	91, 229,
-	90, 229
-	};
-	top_left_1 = App->physics->CreateChain(0, 0, top_left1, 30); 
+		else if (body1 == sens_2)
+		{
+			if (App->player->player1)
+			{
+				App->player->actual_stage = Stage::third_stage;
+			}
+			else
+			{
+				App->player2->actual_stage = Stage::third_stage;
+			}
+		}
 
-	int top_left2[22] = {
-	127, 216,
-	133, 211,
-	138, 203,
-	141, 211,
-	144, 220,
-	147, 228,
-	148, 234,
-	147, 238,
-	141, 237,
-	134, 229,
-	127, 216
-	};
-	top_left_2 = App->physics->CreateChain(0, 0, top_left2, 22);
+		else if (body1 == sens_3 && App->player->player1 == true)
+		{
+			TotalTime_p1 = timer.Read();
+			App->player->CleanUp();
+			App->player->enabled = false;
 
-	int top_left3[24] = {
-	142, 147,
-	146, 156,
-	147, 163,
-	147, 171,
-	165, 165,
-	178, 160,
-	185, 155,
-	188, 146,
-	184, 136,
-	175, 132,
-	162, 134,
-	141, 147
-	};
-	top_left_3 = App->physics->CreateChain(0, 0, top_left3, 24); 
-
-	int top_right[52] = {
-		311, 131,
-		305, 133,
-		301, 136,
-		299, 140,
-		297, 145,
-		297, 150,
-		300, 156,
-		303, 159,
-		345, 174,
-		345, 193,
-		341, 211,
-		338, 224,
-		336, 231,
-		336, 236,
-		338, 238,
-		341, 239,
-		344, 236,
-		348, 228,
-		352, 220,
-		357, 200,
-		361, 179,
-		361, 163,
-		360, 158,
-		356, 154,
-		318, 132,
-		313, 131
-	};
-	top_right_1 = App->physics->CreateChain(0, 0, top_right, 52); 
-
-	int middle_top1[18] = {
-	222, 121,
-	227, 121,
-	230, 124,
-	230, 148,
-	226, 152,
-	222, 152,
-	219, 148,
-	219, 125,
-	221, 121
-	};
-	middle_top_1 = App->physics->CreateChain(0, 0, middle_top1, 18); 
-
-	int middle_top2[18] = {
-	259, 121,
-	264, 121,
-	267, 124,
-	267, 148,
-	264, 152,
-	260, 152,
-	256, 148,
-	256, 125,
-	258, 121
-	};
-	middle_top_2 = App->physics->CreateChain(0, 0, middle_top2, 18); 
-
-	int middle[36] = {
-	205, 295,
-	206, 287,
-	213, 284,
-	226, 282,
-	243, 281,
-	262, 282,
-	275, 284,
-	282, 289,
-	281, 299,
-	276, 310,
-	269, 318,
-	259, 324,
-	259, 327,
-	225, 327,
-	225, 323,
-	217, 318,
-	208, 308,
-	204, 295
-	};
-	middle_ = App->physics->CreateChain(0, 0, middle, 36); 
-
-	int bottom_right1[28] = {
-	290, 459,
-	295, 448,
-	302, 432,
-	309, 419,
-	312, 415,
-	317, 415,
-	320, 419,
-	319, 429,
-	316, 440,
-	310, 452,
-	301, 463,
-	296, 466,
-	291, 464,
-	291, 459
-	};
-	bottom_right_1 = App->physics->CreateChain(0, 0, bottom_right1, 28); 
-
-	int bottom_right2[52] = {
-		347, 410,
-		344, 415,
-		343, 423,
-		341, 431,
-		339, 440,
-		335, 450,
-		330, 459,
-		324, 467,
-		314, 478,
-		306, 483,
-		304, 489,
-		313, 484,
-		318, 489,
-		313, 499,
-		318, 498,
-		325, 492,
-		332, 483,
-		338, 475,
-		344, 464,
-		347, 455,
-		350, 444,
-		352, 431,
-		353, 420,
-		353, 415,
-		352, 411,
-		348, 410
-	};
-	bottom_right_2 = App->physics->CreateChain(0, 0, bottom_right2, 52); 
-
-	int bottom_left1[48] = {
-		133, 410,
-		131, 414,
-		131, 419,
-		132, 434,
-		137, 460,
-		144, 475,
-		152, 486,
-		159, 493,
-		164, 497,
-		170, 498,
-		163, 488,
-		167, 484,
-		178, 486,
-		175, 482,
-		166, 475,
-		159, 467,
-		152, 457,
-		147, 447,
-		143, 437,
-		141, 429,
-		139, 420,
-		139, 413,
-		137, 410,
-		135, 410
-	};
-	bottom_left_1 = App->physics->CreateChain(0, 0, bottom_left1, 48); 
-
-	int bottom_left2[24] = {
-	166, 418,
-	169, 415,
-	173, 415,
-	194, 455,
-	195, 462,
-	193, 466,
-	187, 466,
-	180, 459,
-	173, 449,
-	168, 440,
-	166, 430,
-	165, 418
-	};
-	bottom_left_2 = App->physics->CreateChain(0, 0, bottom_left2, 24); 
-
-	int ball_corridor1[18] = {
-	450, 345,
-	447, 342,
-	443, 342,
-	439, 345,
-	439, 437,
-	442, 441,
-	447, 441,
-	450, 437,
-	451, 345
-	};
-	ball_corridor_1 = App->physics->CreateChain(0, 0, ball_corridor1, 18); 
-
-	int ball_corridor2[30] = {
-		417, 272,
-		417, 304,
-		418, 570,
-		440, 570,
-		440, 467,
-		460, 466,
-		466, 463,
-		470, 458,
-		471, 453,
-		471, 347,
-		468, 343,
-		463, 340,
-		456, 339,
-		443, 339,
-		442, 276,
-	};
-	ball_corridor_2 = App->physics->CreateChain(0, 0, ball_corridor2, 30);
-
-	int football1[30] = {
-	190, 237,
-	190, 229,
-	193, 225,
-	195, 223,
-	198, 222,
-	201, 222,
-	204, 223,
-	208, 225,
-	210, 229,
-	210, 236,
-	208, 239,
-	204, 243,
-	198, 243,
-	193, 241,
-	189, 238
-	};
-	football_1 = App->physics->CreateChain(0, 0, football1, 30, 1.0f); 
-
-	int football2[30] = {
-	233, 195,
-	233, 201,
-	235, 204,
-	239, 207,
-	247, 207,
-	250, 205,
-	252, 201,
-	252, 195,
-	250, 191,
-	248, 189,
-	245, 188,
-	241, 188,
-	238, 189,
-	235, 191,
-	232, 194
-	};
-	football_2 = App->physics->CreateChain(0, 0, football2, 30, 1.0f); 
-
-	int football3[30] = {
-	277, 226,
-	275, 230,
-	275, 236,
-	277, 240,
-	282, 242,
-	288, 242,
-	292, 240,
-	294, 236,
-	294, 229,
-	292, 225,
-	289, 223,
-	286, 222,
-	282, 222,
-	279, 224,
-	276, 226
-	};
-	football_3 = App->physics->CreateChain(0, 0, football3, 30, 1.0f); 
-
-	int football4[32] = {
-		86, 161,
-		90, 161,
-		95, 162,
-		98, 165,
-		100, 169,
-		100, 174,
-		99, 179,
-		95, 182,
-		91, 183,
-		86, 183,
-		81, 181,
-		79, 177,
-		78, 173,
-		78, 167,
-		81, 162,
-		85, 161
-	};
-	football_4 = App->physics->CreateChain(0, 0, football4, 32, 3.0f); 
+			App->player2->enabled = true;
+			App->player2->Start();
+			App->player->TimeStarts = false;
+			App->player->player1 = false;
+		}
+		else if (body1 == sens_3 && App->player->player1 == false)
+		{
+			TotalTime_p2 = timer.Read();
+			timer.Stop();
+			game_ends = true;
+		}
+	}
+	
+	if (body1 == pendulum1_accelerator_body ||
+		body1 == pendulum3_accelerator_body ||
+		body1 == pendulum5_accelerator_body)
+		body2->Push(60000, 60000, 0);
+	else if (body1 == pendulum2_accelerator_body || 
+		body1 == pendulum4_accelerator_body )
+		body2->Push(-60000, 60000, 0);
 }
 
+void ModuleSceneIntro::Player_Timer(int milisec)
+{
+
+	if (App->player->TimeStarts == false)
+		timer.Start(); 
+
+	char title[150]; 
+
+	int sec = milisec / 1000.0f; //from milisecond to sec
+	int min = sec / 60.0f; //from seconds to minutes 
+	int hour = min / 60.0f; //from minutes to hours
+
+	int sec_print = sec;
+
+	if (min > 0)
+		sec_print -= min * 60;
+	if (!game_ends)
+	{
+		if (hour >= 10 && min >= 10 && sec_print >= 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: %i : %i : %i | Press R to respawn", hour, min, sec_print);
+		}
+		else if (hour < 10 && min >= 10 && sec_print >= 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: 0%i : %i : %i | Press R to respawn", hour, min, sec_print);
+		}
+		else if (hour >= 10 && min < 10 && sec_print >= 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: %i : 0%i : %i | Press R to respawn", hour, min, sec_print);
+		}
+		else if (hour >= 10 && min >= 10 && sec_print < 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: %i : %i : 0%i | Press R to respawn", hour, min, sec_print);
+		}
+		else if (hour >= 10 && min < 10 && sec_print < 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: %i : 0%i : 0%i | Press R to respawn", hour, min, sec_print);
+		}
+		else if (hour < 10 && min >= 10 && sec_print < 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: 0%i : %i : 0%i | Press R to respawn", hour, min, sec_print);
+		}
+		else if (hour < 10 && min < 10 && sec_print >= 10) {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: 0%i : 0%i : %i | Press R to respawn", hour, min, sec_print);
+		}
+		else {
+			sprintf_s(title, " Monster Truck Obstacle Race | TIME: 0%i : 0%i : 0%i | Press R to respawn", hour, min, sec_print);
+		}
+
+		App->window->SetTitle(title);
+	}
+	else
+	{
+		if (wins_p1)
+		{
+			if (hour >= 10 && min >= 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: %i : %i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour < 10 && min >= 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: 0%i : %i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour >= 10 && min < 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: %i : 0%i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour >= 10 && min >= 10 && sec_print < 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: %i : %i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour >= 10 && min < 10 && sec_print < 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: %i : 0%i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour < 10 && min >= 10 && sec_print < 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: 0%i : %i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour < 10 && min < 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: 0%i : 0%i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 1 WINS!!! TIME: 0%i : 0%i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+
+			App->window->SetTitle(title);
+		}
+		else
+		{
+			if (hour >= 10 && min >= 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: %i : %i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour < 10 && min >= 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: 0%i : %i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour >= 10 && min < 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: %i : 0%i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour >= 10 && min >= 10 && sec_print < 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: %i : %i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour >= 10 && min < 10 && sec_print < 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: %i : 0%i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour < 10 && min >= 10 && sec_print < 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: 0%i : %i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+			else if (hour < 10 && min < 10 && sec_print >= 10) {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: 0%i : 0%i : %i | Press Q to play again", hour, min, sec_print);
+			}
+			else {
+				sprintf_s(title, " Monster Truck Obstacle Race | PLAYER 2 WINS!!! TIME: 0%i : 0%i : 0%i | Press Q to play again", hour, min, sec_print);
+			}
+
+			App->window->SetTitle(title);
+		}
+	}
+}

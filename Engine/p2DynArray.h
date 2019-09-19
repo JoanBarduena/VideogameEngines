@@ -69,7 +69,7 @@ public:
 	}
 
 	// Data Management
-	void PushBack(const VALUE& element)
+	VALUE PushBack(const VALUE& element)
 	{
 		if(num_elements >= mem_capacity)
 		{
@@ -77,6 +77,8 @@ public:
 		}
 
 		data[num_elements++] = element;
+
+		return element;
 	}
 
 	bool Pop(VALUE& value)

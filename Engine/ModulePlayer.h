@@ -1,10 +1,13 @@
+#pragma once
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
-#include "ModuleTextures.h"
-#include "Box2D/Box2D/Box2D.h"
-#include <string>
-#include "Animation.h"
+
+struct PhysVehicle3D;
+
+#define MAX_ACCELERATION 2000.0f
+#define TURN_DEGREES 15.0f * DEGTORAD
+#define BRAKE_POWER 2000.0f
 
 class ModulePlayer : public Module
 {
@@ -12,65 +15,38 @@ public:
 	ModulePlayer(Application* app, bool start_enabled = true);
 	virtual ~ModulePlayer();
 
-	//Functions
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	bool CleanUp();
-	void Ball(); 
-	void Teleported_Ball(); 
-	void OnCollision(PhysBody* bodyA, PhysBody* bodyB); 
-	void LoadKickers(); 
-	void Launcher(); 
 
 public:
-	//Textures
-	SDL_Texture* kickers_tx;
-	SDL_Texture* ball_tx; 
-	SDL_Texture* launcher_tx; 
-	SDL_Texture* ball_lost_tx; 
 
-	//Player attributes
-	uint tries = 5;
+	PhysVehicle3D* vehicle;
+	float turn;
+	float acceleration;
+	float brake;
 
-	//Kicker right
-	PhysBody* kicker_left;
-	PhysBody* pivot_left;
-	b2RevoluteJoint* joint_left;
+	bool player1 = true;
+	bool TimeStarts = false;
 
-	//Kicker left 
-	PhysBody* kicker_right;
-	PhysBody* pivot_right;
-	b2RevoluteJoint* joint_right;
+	Stage actual_stage = Stage::first_stage;
 
-	//Sensors
-	PhysBody* dead_sensor; 
-	PhysBody* lock_sensor;
-	PhysBody* teleport_sensor;
-	
-	//bools
-	bool is_dead = false; 
-	bool is_teleported = false; 
+	mat4x4 Stage1_mat = mat4x4(
+		0.0f, 0.0f, -1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.5f, 30.0f, 0.0f);
 
-private:
+	mat4x4 Stage2_mat = mat4x4(
+		0.0f, 0.0f, -1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f, 0.0f,
+		150.0f, 1.5f, 30.0f, 0.0f);
 
-	//Animations 
-	Animation launcher_animation_static;
-	Animation launching_animation;
-	Animation* current_animation = nullptr;
-
-	Animation ball_lost_anim;  
-	Animation ball_lost_idle; 
-	Animation* ball_animation = nullptr; 
-	int ball_counter = 0; 
-
-	PhysBody* ball; 
-
-	PhysBody* launcher;
-	PhysBody* launcher_pivot;
-	b2PrismaticJoint* jointLauncher;
-
-	//sfx
-	uint kicker_fx;
-	uint combo_fx;
+	mat4x4 Stage3_mat = mat4x4(
+		0.0f, 0.0f, -1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f, 0.0f,
+		440.0f, 1.5f, 30.0f, 0.0f);
 
 };
