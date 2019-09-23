@@ -1,2 +1,12 @@
-﻿  Main.cpp
-LINK : fatal error LNK1104: cannot open file 'glut/glut32.lib'
+﻿  Application.cpp
+  Light.cpp
+  Main.cpp
+  ModuleCamera3D.cpp
+  ModuleInput.cpp
+  ModuleRenderer3D.cpp
+  ModuleSceneIntro.cpp
+  ModuleWindow.cpp
+  Timer.cpp
+  log.cpp
+  Generando código...
+  3D Physics.vcxproj -> C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\Debug\3D Physics.exe
