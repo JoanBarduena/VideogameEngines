@@ -66,6 +66,9 @@
     <ClInclude Include="Timer.h">
       <Filter>Sources\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleGui.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Sources\Modules\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleGui.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
