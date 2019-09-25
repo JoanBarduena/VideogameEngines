@@ -13,9 +13,6 @@
     <Filter Include="Sources\Tools">
       <UniqueIdentifier>{7e4dfaf7-022c-4f7d-92aa-f3b3fa9d6248}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Helpers">
-      <UniqueIdentifier>{121f8e6b-df36-4ab0-be0d-601ddfc9e503}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Tools\imgui">
       <UniqueIdentifier>{2e9d6874-3206-49f4-add9-3810e9a2320b}</UniqueIdentifier>
     </Filter>
@@ -24,6 +21,9 @@
     </Filter>
     <Filter Include="Sources\Tools\PCG">
       <UniqueIdentifier>{fab2edae-91e3-4235-bd38-5023b7414cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Containers\Helpers">
+      <UniqueIdentifier>{121f8e6b-df36-4ab0-be0d-601ddfc9e503}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,13 +42,7 @@
     <ClInclude Include="ModuleWindow.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="p2DynArray.h">
-      <Filter>Sources\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="p2List.h">
-      <Filter>Sources\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="p2Point.h">
       <Filter>Sources\Containers</Filter>
     </ClInclude>
     <ClInclude Include="glmath.h">
@@ -64,7 +58,7 @@
       <Filter>Sources\Containers</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>Sources\Helpers</Filter>
+      <Filter>Sources\Containers\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Sources\Tools</Filter>
@@ -153,7 +147,7 @@
       <Filter>Sources\Containers</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>Sources\Helpers</Filter>
+      <Filter>Sources\Containers\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="ModuleGui.cpp">
       <Filter>Sources\Modules</Filter>

@@ -14,7 +14,7 @@
     <ProjectGuid>{C66747D8-258F-4411-97E6-4E616A28A922}</ProjectGuid>
     <RootNamespace>SDLGame</RootNamespace>
     <ProjectName>Engine</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -99,8 +99,6 @@
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleSceneIntro.h" />
     <ClInclude Include="ModuleWindow.h" />
-    <ClInclude Include="p2DynArray.h" />
-    <ClInclude Include="p2Point.h" />
     <ClInclude Include="PCG\entropy.h" />
     <ClInclude Include="PCG\pcg_spinlock.h" />
     <ClInclude Include="PCG\pcg_variants.h" />
