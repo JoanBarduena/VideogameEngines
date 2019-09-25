@@ -75,17 +75,17 @@ update_status Application::Update()
 
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == UPDATE_CONTINUE; item++)
 	{
-		(*item)->PreUpdate(dt);
+		ret = (*item)->PreUpdate(dt);
 	}
 
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == UPDATE_CONTINUE; item++)
 	{
-		(*item)->Update(dt);
+		ret = (*item)->Update(dt);
 	}
 
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == UPDATE_CONTINUE; item++)
 	{
-		(*item)->PostUpdate(dt);
+		ret = (*item)->PostUpdate(dt);
 	}
 
 	FinishUpdate();
