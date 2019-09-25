@@ -41,8 +41,9 @@ bool ModuleRenderer3D::Init()
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
-		//Check for error
-		GLenum error = glGetError();
+		//Init Glew
+		GLenum error = glewInit();
+
 		if(error != GL_NO_ERROR)
 		{
 			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
@@ -55,6 +56,7 @@ bool ModuleRenderer3D::Init()
 
 		//Check for error
 		error = glGetError();
+
 		if(error != GL_NO_ERROR)
 		{
 			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
