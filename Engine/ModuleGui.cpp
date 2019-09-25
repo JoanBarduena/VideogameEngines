@@ -5,8 +5,6 @@
 #include "ModuleRenderer3D.h"
 #include <string>
 
-
-
 ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_enabled)
 {}
 
@@ -62,12 +60,30 @@ update_status ModuleGui::PreUpdate(float dt)
 
 update_status ModuleGui::Update(float dt)
 {
+	if (ImGui::BeginMainMenuBar()) {
+
+		if (ImGui::BeginMenu("File", true)) {
+
+			if (ImGui::MenuItem("Exit", "Esc", false, true)) { return update_status::UPDATE_STOP; }
+			ImGui::EndMenu();
+		}
+	}
+
+	ImGui::EndMainMenuBar();
+
+	if (show_main_window)
+	{
+		ImGui::Begin("Main Window");
+
+		ImGui::Checkbox("Demo Window", &show_demo_window);
+		ImGui::Checkbox("Random Number Window", &show_random_num_window);
+
+		ImGui::End();
+	}
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	if (show_demo_window)
-		ImGui::ShowDemoWindow(&show_demo_window);
-
-	// 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
 	{
+		ImGui::ShowDemoWindow(&show_demo_window);
 		static float f = 0.0f;
 		static int counter = 0;
 
@@ -89,13 +105,19 @@ update_status ModuleGui::Update(float dt)
 		ImGui::End();
 	}
 
-	// 3. Show another simple window.
-	if (show_another_window)
+	if (show_random_num_window)
 	{
-		ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-		ImGui::Text("Hello from another window!");
+		static int min = 0;
+		static int max = 0; 
+
+		ImGui::Begin("RNG Window", &show_random_num_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+		ImGui::Text("Random Number Generator!");
+
+		ImGui::SliderInt("Minimum", &min, 0, 100);
+		ImGui::SliderInt("Maximum", &max, 0, 100);
+
 		if (ImGui::Button("Close Me"))
-			show_another_window = false;
+			show_random_num_window = false;
 		ImGui::End();
 	}
 

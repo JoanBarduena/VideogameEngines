@@ -22,6 +22,9 @@
     <Filter Include="Sources\Tools\glew">
       <UniqueIdentifier>{33b79c07-92a8-4c61-a2e9-b2b99c82f498}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\PCG">
+      <UniqueIdentifier>{fab2edae-91e3-4235-bd38-5023b7414cee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -108,6 +111,15 @@
     <ClInclude Include="ModuleSceneIntro.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="PCG\entropy.h">
+      <Filter>Sources\Tools\PCG</Filter>
+    </ClInclude>
+    <ClInclude Include="PCG\pcg_spinlock.h">
+      <Filter>Sources\Tools\PCG</Filter>
+    </ClInclude>
+    <ClInclude Include="PCG\pcg_variants.h">
+      <Filter>Sources\Tools\PCG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -166,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="PCG\entropy.c">
+      <Filter>Sources\Tools\PCG</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

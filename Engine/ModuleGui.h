@@ -7,6 +7,9 @@
 #include "imGui/imgui_impl_sdl.h"
 #include "imGui/imgui_impl_opengl3.h"
 
+#include "PCG/entropy.h"
+#include "PCG/pcg_variants.h"
+
 class ModuleGui : public Module
 {
 public:
@@ -22,8 +25,9 @@ public:
 
 private:
 
-	bool show_demo_window = true; 
-	bool show_another_window = false;
+	bool show_main_window = true;
+	bool show_demo_window = false; 
+	bool show_random_num_window = false;
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };
 
