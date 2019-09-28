@@ -23,6 +23,9 @@ public:
 	update_status PostUpdate(float dt); 
 	bool CleanUp(); 
 
+	pcg_state_setseq_32 bounded;
+	int interval = 0, min = 0, max = 0;
+
 private:
 
 	bool show_main_window = true;

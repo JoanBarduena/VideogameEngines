@@ -106,15 +106,17 @@ update_status ModuleGui::Update(float dt)
 	}
 
 	if (show_random_num_window)
-	{
-		static int min = 0;
-		static int max = 0; 
-
+	{ 
 		ImGui::Begin("RNG Window", &show_random_num_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 		ImGui::Text("Random Number Generator!");
 
-		ImGui::SliderInt("Minimum", &min, 0, 100);
-		ImGui::SliderInt("Maximum", &max, 0, 100);
+		ImGui::InputInt("Minimum", &min);
+		ImGui::InputInt("Maximum", &max);
+
+		if (ImGui::Button("Random number between the set interval"))
+			interval = pcg32i_boundedrand_r(&bounded, ((max + min) + 1 ) -  min);
+		ImGui::SameLine();
+		ImGui::Text("%d", interval);
 
 		if (ImGui::Button("Close Me"))
 			show_random_num_window = false;
