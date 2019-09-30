@@ -62,15 +62,27 @@ update_status ModuleGui::Update(float dt)
 {
 	if (ImGui::BeginMainMenuBar()) {
 
-		if (ImGui::BeginMenu("File", true)) {
+		if (ImGui::BeginMenu("File", true)) 
+		{
 
 			if (ImGui::MenuItem("Exit", "Esc", false, true)) { return update_status::UPDATE_STOP; }
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("Help", true))
+		{
+			if (ImGui::MenuItem("About", "F1", false, true))
+			{
+				show_about_modal = true;				
+			}
+			ImGui::EndMenu();
+		}
+		
 	}
+
 
 	ImGui::EndMainMenuBar();
 
+	
 	if (show_main_window)
 	{
 		ImGui::Begin("Main Window");
@@ -121,6 +133,29 @@ update_status ModuleGui::Update(float dt)
 		if (ImGui::Button("Close Me"))
 			show_random_num_window = false;
 		ImGui::End();
+	}
+
+	if (show_about_modal)
+		ImGui::OpenPopup("About");
+	
+	if (ImGui::BeginPopupModal("About", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+	{
+		ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
+		ImGui::Text("The Engine engine");
+		ImGui::Separator();
+		ImGui::Text("This engine has been developed as part of the Game Engines subject at UPC-CITM.\n");
+		ImGui::Text("by Joan Barduena and Clara Ratera.\n");
+		if (ImGui::Button("Joan Barduena"));
+		ImGui::SameLine();
+		if (ImGui::Button("Clara Ratera"));
+
+		if (ImGui::Button("OK", ImVec2(120, 0)))
+		{
+			show_about_modal = false;
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::EndPopup();		
+
 	}
 
 	return UPDATE_CONTINUE;
