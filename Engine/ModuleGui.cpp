@@ -63,14 +63,18 @@ update_status ModuleGui::Update(float dt)
 		}
 		if (ImGui::BeginMenu("View", true))
 		{
-			if (ImGui::MenuItem("Demo Window")) { show_demo_window = !show_demo_window; }
+			
 			if (ImGui::MenuItem("RNG Window")) { show_random_num_window = !show_random_num_window; }
 			if (ImGui::MenuItem("Configuration")) { show_config_window = !show_config_window; }
 			ImGui::EndMenu(); 
 		}
 		if (ImGui::BeginMenu("Help", true))
 		{
-			if (ImGui::MenuItem("About", "F1", false, true)) { show_about_modal = true; }
+			if (ImGui::MenuItem("Gui Demo")) { show_demo_window = !show_demo_window; }
+			if (ImGui::MenuItem("Documentation")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/wiki"); }
+			if (ImGui::MenuItem("Download latest")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/releases"); }
+			if (ImGui::MenuItem("Report a bug")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/issues"); }
+			if (ImGui::MenuItem("About", "F1", false, true)) { show_about_modal = !show_about_modal; }
 			ImGui::EndMenu();
 		}		
 	}
@@ -152,6 +156,10 @@ update_status ModuleGui::Update(float dt)
 
 			if (ImGui::Checkbox("Full Desktop", &App->window->fullscreendesktop))
 				App->window->SetFullscreenDesktop(App->window->fullscreendesktop);
+		}
+		if (ImGui::CollapsingHeader("Hardware"))
+		{
+
 		}
 	}
 
