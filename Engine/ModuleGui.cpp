@@ -16,10 +16,8 @@ bool ModuleGui::Init()
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
-	// Setup Dear ImGui style
+	//Setup Dear ImGui style
 	ImGui::StyleColorsDark();
 	//ImGui::StyleColorsClassic();
 
@@ -44,10 +42,6 @@ update_status ModuleGui::PreUpdate(float dt)
 	while (SDL_PollEvent(&event))
 	{
 		ImGui_ImplSDL2_ProcessEvent(&event);
-		/*if (event.type == SDL_QUIT)
-			done = true;
-		if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(window))
-			done = true;*/
 	}
 
 	// Start the Dear ImGui frame
@@ -64,35 +58,26 @@ update_status ModuleGui::Update(float dt)
 
 		if (ImGui::BeginMenu("File", true)) 
 		{
-
 			if (ImGui::MenuItem("Exit", "Esc", false, true)) { return update_status::UPDATE_STOP; }
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("View", true))
+		{
+			if (ImGui::MenuItem("Demo Window")) { show_demo_window = !show_demo_window; }
+			if (ImGui::MenuItem("RNG Window")) { show_random_num_window = !show_random_num_window; }
+			if (ImGui::MenuItem("Configuration")) { show_config_window = !show_config_window; }
+			ImGui::EndMenu(); 
+		}
 		if (ImGui::BeginMenu("Help", true))
 		{
-			if (ImGui::MenuItem("About", "F1", false, true))
-			{
-				show_about_modal = true;				
-			}
+			if (ImGui::MenuItem("About", "F1", false, true)) { show_about_modal = true; }
 			ImGui::EndMenu();
-		}
-		
+		}		
 	}
-
 
 	ImGui::EndMainMenuBar();
 
-	
-	if (show_main_window)
-	{
-		ImGui::Begin("Main Window");
-
-		ImGui::Checkbox("Demo Window", &show_demo_window);
-		ImGui::Checkbox("Random Number Window", &show_random_num_window);
-
-		ImGui::End();
-	}
-	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
+	//DEMO WINDOW 
 	if (show_demo_window)
 	{
 		ImGui::ShowDemoWindow(&show_demo_window);
@@ -117,6 +102,7 @@ update_status ModuleGui::Update(float dt)
 		ImGui::End();
 	}
 
+	//RNG WINDOW
 	if (show_random_num_window)
 	{ 
 		ImGui::Begin("RNG Window", &show_random_num_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
@@ -125,7 +111,9 @@ update_status ModuleGui::Update(float dt)
 		ImGui::InputInt("Minimum", &min);
 		ImGui::InputInt("Maximum", &max);
 
-		if (ImGui::Button("Random number between the set interval"))
+		ImGui::Text("Random number between the set interval");
+
+		if (ImGui::Button("Click"))
 			interval = pcg32i_boundedrand_r(&bounded, ((max + min) + 1 ) -  min);
 		ImGui::SameLine();
 		ImGui::Text("%d", interval);
@@ -135,6 +123,25 @@ update_status ModuleGui::Update(float dt)
 		ImGui::End();
 	}
 
+	//CONFIGURATION 
+	if (show_config_window)
+	{
+		ImGui::Text("Options");
+		ImGui::Separator(); 
+
+		if (ImGui::CollapsingHeader("Application"))
+		{
+			ImGui::InputText("Engine", TITLE, 30);
+			ImGui::InputText("Organization", ORGANIZATION, 50); 
+		}
+
+		if (ImGui::CollapsingHeader("Window"))
+		{
+			
+		}
+	}
+
+	//ABOUT
 	if (show_about_modal)
 		ImGui::OpenPopup("About");
 	
