@@ -26,6 +26,9 @@ public:
 	pcg_state_setseq_32 bounded;
 	int interval = 0, min = 0, max = 0;
 
+	int cpu_count = 0, system_ram = 0, cpu_cache = 0;
+	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3;
+
 private:
 
 	bool show_main_window = false;

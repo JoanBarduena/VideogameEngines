@@ -32,6 +32,11 @@ bool ModuleGui::Start()
 {
 	bool ret = true;
 
+	cpu_count = SDL_GetCPUCount(); 
+	system_ram = SDL_GetSystemRAM(); 
+	cpu_cache = SDL_GetCPUCacheLineSize(); 
+	RDTSC =  SDL_HasRDTSC();
+	MMX = SDL_HasMMX(); 
 
 	return ret;
 }
@@ -159,6 +164,27 @@ update_status ModuleGui::Update(float dt)
 		}
 		if (ImGui::CollapsingHeader("Hardware"))
 		{
+			ImGui::Text("SDL Version:"); 
+			ImGui::Separator(); 
+
+			ImGui::Text("CPUs:");
+			ImGui::SameLine();
+			ImGui::TextColored(ImVec4(1, 1, 0, 1), "%d", cpu_count);
+			ImGui::SameLine();
+			ImGui::TextColored(ImVec4(1, 1, 0, 1),"(Cache: %dkb)", cpu_cache);
+
+			ImGui::Text("System RAM:"); 
+			ImGui::SameLine(); 
+			ImGui::TextColored(ImVec4(1, 1, 0, 1), "%dGb", system_ram); 
+			
+			ImGui::Text("Caps:"); 
+			ImGui::SameLine(); 
+			if (RDTSC) { ImGui::TextColored(ImVec4(1, 1, 0, 1), "RDTSC", RDTSC); }
+			ImGui::SameLine();
+			if (MMX) { ImGui::TextColored(ImVec4(1, 1, 0, 1), "MMX", MMX); }
+			
+			ImGui::Separator();
+
 
 		}
 	}
