@@ -23,12 +23,19 @@ public:
 	void SetFullscreen(bool fs); 
 	void SetBorderless(bool bl); 
 	void SetFullscreenDesktop(bool fsd); 
-	void SetResizable(bool rz); 
+	void SetResizable(bool rz);
+	void SetBrightness(float b); 
+
+	void SetWindowSize(int w, int h);
 
 	bool fullscreen = false; 
 	bool borderless = false; 
 	bool fullscreendesktop = false; 
 	bool resizable = false; 
+
+	float brightness = 1.0f; 
+	int width = SCREEN_WIDTH;
+	int height = SCREEN_HEIGHT;
 
 public:
 	//The window we'll be rendering to

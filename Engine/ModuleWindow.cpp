@@ -129,3 +129,13 @@ void ModuleWindow::SetResizable(bool rz)
 {
 	this->resizable = rz;
 }
+
+void ModuleWindow::SetBrightness(float b)
+{
+	SDL_SetWindowBrightness(window, b); 
+}
+
+void ModuleWindow::SetWindowSize(int w, int h)
+{
+	SDL_SetWindowSize(window, w, h);
+}
