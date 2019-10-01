@@ -3,7 +3,10 @@
 #include "ModuleGui.h"
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
+#include "glew\include\GL\glew.h"
 #include <string>
+
+
 
 ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_enabled)
 {}
@@ -209,7 +212,18 @@ update_status ModuleGui::Update(float dt)
 		if (ImGui::Button("Clara Ratera"))
 			App->RequestBrowser("https://github.com/RustikTie");
 
-		ImGui::TextWrapped("License: \nMIT License \nCopyright (c) 2019 Lidux\n Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
+		ImGui::Text("3rd Party Libraries used:");
+		SDL_version ver;
+		SDL_GetVersion(&ver);
+		ImGui::BulletText("SDL Version: %d.%d.%d.", ver.major, ver.minor, ver.patch);
+		ImGui::BulletText("Dear ImGUI Version: %s", ImGui::GetVersion());
+		ImGui::BulletText("MathGeoLib Version: v1.5");
+		ImGui::BulletText("Glew Version: %s ", glewGetString(GLEW_VERSION));
+		ImGui::BulletText("OpenGL Version: %s", glGetString(GL_VERSION));
+		
+		ImGui::Separator();
+
+		ImGui::TextWrapped("License: \n\nMIT License \nCopyright (c) 2019 Lidux\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
 	
 
 		if (ImGui::Button("OK", ImVec2(120, 0)))
