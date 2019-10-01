@@ -27,7 +27,7 @@ public:
 	int interval = 0, min = 0, max = 0;
 
 	int cpu_count = 0, system_ram = 0, cpu_cache = 0;
-	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3;
+	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3; 
 
 private:
 
