@@ -72,8 +72,10 @@ update_status ModuleGui::Update(float dt)
 		if (ImGui::BeginMenu("View", true))
 		{
 			
-			if (ImGui::MenuItem("RNG Window")) { show_random_num_window = !show_random_num_window; }
+			if (ImGui::MenuItem("Random Numbers")) { show_random_num_window = !show_random_num_window; }
 			if (ImGui::MenuItem("Configuration")) { show_config_window = !show_config_window; }
+			if (ImGui::MenuItem("OpenGL Config")) { show_opengl = !show_opengl; }
+			if (ImGui::MenuItem("Console")) { show_app_console = !show_app_console; }
 			ImGui::EndMenu(); 
 		}
 		if (ImGui::BeginMenu("Help", true))
@@ -138,6 +140,7 @@ update_status ModuleGui::Update(float dt)
 	//CONFIGURATION 
 	if (show_config_window)
 	{
+		ImGui::Begin("Configuration", &show_config_window);
 		ImGui::Text("Options");
 		ImGui::Separator(); 
 
@@ -196,11 +199,43 @@ update_status ModuleGui::Update(float dt)
 			if (MMX) { ImGui::TextColored(ImVec4(1, 1, 0, 1), "MMX", MMX); }
 			
 			ImGui::Separator();
-
-
 		}
+		ImGui::End(); 
 	}
 
+	//OPENGL CONFIG
+	if (show_opengl)
+	{
+		ImGui::Begin("OpenGL Configuration", &show_opengl); 
+		ImGui::SetWindowSize(ImVec2(400, 300)); 
+
+		ImGui::Checkbox("DEPTH TEST", &gl_depth_test);
+		SetGLEnum(gl_depth_test, GL_DEPTH_TEST); 
+
+		ImGui::Checkbox("CULL FACE", &gl_cull_face);
+		SetGLEnum(gl_cull_face, GL_CULL_FACE); 
+
+		ImGui::Checkbox("LIGHTING", &gl_lighting);
+		SetGLEnum(gl_lighting, GL_LIGHTING); 
+
+		ImGui::Checkbox("COLOR MATERIAL", &gl_color_material); 
+		SetGLEnum(gl_color_material, GL_COLOR_MATERIAL); 
+
+		ImGui::Checkbox("TEXTURE 2D", &gl_texture_2D); 
+		SetGLEnum(gl_texture_2D, GL_TEXTURE_2D); 
+
+		ImGui::End(); 
+	}
+
+	//CONSOLE
+	if (show_app_console)
+	{
+		ImGui::Begin("Console", &show_app_console);
+		ImGui::SetWindowSize(ImVec2(1000, 600));
+
+		ImGui::End(); 
+	}
+	
 	//ABOUT
 	if (show_about_modal)
 		ImGui::OpenPopup("About");
@@ -268,4 +303,12 @@ bool ModuleGui::CleanUp()
 	SDL_Quit();
 
 	return ret;
+}
+
+void ModuleGui::SetGLEnum(bool is_enabled, GLenum cap)
+{
+	if (is_enabled)
+		glEnable(cap);
+	else
+		glDisable(cap); 
 }
