@@ -11,6 +11,8 @@
 #include "ModuleRenderer3D.h"
 #include "ModuleCamera3D.h"
 #include <list>
+#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -40,6 +42,10 @@ public:
 	bool CleanUp();
 
 	void RequestBrowser(const char* URL); 
+
+	std::vector<std::string> vector_log;
+
+	//void ConsoleLOG(const char file[], int line, const char* format);
 
 private:
 

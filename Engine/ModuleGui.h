@@ -2,6 +2,11 @@
 #define __MODULEGUI_H__
 
 #include "Module.h"
+#include "Console.h"
+#include <vector>
+#include <string>
+
+#include "SDL/include/SDL.h"
 
 #include "imGui/imgui.h"
 #include "imGui/imgui_impl_sdl.h"
@@ -43,6 +48,8 @@ public:
 	bool gl_lighting = false; 
 	bool gl_color_material = false; 
 	bool gl_texture_2D = false; 
+	
+	Console gui_console;
 
 private:
 
