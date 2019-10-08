@@ -4,7 +4,6 @@
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "glew\include\GL\glew.h"
-#include <string>
 
 ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_enabled)
 {}
@@ -115,8 +114,8 @@ update_status ModuleGui::Update(float dt)
 		ImGui::Begin("Console", &show_app_console);
 		ImGui::SetWindowSize(ImVec2(1000, 600));
 
-		/*for (int i = 0; i < console_vec.size(); ++i)
-			gui_console.AddLog(console_vec[i].data());*/
+		for (int i = 0; i < App->vector_log.size(); ++i)
+			gui_console.AddLog(App->vector_log[i].data());
 
 		gui_console.Draw(); 
 

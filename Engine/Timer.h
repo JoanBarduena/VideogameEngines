@@ -16,6 +16,8 @@ public:
 
 	Uint32 Read();
 
+	
+
 private:
 
 	bool	running;

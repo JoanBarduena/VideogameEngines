@@ -43,9 +43,8 @@ public:
 
 	void RequestBrowser(const char* URL); 
 
-	std::vector<std::string> vector_log;
-
-	//void ConsoleLOG(const char file[], int line, const char* format);
+	void Console_Log(const char * format, ...);
+	std::vector<std::string> vector_log; 
 
 private:
 
@@ -53,3 +52,4 @@ private:
 	void PrepareUpdate();
 	void FinishUpdate();
 };
+
