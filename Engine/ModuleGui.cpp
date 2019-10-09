@@ -114,8 +114,16 @@ update_status ModuleGui::Update(float dt)
 		ImGui::Begin("Console", &show_app_console);
 		ImGui::SetWindowSize(ImVec2(1000, 600));
 
-		for (int i = 0; i < App->vector_log.size(); ++i)
-			gui_console.AddLog(App->vector_log[i].data());
+		if (console_log)
+		{
+			for (int i = 0; i < App->vector_log.size(); ++i)
+			{
+				//vector_size = App->vector_log.size();
+				gui_console.AddLog(App->vector_log[i].data());
+				if (i+1 == App->vector_log.size())
+					console_log = false;
+			}
+		}
 
 		gui_console.Draw(); 
 

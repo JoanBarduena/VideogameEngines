@@ -48,6 +48,8 @@ public:
 	bool gl_texture_2D = false; 
 	
 	Console gui_console;
+	bool console_log = true; 
+	int vector_size = 0; 
 
 private:
 
