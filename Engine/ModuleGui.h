@@ -3,8 +3,6 @@
 
 #include "Module.h"
 #include "Console.h"
-#include <vector>
-#include <string>
 
 #include "SDL/include/SDL.h"
 
@@ -61,9 +59,6 @@ private:
 	bool show_app_console = false; 
 	bool show_opengl = false; 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-	
-
 };
 
 

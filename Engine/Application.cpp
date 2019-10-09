@@ -36,14 +36,14 @@ bool Application::Init()
 	bool ret = true;
 
 	// Call Init() in all modules
-	LOG("Application Init --------------");
+	Console_Log("Application Init --------------");
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == true; item++)
 	{
 		ret = (*item)->Init();
 	}
 	
 	// After all Init calls we call Start() in all modules
-	LOG("Application Start --------------");
+	Console_Log("Application Start --------------");
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == true; item++)
 	{
 		ret = (*item)->Start();
@@ -114,7 +114,7 @@ void Application::RequestBrowser(const char* URL)
 	ShellExecuteA(NULL, "open", URL, NULL, NULL, SW_SHOWNORMAL);
 }
 
-void ConsoleLOG(const char file[], int line, const char* format)
+void Application::Console_Log(const char* format, ...)
 {
 	static char tmp_string[4096];
 	static char tmp_string2[4096];
@@ -124,11 +124,12 @@ void ConsoleLOG(const char file[], int line, const char* format)
 	va_start(ap, format);
 	vsprintf_s(tmp_string, 4096, format, ap);
 	va_end(ap);
-	sprintf_s(tmp_string2, 4096, "\n%s(%d) : %s", file, line, tmp_string);
+	sprintf_s(tmp_string2, 4096, "\n%s(%d) : %s", tmp_string);
 	OutputDebugString(tmp_string2);
 
 	//Implementation
 	const char* log_str = tmp_string2;
-	//vector_log.push_back(log_str);
+	vector_log.push_back(log_str);
 }
+
 
