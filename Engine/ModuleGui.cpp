@@ -118,7 +118,6 @@ update_status ModuleGui::Update(float dt)
 		{
 			for (int i = 0; i < App->vector_log.size(); ++i)
 			{
-				//vector_size = App->vector_log.size();
 				gui_console.AddLog(App->vector_log[i].data());
 				if (i+1 == App->vector_log.size())
 					console_log = false;

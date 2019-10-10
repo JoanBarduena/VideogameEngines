@@ -16,4 +16,8 @@ public:
 	update_status Update(float dt);
 	update_status PostUpdate(float dt); 
 	bool CleanUp();
+
+	void Create_Cube(float x, float y, float z, float size);
+	uint num_indices = 36; 
+
 };
