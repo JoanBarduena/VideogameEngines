@@ -19,6 +19,8 @@ public:
 
 	void OnResize(int width, int height);
 
+	void DrawMesh(const mesh_data* mesh);
+
 public:
 
 	Light lights[MAX_LIGHTS];

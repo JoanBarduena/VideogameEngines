@@ -153,3 +153,9 @@ void ModuleRenderer3D::OnResize(int width, int height)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
+
+//Make a Draw() method in ModuleRenderer that receives a mesh and draws it
+void ModuleRenderer3D::DrawMesh(const mesh_data* mesh)
+{
+
+}

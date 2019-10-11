@@ -123,6 +123,9 @@
     <ClInclude Include="Console.h">
       <Filter>Sources\Modules\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleGeometry.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -190,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>Sources\Modules\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleGeometry.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
