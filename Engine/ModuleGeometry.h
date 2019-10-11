@@ -2,6 +2,7 @@
 #define __MODULEGEOMETRY_H__
 
 #include "Module.h"
+#include <vector>
 
 struct mesh_data
 {
@@ -29,8 +30,10 @@ public:
 
 	void LoadGeometry(const char* full_path);
 
-	void VertexBuffer(uint id, uint size, const float * vertices);
-	void IndexBuffer(uint id, uint size, const uint * indices);
+	void VertexBuffer(uint &id, uint &size, const float * vertices);
+	void IndexBuffer(uint &id, uint &size, const uint * indices);
+
+	std::vector<mesh_data*> meshes; 
 };
 
 
