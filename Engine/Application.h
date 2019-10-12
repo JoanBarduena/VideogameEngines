@@ -11,6 +11,7 @@
 #include "ModuleRenderer3D.h"
 #include "ModuleCamera3D.h"
 #include "ModuleGeometry.h"
+#include "ModuleTexture.h"
 
 #include <list>
 #include <vector>
@@ -28,6 +29,7 @@ public:
 	ModuleCamera3D* camera; 
 	ModuleGui* gui; 
 	ModuleGeometry* geometry;
+	ModuleTexture* texture;
 
 private:
 
