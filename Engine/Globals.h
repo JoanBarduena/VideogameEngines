@@ -36,3 +36,7 @@ enum update_status
 #define VSYNC true
 #define TITLE "Videogame Engine"
 #define ORGANIZATION "UPC"
+
+// Checkers Texture --------
+#define CHECKERS_HEIGHT 100
+#define CHECKERS_WIDTH 100
