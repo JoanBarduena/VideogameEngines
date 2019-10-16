@@ -9,11 +9,15 @@
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
 
 #include "glew/include/GL/glew.h"
-#include "SDL/include/SDL_opengl.h"
 
-#pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
-#pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
-#pragma comment(lib, "glew/libx86/glew32.lib")
+#include "DevIL/IL/il.h"
+#include "DevIL/IL/ilu.h"
+#include "DevIL/IL/ilut.h"
+
+#pragma comment (lib, "DevIL/libx86/DevIL.lib")
+#pragma comment (lib, "DevIL/libx86/ILU.lib")
+#pragma comment (lib, "DevIL/libx86/ILUT.lib")
+
 
 ModuleTexture::ModuleTexture(Application* app, bool start_enabled) : Module(app, start_enabled)
 {}
@@ -25,6 +29,25 @@ ModuleTexture::~ModuleTexture()
 bool ModuleTexture::Init() 
 {
 	bool ret = true;
+
+	// Checking current version
+	if (ilGetInteger(IL_VERSION_NUM) < IL_VERSION || iluGetInteger(ILU_VERSION_NUM) < ILU_VERSION || ilutGetInteger(ILUT_VERSION_NUM) < ILUT_VERSION)
+	{
+		App->Console_Log("DevIL version is different...exiting!\n");
+		ret = false;
+	}
+	else
+	{
+		App->Console_Log("Initializing DevIL");
+
+		ilInit();
+		iluInit();
+		ilutInit();
+
+		// Initialize DevIL's OpenGL access
+		ilutRenderer(ILUT_OPENGL);
+	}
+
 
 	return ret;
 }
@@ -63,7 +86,7 @@ bool ModuleTexture::CleanUp()
 	return ret;
 }
 
-void ModuleTexture::CreateCheckerTexture()
+GLuint ModuleTexture::CreateCheckerTexture()
 {
 	GLubyte checkImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
@@ -86,4 +109,7 @@ void ModuleTexture::CreateCheckerTexture()
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CHECKERS_WIDTH, CHECKERS_HEIGHT,
 		0, GL_RGBA, GL_UNSIGNED_BYTE, check_image);
 	
+	//glBindTexture(GL_TEXTURE_2D, 0);
+
+	return image_name;
 }

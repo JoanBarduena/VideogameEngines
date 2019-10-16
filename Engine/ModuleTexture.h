@@ -23,11 +23,11 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	void CreateCheckerTexture();
+	GLuint CreateCheckerTexture();
 
 private:
 
-	uint image_name;
+	GLuint image_name = 0;
 	GLubyte check_image[100][100][4];
 };
 
