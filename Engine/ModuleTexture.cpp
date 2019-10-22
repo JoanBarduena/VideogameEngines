@@ -86,7 +86,7 @@ bool ModuleTexture::CleanUp()
 	return ret;
 }
 
-GLuint ModuleTexture::CreateCheckerTexture()
+uint ModuleTexture::CreateCheckerTexture()
 {
 	GLubyte checkImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {

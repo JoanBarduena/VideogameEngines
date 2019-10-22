@@ -23,7 +23,7 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	GLuint CreateCheckerTexture();
+	uint CreateCheckerTexture();
 
 private:
 

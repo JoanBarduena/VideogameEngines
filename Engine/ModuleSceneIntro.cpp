@@ -3,6 +3,7 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 #include "SDL/include/SDL_opengl.h"
+#include "Shapes.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -22,6 +23,7 @@ bool ModuleSceneIntro::Start()
 
 	object = new Shapes();
 	object->Create_Cube(0,0,0,2);
+	object->Create_Sphere(10,10,0,0,0,2); 
 
 	return ret;
 }
@@ -64,8 +66,10 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 	for (int i = 0; i < App->geometry->meshes.size(); ++i)
 		App->renderer3D->DrawMesh(App->geometry->meshes[i]);
 
-	object->RenderObject(); 
-
+	for (int i = 0; i < object->vector_shapes.size(); i++)
+	{
+		object->RenderObject();
+	}
 	return UPDATE_CONTINUE;
 }
 
