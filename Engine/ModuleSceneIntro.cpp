@@ -34,10 +34,25 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-	Plane p(0, 1, 0, 0);
-	p.axis = true;
-	p.Render();
+	glLineWidth(2.0f);
 
+	glBegin(GL_LINES);
+	glColor3ub(255, 255, 255);
+	for (float i = -10; i <= 10; ++i)
+	{
+		glVertex3f(i, 0.f, 0.f);
+		glVertex3f(i, 0, 10.f);
+
+		glVertex3f(0.f, 0.f, i);
+		glVertex3f(10.f, 0, i);
+
+		glVertex3f(i, 0.f, 0.f);
+		glVertex3f(i, 0, -10.f);
+
+		glVertex3f(0.f, 0.f, i);
+		glVertex3f(-10.f, 0, i);
+	}
+	glEnd();
 	return UPDATE_CONTINUE;
 }
 

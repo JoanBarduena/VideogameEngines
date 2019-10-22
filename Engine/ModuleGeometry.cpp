@@ -78,10 +78,17 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 			aiMesh *new_mesh = scene->mMeshes[i];
 
 			m->num_vertex = new_mesh->mNumVertices;
-			m->vertex = new float[m->num_vertex * 3];
-			memcpy(m->vertex, new_mesh->mVertices, sizeof(float) * m->num_vertex * 3);
+			m->vertex = new float3[m->num_vertex];
+			//memcpy(m->vertex, new_mesh->mVertices, sizeof(float) * m->num_vertex);
 
 			App->Console_Log("New mesh with %d vertices", m->num_vertex);
+
+			for (uint i = 0; i < new_mesh->mNumVertices; ++i)
+			{
+				m->vertex[i].x = new_mesh->mVertices[i].x;
+				m->vertex[i].y = new_mesh->mVertices[i].y;
+				m->vertex[i].z = new_mesh->mVertices[i].z;
+			}
 
 			if (new_mesh->HasFaces())
 			{
@@ -109,11 +116,11 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 		App->Console_Log("Error loading scene %s", full_path);
 }
 
-void ModuleGeometry::VertexBuffer(uint &id, uint &size, const float* vertices)
+void ModuleGeometry::VertexBuffer(uint &id, uint &size, float3* vertices)
 {
 	glGenBuffers(1, (GLuint*) &(id));
 	glBindBuffer(GL_ARRAY_BUFFER, id);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*size, vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float3)*size, vertices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 

@@ -2,7 +2,9 @@
 #define __MODULEGEOMETRY_H__
 
 #include "Module.h"
-#include <vector>
+
+#include "MathGeoLib/include/MathBuildConfig.h"
+#include "MathGeoLib/include/MathGeoLib.h"
 
 struct mesh_data
 {
@@ -12,7 +14,7 @@ struct mesh_data
 
 	uint id_vertex = 0; // unique vertex in VRAM
 	uint num_vertex = 0;
-	float* vertex = nullptr;
+	float3* vertex = nullptr;
 
 };
 
@@ -31,7 +33,7 @@ public:
 
 	void LoadGeometry(const char* full_path);
 
-	void VertexBuffer(uint &id, uint &size, const float * vertices);
+	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);
 
 	std::vector<mesh_data*> meshes; 

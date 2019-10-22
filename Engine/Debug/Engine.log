@@ -1,1 +1,52 @@
-﻿  Engine.vcxproj -> C:\Users\clararg1\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe
+﻿  ModuleSceneIntro.cpp
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244:  'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,13): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,13): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(80,14): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(80,14): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(82,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(82,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,13): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,13): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,22): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,22): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,14): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,14): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,26): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,26): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(86,26): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(86,26): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,23): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
+C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,23): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Engine.vcxproj -> C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe
