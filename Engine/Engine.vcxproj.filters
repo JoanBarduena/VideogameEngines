@@ -126,6 +126,12 @@
     <ClInclude Include="ModuleTexture.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="parshapes.h">
+      <Filter>Sources\Modules\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -199,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="ModuleTexture.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="parshapes.cpp">
+      <Filter>Sources\Modules\Classes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

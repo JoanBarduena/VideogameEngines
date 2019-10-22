@@ -1,52 +1,100 @@
-﻿  ModuleSceneIntro.cpp
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244:  'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146:  operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,13): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(79,13): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(80,14): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(80,14): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(82,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(82,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,13): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,13): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,22): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(84,22): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,14): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,14): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,26): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(85,26): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(86,26): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(86,26): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,4): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,4): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,23): warning C4838:  la conversión de 'double' en 'float' requiere una conversión de restricción
-C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(87,23): warning C4244:  'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-  Engine.vcxproj -> C:\Users\joanbr10\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe
+﻿  parshapes.cpp
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(11,56): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(12,60): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(80,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(287,1): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\stdio.h(207): message : vea la declaración de 'fopen'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(354,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(355,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(363,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(364,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(379,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(380,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(389,11): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(397,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(406,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(416,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(417,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(431,34): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(431,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(432,28): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(432,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(433,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(433,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(434,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(434,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(435,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(435,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(436,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(436,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(439,38): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(441,38): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(442,18): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(448,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(449,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(450,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(507,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(508,22): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(509,22): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(533,30): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(668,2): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(724,2): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(808,2): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1140,16): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1142,46): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1145,46): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1148,46): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1001,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(132): message : vea la declaración de 'strcpy'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1002,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(439): message : vea la declaración de 'strtok'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1006,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(439): message : vea la declaración de 'strtok'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1017,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(439): message : vea la declaración de 'strtok'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1033,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(132): message : vea la declaración de 'strcpy'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1034,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(439): message : vea la declaración de 'strtok'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1036,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(439): message : vea la declaración de 'strtok'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1060,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\string.h(439): message : vea la declaración de 'strtok'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1312,38): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1329,21): warning C4244: '*=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1330,17): warning C4244: '*=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1331,21): warning C4244: '*=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1333,30): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1587,16): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1619,62): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1619,46): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  Shapes.cpp
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\parshapes.cpp(1619,30): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+  Generando código...
+C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+  Engine.vcxproj -> C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe

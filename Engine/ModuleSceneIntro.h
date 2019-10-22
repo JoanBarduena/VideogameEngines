@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "Timer.h"
+#include "Shapes.h"
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -17,7 +18,7 @@ public:
 	update_status PostUpdate(float dt); 
 	bool CleanUp();
 
-	void Create_Cube(float x, float y, float z, float size);
 	uint num_indices = 36; 
 
+	Shapes* object = nullptr; 
 };

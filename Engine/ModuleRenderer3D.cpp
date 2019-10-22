@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleRenderer3D.h"
 
+
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
 
@@ -22,7 +23,7 @@ bool ModuleRenderer3D::Init()
 {
 	App->Console_Log("Creating 3D Renderer context");
 	bool ret = true;
-	
+
 	//Create context
 	context = SDL_GL_CreateContext(App->window->window);
 	if(context == NULL)
