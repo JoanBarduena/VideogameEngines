@@ -71,6 +71,7 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 
 	if (scene != nullptr && scene->HasMeshes())
 	{
+
 		for (int i = 0; i < scene->mNumMeshes; ++i)
 		{
 			mesh_data* m = new mesh_data;
@@ -111,6 +112,7 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 		}	
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		aiReleaseImport(scene);
+		App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
 	}
 	else
 		App->Console_Log("Error loading scene %s", full_path);
@@ -128,6 +130,6 @@ void ModuleGeometry::IndexBuffer(uint &id, uint &size, const uint* indices)
 {
 	glGenBuffers(1, (GLuint*) &(id));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float)*size, indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint)*size, indices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

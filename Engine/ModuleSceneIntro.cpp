@@ -21,6 +21,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
+	App->geometry->LoadGeometry("Assets/BakerHouse.fbx"); 
+
 	object = new Shapes();
 	object->Create_Cube(0,0,0,2);
 	object->Create_Sphere(10,10,0,0,0,2); 
