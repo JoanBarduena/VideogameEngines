@@ -16,6 +16,12 @@ struct mesh_data
 	uint num_vertex = 0;
 	float3* vertex = nullptr;
 
+	uint id_texture = 0; 
+	uint num_texture = 0; 
+	float* texture_pos = nullptr; 
+
+	uint texture = 0; 
+
 };
 
 class ModuleGeometry : public Module
@@ -35,6 +41,7 @@ public:
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);
+	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos);
 
 	std::vector<mesh_data*> meshes; 
 };

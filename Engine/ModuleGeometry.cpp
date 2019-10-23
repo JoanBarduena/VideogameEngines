@@ -104,9 +104,21 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 						memcpy(&m->index[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
 				}
 			}
+			if (new_mesh->HasTextureCoords(0))
+			{
+				m->num_texture = m->num_vertex;
+				m->texture_pos = new float[m->num_texture * 2];
+
+				for (int i = 0; i < m->num_texture; ++i)
+				{
+					m->texture_pos[i * 2] = new_mesh->mTextureCoords[0][i].x;
+					m->texture_pos[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+				}
+			}
 			//Generate buffer for each mesh and send vertex and indices to VRAM
 			VertexBuffer(m->id_vertex, m->num_vertex, m->vertex); 
 			IndexBuffer(m->id_index, m->num_index, m->index); 
+			TextureBuffer(m->id_texture, m->num_texture, m->texture_pos); 
 			//Allocate new_mesh inside an array of mesh_data
 			meshes.push_back(m); 
 		}	
@@ -131,5 +143,13 @@ void ModuleGeometry::IndexBuffer(uint &id, uint &size, const uint* indices)
 	glGenBuffers(1, (GLuint*) &(id));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint)*size, indices, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void ModuleGeometry::TextureBuffer(uint &id, uint &num_texture, float* texture_pos)
+{
+	glGenBuffers(1, (GLuint*) &(id));
+	glBindBuffer(GL_ARRAY_BUFFER, id);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * num_texture * 2, texture_pos, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
