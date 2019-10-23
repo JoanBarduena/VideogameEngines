@@ -1,309 +1,310 @@
 ﻿  Application.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\Application.cpp(131,31): warning C4473: "sprintf_s": no se pasaron suficientes argumentos para la cadena de formato
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\Application.cpp(131,31): message : los marcadores de posición y sus parámetros esperan 3 argumentos variádicos, pero se proporcionaron 1
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\application.cpp(131): warning C4473: 'sprintf_s' : not enough arguments passed for format string
+  d:\users\clara\documents\github\ai\videogameengines\engine\application.cpp(131): note: placeholders and their parameters expect 3 variadic arguments, but 1 were provided
+  d:\users\clara\documents\github\ai\videogameengines\engine\application.cpp(131): note: the missing variadic argument 2 is required by format string '%d'
   Main.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\Application.cpp(131,31): message : el argumento variádico 2 que falta es requerido por la cadena de formato '%d'
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
   ModuleCamera3D.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\modulecamera3d.cpp(102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   ModuleGeometry.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(43,20): warning C4018: '<': no coinciden signed/unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\modulegeometry.cpp(43): warning C4018: '<': signed/unsigned mismatch
+d:\users\clara\documents\github\ai\videogameengines\engine\modulegeometry.cpp(74): warning C4018: '<': signed/unsigned mismatch
   ModuleGui.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(74,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(119,22): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(228,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\modulegui.cpp(119): warning C4018: '<': signed/unsigned mismatch
+d:\users\clara\documents\github\ai\videogameengines\engine\modulegui.cpp(228): warning C4390: ';': empty controlled statement found; is this the intent?
+d:\users\clara\documents\github\ai\videogameengines\engine\modulegui.cpp(231): warning C4390: ';': empty controlled statement found; is this the intent?
   ModuleInput.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(231,67): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
   ModuleRenderer3D.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
   ModuleSceneIntro.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(66,20): warning C4018: '<': no coinciden signed/unsigned
-  Shapes.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\ModuleSceneIntro.cpp(69,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\modulesceneintro.cpp(66): warning C4018: '<': signed/unsigned mismatch
+d:\users\clara\documents\github\ai\videogameengines\engine\modulesceneintro.cpp(69): warning C4018: '<': signed/unsigned mismatch
   ModuleTexture.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
   ModuleWindow.cpp
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-  Generando código...
-C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-  Engine.vcxproj -> C:\Users\Lidux\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  Shapes.cpp
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(160): warning C4244: 'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(892): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(968): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1049): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1126): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1203): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1279): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1360): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1437): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1518): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1537): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1597): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1616): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1697): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1717): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1760): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1800): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1842): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1883): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  Generating Code...
+  Engine.vcxproj -> D:\Users\Clara\Documents\GitHub\AI\VideogameEngines\Engine\Debug\Engine.exe

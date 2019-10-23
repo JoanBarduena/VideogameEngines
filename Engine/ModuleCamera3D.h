@@ -16,6 +16,8 @@ public:
 	void Look(const vec3 &Position, const vec3 &Reference, bool RotateAroundReference = false);
 	void LookAt(const vec3 &Spot);
 	void Move(const vec3 &Movement);
+	void ResetCamera();
+
 	float* GetViewMatrix();
 
 private:
@@ -27,6 +29,10 @@ public:
 	vec3 X, Y, Z, Position, Reference;
 
 private:
+
+	vec3 InitialPos = vec3(0.0f, 0.0f, 5.0f);
+	vec3 InitialRef = vec3(0.0f, 0.0f, 0.0f);
+	vec3 OffSet = vec3(0.0f, 5.0f, 15.0f);
 
 	mat4x4 ViewMatrix, ViewMatrixInverse;
 };

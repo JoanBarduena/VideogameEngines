@@ -14,8 +14,8 @@ ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(ap
 	Y = vec3(0.0f, 1.0f, 0.0f);
 	Z = vec3(0.0f, 0.0f, 1.0f);
 
-	Position = vec3(0.0f, 0.0f, 5.0f);
-	Reference = vec3(0.0f, 0.0f, 0.0f);
+	Position = InitialPos;
+	Reference = InitialRef;
 }
 
 ModuleCamera3D::~ModuleCamera3D()
@@ -60,13 +60,13 @@ update_status ModuleCamera3D::Update(float dt)
 	Reference += newPos;
 
 	// Mouse motion ----------------
+	float Sensitivity = 0.25f;
 
 	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
 	{
 		int dx = -App->input->GetMouseXMotion();
 		int dy = -App->input->GetMouseYMotion();
 
-		float Sensitivity = 0.25f;
 
 		Position -= Reference;
 
@@ -94,6 +94,32 @@ update_status ModuleCamera3D::Update(float dt)
 		}
 
 		Position = Reference + Z * length(Position);
+	}
+
+	// Zoom
+	if (App->input->GetMouseZ() != 0)
+	{
+		vec3 vec = (0, 0, 0);
+		vec3 distance = Position - Reference;
+
+		if (App->input->GetMouseZ() > 0)
+		{
+			vec -= Z * Sensitivity;
+		}
+
+		if (App->input->GetMouseZ() < 0)
+		{
+			vec += Z * Sensitivity;
+		}
+
+		Position += vec;
+	}
+
+	// Camera Reset
+
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		ResetCamera();
 	}
 
 	// Recalculate matrix -------------
@@ -154,4 +180,15 @@ void ModuleCamera3D::CalculateViewMatrix()
 {
 	ViewMatrix = mat4x4(X.x, Y.x, Z.x, 0.0f, X.y, Y.y, Z.y, 0.0f, X.z, Y.z, Z.z, 0.0f, -dot(X, Position), -dot(Y, Position), -dot(Z, Position), 1.0f);
 	ViewMatrixInverse = inverse(ViewMatrix);
+}
+
+void ModuleCamera3D::ResetCamera()
+{
+	X = vec3(1.0f, 0.0f, 0.0f);
+	Y = vec3(0.0f, 1.0f, 0.0f);
+	Z = vec3(0.0f, 0.0f, 1.0f);
+	Position = InitialPos;
+	Reference = InitialRef;
+	Move(OffSet);
+	LookAt({ 0,0,0 });
 }
