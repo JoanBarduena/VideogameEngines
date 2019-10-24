@@ -20,10 +20,12 @@ Application::Application()
 	AddModule(camera);
 	AddModule(input);
 
-	// Scenes
-	AddModule(scene_intro);
+	//Geometry and textures
 	AddModule(geometry);
 	AddModule(texture);
+
+	// Scenes
+	AddModule(scene_intro);
 	AddModule(gui);
 
 	// Renderer last!
