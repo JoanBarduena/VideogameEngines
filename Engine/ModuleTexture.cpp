@@ -41,8 +41,6 @@ bool ModuleTexture::Init()
 		// Initialize DevIL's OpenGL access
 		ilutRenderer(ILUT_OPENGL);
 	}
-
-
 	return ret;
 }
 
@@ -104,10 +102,10 @@ uint ModuleTexture::CreateCheckerTexture() const
 	return image_name;
 }
 
-uint ModuleTexture::LoadTexturePath(std::string image_path)
+uint ModuleTexture::LoadTexturePath(const char* image_path)
 {
 	//Texture loading success
-	bool textureLoaded = false;
+	uint textureLoaded = 0;
 
 	//Generate and set current image ID
 	ILuint imgID = 0;
@@ -115,11 +113,17 @@ uint ModuleTexture::LoadTexturePath(std::string image_path)
 	ilBindImage(imgID);
 
 	//Load image
-	ILboolean success = ilLoadImage(image_path.c_str());
+	ILboolean success = ilLoadImage(image_path);
 
 	//Image loaded successfully
 	if (success == IL_TRUE)
 	{
+		ILinfo ImgInfo;
+		iluGetImageInfo(&ImgInfo);
+
+		if (ImgInfo.Origin == IL_ORIGIN_UPPER_LEFT)
+			iluFlipImage();
+
 		//Convert image to RGBA
 		success = ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
 
@@ -129,34 +133,43 @@ uint ModuleTexture::LoadTexturePath(std::string image_path)
 			textureLoaded = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
 		}
 		//Delete file from memory
-		ilDeleteImages(1, &imgID);
+		//ilDeleteImages(1, &imgID);
 	}
 
 	else
-		App->Console_Log("Unable to load image path: %s", image_path.c_str()); 
+		App->Console_Log("Unable to load image path: %s", image_path); 
 
 	return textureLoaded; 
 }
 
-uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format)
+uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format) const
 {
 	uint TextureID = 0;
 
 	//Generate texture ID
-	glGenTextures(1, &TextureID);
+	glGenTextures(1, (GLuint*)&TextureID);
 
 	//Bind texture ID
 	glBindTexture(GL_TEXTURE_2D, TextureID);
 
-	//Generate texture
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TextureWidth, TextureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, img);
-
 	//Set texture parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+
+	if (glewIsSupported("GL_EXT_texture_filter_anisotropic"))
+	{
+		float max_anisotropy;
+		glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &max_anisotropy);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, max_anisotropy);
+	}
+
+	//Generate texture
+	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, TextureWidth, TextureHeight, 0, format, GL_UNSIGNED_BYTE, img);
+	glGenerateMipmap(GL_TEXTURE_2D);
 
 	//Unbind texture
-	glGenerateMipmap(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, NULL);
 
 	//Check for error

@@ -23,7 +23,8 @@ bool ModuleGui::Init()
 
 	// Setup Platform/Renderer bindings
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
-	ImGui_ImplOpenGL3_Init();
+	ImGui_ImplOpenGL3_Init(); 
+
 
 	return true; 
 }

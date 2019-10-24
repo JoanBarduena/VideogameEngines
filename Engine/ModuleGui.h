@@ -41,11 +41,11 @@ public:
 	int cpu_count = 0, system_ram = 0, cpu_cache = 0;
 	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3; 
 
-	bool gl_depth_test = false; 
-	bool gl_cull_face = false; 
-	bool gl_lighting = false; 
-	bool gl_color_material = false; 
-	bool gl_texture_2D = false; 
+	bool gl_depth_test = true;
+	bool gl_cull_face = true;
+	bool gl_lighting = true;
+	bool gl_color_material = true;
+	bool gl_texture_2D = true; 
 	
 	Console gui_console;
 	bool console_log = true; 

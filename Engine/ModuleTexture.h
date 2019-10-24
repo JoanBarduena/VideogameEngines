@@ -16,8 +16,8 @@ public:
 	bool CleanUp();
 
 	uint CreateCheckerTexture() const;
-	uint LoadTexturePath(std::string image_path);
-	uint LoadTextureFromPixels(const void * img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format);
+	uint LoadTexturePath(const char* image_path);
+	uint LoadTextureFromPixels(const void * img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format) const;
 
 	uint checkersTextureID = 0;
 

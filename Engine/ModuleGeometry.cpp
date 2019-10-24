@@ -115,6 +115,10 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 					m->texture_pos[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
 				}
 			}
+			if (full_path == "Assets/BakerHouse.fbx")
+			{
+				m->texture = App->scene_intro->HouseTexture; 
+			}
 			//Generate buffer for each mesh and send vertex and indices to VRAM
 			VertexBuffer(m->id_vertex, m->num_vertex, m->vertex); 
 			IndexBuffer(m->id_index, m->num_index, m->index); 

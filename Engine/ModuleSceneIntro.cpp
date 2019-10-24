@@ -22,11 +22,13 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	//uint HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
-	//App->geometry->LoadGeometry("Assets/BakerHouse.fbx"); 
+	HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
+	App->geometry->LoadGeometry("Assets/BakerHouse.fbx"); 
+
+	Texture = HouseTexture; 
 	
 	//Create_Cube(0,0,0,2);
-	Create_Sphere(50,20,0,1,0,1); 
+	//Create_Sphere(50,20,0,1,0,1); 
 	return ret;
 }
 
