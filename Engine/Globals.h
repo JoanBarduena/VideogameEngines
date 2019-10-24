@@ -59,5 +59,5 @@ enum update_status
 #define ORGANIZATION "UPC"
 
 // Checkers Texture --------
-#define CHECKERS_HEIGHT 100
-#define CHECKERS_WIDTH 100
+#define CHECKERS_HEIGHT 128
+#define CHECKERS_WIDTH 128

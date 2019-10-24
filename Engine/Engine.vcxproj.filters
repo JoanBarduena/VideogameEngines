@@ -126,9 +126,6 @@
     <ClInclude Include="ModuleTexture.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Shapes.h">
-      <Filter>Sources\Tools\par_shapes</Filter>
-    </ClInclude>
     <ClInclude Include="par\parshapes.h">
       <Filter>Sources\Tools\par_shapes</Filter>
     </ClInclude>
@@ -208,9 +205,6 @@
     </ClCompile>
     <ClCompile Include="ModuleTexture.cpp">
       <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Shapes.cpp">
-      <Filter>Sources\Tools\par_shapes</Filter>
     </ClCompile>
     <ClCompile Include="par\parshapes.cpp">
       <Filter>Sources\Tools\par_shapes</Filter>

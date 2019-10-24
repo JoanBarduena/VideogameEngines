@@ -1,7 +1,6 @@
 #include "ModuleTexture.h"
 #include "Application.h"
 #include "ModuleGeometry.h"
-#include "Shapes.h"
 
 #include "glew/include/GL/glew.h"
 
@@ -73,7 +72,7 @@ bool ModuleTexture::CleanUp()
 	return ret;
 }
 
-uint ModuleTexture::CreateCheckerTexture()
+uint ModuleTexture::CreateCheckerTexture() const
 {
 	GLubyte checkImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
@@ -86,9 +85,13 @@ uint ModuleTexture::CreateCheckerTexture()
 		}
 	}
 
+	GLuint image_name = 0; 
+
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
 	glGenTextures(1, &image_name);
 	glBindTexture(GL_TEXTURE_2D, image_name);
+
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
