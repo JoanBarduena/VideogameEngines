@@ -28,11 +28,11 @@
     <Filter Include="Sources\Modules\Classes">
       <UniqueIdentifier>{d92d0779-8e86-4954-9747-d2a905febe45}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\par_shapes">
+      <UniqueIdentifier>{149fe1e1-b72f-4922-a1da-9f97be2feff4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Module.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleCamera3D.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
@@ -126,10 +126,13 @@
     <ClInclude Include="ModuleTexture.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="parshapes.h">
-      <Filter>Sources\Modules\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Shapes.h">
+      <Filter>Sources\Tools\par_shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="par\parshapes.h">
+      <Filter>Sources\Tools\par_shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,10 +210,10 @@
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="Shapes.cpp">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Tools\par_shapes</Filter>
     </ClCompile>
-    <ClCompile Include="parshapes.cpp">
-      <Filter>Sources\Modules\Classes</Filter>
+    <ClCompile Include="par\parshapes.cpp">
+      <Filter>Sources\Tools\par_shapes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -22,14 +22,14 @@ using namespace std;
 class Application
 {
 public:
-	ModuleWindow* window;
-	ModuleInput* input;
-	ModuleSceneIntro* scene_intro;
-	ModuleRenderer3D* renderer3D;
-	ModuleCamera3D* camera; 
-	ModuleGui* gui; 
-	ModuleGeometry* geometry;
-	ModuleTexture* texture;
+	ModuleWindow*			window = nullptr;
+	ModuleInput*			input = nullptr;
+	ModuleSceneIntro*		scene_intro = nullptr;
+	ModuleRenderer3D*		renderer3D = nullptr;
+	ModuleCamera3D*			camera = nullptr;
+	ModuleGui*				gui = nullptr;
+	ModuleGeometry*			geometry = nullptr;
+	ModuleTexture*			texture = nullptr;
 
 private:
 

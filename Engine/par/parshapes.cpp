@@ -1,4 +1,4 @@
-#include "par/parshapes.h"
+#include "parshapes.h"
 
 #include <stdlib.h>
 #include <stdio.h>

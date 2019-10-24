@@ -1,5 +1,5 @@
 #include "Shapes.h"
-#include "Application.h"
+#include "ModuleTexture.h"
 #include "Module.h"
 
 #include "par/parshapes.h"
@@ -36,12 +36,15 @@ void Shapes::RenderObject()
 {
 	glEnableClientState(GL_VERTEX_ARRAY);
 
+	//vertex
 	glBindBuffer(GL_ARRAY_BUFFER, id_vertex);
 	glVertexPointer(3, GL_FLOAT, 0, NULL);
 
+	//index
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id_index);
 	glDrawElements(GL_TRIANGLES, Body->ntriangles * 3, GL_UNSIGNED_SHORT, nullptr);
 
+	//Enable texture
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, Texture);
@@ -70,23 +73,23 @@ void Shapes::Create_Sphere(int slices, int stacks, float x, float y, float z, fl
 
 	vector_shapes.push_back(Body);
 
-	CreateBuffer(); 
+	CreateBuffer();
 }
 
 void Shapes::Create_Cube(float x, float y, float z, float size)
 {
 	Body = par_shapes_create_cube();
 
-	position.x = x; 
-	position.y = y; 
-	position.z = z; 
+	position.x = x;
+	position.y = y;
+	position.z = z;
 
-	par_shapes_scale(Body, size, size, size); 
-	par_shapes_translate(Body, position.x, position.y, position.z); 
+	par_shapes_scale(Body, size, size, size);
+	par_shapes_translate(Body, position.x, position.y, position.z);
 
 	vector_shapes.push_back(Body);
 
-	CreateBuffer(); 
+	Texture = checkersTextureID;
+
+	CreateBuffer();
 }
-
-

@@ -7,7 +7,7 @@
 struct par_shapes_mesh_s;
 
 struct Position {
-	float x, y, z; 
+	float x, y, z;
 };
 
 class Shapes
@@ -15,7 +15,7 @@ class Shapes
 public:
 
 	Shapes();
-	~Shapes(); 
+	~Shapes();
 
 	void CreateBuffer();
 	void RenderObject();
@@ -24,19 +24,19 @@ public:
 	void Create_Cube(float x, float y, float z, float size);
 
 
-public: 
+public:
 
 	par_shapes_mesh_s* Body = nullptr;
 
-	std::vector<par_shapes_mesh_s*> vector_shapes; 
+	std::vector<par_shapes_mesh_s*> vector_shapes;
 
-	uint id_vertex; 
-	uint id_index; 
-	uint id_texture; 
+	uint id_vertex;
+	uint id_index;
+	uint id_texture;
 
-	uint Texture = 0; 
+	uint Texture = 0;
 
-	Position position; 
+	Position position;
 };
 
-#endif 
+#endif __SHAPES_H__

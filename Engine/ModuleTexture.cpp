@@ -1,12 +1,7 @@
 #include "ModuleTexture.h"
 #include "Application.h"
 #include "ModuleGeometry.h"
-
-#include "Assimp/include/cimport.h"
-#include "Assimp/include/scene.h"
-#include "Assimp/include/postprocess.h"
-#include "Assimp/include/cfileio.h"
-#pragma comment (lib, "Assimp/libx86/assimp.lib")
+#include "Shapes.h"
 
 #include "glew/include/GL/glew.h"
 
@@ -57,14 +52,9 @@ bool ModuleTexture::Start()
 {
 	bool ret = true;
 
-	CreateCheckerTexture();
+	checkersTextureID = CreateCheckerTexture();
 
 	return ret;
-}
-
-update_status ModuleTexture::PreUpdate(float dt)
-{
-	return UPDATE_CONTINUE;
 }
 
 update_status ModuleTexture::Update(float dt)
@@ -74,14 +64,11 @@ update_status ModuleTexture::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-update_status ModuleTexture::PostUpdate(float dt)
-{
-	return UPDATE_CONTINUE;
-}
-
 bool ModuleTexture::CleanUp()
 {
 	bool ret = true;
+
+	glDeleteTextures(1, (GLuint*)&checkersTextureID); 
 
 	return ret;
 }
@@ -112,4 +99,67 @@ uint ModuleTexture::CreateCheckerTexture()
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	return image_name;
+}
+
+uint ModuleTexture::LoadTexturePath(std::string image_path)
+{
+	//Texture loading success
+	bool textureLoaded = false;
+
+	//Generate and set current image ID
+	ILuint imgID = 0;
+	ilGenImages(1, &imgID);
+	ilBindImage(imgID);
+
+	//Load image
+	ILboolean success = ilLoadImage(image_path.c_str());
+
+	//Image loaded successfully
+	if (success == IL_TRUE)
+	{
+		//Convert image to RGBA
+		success = ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
+
+		if (success == IL_TRUE)
+		{
+			//Create texture from file pixels
+			textureLoaded = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
+		}
+		//Delete file from memory
+		ilDeleteImages(1, &imgID);
+	}
+
+	else
+		App->Console_Log("Unable to load image path: %s", image_path.c_str()); 
+
+	return textureLoaded; 
+}
+
+uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format)
+{
+	uint TextureID = 0;
+
+	//Generate texture ID
+	glGenTextures(1, &TextureID);
+
+	//Bind texture ID
+	glBindTexture(GL_TEXTURE_2D, TextureID);
+
+	//Generate texture
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, TextureWidth, TextureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, img);
+
+	//Set texture parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	//Unbind texture
+	glGenerateMipmap(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, NULL);
+
+	//Check for error
+	GLenum error = glGetError();
+	if (error)
+		App->Console_Log("Error loading Textrure from pixels %s", error); 
+
+	return TextureID; 
 }

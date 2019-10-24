@@ -4,13 +4,10 @@
 #include "Timer.h"
 #include "Shapes.h"
 
-struct PhysBody3D;
-struct PhysMotor3D;
-
 class ModuleSceneIntro : public Module
 {
 public:
-	ModuleSceneIntro(Application* app, bool start_enabled = true);
+	ModuleSceneIntro(Application* app, bool start_enabled = true); 
 	~ModuleSceneIntro();
 
 	bool Start();

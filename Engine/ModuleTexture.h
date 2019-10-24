@@ -4,26 +4,22 @@
 #include "glew/include/GL/glew.h"
 #include <vector>
 
-struct tex_data
-{
-
-};
-
-
 class ModuleTexture : public Module
 {
 public:
-	ModuleTexture(Application* app, bool start_enabled = true);
+	ModuleTexture(Application* App, bool start_enabled = true);
 	~ModuleTexture();
 
 	bool Init();
 	bool Start();
-	update_status PreUpdate(float dt);
 	update_status Update(float dt);
-	update_status PostUpdate(float dt);
 	bool CleanUp();
 
 	uint CreateCheckerTexture();
+	uint LoadTexturePath(std::string image_path);
+	uint LoadTextureFromPixels(const void * img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format);
+
+	uint checkersTextureID = 0;
 
 private:
 
