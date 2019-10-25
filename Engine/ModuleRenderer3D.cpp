@@ -165,8 +165,8 @@ void ModuleRenderer3D::DrawMesh(const mesh_data* mesh)
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
 	glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	//glBindTexture(GL_TEXTURE_2D, mesh->texture);
-	glBindTexture(GL_TEXTURE_2D, App->scene_intro->Texture);
+	glBindTexture(GL_TEXTURE_2D, mesh->texture);
+	//glBindTexture(GL_TEXTURE_2D, App->scene_intro->Texture);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_texture);
 	glTexCoordPointer(2, GL_FLOAT, 0, NULL);

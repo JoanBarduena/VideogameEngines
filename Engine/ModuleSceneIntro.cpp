@@ -25,10 +25,10 @@ bool ModuleSceneIntro::Start()
 	HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
 	App->geometry->LoadGeometry("Assets/BakerHouse.fbx"); 
 
-	Texture = HouseTexture; 
+	//Texture = HouseTexture; 
 	
 	//Create_Cube(0,0,0,2);
-	//Create_Sphere(50,20,0,1,0,1); 
+	Create_Sphere(50,20,5,1,0,1); 
 	return ret;
 }
 
@@ -158,7 +158,9 @@ void ModuleSceneIntro::Create_Cube(float x, float y, float z, float size)
 	par_shapes_scale(Body, size, size, size);
 	par_shapes_translate(Body, position.x, position.y, position.z);
 
-	//vector_shapes.push_back(Body);
+	vector_shapes.push_back(Body);
+
+	//Texture = App->texture->checkersTextureID;
 
 	CreateBuffer();
 }
