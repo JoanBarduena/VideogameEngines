@@ -132,6 +132,9 @@
     <ClInclude Include="Module.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Sources\Modules\Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -208,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="par\parshapes.cpp">
       <Filter>Sources\Tools\par_shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Sources\Modules\Classes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
