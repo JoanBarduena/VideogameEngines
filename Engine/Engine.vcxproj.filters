@@ -138,6 +138,12 @@
     <ClInclude Include="GameObject.h">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigurationWindow.h">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -217,6 +223,12 @@
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigurationWindow.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

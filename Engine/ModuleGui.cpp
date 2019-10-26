@@ -41,23 +41,6 @@ bool ModuleGui::Start()
 	RDTSC =  SDL_HasRDTSC();
 	MMX = SDL_HasMMX(); 
 
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		ImGui_ImplSDL2_ProcessEvent(&event);
-	}
-
-	// Start the Dear ImGui frame
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplSDL2_NewFrame(App->window->window);
-	ImGui::NewFrame();
-
-	CreateMainWorkingSpace();
-
-	//Render
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
 	return ret;
 }
 
@@ -74,39 +57,13 @@ update_status ModuleGui::PreUpdate(float dt)
 	ImGui_ImplSDL2_NewFrame(App->window->window);
 	ImGui::NewFrame();
 
+	CreateMainWorkingSpace();
+
 	return UPDATE_CONTINUE;
 }
 
 update_status ModuleGui::Update(float dt)
 {
-	if (ImGui::BeginMainMenuBar()) {
-
-		if (ImGui::BeginMenu("File", true)) 
-		{
-			if (ImGui::MenuItem("Exit", "Esc", false, true)) { return update_status::UPDATE_STOP; }
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("View", true))
-		{
-			
-			if (ImGui::MenuItem("Random Numbers")) { RNGWindow(); show_random_num_window = !show_random_num_window; }
-			if (ImGui::MenuItem("Configuration")) { ConfigWindow(); show_config_window = !show_config_window; }
-			if (ImGui::MenuItem("Console")) { show_app_console = !show_app_console; }
-			ImGui::EndMenu(); 
-		}
-		if (ImGui::BeginMenu("Help", true))
-		{
-			if (ImGui::MenuItem("Gui Demo")) { DemoWindow(); show_demo_window = !show_demo_window; }
-			if (ImGui::MenuItem("Documentation")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/wiki"); }
-			if (ImGui::MenuItem("Download latest")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/releases"); }
-			if (ImGui::MenuItem("Report a bug")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/issues"); }
-			if (ImGui::MenuItem("About", "F1", false, true)) { AboutWindow(); show_about_modal = !show_about_modal; }
-			ImGui::EndMenu();
-		}		
-	}
-
-	ImGui::EndMainMenuBar();
-
 	//DEMO WINDOW 
 	if (show_demo_window)
 		DemoWindow();
@@ -146,7 +103,7 @@ update_status ModuleGui::Update(float dt)
 		ImGui::PopStyleVar();
 	}	
 
-	return UPDATE_CONTINUE;
+	return exit_application;
 }
 
 update_status ModuleGui::PostUpdate(float dt)
@@ -387,4 +344,32 @@ void ModuleGui::CreateMainWorkingSpace()
 	}
 
 	ImGui::End();
+
+	if (ImGui::BeginMainMenuBar()) {
+
+		if (ImGui::BeginMenu("File", true))
+		{
+			if (ImGui::MenuItem("Exit", "Esc", false, true)) { exit_application = UPDATE_STOP; }
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("View", true))
+		{
+
+			if (ImGui::MenuItem("Random Numbers")) { RNGWindow(); show_random_num_window = !show_random_num_window; }
+			if (ImGui::MenuItem("Configuration")) { ConfigWindow(); show_config_window = !show_config_window; }
+			if (ImGui::MenuItem("Console")) { show_app_console = !show_app_console; }
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Help", true))
+		{
+			if (ImGui::MenuItem("Gui Demo")) { DemoWindow(); show_demo_window = !show_demo_window; }
+			if (ImGui::MenuItem("Documentation")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/wiki"); }
+			if (ImGui::MenuItem("Download latest")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/releases"); }
+			if (ImGui::MenuItem("Report a bug")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/issues"); }
+			if (ImGui::MenuItem("About", "F1", false, true)) { AboutWindow(); show_about_modal = !show_about_modal; }
+			ImGui::EndMenu();
+		}
+	}
+
+	ImGui::EndMainMenuBar();
 }

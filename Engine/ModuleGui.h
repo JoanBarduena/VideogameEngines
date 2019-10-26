@@ -55,14 +55,16 @@ public:
 	bool console_log = true; 
 	int vector_size = 0; 
 
+	update_status exit_application = UPDATE_CONTINUE; 
+
 private:
 
 	bool show_main_window = false;
 	bool show_demo_window = false; 
-	bool show_random_num_window = false;
-	bool show_config_window = false; 
+	bool show_random_num_window = true;
+	bool show_config_window = true; 
 	bool show_about_modal = false;
-	bool show_app_console = false; 
+	bool show_app_console = true; 
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };
