@@ -18,7 +18,7 @@
 class ModuleGui : public Module
 {
 public:
-	ModuleGui(Application* app, bool start_enabled = true);
+	ModuleGui(bool start_enabled = true);
 	~ModuleGui(); 
 
 	bool Init(); 
@@ -49,7 +49,7 @@ public:
 	bool gl_cull_face = true;
 	bool gl_lighting = true;
 	bool gl_color_material = true;
-	bool gl_texture_2D = true; 
+	bool gl_texture_2D = false; 
 	
 	Console gui_console;
 	bool console_log = true; 

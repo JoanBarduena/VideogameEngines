@@ -15,7 +15,7 @@
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment(lib, "glew/libx86/glew32.lib")
 
-ModuleGeometry::ModuleGeometry(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleGeometry::ModuleGeometry(bool start_enabled) : Module(start_enabled)
 {}
 
 ModuleGeometry::~ModuleGeometry() 
@@ -74,11 +74,11 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 
 		for (int i = 0; i < scene->mNumMeshes; ++i)
 		{
-			mesh_data* m = new mesh_data;
+			mesh_data* m = new mesh_data; //GameObject* obj = creategameobject(); 
 
 			aiMesh *new_mesh = scene->mMeshes[i];
 
-			m->num_vertex = new_mesh->mNumVertices;
+			m->num_vertex = new_mesh->mNumVertices; //obj->getcomponentmesh->num_vertex
 			m->vertex = new float3[m->num_vertex];
 			//memcpy(m->vertex, new_mesh->mVertices, sizeof(float) * m->num_vertex);
 

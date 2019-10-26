@@ -7,6 +7,8 @@
 #include <windows.h>
 #include <stdio.h>
 #include <vector>
+#include <list>
+#include <string>
 
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);

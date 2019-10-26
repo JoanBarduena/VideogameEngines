@@ -7,7 +7,7 @@
 class ModuleTexture : public Module
 {
 public:
-	ModuleTexture(Application* App, bool start_enabled = true);
+	ModuleTexture(bool start_enabled = true);
 	~ModuleTexture();
 
 	bool Init();

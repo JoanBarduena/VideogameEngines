@@ -80,6 +80,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="ConfigurationWindow.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="ConsoleWindow.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="glew\include\GL\eglew.h" />
     <ClInclude Include="glew\include\GL\glew.h" />
@@ -118,6 +119,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="ConfigurationWindow.cpp" />
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="ConsoleWindow.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />

@@ -10,7 +10,7 @@
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment(lib, "glew/libx86/glew32.lib")
 
-ModuleRenderer3D::ModuleRenderer3D(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled)
 {
 }
 
@@ -162,10 +162,10 @@ void ModuleRenderer3D::DrawMesh(const mesh_data* mesh)
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
 	glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	glBindTexture(GL_TEXTURE_2D, mesh->texture);
+	glBindTexture(GL_TEXTURE_2D, mesh->texture); //getcomponenttexture->structtexture->id
 	//glBindTexture(GL_TEXTURE_2D, App->scene_intro->Texture);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_texture);

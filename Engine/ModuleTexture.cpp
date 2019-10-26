@@ -13,7 +13,7 @@
 #pragma comment (lib, "DevIL/libx86/ILUT.lib")
 
 
-ModuleTexture::ModuleTexture(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleTexture::ModuleTexture(bool start_enabled) : Module(start_enabled)
 {}
 
 
@@ -139,7 +139,7 @@ uint ModuleTexture::LoadTexturePath(const char* image_path)
 	else
 		App->Console_Log("Unable to load image path: %s", image_path); 
 
-	return textureLoaded; 
+	return textureLoaded; //return TEXTURE STRUCT (WIDHT, HEIGHT, ID, PATH)
 }
 
 uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format) const

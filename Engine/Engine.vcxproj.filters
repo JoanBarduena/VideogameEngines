@@ -120,9 +120,6 @@
     <ClInclude Include="Primitive.h">
       <Filter>Sources\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Console.h">
-      <Filter>Sources\Modules\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleGeometry.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
@@ -142,6 +139,12 @@
       <Filter>Sources\Modules\Windows</Filter>
     </ClInclude>
     <ClInclude Include="ConfigurationWindow.h">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleWindow.h">
       <Filter>Sources\Modules\Windows</Filter>
     </ClInclude>
   </ItemGroup>
@@ -209,9 +212,6 @@
     <ClCompile Include="Primitive.cpp">
       <Filter>Sources\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="Console.cpp">
-      <Filter>Sources\Modules\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleGeometry.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
@@ -228,6 +228,12 @@
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
     <ClCompile Include="ConfigurationWindow.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleWindow.cpp">
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
   </ItemGroup>

@@ -27,7 +27,7 @@ struct mesh_data
 class ModuleGeometry : public Module
 {
 public:
-	ModuleGeometry(Application* app, bool start_enabled = true);
+	ModuleGeometry(bool start_enabled = true);
 	~ModuleGeometry();
 
 	//bool Init();

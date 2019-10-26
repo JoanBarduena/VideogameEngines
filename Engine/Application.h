@@ -1,23 +1,18 @@
 #pragma once
 
-
 #include "Globals.h"
 #include "Timer.h"
 #include "Module.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
 #include "ModuleSceneIntro.h"
-#include "ModuleGui.h"
 #include "ModuleRenderer3D.h"
 #include "ModuleCamera3D.h"
+#include "ModuleGui.h"
 #include "ModuleGeometry.h"
 #include "ModuleTexture.h"
 
-#include <list>
-#include <vector>
-#include <string>
-
-using namespace std;
+using namespace std; 
 
 class Application
 {
@@ -35,7 +30,7 @@ private:
 
 	Timer	ms_timer;
 	float	dt;
-	list<Module*> list_modules;
+	std::list<Module*> list_modules;
 
 public:
 
@@ -49,7 +44,7 @@ public:
 	void RequestBrowser(const char* URL); 
 
 	void Console_Log(const char * format, ...);
-	std::vector<std::string> vector_log; 
+	vector<string> vector_log; 
 
 private:
 
@@ -57,4 +52,6 @@ private:
 	void PrepareUpdate();
 	void FinishUpdate();
 };
+
+extern Application* App;
 

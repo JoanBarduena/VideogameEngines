@@ -5,7 +5,7 @@
 #include "ModuleRenderer3D.h"
 #include "glew\include\GL\glew.h"
 
-ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 {}
 
 ModuleGui::~ModuleGui()
@@ -85,17 +85,11 @@ update_status ModuleGui::Update(float dt)
 	{
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 		ImGui::Begin("Console", &show_app_console);
-		ImGui::SetWindowSize(ImVec2(1000, 600));
-
-		if (console_log)
+		
+		/*for (int i = 0; i < App->vector_log.size(); ++i)
 		{
-			for (int i = 0; i < App->vector_log.size(); ++i)
-			{
-				gui_console.AddLog(App->vector_log[i].data());
-				if (i+1 == App->vector_log.size())
-					console_log = false;
-			}
-		}
+			gui_console.AddLog(App->vector_log[i].data());
+		}*/
 
 		gui_console.Draw(); 
 
