@@ -10,7 +10,7 @@ class GameObject
 {
 public: 
 
-	const char name; 
+	std::string name; 
 	Position position;
 	uint Texture; 
 

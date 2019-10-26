@@ -14,15 +14,17 @@ ModuleGui::~ModuleGui()
 bool ModuleGui::Init()
 {
 	IMGUI_CHECKVERSION();
+	SDL_GL_MakeCurrent(App->window->window, App->renderer3D->context);
 	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
+
+	io = &ImGui::GetIO(); (void)io;
+	io->ConfigFlags |= ImGuiConfigFlags_DockingEnable; 
 
 	//Setup Dear ImGui style
 	ImGui::StyleColorsDark();
-	//ImGui::StyleColorsClassic();
 
 	// Setup Platform/Renderer bindings
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init(); 
 
 
@@ -38,6 +40,23 @@ bool ModuleGui::Start()
 	cpu_cache = SDL_GetCPUCacheLineSize(); 
 	RDTSC =  SDL_HasRDTSC();
 	MMX = SDL_HasMMX(); 
+
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		ImGui_ImplSDL2_ProcessEvent(&event);
+	}
+
+	// Start the Dear ImGui frame
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame(App->window->window);
+	ImGui::NewFrame();
+
+	CreateMainWorkingSpace();
+
+	//Render
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 	return ret;
 }
@@ -72,7 +91,6 @@ update_status ModuleGui::Update(float dt)
 			
 			if (ImGui::MenuItem("Random Numbers")) { RNGWindow(); show_random_num_window = !show_random_num_window; }
 			if (ImGui::MenuItem("Configuration")) { ConfigWindow(); show_config_window = !show_config_window; }
-			if (ImGui::MenuItem("OpenGL Config")) { OpenGLConfigWindow(); show_opengl = !show_opengl; }
 			if (ImGui::MenuItem("Console")) { show_app_console = !show_app_console; }
 			ImGui::EndMenu(); 
 		}
@@ -101,10 +119,6 @@ update_status ModuleGui::Update(float dt)
 	if (show_config_window)
 		ConfigWindow();
 	
-	//OPENGL CONFIG
-	if (show_opengl)
-		OpenGLConfigWindow();
-	
 	//ABOUT
 	if (show_about_modal)
 		AboutWindow();
@@ -112,6 +126,7 @@ update_status ModuleGui::Update(float dt)
 	//CONSOLE
 	if (show_app_console)
 	{
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 		ImGui::Begin("Console", &show_app_console);
 		ImGui::SetWindowSize(ImVec2(1000, 600));
 
@@ -128,6 +143,7 @@ update_status ModuleGui::Update(float dt)
 		gui_console.Draw(); 
 
 		ImGui::End(); 
+		ImGui::PopStyleVar();
 	}	
 
 	return UPDATE_CONTINUE;
@@ -271,31 +287,26 @@ void ModuleGui::ConfigWindow()
 
 		ImGui::Separator();
 	}
+	if (ImGui::CollapsingHeader("OpenGL"))
+	{
+		ImGui::Checkbox("DEPTH TEST", &gl_depth_test);
+		SetGLEnum(gl_depth_test, GL_DEPTH_TEST);
+
+		ImGui::Checkbox("CULL FACE", &gl_cull_face);
+		SetGLEnum(gl_cull_face, GL_CULL_FACE);
+
+		ImGui::Checkbox("LIGHTING", &gl_lighting);
+		SetGLEnum(gl_lighting, GL_LIGHTING);
+
+		ImGui::Checkbox("COLOR MATERIAL", &gl_color_material);
+		SetGLEnum(gl_color_material, GL_COLOR_MATERIAL);
+
+		ImGui::Checkbox("TEXTURE 2D", &gl_texture_2D);
+		SetGLEnum(gl_texture_2D, GL_TEXTURE_2D);
+	}
 	ImGui::End();
 }
 
-void ModuleGui::OpenGLConfigWindow()
-{
-	ImGui::Begin("OpenGL Configuration", &show_opengl);
-	ImGui::SetWindowSize(ImVec2(400, 300));
-
-	ImGui::Checkbox("DEPTH TEST", &gl_depth_test);
-	SetGLEnum(gl_depth_test, GL_DEPTH_TEST);
-
-	ImGui::Checkbox("CULL FACE", &gl_cull_face);
-	SetGLEnum(gl_cull_face, GL_CULL_FACE);
-
-	ImGui::Checkbox("LIGHTING", &gl_lighting);
-	SetGLEnum(gl_lighting, GL_LIGHTING);
-
-	ImGui::Checkbox("COLOR MATERIAL", &gl_color_material);
-	SetGLEnum(gl_color_material, GL_COLOR_MATERIAL);
-
-	ImGui::Checkbox("TEXTURE 2D", &gl_texture_2D);
-	SetGLEnum(gl_texture_2D, GL_TEXTURE_2D);
-
-	ImGui::End();
-}
 void ModuleGui::AboutWindow()
 {
 	ImGui::OpenPopup("About");
@@ -337,4 +348,43 @@ void ModuleGui::AboutWindow()
 		}
 		ImGui::EndPopup();
 	}
+}
+
+void ModuleGui::CreateMainWorkingSpace()
+{
+	bool opt_fullscreen = true;
+	static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+
+	// We are using the ImGuiWindowFlags_NoDocking flag to make the parent window not dockable into,
+	// because it would be confusing to have two docking targets within each others.
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+	ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImGui::SetNextWindowPos(viewport->Pos);
+	ImGui::SetNextWindowSize(viewport->Size);
+	ImGui::SetNextWindowViewport(viewport->ID);
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+	window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+	window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
+	// When using ImGuiDockNodeFlags_PassthruCentralNode, DockSpace() will render our background and handle the pass-thru hole, so we ask Begin() to not render a background.
+	dockspace_flags = ImGuiDockNodeFlags_PassthruCentralNode;
+	window_flags |= ImGuiWindowFlags_NoBackground;
+
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::Begin("DockSpace_Demo", &p_open, window_flags);
+	ImGui::PopStyleVar();
+
+	if (opt_fullscreen)
+		ImGui::PopStyleVar(2);
+
+	// DockSpace
+	ImGuiIO& io = ImGui::GetIO();
+	if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
+	{
+		ImGuiID dockspace_id = ImGui::GetID("My_Dock_Space");
+		ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+	}
+
+	ImGui::End();
 }

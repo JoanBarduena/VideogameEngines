@@ -32,8 +32,12 @@ public:
 	void DemoWindow();
 	void RNGWindow();
 	void ConfigWindow();
-	void OpenGLConfigWindow();
 	void AboutWindow();
+
+	void CreateMainWorkingSpace();
+
+	ImGuiIO* io = nullptr;
+	bool p_open = true;
 
 	pcg_state_setseq_32 bounded;
 	int interval = 0, min = 0, max = 0;
@@ -59,7 +63,7 @@ private:
 	bool show_config_window = false; 
 	bool show_about_modal = false;
 	bool show_app_console = false; 
-	bool show_opengl = false; 
+
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };
 
