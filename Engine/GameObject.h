@@ -1,20 +1,26 @@
 #pragma once
 
 #include "Globals.h"
-
-struct Position {
-	float x, y, z; 
-};
+#include "Component.h"
+#include "ComponentMesh.h"
 
 class GameObject
 {
 public: 
 
-	std::string name; 
-	Position position;
-	uint Texture; 
+	GameObject(string name); 
+	~GameObject();
+	Component * CreateComponent(Type type);
 
-	//std::vector<GameObject*> game_objects; 
+	void Update(); 
+
+public:
+
+	string name; 
+	bool active; 
+	vector<Component*> components; 
+
+	ComponentMesh* Mesh; 
 };
 
 

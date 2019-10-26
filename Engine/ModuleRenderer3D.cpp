@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
-
+#include "GameObject.h"
 
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
@@ -157,22 +157,21 @@ void ModuleRenderer3D::OnResize(int width, int height)
 }
 
 //Make a Draw() method in ModuleRenderer that receives a mesh and draws it
-void ModuleRenderer3D::DrawMesh(const mesh_data* mesh)
+void ModuleRenderer3D::DrawMesh(GameObject* GO)
 {
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
+	glBindBuffer(GL_ARRAY_BUFFER, GO->Mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
 	glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	glBindTexture(GL_TEXTURE_2D, mesh->texture); //getcomponenttexture->structtexture->id
-	//glBindTexture(GL_TEXTURE_2D, App->scene_intro->Texture);
+	glBindTexture(GL_TEXTURE_2D, GO->Mesh->texture); //getcomponenttexture->structtexture->id
 
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_texture);
+	glBindBuffer(GL_ARRAY_BUFFER, GO->Mesh->id_texture);
 	glTexCoordPointer(2, GL_FLOAT, 0, NULL);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
-	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, nullptr);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, GO->Mesh->id_index);
+	glDrawElements(GL_TRIANGLES, GO->Mesh->num_index, GL_UNSIGNED_INT, nullptr);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

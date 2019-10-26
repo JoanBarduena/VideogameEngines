@@ -6,23 +6,7 @@
 #include "MathGeoLib/include/MathBuildConfig.h"
 #include "MathGeoLib/include/MathGeoLib.h"
 
-struct mesh_data
-{
-	uint id_index = 0; // index in VRAM
-	uint num_index = 0;
-	uint* index = nullptr;
-
-	uint id_vertex = 0; // unique vertex in VRAM
-	uint num_vertex = 0;
-	float3* vertex = nullptr;
-
-	uint id_texture = 0; 
-	uint num_texture = 0; 
-	float* texture_pos = nullptr; 
-
-	uint texture = 0; 
-
-};
+#include "par/parshapes.h"
 
 class ModuleGeometry : public Module
 {
@@ -38,12 +22,11 @@ public:
 	bool CleanUp();
 
 	void LoadGeometry(const char* full_path);
+	void LoadParShapes(par_shapes_mesh* par_mesh);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);
-	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos);
-
-	std::vector<mesh_data*> meshes; 
+	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos); 
 };
 
 
