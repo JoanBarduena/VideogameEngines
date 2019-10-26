@@ -1,6 +1,6 @@
 #pragma once
 #include "Window.h"
-#include "Console.h"
+//#include "Console.h"
 
 class ConsoleWindow : public Window
 {
@@ -13,6 +13,6 @@ public:
 	bool Draw(); 
 	bool CleanUp(); 
 
-	Console gui_console;
+	//Console gui_console;
 
 };

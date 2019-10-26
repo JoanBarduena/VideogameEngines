@@ -1,4 +1,4 @@
-﻿  ModuleGui.cpp
+﻿  ConsoleWindow.cpp
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
@@ -25,4 +25,5 @@ c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(1883)
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+c:\users\badli\documents\github\videogameengines\engine\consolewindow.cpp(24): warning C4018: '<': no coinciden signed/unsigned
   Engine.vcxproj -> C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe
