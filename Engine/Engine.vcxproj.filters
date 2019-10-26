@@ -233,9 +233,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Sources\Modules\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="ConfigurationWindow.cpp">
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
@@ -253,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="ComponentTexture.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
