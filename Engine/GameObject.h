@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "Component.h"
 #include "ComponentMesh.h"
+#include "ComponentTexture.h"
 
 class GameObject
 {
@@ -20,7 +21,8 @@ public:
 	bool active; 
 	vector<Component*> components; 
 
-	ComponentMesh* Mesh; 
+	ComponentMesh* Comp_Mesh; 
+	ComponentTexture* Comp_Texture; 
 };
 
 

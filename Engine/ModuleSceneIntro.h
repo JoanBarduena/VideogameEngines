@@ -35,8 +35,7 @@ public:
 	uint id_index;
 	uint id_texture;
 
-	uint Texture = 0;
-	uint HouseTexture = 0; 
+	TextureStruct* HouseTexture; 
 
 	par_shapes_mesh_s* Body = nullptr;
 	std::vector<par_shapes_mesh_s*> vector_shapes;

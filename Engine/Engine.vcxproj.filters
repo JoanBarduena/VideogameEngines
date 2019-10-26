@@ -153,6 +153,9 @@
     <ClInclude Include="ComponentMesh.h">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentTexture.h">
+      <Filter>Sources\Modules\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -246,6 +249,9 @@
       <Filter>Sources\Modules\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="ComponentMesh.cpp">
+      <Filter>Sources\Modules\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentTexture.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClCompile>
   </ItemGroup>

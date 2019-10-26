@@ -49,8 +49,6 @@ bool ModuleTexture::Start()
 {
 	bool ret = true;
 
-	checkersTextureID = CreateCheckerTexture();
-
 	return ret;
 }
 
@@ -64,8 +62,6 @@ update_status ModuleTexture::Update(float dt)
 bool ModuleTexture::CleanUp()
 {
 	bool ret = true;
-
-	glDeleteTextures(1, (GLuint*)&checkersTextureID); 
 
 	return ret;
 }
@@ -96,10 +92,13 @@ TextureStruct* ModuleTexture::CreateCheckerTexture() const
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texture->width, texture->height,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CHECKERS_WIDTH, CHECKERS_HEIGHT,
 		0, GL_RGBA, GL_UNSIGNED_BYTE, checkImage);
 	
 	glBindTexture(GL_TEXTURE_2D, 0);
+
+	texture->width = CHECKERS_WIDTH; 
+	texture->height = CHECKERS_HEIGHT; 
 
 	return texture;
 }

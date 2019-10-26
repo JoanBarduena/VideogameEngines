@@ -4,6 +4,14 @@
 #include "glew/include/GL/glew.h"
 #include <vector>
 
+struct TextureStruct
+{
+	uint textureID = 0;
+	string path;
+	uint height;
+	uint width;
+};
+
 class ModuleTexture : public Module
 {
 public:
@@ -19,15 +27,5 @@ public:
 	TextureStruct* LoadTexturePath(const char* image_path);
 	uint LoadTextureFromPixels(const void * img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format) const;
 
-	uint checkersTextureID = 0;
-
 	GLuint image_name = 0;
-};
-
-struct TextureStruct
-{
-	uint textureID = 0;
-	string path;
-	uint height; 
-	uint width;
 };

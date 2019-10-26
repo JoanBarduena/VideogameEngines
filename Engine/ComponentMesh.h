@@ -23,7 +23,4 @@ public:
 	uint id_texture = 0;
 	uint num_texture = 0;
 	float* texture_pos = nullptr;
-
-	uint texture = 0;
-
 };

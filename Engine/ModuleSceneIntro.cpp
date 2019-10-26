@@ -24,9 +24,12 @@ bool ModuleSceneIntro::Start()
 
 	HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
 	App->geometry->LoadGeometry("Assets/BakerHouse.fbx"); 
-
-	//Texture = HouseTexture; 
 	
+	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
+	{
+		(*iterator)->Comp_Texture->texture = HouseTexture; 
+	}
+
 	//Create_Cube(0,0,0,2);
 	Create_Sphere(50,20,5,1,0,1); 
 	return ret;

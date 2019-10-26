@@ -1,10 +1,10 @@
 #include "GameObject.h"
-#include "ComponentMesh.h"
 
 GameObject::GameObject(string name_)
 {
 	this->name = name_; 
-	Mesh = (ComponentMesh*)CreateComponent(Type::Mesh); 
+	Comp_Mesh = (ComponentMesh*)CreateComponent(Type::Mesh); 
+	Comp_Texture = (ComponentTexture*)CreateComponent(Type::Texture);
 }
 
 GameObject::~GameObject()
@@ -19,6 +19,9 @@ Component* GameObject::CreateComponent(Type type)
 	{
 	case Type::Mesh:
 		comp = new ComponentMesh(this); 
+		break; 
+	case Type::Texture:
+		comp = new ComponentTexture(this); 
 		break; 
 	}
 
