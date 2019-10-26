@@ -82,9 +82,11 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 GameObject * ModuleSceneIntro::CreateGameObject()
 {
-	GameObject* object = nullptr; 
+	std::string GOname = "GameObject "; 
+	GOname.append(std::to_string(game_objects.size()));
 
-	object = new GameObject("GameObject");
+	GameObject* object = nullptr; 
+	object = new GameObject(GOname);
 
 	game_objects.push_back(object); 
 

@@ -3,6 +3,10 @@
 
 #include "Globals.h"
 
+#include "imGui/imgui.h"
+#include "imGui/imgui_impl_sdl.h"
+#include "imGui/imgui_impl_opengl3.h"
+
 class Window
 {
 public:

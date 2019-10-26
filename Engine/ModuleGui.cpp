@@ -29,9 +29,11 @@ bool ModuleGui::Init()
 
 	ConfigurationWindow* config_w = new ConfigurationWindow(); 
 	ConsoleWindow* console_w = new ConsoleWindow();
+	HierarchyWindow* hierarchy_w = new HierarchyWindow(); 
 
 	windows.push_back(config_w); 
 	windows.push_back(console_w);
+	windows.push_back(hierarchy_w);
 
 	return true; 
 }

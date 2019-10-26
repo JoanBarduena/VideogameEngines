@@ -18,6 +18,7 @@
 #include "Window.h"
 #include "ConfigurationWindow.h"
 #include "ConsoleWindow.h"
+#include "HierarchyWindow.h"
 
 class ModuleGui : public Module
 {
@@ -48,6 +49,7 @@ private:
 	//Windows 
 	ConfigurationWindow* config_w = nullptr; 
 	ConsoleWindow* console_w = nullptr; 
+	HierarchyWindow* hierarchy_w = nullptr; 
 
 	std::list<Window*> windows;
 
@@ -55,10 +57,11 @@ public:
 
 	bool show_main_window = false;
 	bool show_demo_window = false; 
-	bool show_random_num_window = true;
+	bool show_random_num_window = false;
 	bool show_config_window = true; 
 	bool show_about_modal = false;
-	bool show_app_console = true; 
+	bool show_app_console = true;
+	bool show_hierarchy_window = true; 
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };
