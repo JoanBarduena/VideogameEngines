@@ -10,6 +10,8 @@ HierarchyWindow::~HierarchyWindow()
 
 bool HierarchyWindow::Start()
 {
+	App->Console_Log("Creating Hierarchy Window"); 
+
 	return true;
 }
 
@@ -29,8 +31,8 @@ bool HierarchyWindow::Draw()
 
 			ImGui::TreeNodeEx((*iterator)->name.data(), flags);
 
-			if (ImGui::IsItemClicked())
-				App->Console_Log("pepe");
+			//if (ImGui::IsItemClicked())
+				
 		}
 
 		ImGui::End();

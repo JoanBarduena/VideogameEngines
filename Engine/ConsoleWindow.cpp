@@ -18,7 +18,7 @@ bool ConsoleWindow::Draw()
 {
 	if (App->gui->show_app_console)
 	{
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(5, 2));
 		ImGui::Begin("Console");
 
 		for (int i = 0; i < App->vector_log.size(); ++i)
