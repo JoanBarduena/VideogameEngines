@@ -4,6 +4,7 @@
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "glew\include\GL\glew.h"
+#include "ModuleInput.h"
 
 ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 {}
@@ -87,6 +88,9 @@ update_status ModuleGui::PreUpdate(float dt)
 
 update_status ModuleGui::Update(float dt)
 {
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+		show_about_modal = !show_about_modal;
+
 	return exit_application;
 }
 
@@ -150,27 +154,29 @@ void ModuleGui::CreateMainWorkingSpace()
 
 	if (ImGui::BeginMainMenuBar()) {
 
-		if (ImGui::BeginMenu("File"))
+		if (ImGui::BeginMenu("Menu"))
 		{
 			if (ImGui::MenuItem("Exit", "Esc", false, true)) { exit_application = UPDATE_STOP; }
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("View"))
 		{
-			if (ImGui::MenuItem("Configuration")) { show_config_window = !show_config_window; }
-			if (ImGui::MenuItem("Console")) { show_app_console = !show_app_console; }
-			if (ImGui::MenuItem("RNG")) { show_random_num_window = !show_random_num_window; }
-			if (ImGui::MenuItem("DemoGUI")) { show_demo_window = !show_demo_window; }
+			if (ImGui::Checkbox("Configuration", &show_config_window));
+			if (ImGui::Checkbox("Console", &show_app_console));
+			if (ImGui::Checkbox("Hierarchy", &show_hierarchy_window));
+			if (ImGui::Checkbox("RNG", &show_random_num_window));
+			if (ImGui::Checkbox("DemoGUI", &show_demo_window));
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Help"))
 		{
-			if (ImGui::MenuItem("Documentation")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/wiki"); }
+			if (ImGui::MenuItem("See repository")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/wiki"); }
 			if (ImGui::MenuItem("Download latest")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/releases"); }
 			if (ImGui::MenuItem("Report a bug")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/issues"); }
 			if (ImGui::MenuItem("About", "F1", false, true)) { show_about_modal = !show_about_modal; }
 			ImGui::EndMenu();
 		}
+
 		if (show_about_modal)
 		{
 			ImGui::OpenPopup("About");
@@ -190,16 +196,7 @@ void ModuleGui::CreateMainWorkingSpace()
 				ImGui::SameLine();
 				if (ImGui::Button("Clara Ratera"))
 					App->RequestBrowser("https://github.com/RustikTie");
-
-				ImGui::Text("3rd Party Libraries used:");
-				SDL_version ver;
-				SDL_GetVersion(&ver);
-				ImGui::BulletText("SDL Version: %d.%d.%d.", ver.major, ver.minor, ver.patch);
-				ImGui::BulletText("Dear ImGUI Version: %s", ImGui::GetVersion());
-				ImGui::BulletText("MathGeoLib Version: v1.5");
-				ImGui::BulletText("Glew Version: %s ", glewGetString(GLEW_VERSION));
-				ImGui::BulletText("OpenGL Version: %s", glGetString(GL_VERSION));
-
+				
 				ImGui::Separator();
 
 				ImGui::TextWrapped("License:\n\nMIT License\n\nCopyright (c) 2019 Lidux\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
