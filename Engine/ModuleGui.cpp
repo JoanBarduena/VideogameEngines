@@ -32,12 +32,14 @@ bool ModuleGui::Init()
 	console_w = new ConsoleWindow();
 	hierarchy_w = new HierarchyWindow(); 
 	inspector_w = new InspectorWindow(); 
+	game_w = new GameWindow(); 
 
+	//windows.push_back(game_w);
 	windows.push_back(console_w);
 	windows.push_back(config_w); 
 	windows.push_back(hierarchy_w);
 	windows.push_back(inspector_w);
-
+	
 	return true; 
 }
 

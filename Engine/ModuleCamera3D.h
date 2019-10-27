@@ -28,6 +28,9 @@ public:
 	
 	vec3 X, Y, Z, Position, Reference;
 
+	bool game_active = false; 
+	Color background = Color(0, 0, 0, 255); 
+
 private:
 
 	vec3 InitialPos = vec3(0.0f, 0.0f, 5.0f);
