@@ -17,7 +17,6 @@ bool HierarchyWindow::Start()
 
 bool HierarchyWindow::Draw()
 {
-
 	if (App->gui->show_hierarchy_window)
 	{
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
@@ -31,7 +30,17 @@ bool HierarchyWindow::Draw()
 
 			ImGui::TreeNodeEx((*iterator)->name.data(), flags);
 
-			//if (ImGui::IsItemClicked())
+			if (starts_clicked) //so the programms starts with an item clicked.
+			{
+				App->gui->inspector_w->GO_Inspector = (*iterator);
+				starts_clicked = false; 
+			}
+				
+
+			if (ImGui::IsItemClicked())
+			{
+				App->gui->inspector_w->GO_Inspector = (*iterator); 
+			}
 				
 		}
 

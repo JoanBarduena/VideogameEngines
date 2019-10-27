@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Window.h"
+#include "GameObject.h"
 
 class InspectorWindow : public Window
 {
@@ -13,5 +14,5 @@ public:
 	bool Draw(); 
 	bool CleanUp(); 
 
-	//GameObject* GO_Inspector = nullptr;
+	GameObject* GO_Inspector = nullptr;
 };

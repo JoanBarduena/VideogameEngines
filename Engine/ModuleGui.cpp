@@ -28,15 +28,15 @@ bool ModuleGui::Init()
 	// Setup Platform/Renderer bindings
 	ImGui_ImplOpenGL3_Init(); 
 
-	ConfigurationWindow* config_w = new ConfigurationWindow(); 
-	ConsoleWindow* console_w = new ConsoleWindow();
-	HierarchyWindow* hierarchy_w = new HierarchyWindow(); 
-	InspectorWindow* inspector_w = new InspectorWindow(); 
+	config_w = new ConfigurationWindow(); 
+	console_w = new ConsoleWindow();
+	hierarchy_w = new HierarchyWindow(); 
+	inspector_w = new InspectorWindow(); 
 
-	windows.push_back(config_w); 
 	windows.push_back(console_w);
+	windows.push_back(config_w); 
 	windows.push_back(hierarchy_w);
-	windows.push_back(inspector_w); 
+	windows.push_back(inspector_w);
 
 	return true; 
 }

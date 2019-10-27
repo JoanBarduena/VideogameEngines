@@ -45,13 +45,13 @@ public:
 
 	update_status exit_application = UPDATE_CONTINUE; 
 
-private:
+public:
 
 	//Windows 
 	ConfigurationWindow* config_w = nullptr; 
 	ConsoleWindow* console_w = nullptr; 
-	HierarchyWindow* hierarchy_w = nullptr; 
 	InspectorWindow* inspector_w = nullptr;
+	HierarchyWindow* hierarchy_w = nullptr; 
 
 	std::list<Window*> windows;
 
