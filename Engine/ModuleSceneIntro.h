@@ -23,10 +23,14 @@ public:
 
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);
 	void Create_Cube(float x, float y, float z, float size);
+	void Create_Cylinder(float x, float y, float z, uint size, int slices, uint stacks);
+	void Create_Torus(float x, float y, float z, uint size, uint radius, int slices, uint stacks);
+	void Create_Trefoil(float x, float y, float z, uint size, uint radius, int slices, uint stacks);
 
 	bool CleanUp();
 
 	uint num_indices = 36; 
+	bool cube_created = false; 
 
 	uint id_vertex;
 	uint id_index;

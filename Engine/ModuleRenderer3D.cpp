@@ -38,12 +38,13 @@ bool ModuleRenderer3D::Init()
 		if(VSYNC && SDL_GL_SetSwapInterval(1) < 0)
 			App->Console_Log("Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError());
 
+		//Init Glew
+		GLenum error = glewInit();
+
 		//Initialize Projection Matrix
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
-		//Init Glew
-		GLenum error = glewInit();
 
 		if(error != GL_NO_ERROR)
 		{
@@ -110,6 +111,8 @@ bool ModuleRenderer3D::Init()
 // PreUpdate: clear buffer
 update_status ModuleRenderer3D::PreUpdate(float dt)
 {
+	Color c = App->camera->background;
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 

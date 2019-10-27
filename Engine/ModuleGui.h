@@ -20,6 +20,7 @@
 #include "ConsoleWindow.h"
 #include "HierarchyWindow.h"
 #include "InspectorWindow.h"
+#include "GameWindow.h"
 
 class ModuleGui : public Module
 {
@@ -52,6 +53,7 @@ public:
 	ConsoleWindow* console_w = nullptr; 
 	InspectorWindow* inspector_w = nullptr;
 	HierarchyWindow* hierarchy_w = nullptr; 
+	GameWindow*  game_w = nullptr; 
 
 	std::list<Window*> windows;
 
@@ -65,6 +67,7 @@ public:
 	bool show_app_console = true;
 	bool show_hierarchy_window = true; 
 	bool show_inspector_window = true; 
+	bool show_game_window = true; 
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };
