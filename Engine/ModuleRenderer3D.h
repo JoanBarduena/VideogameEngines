@@ -23,7 +23,7 @@ public:
 
 	void OnResize(int width, int height);
 
-	void DrawMesh(const mesh_data* mesh);
+	void DrawMesh(GameObject* GO);
 
 public:
 

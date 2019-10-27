@@ -2,7 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "Timer.h"
-#include <vector>
+#include "GameObject.h"
 #include "par/parshapes.h"
 
 struct Position {
@@ -19,8 +19,7 @@ public:
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
 
-	void CreateBuffer();
-	void RenderObject();
+	GameObject* CreateGameObject(); 
 
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);
 	void Create_Cube(float x, float y, float z, float size);
@@ -33,11 +32,12 @@ public:
 	uint id_index;
 	uint id_texture;
 
-	uint Texture = 0;
-	uint HouseTexture = 0; 
+	TextureStruct* HouseTexture; 
 
 	par_shapes_mesh_s* Body = nullptr;
 	std::vector<par_shapes_mesh_s*> vector_shapes;
 
 	Position position; 
+
+	std::vector<GameObject*> game_objects;
 };

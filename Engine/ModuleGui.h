@@ -15,6 +15,12 @@
 
 #include "glew/include/GL/glew.h"
 
+#include "Window.h"
+#include "ConfigurationWindow.h"
+#include "ConsoleWindow.h"
+#include "HierarchyWindow.h"
+#include "InspectorWindow.h"
+
 class ModuleGui : public Module
 {
 public:
@@ -23,16 +29,11 @@ public:
 
 	bool Init(); 
 	bool Start(); 
+	bool Draw(); 
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
 	update_status PostUpdate(float dt); 
 	bool CleanUp(); 
-	void SetGLEnum(bool is_enabled, GLenum cap); 
-
-	void DemoWindow();
-	void RNGWindow();
-	void ConfigWindow();
-	void AboutWindow();
 
 	void CreateMainWorkingSpace();
 
@@ -42,29 +43,28 @@ public:
 	pcg_state_setseq_32 bounded;
 	int interval = 0, min = 0, max = 0;
 
-	int cpu_count = 0, system_ram = 0, cpu_cache = 0;
-	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3; 
-
-	bool gl_depth_test = true;
-	bool gl_cull_face = true;
-	bool gl_lighting = true;
-	bool gl_color_material = true;
-	bool gl_texture_2D = false; 
-	
-	Console gui_console;
-	bool console_log = true; 
-	int vector_size = 0; 
-
 	update_status exit_application = UPDATE_CONTINUE; 
 
-private:
+public:
+
+	//Windows 
+	ConfigurationWindow* config_w = nullptr; 
+	ConsoleWindow* console_w = nullptr; 
+	InspectorWindow* inspector_w = nullptr;
+	HierarchyWindow* hierarchy_w = nullptr; 
+
+	std::list<Window*> windows;
+
+public:
 
 	bool show_main_window = false;
 	bool show_demo_window = false; 
-	bool show_random_num_window = true;
+	bool show_random_num_window = false;
 	bool show_config_window = true; 
 	bool show_about_modal = false;
-	bool show_app_console = true; 
+	bool show_app_console = true;
+	bool show_hierarchy_window = true; 
+	bool show_inspector_window = true; 
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };

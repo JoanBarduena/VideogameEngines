@@ -45,6 +45,7 @@ public:
 
 	void Console_Log(const char * format, ...);
 	vector<string> vector_log; 
+	vector<float> fps;
 
 private:
 

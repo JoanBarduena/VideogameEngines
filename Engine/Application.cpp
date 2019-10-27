@@ -67,6 +67,11 @@ bool Application::Init()
 void Application::PrepareUpdate()
 {
 	dt = (float)ms_timer.Read() / 1000.0f;
+	fps.push_back(1.0f / dt);
+	if (fps.size() > 50)
+	{
+		fps.erase(fps.begin());
+	}
 	ms_timer.Start();
 }
 

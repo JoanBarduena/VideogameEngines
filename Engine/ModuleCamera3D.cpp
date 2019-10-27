@@ -117,7 +117,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 	// Camera Reset
 
-	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 	{
 		ResetCamera();
 	}
