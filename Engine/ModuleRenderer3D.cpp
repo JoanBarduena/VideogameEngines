@@ -166,7 +166,10 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 	glBindBuffer(GL_ARRAY_BUFFER, GO->Comp_Mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
 	glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	glBindTexture(GL_TEXTURE_2D, GO->Comp_Texture->texture->textureID); //getcomponenttexture->structtexture->id
+	if (GO->Comp_Texture->texture != 0)
+		glBindTexture(GL_TEXTURE_2D, GO->Comp_Texture->texture->textureID); //getcomponenttexture->structtexture->id
+	else
+		glBindTexture(GL_TEXTURE_2D, App->texture->DefaultTexture->textureID); 
 
 	glBindBuffer(GL_ARRAY_BUFFER, GO->Comp_Mesh->id_texture);
 	glTexCoordPointer(2, GL_FLOAT, 0, NULL);

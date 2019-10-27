@@ -111,7 +111,7 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 			//Generate buffer for each mesh and send vertex and indices to VRAM
 			VertexBuffer(obj->Comp_Mesh->id_vertex, obj->Comp_Mesh->num_vertex, obj->Comp_Mesh->vertex);
 			IndexBuffer(obj->Comp_Mesh->id_index, obj->Comp_Mesh->num_index, obj->Comp_Mesh->index);
-			TextureBuffer(obj->Comp_Mesh->id_texture, obj->Comp_Mesh->num_texture, obj->Comp_Mesh->texture_pos);
+			TextureBuffer(obj->Comp_Mesh->id_texture, obj->Comp_Mesh->num_texture, obj->Comp_Mesh->texture_pos);		
 		}	
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		aiReleaseImport(scene);

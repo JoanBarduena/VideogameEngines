@@ -26,6 +26,9 @@ public:
 	TextureStruct* CreateCheckerTexture() const;
 	TextureStruct* LoadTexturePath(const char* image_path);
 	uint LoadTextureFromPixels(const void * img, uint TextureWidth, uint TextureHeight, int internalFormat, uint format) const;
+	TextureStruct * CreateDefeaultTexture() const;
+
+	TextureStruct* DefaultTexture = nullptr; 
 
 	GLuint image_name = 0;
 };

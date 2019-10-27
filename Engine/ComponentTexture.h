@@ -10,5 +10,7 @@ public:
 	ComponentTexture(GameObject* GObj);
 	~ComponentTexture(); 
 
+	bool check_texture; 
+
 	TextureStruct* texture; 
 };

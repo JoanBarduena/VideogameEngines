@@ -49,13 +49,13 @@ bool ModuleTexture::Start()
 {
 	bool ret = true;
 
+	DefaultTexture = CreateDefeaultTexture(); 
+
 	return ret;
 }
 
 update_status ModuleTexture::Update(float dt)
 {
-		
-
 	return UPDATE_CONTINUE;
 }
 
@@ -184,4 +184,16 @@ uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, ui
 		App->Console_Log("Error loading Textrure from pixels %s", error); 
 
 	return TextureID; 
+}
+
+TextureStruct* ModuleTexture::CreateDefeaultTexture() const
+{
+	TextureStruct* default_tex = new TextureStruct;
+
+	default_tex->textureID = 0; 
+	default_tex->path = "No Path";
+	default_tex->width = 0;
+	default_tex->height = 0; 
+
+	return default_tex;
 }
