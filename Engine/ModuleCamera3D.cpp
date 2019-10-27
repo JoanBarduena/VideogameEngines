@@ -41,10 +41,10 @@ bool ModuleCamera3D::CleanUp()
 // -----------------------------------------------------------------
 update_status ModuleCamera3D::Update(float dt)
 {
+	speed = Sensitivity * dt;
 	vec3 newPos(0, 0, 0);
-	float speed = 3.0f * dt;
 	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
-		speed = 8.0f * dt;
+		speed *= 2;
 
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
@@ -60,7 +60,6 @@ update_status ModuleCamera3D::Update(float dt)
 	Reference += newPos;
 
 	// Mouse motion ----------------
-	float Sensitivity = 0.25f;
 
 	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
 	{
@@ -72,7 +71,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		if (dx != 0)
 		{
-			float DeltaX = (float)dx * Sensitivity;
+			float DeltaX = (float)dx * speed;
 
 			X = rotate(X, DeltaX, vec3(0.0f, 1.0f, 0.0f));
 			Y = rotate(Y, DeltaX, vec3(0.0f, 1.0f, 0.0f));
@@ -81,7 +80,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		if (dy != 0)
 		{
-			float DeltaY = (float)dy * Sensitivity;
+			float DeltaY = (float)dy * speed;
 
 			Y = rotate(Y, DeltaY, X);
 			Z = rotate(Z, DeltaY, X);
@@ -104,12 +103,12 @@ update_status ModuleCamera3D::Update(float dt)
 
 		if (App->input->GetMouseZ() > 0)
 		{
-			vec -= Z * Sensitivity;
+			vec -= Z * speed;
 		}
 
 		if (App->input->GetMouseZ() < 0)
 		{
-			vec += Z * Sensitivity;
+			vec += Z * speed;
 		}
 
 		Position += vec;

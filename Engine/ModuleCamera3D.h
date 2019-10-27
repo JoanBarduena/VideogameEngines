@@ -27,6 +27,8 @@ private:
 public:
 	
 	vec3 X, Y, Z, Position, Reference;
+	float Sensitivity = 3.0f;
+
 
 private:
 
@@ -35,4 +37,6 @@ private:
 	vec3 OffSet = vec3(0.0f, 5.0f, 15.0f);
 
 	mat4x4 ViewMatrix, ViewMatrixInverse;
+
+	float speed;
 };

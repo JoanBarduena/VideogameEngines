@@ -1,4 +1,4 @@
-﻿  ConfigurationWindow.cpp
+﻿  ModuleCamera3D.cpp
 d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
 d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: unary minus operator applied to unsigned type, result still unsigned
 d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: unary minus operator applied to unsigned type, result still unsigned
@@ -25,7 +25,5 @@ d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(18
 d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: unary minus operator applied to unsigned type, result still unsigned
 d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: unary minus operator applied to unsigned type, result still unsigned
 d:\users\clara\documents\github\ai\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: unary minus operator applied to unsigned type, result still unsigned
-d:\users\clara\documents\github\ai\videogameengines\engine\mmgr\mmgr.h(41): warning C4117: macro name '__FUNCTION__' is reserved, '#define' ignored
-d:\users\clara\documents\github\ai\videogameengines\engine\configurationwindow.cpp(74): warning C4390: ';': empty controlled statement found; is this the intent?
-d:\users\clara\documents\github\ai\videogameengines\engine\configurationwindow.cpp(77): warning C4390: ';': empty controlled statement found; is this the intent?
+d:\users\clara\documents\github\ai\videogameengines\engine\modulecamera3d.cpp(101): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Engine.vcxproj -> D:\Users\Clara\Documents\GitHub\AI\VideogameEngines\Engine\Debug\Engine.exe
