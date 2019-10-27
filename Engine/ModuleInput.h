@@ -23,6 +23,8 @@ public:
 	update_status PreUpdate(float dt);
 	bool CleanUp();
 
+	std::string GetFileExtension(const std::string & FileName);
+
 	char* dropped_filedir;
 
 	KEY_STATE GetKey(int id) const
