@@ -93,6 +93,11 @@ bool ConfigurationWindow::Draw()
 			if (ImGui::Checkbox("Full Desktop", &App->window->fullscreendesktop))
 				App->window->SetFullscreenDesktop(App->window->fullscreendesktop);
 		}
+
+		if (ImGui::CollapsingHeader("Camera"))
+		{
+			if (ImGui::SliderFloat("Sensitivity", &App->camera->Sensitivity, 0.0f, 10.0f));
+		}
 		if (ImGui::CollapsingHeader("Hardware and Software"))
 		{
 			

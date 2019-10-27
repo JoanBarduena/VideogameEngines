@@ -43,17 +43,20 @@ update_status ModuleCamera3D::Update(float dt)
 {
 	//if (game_active)
 	
-		vec3 newPos(0, 0, 0);
-		float speed = 3.0f * dt;
-		if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
+	vec3 newPos(0, 0, 0);
+	float speed = 3.0f * dt;
+	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 			speed = 8.0f * dt;
+	speed = Sensitivity * dt;
+	vec3 newPos(0, 0, 0);
+	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
+		speed *= 2;
 
 		if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
 		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
 
 		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
-
 
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
 		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
@@ -63,6 +66,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		// Mouse motion ----------------
 		float Sensitivity = 0.25f;
+	// Mouse motion ----------------
 
 		if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
 		{
@@ -75,6 +79,9 @@ update_status ModuleCamera3D::Update(float dt)
 			if (dx != 0)
 			{
 				float DeltaX = (float)dx * Sensitivity;
+		if (dx != 0)
+		{
+			float DeltaX = (float)dx * speed;
 
 				X = rotate(X, DeltaX, vec3(0.0f, 1.0f, 0.0f));
 				Y = rotate(Y, DeltaX, vec3(0.0f, 1.0f, 0.0f));
@@ -84,6 +91,9 @@ update_status ModuleCamera3D::Update(float dt)
 			if (dy != 0)
 			{
 				float DeltaY = (float)dy * Sensitivity;
+		if (dy != 0)
+		{
+			float DeltaY = (float)dy * speed;
 
 				Y = rotate(Y, DeltaY, X);
 				Z = rotate(Z, DeltaY, X);
@@ -97,7 +107,6 @@ update_status ModuleCamera3D::Update(float dt)
 
 			Position = Reference + Z * length(Position);
 		}
-
 		// Zoom
 		if (App->input->GetMouseZ() != 0)
 		{
@@ -115,6 +124,14 @@ update_status ModuleCamera3D::Update(float dt)
 			}
 
 			Position += vec;
+		if (App->input->GetMouseZ() > 0)
+		{
+			vec -= Z * speed;
+		}
+
+		if (App->input->GetMouseZ() < 0)
+		{
+			vec += Z * speed;
 		}
 
 		// Camera Reset

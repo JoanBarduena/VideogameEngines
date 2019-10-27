@@ -27,6 +27,8 @@ private:
 public:
 	
 	vec3 X, Y, Z, Position, Reference;
+	float Sensitivity = 3.0f;
+
 
 	bool game_active = false; 
 	Color background = Color(0, 0, 0, 255); 
@@ -38,4 +40,6 @@ private:
 	vec3 OffSet = vec3(0.0f, 5.0f, 15.0f);
 
 	mat4x4 ViewMatrix, ViewMatrixInverse;
+
+	float speed;
 };
