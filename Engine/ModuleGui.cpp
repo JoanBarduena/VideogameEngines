@@ -100,6 +100,7 @@ update_status ModuleGui::Update(float dt)
 
 update_status ModuleGui::PostUpdate(float dt)
 {
+
 	return UPDATE_CONTINUE;
 }
 
@@ -170,6 +171,22 @@ void ModuleGui::CreateMainWorkingSpace()
 			if (ImGui::Checkbox("Hierarchy", &show_hierarchy_window));
 			if (ImGui::Checkbox("RNG", &show_random_num_window));
 			if (ImGui::Checkbox("DemoGUI", &show_demo_window));
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Create"))
+		{
+			/*if (ImGui::MenuItem("Cube"))
+			{
+				App->scene_intro->Create_Cube(5, 1, 0, 1);
+			}*/
+			if (ImGui::MenuItem("Sphere"))
+				App->scene_intro->Create_Sphere(50, 20, 5, 1, 0, 1); 
+			if (ImGui::MenuItem("Cylinder"))
+				App->scene_intro->Create_Cylinder(-5, 1, -2, 1, 50, 20);
+			if (ImGui::MenuItem("Torus"))
+				App->scene_intro->Create_Torus(-8, 1, 1, 1, 1, 50, 20);
+			if (ImGui::MenuItem("Trefoil"))
+				App->scene_intro->Create_Trefoil(8, 1, 1, 2, 1, 50, 20);
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Help"))

@@ -1,4 +1,4 @@
-﻿  ModuleCamera3D.cpp
+﻿  ModuleGui.cpp
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(74): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(84): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(94): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
@@ -25,5 +25,9 @@ c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(1883)
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(1925): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(1966): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 c:\users\badli\documents\github\videogameengines\engine\pcg\pcg_variants.h(2008): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-c:\users\badli\documents\github\videogameengines\engine\modulecamera3d.cpp(104): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\badli\documents\github\videogameengines\engine\modulegui.cpp(169): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+c:\users\badli\documents\github\videogameengines\engine\modulegui.cpp(170): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+c:\users\badli\documents\github\videogameengines\engine\modulegui.cpp(171): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+c:\users\badli\documents\github\videogameengines\engine\modulegui.cpp(172): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+c:\users\badli\documents\github\videogameengines\engine\modulegui.cpp(173): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   Engine.vcxproj -> C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe
