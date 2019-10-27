@@ -26,6 +26,11 @@ bool ConsoleWindow::Draw()
 			ImGui::Text(App->vector_log[i].data());
 		}
 		//gui_console.Draw(); not using console.h as it never stops rendering
+
+		if (ScrollToBottom || (AutoScroll && ImGui::GetScrollY() >= ImGui::GetScrollMaxY()))
+			ImGui::SetScrollHereY(1.0f);
+		ScrollToBottom = false;
+
 		ImGui::End();
 		ImGui::PopStyleVar();
 	}

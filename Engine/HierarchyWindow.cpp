@@ -15,7 +15,6 @@ bool HierarchyWindow::Start()
 
 bool HierarchyWindow::Draw()
 {
-	static int selection_mask = 0x02;
 
 	if (App->gui->show_hierarchy_window)
 	{
@@ -24,7 +23,14 @@ bool HierarchyWindow::Draw()
 
 		for (std::vector<GameObject*>::iterator iterator = App->scene_intro->game_objects.begin(); iterator != App->scene_intro->game_objects.end(); iterator++)
 		{
-			ImGui::Text((*iterator)->name.c_str()); 
+
+			ImGuiTreeNodeFlags flags;
+			flags |= ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+
+			ImGui::TreeNodeEx((*iterator)->name.data(), flags);
+
+			if (ImGui::IsItemClicked())
+				App->Console_Log("pepe");
 		}
 
 		ImGui::End();

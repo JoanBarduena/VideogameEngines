@@ -13,6 +13,9 @@ public:
 	bool Draw(); 
 	bool CleanUp(); 
 
+	bool AutoScroll;
+	bool ScrollToBottom;
+
 	//Console gui_console;
 
 };
