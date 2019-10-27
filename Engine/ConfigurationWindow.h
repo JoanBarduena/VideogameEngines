@@ -1,9 +1,9 @@
 #pragma once
 #include "Module.h"
 #include "Window.h"
-
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL.h"
+#include <vector>
 
 class ConfigurationWindow : public Window
 {
@@ -26,4 +26,7 @@ public:
 
 	int cpu_count = 0, system_ram = 0, cpu_cache = 0;
 	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3;
+
+	vector<float> memory;
+
 };

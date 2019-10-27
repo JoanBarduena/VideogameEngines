@@ -1,5 +1,8 @@
 #include "Application.h"
+#include "Globals.h"
 #include "ConfigurationWindow.h"
+
+#include "mmgr\mmgr.h"
 #include "Assimp/include/version.h"
 #include "rapidjson/rapidjson.h"
 #define RAPIDJSON_VERSION_STRING \
@@ -38,8 +41,29 @@ bool ConfigurationWindow::Draw()
 		{
 			ImGui::InputText("Engine", TITLE, 30);
 			ImGui::InputText("Organization", ORGANIZATION, 50);
-			ImGui::Text( "Framerate: %.1f", App->fps[App->fps.size() - 1]);
-			ImGui::PlotHistogram("##framerate", &App->fps[0], App->fps.size(), 0, "Framerate Graph", 0.0f, 100.0f, ImVec2(310, 100));
+
+			//Framerate
+			ImGui::PlotHistogram("##framerate", &App->fps[0], App->fps.size(), 0, "Framerate", 0.0f, 100.0f, ImVec2(310, 100));
+			ImGui::Text("Framerate: %.1f", App->fps[App->fps.size() - 1]);
+
+			//Memory Consumption
+			sMStats stats = m_getMemoryStatistics();
+			memory.push_back((float)stats.totalReportedMemory);
+			if (memory.size() > MEMORY_LOG_SIZE)
+			{
+				memory.erase(memory.begin());
+			}		
+
+			ImGui::PlotHistogram("##memory", &memory[0], memory.size(), 0, "Memory Consumption", 0.0f, (float)stats.totalReportedMemory*1.2f, ImVec2(310, 100));
+			ImGui::Text("Total Reported: %u", stats.totalReportedMemory);
+			ImGui::Text("Total Actual: %u", stats.totalActualMemory);
+			ImGui::Text("Peak Reported: %u", stats.peakReportedMemory);
+			ImGui::Text("Peak Actual: %u", stats.peakActualMemory);
+			ImGui::Text("Accumulated Reported: %u", stats.accumulatedReportedMemory);
+			ImGui::Text("Accumulated Actual: %u", stats.accumulatedActualMemory);
+			ImGui::Text("Accumulated Alloc Unit Count: %u", stats.accumulatedAllocUnitCount);
+			ImGui::Text("Total Alloc Unit Count: %u", stats.totalAllocUnitCount);
+			ImGui::Text("Peak Alloc Unit Count: %u", stats.peakAllocUnitCount);
 		}
 
 		if (ImGui::CollapsingHeader("Window"))

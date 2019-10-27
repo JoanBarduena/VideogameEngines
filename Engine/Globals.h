@@ -61,7 +61,10 @@ enum update_status
 #define VSYNC true
 #define TITLE "Videogame Engine"
 #define ORGANIZATION "UPC"
+#define MEMORY_LOG_SIZE 100
+#define FPS_LOG_SIZE 100
 
 // Checkers Texture --------
 #define CHECKERS_HEIGHT 128
 #define CHECKERS_WIDTH 128
+
