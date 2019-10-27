@@ -2,6 +2,7 @@
 #define __MODULEGEOMETRY_H__
 
 #include "Module.h"
+#include "ModuleSceneIntro.h"
 
 #include "MathGeoLib/include/MathBuildConfig.h"
 #include "MathGeoLib/include/MathGeoLib.h"
@@ -22,7 +23,7 @@ public:
 	bool CleanUp();
 
 	void LoadGeometry(const char* full_path);
-	void LoadParShapes(par_shapes_mesh* par_mesh);
+	void LoadParShapes(par_shapes_mesh* par_mesh, Position pos);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);

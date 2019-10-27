@@ -121,7 +121,7 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 		App->Console_Log("Error loading scene %s", full_path);
 }
 
-void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh)
+void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 {
 	GameObject* obj = App->scene_intro->CreateGameObject();
 
@@ -156,6 +156,10 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh)
 
 	//Checkers texture to primitive
 	obj->Comp_Texture->texture = App->texture->CreateCheckerTexture();
+
+	obj->Comp_Transform->Position_.x = pos.x;
+	obj->Comp_Transform->Position_.y = pos.y;
+	obj->Comp_Transform->Position_.z = pos.z; 
 
 	//Generate the buffers 
 	VertexBuffer(obj->Comp_Mesh->id_vertex, obj->Comp_Mesh->num_vertex, obj->Comp_Mesh->vertex);

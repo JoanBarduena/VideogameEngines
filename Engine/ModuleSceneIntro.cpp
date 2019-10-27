@@ -104,7 +104,7 @@ void ModuleSceneIntro::Create_Sphere(int slices, int stacks, float x, float y, f
 	par_shapes_scale(Body, size, size, size);
 	par_shapes_translate(Body, position.x, position.y, position.z);
 
-	App->geometry->LoadParShapes(Body); 
+	App->geometry->LoadParShapes(Body, position); 
 }
 
 void ModuleSceneIntro::Create_Cube(float x, float y, float z, float size)
@@ -118,5 +118,5 @@ void ModuleSceneIntro::Create_Cube(float x, float y, float z, float size)
 	par_shapes_scale(Body, size, size, size);
 	par_shapes_translate(Body, position.x, position.y, position.z);
 
-	App->geometry->LoadParShapes(Body); 
+	App->geometry->LoadParShapes(Body, position); 
 }

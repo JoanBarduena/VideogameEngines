@@ -20,6 +20,30 @@ bool InspectorWindow::Draw()
 
 		//ImGui::InputText("Game Object", (char*)GO_Inspector->name.c_str(), 20, ImGuiInputTextFlags_EnterReturnsTrue);
 
+		if (ImGui::CollapsingHeader("Transform"))
+		{
+
+
+			float position[3];
+			position[0] = GO_Inspector->Comp_Transform->GetPosition().x;
+			position[1] = GO_Inspector->Comp_Transform->GetPosition().y;
+			position[2] = GO_Inspector->Comp_Transform->GetPosition().z;
+			
+			float rotation[3];
+			rotation[0] = GO_Inspector->Comp_Transform->GetRotationEuler().x;
+			rotation[1] = GO_Inspector->Comp_Transform->GetRotationEuler().y;
+			rotation[2] = GO_Inspector->Comp_Transform->GetRotationEuler().z;
+
+			float scale[3];
+			scale[0] = GO_Inspector->Comp_Transform->GetScale().x;
+			scale[1] = GO_Inspector->Comp_Transform->GetScale().y;
+			scale[2] = GO_Inspector->Comp_Transform->GetScale().z;
+			
+			ImGui::InputFloat3("Position", position);
+			ImGui::InputFloat3("Rotation", rotation);
+			ImGui::InputFloat3("Scale", scale);
+		}
+
 		if (ImGui::CollapsingHeader("Mesh"))
 		{
 			ImGui::Text("Vertices ID: %d", GO_Inspector->Comp_Mesh->id_vertex); 

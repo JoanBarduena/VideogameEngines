@@ -4,6 +4,7 @@
 #include "Component.h"
 #include "ComponentMesh.h"
 #include "ComponentTexture.h"
+#include "ComponentTransform.h"
 
 class GameObject
 {
@@ -23,6 +24,7 @@ public:
 
 	ComponentMesh* Comp_Mesh; 
 	ComponentTexture* Comp_Texture; 
+	ComponentTransform* Comp_Transform; 
 };
 
 
