@@ -128,33 +128,15 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	App->gui->Draw(); 
 	SDL_GL_SwapWindow(App->window->window);
 
-	// Testing render on texture
-	glGenFramebuffers(1, &FrameBufferName);
-
-	glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferName);
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-
-	glGenTextures(1, &RenderedTexture);
-	glBindTexture(GL_TEXTURE_2D, RenderedTexture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, App->window->width, App->window->height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, RenderedTexture, 0);
-
-	// Always check that our framebuffer is ok
-	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-		App->Console_Log("Error: Frame buffer is not complete");
-
 	GLenum DrawBuffers[1] = { GL_COLOR_ATTACHMENT0 };
 	glDrawBuffers(1, DrawBuffers);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(App->camera->GetViewMatrix());
 
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	glBindRenderbuffer(GL_RENDERBUFFER, 0);
 
 	return UPDATE_CONTINUE;
 }

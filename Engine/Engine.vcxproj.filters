@@ -165,6 +165,9 @@
     <ClInclude Include="ComponentTransform.h">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="SceneWindow.h">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -271,6 +274,9 @@
     </ClCompile>
     <ClCompile Include="ComponentTransform.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneWindow.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
