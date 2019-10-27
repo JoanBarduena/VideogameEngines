@@ -20,10 +20,10 @@ bool InspectorWindow::Draw()
 
 		//ImGui::InputText("Game Object", (char*)GO_Inspector->name.c_str(), 20, ImGuiInputTextFlags_EnterReturnsTrue);
 
+		ImGui::Checkbox("Active", &GO_Inspector->active);
+
 		if (ImGui::CollapsingHeader("Transform"))
 		{
-
-
 			float position[3];
 			position[0] = GO_Inspector->Comp_Transform->GetPosition().x;
 			position[1] = GO_Inspector->Comp_Transform->GetPosition().y;
@@ -55,6 +55,9 @@ bool InspectorWindow::Draw()
 		if (ImGui::CollapsingHeader("Texture"))
 		{
 			ImGui::Text("Texture ID: %d", GO_Inspector->Comp_Texture->texture->textureID); 
+			ImGui::Text("Texture Width: %d", GO_Inspector->Comp_Texture->texture->width);
+			ImGui::Text("Texture Height: %d", GO_Inspector->Comp_Texture->texture->height);
+			ImGui::Text("Texture Path: %s", GO_Inspector->Comp_Texture->texture->path.c_str());
 			ImGui::Text("Preview:");
 			ImGui::Image((ImTextureID*)GO_Inspector->Comp_Texture->texture->textureID, ImVec2(200, 200));
 		}

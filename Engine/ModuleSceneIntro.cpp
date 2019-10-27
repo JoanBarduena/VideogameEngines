@@ -73,7 +73,8 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
 	{
-		App->renderer3D->DrawMesh((*iterator));
+		if((*iterator)->active)
+			App->renderer3D->DrawMesh((*iterator));
 	}
 
 	return UPDATE_CONTINUE;
