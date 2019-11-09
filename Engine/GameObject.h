@@ -20,6 +20,8 @@ public:
 
 	string name; 
 	bool active; 
+	uint id; 
+
 	vector<Component*> components; 
 
 	ComponentMesh* Comp_Mesh; 

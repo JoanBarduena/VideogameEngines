@@ -88,6 +88,7 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 
 	GameObject* object = nullptr; 
 	object = new GameObject(GOname);
+	object->id = game_objects.size();
 
 	game_objects.push_back(object); 
 

@@ -15,5 +15,5 @@ public:
 
 	bool starts_clicked = true;
 
-	uint TreeNode_Clicked = -1; 
+	uint node_clicked = -1;
 };
