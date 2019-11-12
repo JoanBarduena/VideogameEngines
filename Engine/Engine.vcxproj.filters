@@ -37,6 +37,9 @@
     <Filter Include="Sources\Tools\mmgr">
       <UniqueIdentifier>{22b1237f-557a-4801-b938-f66066992d4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\PhysFS">
+      <UniqueIdentifier>{ef52ac0f-2d9e-4222-83a3-dae694228012}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModuleCamera3D.h">
@@ -179,6 +182,9 @@
     <ClInclude Include="ModuleImporter.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFileSystem.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -292,6 +298,9 @@
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="ModuleImporter.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFileSystem.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>

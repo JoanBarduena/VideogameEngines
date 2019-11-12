@@ -7,10 +7,11 @@ Application::Application()
 	scene_intro =	new ModuleSceneIntro(this);
 	renderer3D =	new ModuleRenderer3D(this);
 	camera =		new ModuleCamera3D(this);
-	gui =			new ModuleGui(this);
+	gui =			new ModuleGui(this); 
 	geometry =		new ModuleGeometry(this);
 	texture =		new ModuleTexture(this);
 	importer =		new ModuleImporter(this); 
+	filesystem =	new ModuleFileSystem(this, ASSETS_FOLDER);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -24,6 +25,7 @@ Application::Application()
 	//Geometry and textures
 	AddModule(geometry);
 	AddModule(texture);
+	AddModule(importer); 
 
 	// Scenes
 	AddModule(scene_intro);
