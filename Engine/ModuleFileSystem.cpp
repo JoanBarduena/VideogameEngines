@@ -49,7 +49,7 @@ ModuleFileSystem::ModuleFileSystem(bool start_enabled, const char* game_path) : 
 
 	// Generate IO interfaces
 	CreateAssimpIO();
-	CreateBassIO();
+	//CreateBassIO();
 }
 
 // Destructor
