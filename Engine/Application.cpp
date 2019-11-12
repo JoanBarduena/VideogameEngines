@@ -10,6 +10,7 @@ Application::Application()
 	gui =			new ModuleGui(this);
 	geometry =		new ModuleGeometry(this);
 	texture =		new ModuleTexture(this);
+	importer =		new ModuleImporter(this); 
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order

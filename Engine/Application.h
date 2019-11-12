@@ -25,6 +25,7 @@ public:
 	ModuleGui*				gui = nullptr;
 	ModuleGeometry*			geometry = nullptr;
 	ModuleTexture*			texture = nullptr;
+	ModuleImporter*			importer = nullptr; 
 
 private:
 
