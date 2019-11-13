@@ -60,16 +60,15 @@ bool ModuleGeometry::CleanUp()
 
 void ModuleGeometry::LoadGeometry(const char* full_path)
 {
-	const aiScene* scene = aiImportFile(full_path, aiProcessPreset_TargetRealtime_MaxQuality);
+	const aiScene* file = aiImportFile(full_path, aiProcessPreset_TargetRealtime_MaxQuality);
 
-	if (scene != nullptr && scene->HasMeshes())
+	if (file != nullptr && file->HasMeshes())
 	{
-
-		for (int i = 0; i < scene->mNumMeshes; ++i)
+		for (int i = 0; i < file->mNumMeshes; ++i)
 		{
 			GameObject* obj = App->scene_intro->CreateGameObject(); //GameObject* obj = creategameobject(); 
 
-			aiMesh *new_mesh = scene->mMeshes[i];
+			aiMesh *new_mesh = file->mMeshes[i];
 
 			obj->Comp_Mesh->num_vertex = new_mesh->mNumVertices; //obj->getcomponentmesh->num_vertex
 			obj->Comp_Mesh->vertex = new float3[obj->Comp_Mesh->num_vertex];
@@ -114,7 +113,7 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 			TextureBuffer(obj->Comp_Mesh->id_texture, obj->Comp_Mesh->num_texture, obj->Comp_Mesh->texture_pos);		
 		}	
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-		aiReleaseImport(scene);
+		aiReleaseImport(file);
 		App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
 	}
 	else
@@ -190,4 +189,54 @@ void ModuleGeometry::TextureBuffer(uint &id, uint &num_texture, float* texture_p
 	glBindBuffer(GL_ARRAY_BUFFER, id);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * num_texture * 2, texture_pos, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+bool ModuleGeometry::SaveMesh(GameObject* GameObj)
+{
+	// amount of indices / vertices / colors / normals / texture_coords / AABB
+	uint ranges[2] = { GameObj->Comp_Mesh->num_index, GameObj->Comp_Mesh->num_vertex };
+
+	uint size = sizeof(ranges) + sizeof(uint) * GameObj->Comp_Mesh->num_index + sizeof(float) * GameObj->Comp_Mesh->num_vertex * 3;
+
+	// Allocate
+	char* data = new char[size]; 
+	char* cursor = data;
+
+	// First store ranges
+	uint bytes = sizeof(ranges); 
+	memcpy(cursor, ranges, bytes);
+
+	// Store indices
+	cursor += bytes; 
+	bytes = sizeof(uint) * GameObj->Comp_Mesh->num_index;
+	memcpy(cursor, GameObj->Comp_Mesh->index, bytes);
+
+	uint ret = App->filesystem->Save(LIBRARY_MESH_FOLDER, data, size);
+
+	RELEASE_ARRAY(data);
+	return ret > 0; 
+}
+
+bool ModuleGeometry::LoadMesh(GameObject* GameObj)
+{
+	bool ret = true; 
+	char* buffer; // just to test
+
+	char* cursor = buffer;
+
+	// amount of indices / vertices / colors / normals / texture_coords
+	uint ranges[5];
+	uint bytes = sizeof(ranges);
+	memcpy(ranges, cursor, bytes);
+
+	GameObj->Comp_Mesh->num_index = ranges[0];
+	GameObj->Comp_Mesh->num_vertex = ranges[1];
+
+	// Load indices
+	cursor += bytes;
+	bytes = sizeof(uint) * GameObj->Comp_Mesh->num_index;
+	GameObj->Comp_Mesh->index = new uint[GameObj->Comp_Mesh->num_index];
+	memcpy(GameObj->Comp_Mesh->index, cursor, bytes);
+
+	return ret; 
 }

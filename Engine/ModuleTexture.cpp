@@ -197,3 +197,29 @@ TextureStruct* ModuleTexture::CreateDefeaultTexture() const
 
 	return default_tex;
 }
+
+bool ModuleTexture::ImportTexture(const void* buffer, uint size, const char* original_file)
+{
+	bool ret = true;  
+
+	ILuint BufferSize;
+	ILubyte* data;
+
+	ilSetInteger(IL_DXTC_FORMAT, IL_DXT5);// To pick a specific DXT compression use
+
+	BufferSize = ilSaveL(IL_DDS, NULL, 0); // Get the size of the data buffer
+
+	if (BufferSize > 0)
+	{
+		data = new ILubyte[BufferSize]; // allocate data buffer
+
+		if (ilSaveL(IL_DDS, data, BufferSize) > 0) // Save to buffer with the ilSaveIL function
+			ret = App->filesystem->Save(LIBRARY_TEXTURES_FOLDER, data, BufferSize);
+
+		RELEASE_ARRAY(data);
+	}
+
+	return ret;
+}
+
+

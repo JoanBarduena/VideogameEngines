@@ -30,5 +30,7 @@ public:
 
 	TextureStruct* DefaultTexture = nullptr; 
 
+	bool ModuleTexture::ImportTexture(const void* buffer, uint size, const char* file);
+
 	GLuint image_name = 0;
 };

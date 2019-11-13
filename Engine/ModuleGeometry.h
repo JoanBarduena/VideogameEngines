@@ -27,7 +27,11 @@ public:
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);
-	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos); 
+	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos);
+
+	bool SaveMesh(GameObject* mesh);
+	bool LoadMesh(GameObject* GameObj);
+
 };
 
 
