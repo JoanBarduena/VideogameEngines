@@ -27,7 +27,7 @@ bool ModuleSceneIntro::Start()
 	
 	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
 	{
-		(*iterator)->Comp_Texture->texture = HouseTexture; 
+		(*iterator)->texture->texture = HouseTexture; 
 	}
 
 	//Create_Cube(0,0,0,2);

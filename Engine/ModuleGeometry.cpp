@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "ModuleGeometry.h"
 #include "Application.h"
+#include "SceneImporter.h"
 
 #include "Assimp/include/cimport.h"
 #include "Assimp/include/scene.h"
@@ -70,54 +71,54 @@ void ModuleGeometry::LoadGeometry(const char* full_path)
 
 			aiMesh *new_mesh = file->mMeshes[i];
 
-			obj->Comp_Mesh->num_vertex = new_mesh->mNumVertices; //obj->getcomponentmesh->num_vertex
-			obj->Comp_Mesh->vertex = new float3[obj->Comp_Mesh->num_vertex];
-			//memcpy(m->vertex, new_mesh->mVertices, sizeof(float) * m->num_vertex);
+			obj->mesh->num_vertex = new_mesh->mNumVertices; //obj->getcomponentmesh->num_vertex
+			obj->mesh->vertices = new float3[obj->mesh->num_vertex];
+			memcpy(obj->mesh->vertices, new_mesh->mVertices, sizeof(float3) * obj->mesh->num_vertex);
 
-			App->Console_Log("New mesh with %d vertices", obj->Comp_Mesh->num_vertex);
+			App->Console_Log("New mesh with %d vertices", obj->mesh->num_vertex);
 
 			for (uint i = 0; i < new_mesh->mNumVertices; ++i)
 			{
-				obj->Comp_Mesh->vertex[i].x = new_mesh->mVertices[i].x;
-				obj->Comp_Mesh->vertex[i].y = new_mesh->mVertices[i].y;
-				obj->Comp_Mesh->vertex[i].z = new_mesh->mVertices[i].z;
+				obj->mesh->vertices[i].x = new_mesh->mVertices[i].x;
+				obj->mesh->vertices[i].y = new_mesh->mVertices[i].y;
+				obj->mesh->vertices[i].z = new_mesh->mVertices[i].z;
 			}
 
 			if (new_mesh->HasFaces())
 			{
-				obj->Comp_Mesh->num_index = new_mesh->mNumFaces * 3;
-				obj->Comp_Mesh->index = new uint[obj->Comp_Mesh->num_index]; // assume each face is a triangle
+				obj->mesh->num_index = new_mesh->mNumFaces * 3;
+				obj->mesh->indices = new uint[obj->mesh->num_index]; // assume each face is a triangle
 
 				for (uint i = 0; i < new_mesh->mNumFaces; ++i)
 				{
 					if (new_mesh->mFaces[i].mNumIndices != 3)
-						App->Console_Log("WARNING, geometry face with != 3 indices!");
+						App->Console_Log("[WARNING]: Geometry face with != 3 indices!");
 					else
-						memcpy(&obj->Comp_Mesh->index[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
+						memcpy(&obj->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
 				}
 			}
 			if (new_mesh->HasTextureCoords(0))
 			{
-				obj->Comp_Mesh->num_texture = obj->Comp_Mesh->num_vertex;
-				obj->Comp_Mesh->texture_pos = new float[obj->Comp_Mesh->num_texture * 2];
+				obj->mesh->num_texture = obj->mesh->num_vertex;
+				obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
 
-				for (int i = 0; i < obj->Comp_Mesh->num_texture; ++i)
+				for (int i = 0; i < obj->mesh->num_texture; ++i)
 				{
-					obj->Comp_Mesh->texture_pos[i * 2] = new_mesh->mTextureCoords[0][i].x;
-					obj->Comp_Mesh->texture_pos[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+					obj->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
+					obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
 				}
 			}
 			//Generate buffer for each mesh and send vertex and indices to VRAM
-			VertexBuffer(obj->Comp_Mesh->id_vertex, obj->Comp_Mesh->num_vertex, obj->Comp_Mesh->vertex);
-			IndexBuffer(obj->Comp_Mesh->id_index, obj->Comp_Mesh->num_index, obj->Comp_Mesh->index);
-			TextureBuffer(obj->Comp_Mesh->id_texture, obj->Comp_Mesh->num_texture, obj->Comp_Mesh->texture_pos);		
+			VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
+			IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
+			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);	
 		}	
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		aiReleaseImport(file);
 		App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
 	}
 	else
-		App->Console_Log("Error loading scene %s", full_path);
+		App->Console_Log("[WARNING]: Error loading mesh with path %s", full_path);
 }
 
 void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
@@ -125,46 +126,46 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 	GameObject* obj = App->scene_intro->CreateGameObject();
 
 	// VERTEX ----------------
-	obj->Comp_Mesh->num_vertex = par_mesh->npoints;
-	obj->Comp_Mesh->vertex = new float3[obj->Comp_Mesh->num_vertex];
+	obj->mesh->num_vertex = par_mesh->npoints;
+	obj->mesh->vertices = new float3[obj->mesh->num_vertex];
 
-	for (int i = 0; i < obj->Comp_Mesh->num_vertex; i++)
+	for (int i = 0; i < obj->mesh->num_vertex; i++)
 	{
 		int j = i * 3;
-		obj->Comp_Mesh->vertex[i].x = par_mesh->points[j];
-		obj->Comp_Mesh->vertex[i].y = par_mesh->points[j + 1];
-		obj->Comp_Mesh->vertex[i].z = par_mesh->points[j + 2];
+		obj->mesh->vertices[i].x = par_mesh->points[j];
+		obj->mesh->vertices[i].y = par_mesh->points[j + 1];
+		obj->mesh->vertices[i].z = par_mesh->points[j + 2];
 	}
 
 	// INDEX ------------
-	obj->Comp_Mesh->num_index = par_mesh->ntriangles * 3;
-	obj->Comp_Mesh->index = new uint[obj->Comp_Mesh->num_index];
+	obj->mesh->num_index = par_mesh->ntriangles * 3;
+	obj->mesh->indices = new uint[obj->mesh->num_index];
 
-	for (int i = 0; i < obj->Comp_Mesh->num_index; i++)
+	for (int i = 0; i < obj->mesh->num_index; i++)
 	{
-		obj->Comp_Mesh->index[i] = (uint)par_mesh->triangles[i];
+		obj->mesh->indices[i] = (uint)par_mesh->triangles[i];
 	}
 
 	// TEXTURE ----------------
-	obj->Comp_Mesh->num_texture = par_mesh->npoints;
-	obj->Comp_Mesh->texture_pos = new float[obj->Comp_Mesh->num_texture * 2];
+	obj->mesh->num_texture = par_mesh->npoints;
+	obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
 
 	//Copy the par_shapes texture coordinates
-	for (int i = 0; i < obj->Comp_Mesh->num_texture * 2; ++i)
-		obj->Comp_Mesh->texture_pos[i] = par_mesh->tcoords[i];
+	for (int i = 0; i < obj->mesh->num_texture * 2; ++i)
+		obj->mesh->texture_coords[i] = par_mesh->tcoords[i];
 
 	//Checkers texture to primitive
-	obj->Comp_Texture->texture = App->texture->CreateCheckerTexture();
+	obj->texture->texture = App->texture->CreateCheckerTexture();
 
-	obj->Comp_Transform->Position_.x = pos.x;
-	obj->Comp_Transform->Position_.y = pos.y;
-	obj->Comp_Transform->Position_.z = pos.z; 
+	obj->transform->Position_.x = pos.x;
+	obj->transform->Position_.y = pos.y;
+	obj->transform->Position_.z = pos.z; 
 
 	//Generate the buffers 
-	VertexBuffer(obj->Comp_Mesh->id_vertex, obj->Comp_Mesh->num_vertex, obj->Comp_Mesh->vertex);
-	IndexBuffer( obj->Comp_Mesh->id_index, obj->Comp_Mesh->num_index, obj->Comp_Mesh->index);
+	VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
+	IndexBuffer( obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
 	//Generate the buffer for texture coords
-	TextureBuffer(obj->Comp_Mesh->id_texture, obj->Comp_Mesh->num_texture, obj->Comp_Mesh->texture_pos);
+	TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
 }
 
 void ModuleGeometry::VertexBuffer(uint &id, uint &size, float3* vertices)
@@ -189,54 +190,4 @@ void ModuleGeometry::TextureBuffer(uint &id, uint &num_texture, float* texture_p
 	glBindBuffer(GL_ARRAY_BUFFER, id);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * num_texture * 2, texture_pos, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-
-bool ModuleGeometry::SaveMesh(GameObject* GameObj)
-{
-	// amount of indices / vertices / colors / normals / texture_coords / AABB
-	uint ranges[2] = { GameObj->Comp_Mesh->num_index, GameObj->Comp_Mesh->num_vertex };
-
-	uint size = sizeof(ranges) + sizeof(uint) * GameObj->Comp_Mesh->num_index + sizeof(float) * GameObj->Comp_Mesh->num_vertex * 3;
-
-	// Allocate
-	char* data = new char[size]; 
-	char* cursor = data;
-
-	// First store ranges
-	uint bytes = sizeof(ranges); 
-	memcpy(cursor, ranges, bytes);
-
-	// Store indices
-	cursor += bytes; 
-	bytes = sizeof(uint) * GameObj->Comp_Mesh->num_index;
-	memcpy(cursor, GameObj->Comp_Mesh->index, bytes);
-
-	uint ret = App->filesystem->Save(LIBRARY_MESH_FOLDER, data, size);
-
-	RELEASE_ARRAY(data);
-	return ret > 0; 
-}
-
-bool ModuleGeometry::LoadMesh(GameObject* GameObj)
-{
-	bool ret = true; 
-	char* buffer; // just to test
-
-	char* cursor = buffer;
-
-	// amount of indices / vertices / colors / normals / texture_coords
-	uint ranges[5];
-	uint bytes = sizeof(ranges);
-	memcpy(ranges, cursor, bytes);
-
-	GameObj->Comp_Mesh->num_index = ranges[0];
-	GameObj->Comp_Mesh->num_vertex = ranges[1];
-
-	// Load indices
-	cursor += bytes;
-	bytes = sizeof(uint) * GameObj->Comp_Mesh->num_index;
-	GameObj->Comp_Mesh->index = new uint[GameObj->Comp_Mesh->num_index];
-	memcpy(GameObj->Comp_Mesh->index, cursor, bytes);
-
-	return ret; 
 }

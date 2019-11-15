@@ -24,9 +24,9 @@ public:
 
 	vector<Component*> components; 
 
-	ComponentMesh* Comp_Mesh; 
-	ComponentTexture* Comp_Texture; 
-	ComponentTransform* Comp_Transform; 
+	ComponentMesh* mesh; 
+	ComponentTexture* texture; 
+	ComponentTransform* transform; 
 };
 
 

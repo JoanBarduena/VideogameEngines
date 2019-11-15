@@ -179,10 +179,10 @@
     </ClInclude>
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="GameWindow.h" />
-    <ClInclude Include="ModuleImporter.h">
+    <ClInclude Include="ModuleFileSystem.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleFileSystem.h">
+    <ClInclude Include="SceneImporter.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -297,10 +297,10 @@
     </ClCompile>
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="GameWindow.cpp" />
-    <ClCompile Include="ModuleImporter.cpp">
+    <ClCompile Include="ModuleFileSystem.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleFileSystem.cpp">
+    <ClCompile Include="SceneImporter.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>

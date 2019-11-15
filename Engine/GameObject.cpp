@@ -3,9 +3,9 @@
 GameObject::GameObject(string name_)
 {
 	this->name = name_; 
-	Comp_Mesh = (ComponentMesh*)CreateComponent(Type::Mesh); 
-	Comp_Texture = (ComponentTexture*)CreateComponent(Type::Texture);
-	Comp_Transform = (ComponentTransform*)CreateComponent(Type::Transform);
+	mesh = (ComponentMesh*)CreateComponent(Type::Mesh); 
+	texture = (ComponentTexture*)CreateComponent(Type::Texture);
+	transform = (ComponentTransform*)CreateComponent(Type::Transform);
 }
 
 GameObject::~GameObject()

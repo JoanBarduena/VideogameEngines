@@ -1,4 +1,31 @@
-﻿  ModuleGeometry.cpp
+﻿  Application.cpp
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+  ModuleGeometry.cpp
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
@@ -25,12 +52,98 @@ C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(67,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(104,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(131,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(143,20): warning C4018: '<': no coinciden signed/unsigned
-  ModuleWindow.cpp
-C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(153,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(68,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(105,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(132,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(144,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleGui.cpp
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(154,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(169,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(170,54): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(171,61): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(172,56): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  SceneImporter.cpp
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(173,54): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+  ModuleInput.cpp
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(106,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(160,49): warning C4244: 'argumento': conversión de 'uint64_t' a 'uint32_t'; posible pérdida de datos
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(892,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(968,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1049,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1126,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1203,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1279,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1360,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1437,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1518,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1537,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1597,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1616,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1697,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1717,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1760,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1800,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1842,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+  ModuleTexture.cpp
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
@@ -58,5 +171,4 @@ C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
   Generando código...
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
-C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGeometry.cpp(225): warning C4700: se utilizó la variable local 'buffer' sin inicializar
   Engine.vcxproj -> C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe

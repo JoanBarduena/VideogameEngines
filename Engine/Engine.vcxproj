@@ -112,7 +112,7 @@
     <ClInclude Include="ModuleFileSystem.h" />
     <ClInclude Include="ModuleGeometry.h" />
     <ClInclude Include="ModuleGui.h" />
-    <ClInclude Include="ModuleImporter.h" />
+    <ClInclude Include="SceneImporter.h" />
     <ClInclude Include="ModuleRenderer3D.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleSceneIntro.h" />
@@ -156,7 +156,7 @@
     <ClCompile Include="ModuleFileSystem.cpp" />
     <ClCompile Include="ModuleGeometry.cpp" />
     <ClCompile Include="ModuleGui.cpp" />
-    <ClCompile Include="ModuleImporter.cpp" />
+    <ClCompile Include="SceneImporter.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRenderer3D.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />

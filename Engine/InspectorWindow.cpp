@@ -25,19 +25,19 @@ bool InspectorWindow::Draw()
 		if (ImGui::CollapsingHeader("Transform"))
 		{
 			float position[3];
-			position[0] = GO_Inspector->Comp_Transform->GetPosition().x;
-			position[1] = GO_Inspector->Comp_Transform->GetPosition().y;
-			position[2] = GO_Inspector->Comp_Transform->GetPosition().z;
+			position[0] = GO_Inspector->transform->GetPosition().x;
+			position[1] = GO_Inspector->transform->GetPosition().y;
+			position[2] = GO_Inspector->transform->GetPosition().z;
 			
 			float rotation[3];
-			rotation[0] = GO_Inspector->Comp_Transform->GetRotationEuler().x;
-			rotation[1] = GO_Inspector->Comp_Transform->GetRotationEuler().y;
-			rotation[2] = GO_Inspector->Comp_Transform->GetRotationEuler().z;
+			rotation[0] = GO_Inspector->transform->GetRotationEuler().x;
+			rotation[1] = GO_Inspector->transform->GetRotationEuler().y;
+			rotation[2] = GO_Inspector->transform->GetRotationEuler().z;
 
 			float scale[3];
-			scale[0] = GO_Inspector->Comp_Transform->GetScale().x;
-			scale[1] = GO_Inspector->Comp_Transform->GetScale().y;
-			scale[2] = GO_Inspector->Comp_Transform->GetScale().z;
+			scale[0] = GO_Inspector->transform->GetScale().x;
+			scale[1] = GO_Inspector->transform->GetScale().y;
+			scale[2] = GO_Inspector->transform->GetScale().z;
 			
 			ImGui::InputFloat3("Position", position);
 			ImGui::InputFloat3("Rotation", rotation);
@@ -46,20 +46,20 @@ bool InspectorWindow::Draw()
 
 		if (ImGui::CollapsingHeader("Mesh"))
 		{
-			ImGui::Text("Vertices ID: %d", GO_Inspector->Comp_Mesh->id_vertex); 
-			ImGui::Text("Vertices Num: %d", GO_Inspector->Comp_Mesh->num_vertex);
-			ImGui::Text("Indices ID: %d", GO_Inspector->Comp_Mesh->id_index); 
-			ImGui::Text("Indices Num: %d", GO_Inspector->Comp_Mesh->num_index);
+			ImGui::Text("Vertices ID: %d", GO_Inspector->mesh->id_vertex); 
+			ImGui::Text("Vertices Num: %d", GO_Inspector->mesh->num_vertex);
+			ImGui::Text("Indices ID: %d", GO_Inspector->mesh->id_index); 
+			ImGui::Text("Indices Num: %d", GO_Inspector->mesh->num_index);
 		}
 
 		if (ImGui::CollapsingHeader("Texture"))
 		{
-			ImGui::Text("Texture ID: %d", GO_Inspector->Comp_Texture->texture->textureID); 
-			ImGui::Text("Texture Width: %d", GO_Inspector->Comp_Texture->texture->width);
-			ImGui::Text("Texture Height: %d", GO_Inspector->Comp_Texture->texture->height);
-			ImGui::Text("Texture Path: %s", GO_Inspector->Comp_Texture->texture->path.c_str());
+			ImGui::Text("Texture ID: %d", GO_Inspector->texture->texture->textureID); 
+			ImGui::Text("Texture Width: %d", GO_Inspector->texture->texture->width);
+			ImGui::Text("Texture Height: %d", GO_Inspector->texture->texture->height);
+			ImGui::Text("Texture Path: %s", GO_Inspector->texture->texture->path.c_str());
 			ImGui::Text("Preview:");
-			ImGui::Image((ImTextureID*)GO_Inspector->Comp_Texture->texture->textureID, ImVec2(200, 200));
+			ImGui::Image((ImTextureID*)GO_Inspector->texture->texture->textureID, ImVec2(200, 200));
 		}
 
 		ImGui::End(); 

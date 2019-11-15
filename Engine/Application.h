@@ -12,7 +12,6 @@
 #include "ModuleGeometry.h"
 #include "ModuleTexture.h"
 #include "ModuleFileSystem.h"
-#include "ModuleImporter.h"
 
 using namespace std; 
 
@@ -27,7 +26,6 @@ public:
 	ModuleGui*				gui = nullptr;
 	ModuleGeometry*			geometry = nullptr;
 	ModuleTexture*			texture = nullptr;
-	ModuleImporter*			importer = nullptr; 
 	ModuleFileSystem*		filesystem = nullptr; 
 
 private:

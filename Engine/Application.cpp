@@ -10,7 +10,6 @@ Application::Application()
 	gui =			new ModuleGui(this); 
 	geometry =		new ModuleGeometry(this);
 	texture =		new ModuleTexture(this);
-	importer =		new ModuleImporter(this); 
 	filesystem =	new ModuleFileSystem(this, ASSETS_FOLDER);
 
 	// The order of calls is very important!
@@ -25,7 +24,6 @@ Application::Application()
 	//Geometry and textures
 	AddModule(geometry);
 	AddModule(texture);
-	AddModule(importer); 
 
 	// Scenes
 	AddModule(scene_intro);
