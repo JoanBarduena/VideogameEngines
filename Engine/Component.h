@@ -1,18 +1,20 @@
 #pragma once
 class GameObject; 
 
-enum Type 
-{
-	Transform, 
-	Mesh, 
-	Texture
-};
+
 
 class Component
 {
 public:
 
-	Component(GameObject* my_GO, Type type_); 
+	enum class Type
+	{
+		Transform,
+		Mesh,
+		Texture
+	};
+
+	Component(GameObject* my_GO, Component::Type type_); 
 	~Component(); 
 
 	virtual bool Enable(); 
@@ -21,7 +23,7 @@ public:
 
 public: 
 
-	Type type;
+	Component::Type type;
 	bool active;
 	GameObject* my_go; 
 };

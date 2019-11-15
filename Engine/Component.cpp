@@ -1,6 +1,6 @@
 #include "Component.h"
 
-Component::Component(GameObject * my_GO, Type type_)
+Component::Component(GameObject * my_GO, Component::Type type_)
 {
 	this->my_go = my_GO; 
 	this->type = type_; 

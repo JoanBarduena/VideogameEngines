@@ -50,12 +50,7 @@ bool SceneImporter::ImportMesh(const char* file, const char* path, std::string& 
 	output_file += file; 
 
 	char* buffer = nullptr; 
-	uint size = App->filesystem->Load(output_file.data(), &buffer);
-
-	if (size == 0)
-	{
-
-	}
+	App->filesystem->Load(output_file.data(), &buffer);
 
 	char* cursor = buffer;
 

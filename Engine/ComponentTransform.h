@@ -1,10 +1,10 @@
-#pragma once
+#ifndef __COMPONENT_TRANSFORM_H__
+#define __COMPONENT_TRANSFORM_H__
+
 #include "Component.h"
 #include "Globals.h"
 
-#include "MathGeoLib/include/MathBuildConfig.h"
 #include "MathGeoLib/include/MathGeoLib.h"
-
 
 class ComponentTransform : public Component
 {
@@ -14,16 +14,26 @@ public:
 	~ComponentTransform(); 
 
 	//bool Enable();
-	//const void SetPosition(float3 &pos);
+	const void SetPosition(float3 &new_pos);
 
 	float3 GetPosition() const; 
-	float3 GetRotationEuler() const;
+	Quat GetRotationEuler() const;
 	float3 GetScale() const;
 
-	float3 Position_;
-	float3 Rotation; 
-	float3 Scale; 
+	void UpdateLocalTransform();
 
-	//float4x4 transform_local = float4x4::zero;
-	//float4x4 transform_global = float4x4::zero;
+private:
+
+	float3 position = float3::zero;
+	Quat rotation = Quat::identity; 
+	float3 scale = float3::zero; 
+
+	float4x4 transform_local = float4x4::identity;
+	float4x4 transform_global = float4x4::identity;
+
+public:
+
+	bool is_transformed = true;
 };
+
+#endif //__COMPONENT_TRANSFORM_H__

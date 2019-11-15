@@ -3,28 +3,28 @@
 GameObject::GameObject(string name_)
 {
 	this->name = name_; 
-	mesh = (ComponentMesh*)CreateComponent(Type::Mesh); 
-	texture = (ComponentTexture*)CreateComponent(Type::Texture);
-	transform = (ComponentTransform*)CreateComponent(Type::Transform);
+	mesh = (ComponentMesh*)CreateComponent(Component::Type::Mesh); 
+	texture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
+	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
 }
 
 GameObject::~GameObject()
 {
 }
 
-Component* GameObject::CreateComponent(Type type)
+Component* GameObject::CreateComponent(Component::Type type)
 {
 	Component* comp = nullptr; 
 
 	switch (type)
 	{
-	case Type::Mesh:
+	case Component::Type::Mesh:
 		comp = new ComponentMesh(this); 
 		break; 
-	case Type::Texture:
+	case Component::Type::Texture:
 		comp = new ComponentTexture(this); 
 		break; 
-	case Type::Transform:
+	case Component::Type::Transform:
 		comp = new ComponentTransform(this); 
 		break; 
 	}

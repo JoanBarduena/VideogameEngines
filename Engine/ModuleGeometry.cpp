@@ -157,9 +157,9 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 	//Checkers texture to primitive
 	obj->texture->texture = App->texture->CreateCheckerTexture();
 
-	obj->transform->Position_.x = pos.x;
-	obj->transform->Position_.y = pos.y;
-	obj->transform->Position_.z = pos.z; 
+	//obj->transform->position.x = pos.x;
+	//obj->transform->position.y = pos.y;
+	//obj->transform->position.z = pos.z; 
 
 	//Generate the buffers 
 	VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);

@@ -12,7 +12,7 @@ public:
 
 	GameObject(string name); 
 	~GameObject();
-	Component * CreateComponent(Type type);
+	Component* CreateComponent(Component::Type type);
 
 	void Update(); 
 
