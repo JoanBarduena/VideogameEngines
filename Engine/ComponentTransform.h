@@ -19,8 +19,12 @@ public:
 	float3 GetPosition() const; 
 	Quat GetRotationEuler() const;
 	float3 GetScale() const;
+	float4x4 GetGlobalTransform() const;
 
 	void UpdateLocalTransform();
+	void UpdateTRS();
+	void UpdateEulerAngles();
+	void UpdateTransformInGame(const float4x4 parent_global);
 
 private:
 
@@ -30,6 +34,9 @@ private:
 
 	float4x4 transform_local = float4x4::identity;
 	float4x4 transform_global = float4x4::identity;
+	float4x4 transform_global_transposed = float4x4::identity; 
+
+	float3 euler_rotation = float3::zero; 
 
 public:
 

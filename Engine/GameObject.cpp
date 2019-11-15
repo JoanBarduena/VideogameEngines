@@ -37,3 +37,9 @@ Component* GameObject::CreateComponent(Component::Type type)
 void GameObject::Update()
 {
 }
+
+void GameObject::UpdateTransformation(GameObject* GO)
+{
+	ComponentTransform* transform = GO->transform;
+	transform->UpdateTransformInGame(GO->transform->GetGlobalTransform());
+}

@@ -14,7 +14,9 @@ public:
 	~GameObject();
 	Component* CreateComponent(Component::Type type);
 
-	void Update(); 
+	void Update();
+	void UpdateTransformation(GameObject* GO);
+
 
 public:
 
