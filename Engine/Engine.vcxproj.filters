@@ -481,9 +481,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="HierarchyWindow.cpp">
-      <Filter>Sources\Modules\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="InspectorWindow.cpp">
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
@@ -596,6 +593,9 @@
     </ClCompile>
     <ClCompile Include="MathGeoLib\include\Time\Clock.cpp">
       <Filter>Sources\Tools\mathgeolib\time</Filter>
+    </ClCompile>
+    <ClCompile Include="HierarchyWindow.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

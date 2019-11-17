@@ -18,37 +18,39 @@ bool InspectorWindow::Draw()
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(7, 2));
 		ImGui::Begin("Inspector"); 
 
-		//ImGui::InputText("Game Object", (char*)GO_Inspector->name.c_str(), 20, ImGuiInputTextFlags_EnterReturnsTrue);
-
-		ImGui::Checkbox("Active", &GO_Inspector->active);
-
-		if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
+		if (selected_go != nullptr)
 		{
-			float3 position = GO_Inspector->transform->GetPosition(); 
-			
-			if (ImGui::DragFloat3("Position", (float*)&position, 0.15f))
+
+			ImGui::Checkbox("Active", &selected_go->active);
+
+			if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
 			{
-				GO_Inspector->transform->SetPosition(position);
+				float3 position = selected_go->transform->GetPosition();
+
+				if (ImGui::DragFloat3("Position", (float*)&position, 0.15f))
+				{
+					selected_go->transform->SetPosition(position);
+				}
+
 			}
 
-		}
+			if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
+			{
+				ImGui::Text("Vertices ID: %d", selected_go->mesh->id_vertex);
+				ImGui::Text("Vertices Num: %d", selected_go->mesh->num_vertex);
+				ImGui::Text("Indices ID: %d", selected_go->mesh->id_index);
+				ImGui::Text("Indices Num: %d", selected_go->mesh->num_index);
+			}
 
-		if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
-		{
-			ImGui::Text("Vertices ID: %d", GO_Inspector->mesh->id_vertex); 
-			ImGui::Text("Vertices Num: %d", GO_Inspector->mesh->num_vertex);
-			ImGui::Text("Indices ID: %d", GO_Inspector->mesh->id_index); 
-			ImGui::Text("Indices Num: %d", GO_Inspector->mesh->num_index);
-		}
-
-		if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
-		{
-			ImGui::Text("Texture ID: %d", GO_Inspector->texture->texture->textureID); 
-			ImGui::Text("Texture Width: %d", GO_Inspector->texture->texture->width);
-			ImGui::Text("Texture Height: %d", GO_Inspector->texture->texture->height);
-			ImGui::Text("Texture Path: %s", GO_Inspector->texture->texture->path.c_str());
-			ImGui::Text("Preview:");
-			ImGui::Image((ImTextureID*)GO_Inspector->texture->texture->textureID, ImVec2(200, 200));
+			if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
+			{
+				ImGui::Text("Texture ID: %d", selected_go->texture->texture->textureID);
+				ImGui::Text("Texture Width: %d", selected_go->texture->texture->width);
+				ImGui::Text("Texture Height: %d", selected_go->texture->texture->height);
+				ImGui::Text("Texture Path: %s", selected_go->texture->texture->path.c_str());
+				ImGui::Text("Preview:");
+				ImGui::Image((ImTextureID*)selected_go->texture->texture->textureID, ImVec2(200, 200));
+			}
 		}
 
 		ImGui::End(); 

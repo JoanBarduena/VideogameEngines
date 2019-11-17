@@ -11,7 +11,9 @@ public:
 
 	bool Start(); 
 	bool Draw(); 
-	bool CleanUp(); 
+	bool CleanUp();
+
+	void DrawHierarchyGO(GameObject* go);
 
 	bool starts_clicked = true;
 

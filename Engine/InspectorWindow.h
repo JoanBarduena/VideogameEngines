@@ -14,5 +14,5 @@ public:
 	bool Draw(); 
 	bool CleanUp(); 
 
-	GameObject* GO_Inspector = nullptr;
+	GameObject* selected_go = nullptr;
 };

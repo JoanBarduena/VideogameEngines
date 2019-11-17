@@ -112,9 +112,9 @@ update_status ModuleInput::PreUpdate(float dt)
 			}	
 			else if (GetFileExtension(dropped_filedir) == "png" || GetFileExtension(dropped_filedir) == "dds")
 			{
-				if (App->gui->inspector_w->GO_Inspector != nullptr)
+				if (App->gui->inspector_w->selected_go != nullptr)
 				{
-					App->gui->inspector_w->GO_Inspector->texture->texture = App->texture->LoadTexturePath(dropped_filedir);
+					App->gui->inspector_w->selected_go->texture->texture = App->texture->LoadTexturePath(dropped_filedir);
 					App->Console_Log("Texture dropped with root: %s", dropped_filedir);
 				}
 				else
