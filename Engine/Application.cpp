@@ -28,11 +28,11 @@ Application::Application()
 	// Scenes
 	AddModule(scene_intro);
 
-	//Gui
-	AddModule(gui);
-
 	// Renderer last!
 	AddModule(renderer3D);
+
+	//Gui
+	AddModule(gui);
 }
 
 Application::~Application()

@@ -7,7 +7,7 @@
 #include "par/parshapes.h"
 
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
-{
+{ 
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -18,6 +18,11 @@ bool ModuleSceneIntro::Start()
 {
 	App->Console_Log("Loading Intro assets");
 	bool ret = true;
+
+	// Initialize root 
+	root = new GameObject("Root");
+	root->id = 0;
+	game_objects.push_back(root); 
 
 	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
@@ -40,6 +45,8 @@ bool ModuleSceneIntro::CleanUp()
 {
 	App->Console_Log("Unloading Intro scene");
 	
+	RELEASE(root);
+
 	return true;
 }
 
@@ -48,6 +55,7 @@ update_status ModuleSceneIntro::Update(float dt)
 {
 	glLineWidth(2.0f);
 
+	// Grid plane made with GL_Lines
 	glBegin(GL_LINES);
 	glColor3ub(255, 255, 255);
 	for (float i = -10; i <= 10; ++i)
@@ -91,6 +99,9 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 	object->id = game_objects.size();
 
 	game_objects.push_back(object); 
+
+	if (object->id != 0)
+		root->DefineChilds(object); 
 
 	return object; 
 }

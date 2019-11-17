@@ -50,15 +50,11 @@ Component* GameObject::CreateComponent(Component::Type type)
 
 void GameObject::DefineChilds(GameObject* GO)
 {
-	if (GO == parent)
-		return;
+	if (GO->parent != nullptr)
+		GO->parent->childs.remove(GO); 
 
-	if (parent)
-		parent->childs.remove(this); 
-
-	parent = GO; 
-	if(GO)
-		GO->childs.push_back(this); 
+	GO->parent = this;
+	childs.push_back(GO);
 }
 
 void GameObject::Update()
