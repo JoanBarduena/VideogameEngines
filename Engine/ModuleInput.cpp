@@ -135,7 +135,8 @@ update_status ModuleInput::PreUpdate(float dt)
 				if(e.window.event == SDL_WINDOWEVENT_RESIZED)
 					App->renderer3D->OnResize(e.window.data1, e.window.data2);
 			}
-		}
+		}		
+		ImGui_ImplSDL2_ProcessEvent(&e);	
 	}
 
 	if(quit == true || keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP)

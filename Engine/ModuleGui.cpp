@@ -59,12 +59,6 @@ bool ModuleGui::Draw()
 {
 	bool ret = true; 
 
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		ImGui_ImplSDL2_ProcessEvent(&event);
-	}
-
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame(App->window->window);
