@@ -44,4 +44,5 @@ public:
 	Position position; 
 
 	std::vector<GameObject*> game_objects;
+	GameObject* root = nullptr; 
 };

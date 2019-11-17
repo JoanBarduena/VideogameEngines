@@ -2,7 +2,7 @@
 
 Component::Component(GameObject * my_GO, Component::Type type_)
 {
-	this->my_go = my_GO; 
+	my_go = my_GO; 
 	this->type = type_; 
 }
 

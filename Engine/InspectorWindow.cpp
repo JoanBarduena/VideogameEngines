@@ -24,8 +24,6 @@ bool InspectorWindow::Draw()
 
 		if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			ImGui::Indent();
-
 			float3 position = GO_Inspector->transform->GetPosition(); 
 			
 			if (ImGui::DragFloat3("Position", (float*)&position, 0.15f))
@@ -33,7 +31,6 @@ bool InspectorWindow::Draw()
 				GO_Inspector->transform->SetPosition(position);
 			}
 
-			ImGui::Unindent();
 		}
 
 		if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
