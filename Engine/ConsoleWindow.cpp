@@ -9,7 +9,7 @@ ConsoleWindow::~ConsoleWindow() {}
 
 bool ConsoleWindow::Start()
 {
-	App->Console_Log("Creating Console Window");
+	App->Console_Log("[CREATING]: Console Window");
 
 	return true;
 }
@@ -18,12 +18,12 @@ bool ConsoleWindow::Draw()
 {
 	if (App->gui->show_app_console)
 	{
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(5, 2));
+		ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
 		ImGui::Begin("Console");
 
 		for (int i = 0; i < App->vector_log.size(); ++i)
 		{
-			ImGui::Text(App->vector_log[i].data());
+			ImGui::Text(App->vector_log[i].c_str());
 		}
 		//gui_console.Draw(); not using console.h as it never stops rendering
 

@@ -16,7 +16,7 @@ GameWindow::~GameWindow()
 
 bool GameWindow::Start()
 {
-	App->Console_Log("Creating Game Window");
+	App->Console_Log("[CREATING] Game Window");
 
 	size_.x = 1024;
 	size_.y = 768; 

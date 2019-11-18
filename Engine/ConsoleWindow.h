@@ -16,6 +16,6 @@ public:
 	bool AutoScroll;
 	bool ScrollToBottom;
 
-	//Console gui_console;
+	Console gui_console;
 
 };

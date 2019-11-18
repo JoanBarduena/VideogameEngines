@@ -10,7 +10,7 @@ HierarchyWindow::~HierarchyWindow()
 
 bool HierarchyWindow::Start()
 {
-	App->Console_Log("Creating Hierarchy Window");
+	App->Console_Log("[CREATING]: Hierarchy Window");
 
 	return true;
 }

@@ -44,21 +44,21 @@ bool Application::Init()
 {
 	bool ret = true;
 
+	Console_Log("GRINGO ENGINE. Copyright (c) 2019 Lidux");
+
 	// Call Init() in all modules
-	Console_Log("Application Init --------------");
+	Console_Log("-------------- Application Init --------------");
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == true; item++)
 	{
 		ret = (*item)->Init();
 	}
 	
 	// After all Init calls we call Start() in all modules
-	Console_Log("Application Start --------------");
+	Console_Log("-------------- Application Start --------------");
 	for (list<Module*>::iterator item = list_modules.begin(); item != list_modules.end() && ret == true; item++)
 	{
 		ret = (*item)->Start();
 	}
-
-
 
 	ms_timer.Start();
 	return ret;

@@ -17,7 +17,7 @@ ConfigurationWindow::~ConfigurationWindow() {}
 
 bool ConfigurationWindow::Start()
 {
-	App->Console_Log("Creating Configuration Window"); 
+	App->Console_Log("[CREATING]: Configuration Window"); 
 
 	cpu_count = SDL_GetCPUCount();
 	system_ram = SDL_GetSystemRAM();

@@ -7,7 +7,7 @@ InspectorWindow::~InspectorWindow() {}
 
 bool InspectorWindow::Start()
 {
-	App->Console_Log("Creating Inspector Window"); 
+	App->Console_Log("[CREATING]: Inspector Window"); 
 	return true; 
 }
 

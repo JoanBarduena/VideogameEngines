@@ -118,10 +118,10 @@ update_status ModuleInput::PreUpdate(float dt)
 					App->Console_Log("Texture dropped with root: %s", dropped_filedir);
 				}
 				else
-					App->Console_Log("ERROR: GameObject not selected before dropping texture");
+					App->Console_Log("[WARNING]: A Game Object must be selected before dropping a file.");
 			}
 			else
-				App->Console_Log("File format not accepted. Use formats: .fbx, .png, .dds");
+				App->Console_Log("[WARNING]: File format not accepted. Use formats: .fbx, .png, .dds");
 
 			SDL_free(dropped_filedir);
 			break;
