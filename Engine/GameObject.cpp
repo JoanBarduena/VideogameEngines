@@ -3,6 +3,7 @@
 GameObject::GameObject(string name_)
 {
 	this->name = name_; 
+	this->active = true; 
 	mesh = (ComponentMesh*)CreateComponent(Component::Type::Mesh); 
 	texture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
 	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
@@ -57,12 +58,25 @@ void GameObject::DefineChilds(GameObject* GO)
 	childs.push_back(GO);
 }
 
-void GameObject::Update()
+void GameObject::Update(float dt)
 {
+	if (this->transform->is_transformed)
+		UpdateTransformation(this);
+
+	for (std::list<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
+	{
+		if ((*it)->active)
+			(*it)->Update(dt);
+	}
 }
 
 void GameObject::UpdateTransformation(GameObject* GO)
 {
 	ComponentTransform* transform = GO->transform;
-	transform->UpdateTransformInGame(GO->transform->GetGlobalTransform());
+	transform->UpdateTransformInGame(GO->parent->transform->GetGlobalTransform());
+
+	for (std::list<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
+	{
+		UpdateTransformation(*it);
+	}
 }

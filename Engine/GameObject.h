@@ -16,7 +16,7 @@ public:
 
 	void DefineChilds(GameObject* GO);
 
-	void Update();
+	void Update(float dt);
 	void UpdateTransformation(GameObject* GO);
 
 

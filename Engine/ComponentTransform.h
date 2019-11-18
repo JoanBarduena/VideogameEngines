@@ -14,7 +14,7 @@ public:
 	~ComponentTransform(); 
 
 	//bool Enable();
-	const void SetPosition(float3 &new_pos);
+	void SetPosition(float3 &new_pos);
 
 	float3 GetPosition() const; 
 	Quat GetRotationEuler() const;
@@ -24,13 +24,13 @@ public:
 	void UpdateLocalTransform();
 	void UpdateTRS();
 	void UpdateEulerAngles();
-	void UpdateTransformInGame(const float4x4 parent_global);
+	void UpdateTransformInGame(const float4x4 &parent_global);
 
 private:
 
 	float3 position = float3::zero;
 	Quat rotation = Quat::identity; 
-	float3 scale = float3::zero; 
+	float3 scale = float3::one; 
 
 	float4x4 transform_local = float4x4::identity;
 	float4x4 transform_global = float4x4::identity;

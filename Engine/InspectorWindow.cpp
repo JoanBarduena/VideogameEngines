@@ -24,7 +24,7 @@ bool InspectorWindow::Draw()
 
 			if (selected_go->active)
 			{
-				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
+				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
 				{
 					float3 position = selected_go->transform->GetPosition();
 

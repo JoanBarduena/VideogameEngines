@@ -32,7 +32,7 @@ float4x4 ComponentTransform::GetGlobalTransform() const
 
 // ----------- Set() Functions -----------
 
-const void ComponentTransform::SetPosition(float3& new_pos)
+void ComponentTransform::SetPosition(float3& new_pos)
 {
 	position = new_pos;
 	UpdateLocalTransform();
@@ -56,7 +56,7 @@ void ComponentTransform::UpdateEulerAngles()
 	euler_rotation *= RADTODEG;
 }
 
-void ComponentTransform::UpdateTransformInGame(const float4x4 parent_global)
+void ComponentTransform::UpdateTransformInGame(const float4x4 &parent_global)
 {
 	transform_global = parent_global * transform_local; 
 	transform_global_transposed = transform_global.Transposed(); 
