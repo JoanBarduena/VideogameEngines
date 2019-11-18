@@ -68,7 +68,7 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 
 	if (nodeOpen)
 	{
-		if (!go->childs.empty()) 
+		if (go->childs.empty() == false) 
 		{
 			for (std::list<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
 			{

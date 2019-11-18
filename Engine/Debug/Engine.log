@@ -1,4 +1,4 @@
-﻿  HierarchyWindow.cpp
+﻿  ModuleGui.cpp
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(74,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(84,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(94,46): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
@@ -25,4 +25,9 @@ C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1883,
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1925,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(1966,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
 C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\PCG\pcg_variants.h(2008,33): warning C4146: operador unario menos aplicado a un tipo unsigned; el resultado aún no tiene signo
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(170,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(171,54): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(172,61): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(173,56): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\ModuleGui.cpp(174,54): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   Engine.vcxproj -> C:\Users\badli\Documents\GitHub\VideogameEngines\Engine\Debug\Engine.exe

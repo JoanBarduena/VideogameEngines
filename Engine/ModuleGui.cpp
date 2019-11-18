@@ -74,13 +74,19 @@ bool ModuleGui::Draw()
 	//Rendering
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 	
 	return ret;
 }
 
 update_status ModuleGui::PreUpdate(float dt)
 {
-	
+	if (font_loaded)	// custom font
+	{
+		font = io->Fonts->AddFontFromFileTTF("Assets/Ruda-Bold.ttf",15.0f);
+		font_loaded = false;
+	}
+		
 	return UPDATE_CONTINUE;
 }
 
@@ -101,7 +107,8 @@ update_status ModuleGui::PostUpdate(float dt)
 bool ModuleGui::CleanUp()
 {
 	bool ret = true; 
-
+	
+	io->Fonts->ClearFonts();
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();

@@ -39,6 +39,8 @@ public:
 	void CreateMainWorkingSpace();
 
 	ImGuiIO* io = nullptr;
+	ImFont* font = nullptr; 
+	bool font_loaded = true; 
 	bool p_open = true;
 
 	pcg_state_setseq_32 bounded;
