@@ -98,6 +98,8 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 	object = new GameObject(GOname);
 	object->id = game_objects.size();
 
+	object->unactive_name = GOname.append(" [not active]");
+
 	game_objects.push_back(object); 
 
 	if (object->id != 0)

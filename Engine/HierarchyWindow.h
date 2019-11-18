@@ -13,7 +13,7 @@ public:
 	bool Draw(); 
 	bool CleanUp();
 
-	void DrawHierarchyGO(GameObject* go);
+	void TreeNodeHierarchy(GameObject* go);
 
 	bool starts_clicked = true;
 

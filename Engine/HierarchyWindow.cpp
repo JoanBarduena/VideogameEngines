@@ -22,7 +22,7 @@ bool HierarchyWindow::Draw()
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 		ImGui::Begin("Hierarchy");
 
-		DrawHierarchyGO(App->scene_intro->root); 
+		TreeNodeHierarchy(App->scene_intro->root); 
 
 		ImGui::End();
 		ImGui::PopStyleVar();
@@ -36,7 +36,7 @@ bool HierarchyWindow::CleanUp()
 	return true;
 }
 
-void HierarchyWindow::DrawHierarchyGO(GameObject* go)
+void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 {
 	static ImGuiTreeNodeFlags flag = ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_OpenOnArrow;
 	ImGuiTreeNodeFlags node_flags = flag;
@@ -46,8 +46,20 @@ void HierarchyWindow::DrawHierarchyGO(GameObject* go)
 	if (go == App->gui->inspector_w->selected_go)
 		node_flags |= ImGuiTreeNodeFlags_Selected;
 
-	if(go!=nullptr)
-		nodeOpen = ImGui::TreeNodeEx(go->name.c_str(), node_flags);
+	if (go != nullptr)
+	{
+		if (go->active == false)
+		{
+			ImGui::PushStyleColor(0, ImVec4(1, 1, 1, 0.5f)); //make the text grey and add [not active] 
+			nodeOpen = ImGui::TreeNodeEx(go->unactive_name.c_str(), node_flags);
+			ImGui::PopStyleColor(); 
+		}		
+		else
+			nodeOpen = ImGui::TreeNodeEx(go->name.c_str(), node_flags);
+	}
+	else
+		nodeOpen = ImGui::TreeNode("[NULL] Game Object"); 
+		
 
 	if (ImGui::IsItemClicked())
 	{
@@ -60,7 +72,7 @@ void HierarchyWindow::DrawHierarchyGO(GameObject* go)
 		{
 			for (std::list<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
 			{
-				DrawHierarchyGO(*it);
+				TreeNodeHierarchy(*it);
 			}
 		}
 		ImGui::TreePop(); 

@@ -23,6 +23,7 @@ public:
 public:
 
 	string name; 
+	string unactive_name; 
 	bool active; 
 	uint id; 
 
