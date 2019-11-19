@@ -27,6 +27,28 @@ bool InspectorWindow::Draw()
 			{
 				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
 				{
+					ImGui::Text("RESET:");
+					ImGui::SameLine();
+					if (ImGui::Button("Position", ImVec2(0, 0)))
+					{
+						selected_go->transform->ResetPosition();
+					}
+					ImGui::SameLine();
+					if (ImGui::Button("Rotation", ImVec2(0, 0)))
+					{
+						selected_go->transform->ResetEulerRotation();
+					}
+					ImGui::SameLine();
+					if (ImGui::Button("Scale", ImVec2(0, 0)))
+					{
+						selected_go->transform->ResetScale();
+					}
+					ImGui::SameLine(); 
+					if (ImGui::Button("ALL", ImVec2(0, 0)))
+					{
+						selected_go->transform->ResetALL(); 
+					}
+
 					float3 position = selected_go->transform->GetPosition();
 
 					if (ImGui::DragFloat3("Position", (float*)&position, 0.05f))

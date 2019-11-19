@@ -35,6 +35,11 @@ public:
 	void UpdateEulerAngles();
 	void UpdateTransformInGame(const float4x4 &parent_global);
 
+	void ResetPosition(); 
+	void ResetEulerRotation(); 
+	void ResetScale(); 
+	void ResetALL(); 
+
 private:
 
 	float3 position = float3::zero;

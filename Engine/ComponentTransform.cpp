@@ -74,6 +74,8 @@ void ComponentTransform::SetQuatRotation(Quat rot)
 	UpdateLocalTransform();
 }
 
+// ----------- Update() Functions -----------
+
 void ComponentTransform::UpdateLocalTransform()
 {
 	transform_local = float4x4::FromTRS(position, rotation, scale);
@@ -99,4 +101,33 @@ void ComponentTransform::UpdateTransformInGame(const float4x4 &parent_global)
 	UpdateTRS(); 
 
 	is_transformed = false; 
+}
+
+// ----------- Reset() Functions ------------
+
+void ComponentTransform::ResetPosition()
+{
+	position = float3::zero;
+	UpdateLocalTransform();
+}
+
+void ComponentTransform::ResetEulerRotation()
+{
+	rotation = Quat::identity;
+	UpdateLocalTransform();
+}
+
+void ComponentTransform::ResetScale()
+{
+	scale = float3::one;
+	UpdateLocalTransform();
+}
+
+void ComponentTransform::ResetALL()
+{
+	position = float3::zero;
+	scale = float3::one;
+	rotation = Quat::identity;
+
+	UpdateLocalTransform();
 }
