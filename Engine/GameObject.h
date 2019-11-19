@@ -17,10 +17,11 @@ public:
 	Component* CreateComponent(Component::Type type);
 
 	void DefineChilds(GameObject* GO);
-	void RemoveGameObject(); 
+	void DeleteGameObjects(); 
 
 	void Update(float dt);
 	void UpdateTransformation(GameObject* GO);
+
 
 public:
 
@@ -29,11 +30,11 @@ public:
 	bool active; 
 	uint id; 
 
-	vector<Component*> components; 
+	std::vector<Component*> components; 
 
 	ComponentMesh* mesh = nullptr; 
 	ComponentTexture* texture = nullptr;
-	ComponentTransform* c_transform = nullptr;
+	ComponentTransform* transform = nullptr;
 
 	GameObject* parent = nullptr; 
 	std::vector<GameObject*> childs; 

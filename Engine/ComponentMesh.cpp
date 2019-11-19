@@ -12,9 +12,9 @@ ComponentMesh::~ComponentMesh()
 
 void ComponentMesh::CleanUp()
 {
-	glDeleteBuffers(1, (GLuint*)& id_vertex); 
-	glDeleteBuffers(1, (GLuint*)& id_index);
-	glDeleteBuffers(1, (GLuint*)& id_texture);
+	glDeleteBuffers(1, (GLuint*)&id_vertex); 
+	glDeleteBuffers(1, (GLuint*)&id_index);
+	glDeleteBuffers(1, (GLuint*)&id_texture);
 
 	if (indices != nullptr)
 	{

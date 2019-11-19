@@ -50,7 +50,7 @@ bool ModuleTexture::Start()
 {
 	bool ret = true;
 
-	DefaultTexture = CreateDefeaultTexture(); 
+	//DefaultTexture = CreateDefeaultTexture(); 
 
 	return ret;
 }

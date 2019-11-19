@@ -7,7 +7,7 @@ GameObject::GameObject(string name_)
 {
 	this->name = name_; 
 	this->active = true; 
-	c_transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
+	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
 	mesh = (ComponentMesh*)CreateComponent(Component::Type::Mesh); 
 	texture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
 }
@@ -23,27 +23,16 @@ void GameObject::CleanUp()
 	{
 		this->mesh->CleanUp();
 	}
-
-	for (vector<Component*>::iterator i = components.begin(); i != components.end(); i++)
+	if (this->texture != nullptr)
 	{
-		if ((*i) != nullptr)
-		{
-			delete(*i);
-			//(*i) = nullptr;
-		}
-	}
-	components.clear();
-
-	if (childs.size() > 0)
-	{
-		for (vector<GameObject*>::iterator i = childs.begin(); i != childs.end(); i++)
-		{
-			(*i)->CleanUp();
-
-		}
+		this->texture->CleanUp();
 	}
 
-
+	//Clear GameObjects
+	for (std::vector<GameObject*>::iterator it = App->scene_intro->game_objects.begin(); it != App->scene_intro->game_objects.end(); it++)
+	{
+		RELEASE(*it);
+	}
 }
 
 Component* GameObject::CreateComponent(Component::Type type)
@@ -83,18 +72,14 @@ void GameObject::DefineChilds(GameObject* GO)
 	childs.push_back(GO);
 }
 
-void GameObject::RemoveGameObject()
+void GameObject::DeleteGameObjects()
 {
-	for (std::vector<GameObject*>::iterator it = App->scene_intro->game_objects.begin(); it != App->scene_intro->game_objects.end(); it++)
-	{
-		delete(*it); 
-		(*it) = nullptr; 
-	}
+
 }
 
 void GameObject::Update(float dt)
 {
-	if (this->c_transform->is_transformed)
+	if (this->transform->is_transformed)
 		UpdateTransformation(this);
 
 	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
@@ -106,8 +91,8 @@ void GameObject::Update(float dt)
 
 void GameObject::UpdateTransformation(GameObject* GO)
 {
-	ComponentTransform* transform = GO->c_transform;
-	transform->UpdateTransformInGame(GO->parent->c_transform->GetGlobalTransform());
+	ComponentTransform* transform = GO->transform;
+	transform->UpdateTransformInGame(GO->parent->transform->GetGlobalTransform());
 
 	for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
 	{

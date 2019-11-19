@@ -14,9 +14,8 @@ ComponentTexture::~ComponentTexture()
 
 void ComponentTexture::CleanUp()
 {
-	/*if (texture != nullptr)
+	if (texture != nullptr)
 	{
-		delete texture; 
-		texture = nullptr; 
-	}*/
+		RELEASE(texture); 
+	}
 }

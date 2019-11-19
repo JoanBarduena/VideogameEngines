@@ -12,6 +12,7 @@ class ComponentTransform : public Component
 {
 public: 
 	ALIGN_CLASS_TO_16
+
 	ComponentTransform(GameObject* GObj);
 	~ComponentTransform(); 
 	void CleanUp(); 

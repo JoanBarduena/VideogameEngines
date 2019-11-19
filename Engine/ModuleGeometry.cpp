@@ -57,7 +57,6 @@ bool ModuleGeometry::CleanUp()
 	bool ret = true;
 
 	aiDetachAllLogStreams();
-
 	return ret;
 }
 

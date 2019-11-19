@@ -34,7 +34,7 @@ bool ModuleGui::Init()
 	console_w = new ConsoleWindow();
 	hierarchy_w = new HierarchyWindow(); 
 	inspector_w = new InspectorWindow(); 
-	game_w = new GameWindow(); 
+	//game_w = new GameWindow(); 
 
 	//windows.push_back(game_w);
 	windows.push_back(console_w);
@@ -110,6 +110,11 @@ bool ModuleGui::CleanUp()
 {
 	bool ret = true; 
 	
+	for (std::list<Window*>::iterator it = windows.begin(); it != windows.end(); it++)
+	{
+		delete (*it); 
+	}
+
 	io->Fonts->ClearFonts();
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();

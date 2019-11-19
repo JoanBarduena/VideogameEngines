@@ -25,13 +25,13 @@ bool InspectorWindow::Draw()
 
 			if (selected_go->active)
 			{
-				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->c_transform != nullptr)
+				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
 				{
-					float3 position = selected_go->c_transform->GetPosition();
+					float3 position = selected_go->transform->GetPosition();
 
 					if (ImGui::DragFloat3("Position", (float*)&position, 0.15f))
 					{
-						selected_go->c_transform->SetPosition(position);
+						selected_go->transform->SetPosition(position);
 					}
 
 				}

@@ -55,9 +55,6 @@ ModuleFileSystem::ModuleFileSystem(bool start_enabled, const char* game_path) : 
 // Destructor
 ModuleFileSystem::~ModuleFileSystem()
 {
-	RELEASE(AssimpIO);
-	//RELEASE(BassIO);
-	PHYSFS_deinit();
 }
 
 // Called before render is available
@@ -83,6 +80,9 @@ bool ModuleFileSystem::Init(/*Config* config*/)
 bool ModuleFileSystem::CleanUp()
 {
 	//LOG("Freeing File System subsystem");
+	RELEASE(AssimpIO);
+	//RELEASE(BassIO);
+	PHYSFS_deinit();
 
 	return true;
 }
