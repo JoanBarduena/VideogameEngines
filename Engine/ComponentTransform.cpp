@@ -22,7 +22,7 @@ float3 ComponentTransform::GetPosition() const
 	return position;
 }
 
-Quat ComponentTransform::GetRotationEuler() const
+Quat ComponentTransform::GetQuatRotation() const
 {
 	return rotation;
 }
@@ -30,6 +30,11 @@ Quat ComponentTransform::GetRotationEuler() const
 float3 ComponentTransform::GetScale() const
 {
 	return scale;
+}
+
+float3 ComponentTransform::GetEulerRotation() const
+{
+	return euler_rotation; 
 }
 
 float4x4 ComponentTransform::GetGlobalTransform() const

@@ -33,6 +33,20 @@ bool InspectorWindow::Draw()
 					{
 						selected_go->transform->SetPosition(position);
 					}
+
+					float3 rotation = selected_go->transform->GetEulerRotation();
+
+					if (ImGui::DragFloat3("Rotation", (float*)&rotation, 0.20f))
+					{
+						selected_go->transform->SetEulerRotation(rotation); 
+					}
+
+					float3 scale = selected_go->transform->GetScale(); 
+
+					if (ImGui::DragFloat3("Scale", (float*)&scale, 0.10f))
+					{
+						selected_go->transform->SetScale(scale);
+					}
 				}
 
 				if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
