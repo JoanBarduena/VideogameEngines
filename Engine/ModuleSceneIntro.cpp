@@ -6,6 +6,8 @@
 #include "SDL/include/SDL_opengl.h"
 #include "par/parshapes.h"
 
+#include "mmgr/mmgr.h"
+
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
 { 
 }
@@ -20,9 +22,8 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 
 	// Initialize root 
-	root = new GameObject("Root");
-	root->id = 0;
-	game_objects.push_back(root); 
+	root = CreateGameObject();
+	root->name = "Root";	
 
 	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
@@ -45,7 +46,7 @@ bool ModuleSceneIntro::CleanUp()
 {
 	App->Console_Log("Unloading Intro scene");
 	
-	RELEASE(root);
+	root->CleanUp(); 
 
 	return true;
 }

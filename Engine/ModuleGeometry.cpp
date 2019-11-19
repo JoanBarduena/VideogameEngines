@@ -16,6 +16,8 @@
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment(lib, "glew/libx86/glew32.lib")
 
+#include "mmgr/mmgr.h"
+
 ModuleGeometry::ModuleGeometry(bool start_enabled) : Module(start_enabled)
 {}
 
@@ -62,6 +64,19 @@ bool ModuleGeometry::CleanUp()
 void ModuleGeometry::LoadGeometry(const char* full_path)
 {
 	const aiScene* file = aiImportFile(full_path, aiProcessPreset_TargetRealtime_MaxQuality);
+	const aiNode* node = file->mRootNode; 
+
+	aiVector3D position; 
+	aiVector3D scaling;
+	aiQuaternion rotation; 
+
+	node->mTransformation.Decompose(scaling, rotation, position); 
+
+	float3 pos(position.x, position.y, position.z); 
+	float3 scale(scaling.x, scaling.y, scaling.z); 
+	Quat rot(rotation.x, rotation.y, rotation.z, rotation.w); 
+
+	string name = node->mName.C_Str(); 
 
 	if (file != nullptr && file->HasMeshes())
 	{

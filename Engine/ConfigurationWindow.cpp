@@ -2,11 +2,12 @@
 #include "Globals.h"
 #include "ConfigurationWindow.h"
 
-#include "mmgr\mmgr.h"
 #include "Assimp/include/version.h"
 #include "rapidjson/rapidjson.h"
 #define RAPIDJSON_VERSION_STRING \
   RAPIDJSON_STRINGIFY(RAPIDJSON_MAJOR_VERSION.RAPIDJSON_MINOR_VERSION.RAPIDJSON_PATCH_VERSION)
+
+#include "mmgr\mmgr.h"
 
 ConfigurationWindow::ConfigurationWindow() : Window()
 { 

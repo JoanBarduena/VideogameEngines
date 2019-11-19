@@ -1,5 +1,6 @@
 #include "InspectorWindow.h"
 #include "Application.h"
+#include "mmgr/mmgr.h"
 
 InspectorWindow::InspectorWindow() : Window() {}
 
@@ -18,19 +19,19 @@ bool InspectorWindow::Draw()
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(7, 2));
 		ImGui::Begin("Inspector"); 
 
-		if (selected_go != nullptr)
+		if (selected_go != nullptr && selected_go->id != 0)
 		{
 			ImGui::Checkbox("Active", &selected_go->active);
 
 			if (selected_go->active)
 			{
-				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
+				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->c_transform != nullptr)
 				{
-					float3 position = selected_go->transform->GetPosition();
+					float3 position = selected_go->c_transform->GetPosition();
 
 					if (ImGui::DragFloat3("Position", (float*)&position, 0.15f))
 					{
-						selected_go->transform->SetPosition(position);
+						selected_go->c_transform->SetPosition(position);
 					}
 
 				}

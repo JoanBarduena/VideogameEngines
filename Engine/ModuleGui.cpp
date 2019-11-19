@@ -6,6 +6,8 @@
 #include "glew\include\GL\glew.h"
 #include "ModuleInput.h"
 
+#include "mmgr/mmgr.h"
+
 ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 {}
 

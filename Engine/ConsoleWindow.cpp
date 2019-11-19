@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "ConsoleWindow.h"
 
+#include "mmgr/mmgr.h"
+
 ConsoleWindow::ConsoleWindow() : Window()
 { 
 }

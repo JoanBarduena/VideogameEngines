@@ -5,12 +5,17 @@
 #include "MathGeoLib/include/MathBuildConfig.h"
 #include "MathGeoLib/include/MathGeoLib.h"
 
+#include "glew/include/GL/glew.h"
+
 class ComponentMesh : public Component
 {
 public:
 
 	ComponentMesh(GameObject* GObj); 
-	~ComponentMesh(); 
+	~ComponentMesh();
+
+	void CleanUp();
+
 
 	uint id_index = 0; // index in VRAM
 	uint num_index = 0;

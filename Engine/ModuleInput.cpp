@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleInput.h"
 
+#include "mmgr/mmgr.h"
+
 #define MAX_KEYS 300
 
 ModuleInput::ModuleInput(bool start_enabled) : Module(start_enabled)

@@ -7,6 +7,8 @@
 #include "imGui/imgui_impl_sdl.h"
 #include "imGui/imgui_impl_opengl3.h"
 
+#include "mmgr/mmgr.h"
+
 FrameBuffer::FrameBuffer()
 {
 }

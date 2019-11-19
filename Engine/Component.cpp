@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "mmgr/mmgr.h"
 
 Component::Component(GameObject * my_GO, Component::Type type_)
 {
@@ -24,3 +25,4 @@ bool Component::Disable()
 {
 	return true;
 }
+

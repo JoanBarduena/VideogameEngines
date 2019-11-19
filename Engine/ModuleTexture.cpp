@@ -12,6 +12,7 @@
 #pragma comment (lib, "DevIL/libx86/ILU.lib")
 #pragma comment (lib, "DevIL/libx86/ILUT.lib")
 
+#include "mmgr/mmgr.h"
 
 ModuleTexture::ModuleTexture(bool start_enabled) : Module(start_enabled)
 {}

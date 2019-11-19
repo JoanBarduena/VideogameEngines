@@ -9,6 +9,7 @@ public:
 
 	enum class Type
 	{
+		NONE = -1,
 		Transform,
 		Mesh,
 		Texture

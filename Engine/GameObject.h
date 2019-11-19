@@ -12,13 +12,15 @@ public:
 
 	GameObject(string name);
 	~GameObject();
+	void CleanUp();
+
 	Component* CreateComponent(Component::Type type);
 
 	void DefineChilds(GameObject* GO);
+	void RemoveGameObject(); 
 
 	void Update(float dt);
 	void UpdateTransformation(GameObject* GO);
-
 
 public:
 
@@ -29,12 +31,12 @@ public:
 
 	vector<Component*> components; 
 
-	ComponentMesh* mesh; 
-	ComponentTexture* texture; 
-	ComponentTransform* transform; 
+	ComponentMesh* mesh = nullptr; 
+	ComponentTexture* texture = nullptr;
+	ComponentTransform* c_transform = nullptr;
 
 	GameObject* parent = nullptr; 
-	std::list<GameObject*> childs; 
+	std::vector<GameObject*> childs; 
 };
 
 

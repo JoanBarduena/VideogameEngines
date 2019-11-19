@@ -1,17 +1,20 @@
 #ifndef __COMPONENT_TRANSFORM_H__
 #define __COMPONENT_TRANSFORM_H__
 
-#include "Component.h"
 #include "Globals.h"
+#include "Component.h"
 
+#include "MathGeoLib/include/MathBuildConfig.h"
 #include "MathGeoLib/include/MathGeoLib.h"
+
 
 class ComponentTransform : public Component
 {
 public: 
-
+	ALIGN_CLASS_TO_16
 	ComponentTransform(GameObject* GObj);
 	~ComponentTransform(); 
+	void CleanUp(); 
 
 	//bool Enable();
 	void SetPosition(float3 &new_pos);

@@ -9,6 +9,7 @@ public:
 
 	ComponentTexture(GameObject* GObj);
 	~ComponentTexture(); 
+	void CleanUp(); 
 
-	TextureStruct* texture; 
+	TextureStruct* texture = nullptr; 
 };

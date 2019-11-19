@@ -1,5 +1,8 @@
 #include "Application.h"
 #include "HierarchyWindow.h"
+
+#include "mmgr/mmgr.h"
+
 HierarchyWindow::HierarchyWindow()
 {
 }
@@ -68,9 +71,9 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 
 	if (nodeOpen)
 	{
-		if (go->childs.empty() == false) 
+		if (go->childs.size() > 0) 
 		{
-			for (std::list<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
+			for (std::vector<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
 			{
 				TreeNodeHierarchy(*it);
 			}
