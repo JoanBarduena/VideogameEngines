@@ -90,7 +90,7 @@ void GameObject::Update(float dt)
 
 void GameObject::UpdateTransformation(GameObject* GO)
 {
-	transform->UpdateTransformInGame(GO->parent->transform->GetGlobalTransform());
+	GO->transform->UpdateTransformInGame(GO->parent->transform->GetGlobalTransform());
 
 	for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
 	{

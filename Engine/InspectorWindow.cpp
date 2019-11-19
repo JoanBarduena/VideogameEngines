@@ -29,11 +29,10 @@ bool InspectorWindow::Draw()
 				{
 					float3 position = selected_go->transform->GetPosition();
 
-					if (ImGui::DragFloat3("Position", (float*)&position, 0.15f))
+					if (ImGui::DragFloat3("Position", (float*)&position, 0.05f))
 					{
 						selected_go->transform->SetPosition(position);
 					}
-
 				}
 
 				if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))

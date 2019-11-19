@@ -48,7 +48,7 @@ public:
 
 public:
 
-	bool is_transformed = true;
+	bool is_transformed = false;
 };
 
 #endif //__COMPONENT_TRANSFORM_H__

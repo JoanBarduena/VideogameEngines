@@ -146,7 +146,6 @@ void Application::Console_Log(const char* format, ...)
 	vector_log.push_back(log_str);
 }
 
-
 const std::string Application::GetNameFromPath(std::string path)
 {
 	std::string name = path;
@@ -158,6 +157,15 @@ const std::string Application::GetNameFromPath(std::string path)
 	name = name.substr(0, dot);
 
 	return name;
+}
+
+const std::string Application::GetDirectoryFromPath(std::string path)
+{
+	std::string directory;
+	size_t found = path.find_last_of("/\\");
+		directory = path.substr(0, found);
+
+	return directory;
 }
 
 

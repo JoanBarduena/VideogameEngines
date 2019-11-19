@@ -4,6 +4,7 @@
 
 ComponentTransform::ComponentTransform(GameObject* GObj) : Component(GObj, Component::Type::Transform)
 {
+	transform_local = float4x4::FromTRS(position, rotation, scale);
 }
 
 ComponentTransform::~ComponentTransform()

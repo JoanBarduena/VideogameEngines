@@ -28,13 +28,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
+	//HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
 	App->geometry->LoadFileFromPath("Assets/BakerHouse.fbx"); 
-	
-	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
-	{
-		(*iterator)->texture->texture = HouseTexture; 
-	}
 
 	//Create_Cube(0,0,0,2);
 	//Create_Sphere(50,20,5,1,0,1); 
@@ -74,6 +69,9 @@ update_status ModuleSceneIntro::Update(float dt)
 		glVertex3f(-10.f, 0, i);
 	}
 	glEnd();
+
+	root->Update(dt); 
+
 	return UPDATE_CONTINUE;
 }
 
@@ -82,8 +80,14 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
 	{
-		if((*iterator)->active)
+		if ((*iterator)->active)
+		{
+			glPushMatrix();
+			glMultMatrixf((GLfloat*) & (*iterator)->transform->GetGlobalTransform().Transposed());
 			App->renderer3D->DrawMesh((*iterator));
+			glPopMatrix(); 
+		}
+			
 	}
 
 	return UPDATE_CONTINUE;
