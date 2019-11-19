@@ -147,3 +147,18 @@ void Application::Console_Log(const char* format, ...)
 }
 
 
+const std::string Application::GetNameFromPath(std::string path)
+{
+	std::string name = path;
+
+	uint num = name.find_last_of("/\\");
+	name = name.substr(num + 1, name.size());
+
+	uint dot = name.find_last_of(".");
+	name = name.substr(0, dot);
+
+	return name;
+}
+
+
+

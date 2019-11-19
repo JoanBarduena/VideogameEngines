@@ -40,7 +40,31 @@ float4x4 ComponentTransform::GetGlobalTransform() const
 
 void ComponentTransform::SetPosition(float3& new_pos)
 {
-	position = new_pos;
+	this->position = new_pos;
+	UpdateLocalTransform();
+}
+
+void ComponentTransform::SetScale(float3& sca)
+{
+	if (sca.x > 0.0f && sca.y > 0.0f && sca.z > 0.0f)
+		this->scale = sca;
+
+	UpdateLocalTransform();
+}
+
+void ComponentTransform::SetEulerRotation(float3 rot)
+{
+	float3 tmp = (rot - euler_rotation) * DEGTORAD;
+	Quat quaternion_rotation = Quat::FromEulerXYZ(tmp.x, tmp.y, tmp.z);
+	rotation = rotation * quaternion_rotation;
+	euler_rotation = rot;
+	UpdateLocalTransform();
+}
+
+void ComponentTransform::SetQuatRotation(Quat rot)
+{
+	this->rotation = rot;
+	UpdateEulerAngles();
 	UpdateLocalTransform();
 }
 
@@ -58,14 +82,13 @@ void ComponentTransform::UpdateTRS()
 
 void ComponentTransform::UpdateEulerAngles()
 {
-	euler_rotation = rotation.ToEulerXYZ();
-	euler_rotation *= RADTODEG;
+	euler_rotation = rotation.ToEulerXYZ() * RADTODEG;
 }
 
 void ComponentTransform::UpdateTransformInGame(const float4x4 &parent_global)
 {
 	transform_global = parent_global * transform_local; 
-	transform_global_transposed = transform_global.Transposed(); 
+	//transform_global_transposed = transform_global.Transposed(); 
 
 	UpdateTRS(); 
 

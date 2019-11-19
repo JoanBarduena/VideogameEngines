@@ -64,17 +64,16 @@ void GameObject::DefineChilds(GameObject* GO)
 		for (std::vector<GameObject*>::iterator it = GO->parent->childs.begin(); it != GO->parent->childs.end(); it++)
 		{
 			if ((*it)->id == GO->id)
-				GO->parent->childs.erase(it); 
+			{
+				GO->parent->childs.erase(it);
+				break;
+			}
+				
 		}
 	}
 
 	GO->parent = this;
 	childs.push_back(GO);
-}
-
-void GameObject::DeleteGameObjects()
-{
-
 }
 
 void GameObject::Update(float dt)
@@ -91,7 +90,6 @@ void GameObject::Update(float dt)
 
 void GameObject::UpdateTransformation(GameObject* GO)
 {
-	ComponentTransform* transform = GO->transform;
 	transform->UpdateTransformInGame(GO->parent->transform->GetGlobalTransform());
 
 	for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)

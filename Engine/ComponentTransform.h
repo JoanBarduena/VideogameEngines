@@ -18,19 +18,23 @@ public:
 	void CleanUp(); 
 
 	//bool Enable();
-	void SetPosition(float3 &new_pos);
 
 	float3 GetPosition() const; 
 	Quat GetRotationEuler() const;
 	float3 GetScale() const;
 	float4x4 GetGlobalTransform() const;
 
+	void SetPosition(float3& new_pos);
+	void SetScale(float3& sca);
+	void SetEulerRotation(float3 rot);
+	void SetQuatRotation(Quat rot);
+
 	void UpdateLocalTransform();
 	void UpdateTRS();
 	void UpdateEulerAngles();
 	void UpdateTransformInGame(const float4x4 &parent_global);
 
-private:
+public:
 
 	float3 position = float3::zero;
 	Quat rotation = Quat::identity; 

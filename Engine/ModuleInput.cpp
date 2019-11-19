@@ -108,7 +108,7 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			if (GetFileExtension(dropped_filedir) == "fbx" || GetFileExtension(dropped_filedir) == "FBX")
 			{
-				App->geometry->LoadGeometry(dropped_filedir);
+				App->geometry->LoadFileFromPath(dropped_filedir);
 				App->Console_Log("File .FBX dropped with root: %s", dropped_filedir);
 			}	
 			else if (GetFileExtension(dropped_filedir) == "png" || GetFileExtension(dropped_filedir) == "dds")

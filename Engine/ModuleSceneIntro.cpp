@@ -29,7 +29,7 @@ bool ModuleSceneIntro::Start()
 	App->camera->LookAt(vec3(0, 0, 0));
 
 	HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
-	App->geometry->LoadGeometry("Assets/BakerHouse.fbx"); 
+	App->geometry->LoadFileFromPath("Assets/BakerHouse.fbx"); 
 	
 	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
 	{

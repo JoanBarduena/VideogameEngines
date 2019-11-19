@@ -46,6 +46,8 @@ public:
 	void RequestBrowser(const char* URL); 
 
 	void Console_Log(const char * format, ...);
+	const std::string GetNameFromPath(std::string path);
+
 	vector<string> vector_log; 
 	vector<float> fps;
 

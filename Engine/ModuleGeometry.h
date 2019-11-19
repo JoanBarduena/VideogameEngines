@@ -6,8 +6,13 @@
 
 #include "MathGeoLib/include/MathBuildConfig.h"
 #include "MathGeoLib/include/MathGeoLib.h"
+#include "Assimp/include/cimport.h"
 
 #include "par/parshapes.h"
+ 
+class aiNode; 
+class aiScene; 
+class aiMesh; 
 
 class ModuleGeometry : public Module
 {
@@ -22,7 +27,8 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	void LoadGeometry(const char* full_path);
+	void LoadFileFromPath(const char* full_path);
+	//void LoadNodeFromFile(const aiScene* file, aiNode* node, GameObject* go, const char* full_path);
 	void LoadParShapes(par_shapes_mesh* par_mesh, Position pos);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);

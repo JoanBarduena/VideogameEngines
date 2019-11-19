@@ -60,76 +60,113 @@ bool ModuleGeometry::CleanUp()
 	return ret;
 }
 
-void ModuleGeometry::LoadGeometry(const char* full_path)
+void ModuleGeometry::LoadFileFromPath(const char* full_path)
 {
 	const aiScene* file = aiImportFile(full_path, aiProcessPreset_TargetRealtime_MaxQuality);
-	const aiNode* node = file->mRootNode; 
-
-	aiVector3D position; 
-	aiVector3D scaling;
-	aiQuaternion rotation; 
-
-	node->mTransformation.Decompose(scaling, rotation, position); 
-
-	float3 pos(position.x, position.y, position.z); 
-	float3 scale(scaling.x, scaling.y, scaling.z); 
-	Quat rot(rotation.x, rotation.y, rotation.z, rotation.w); 
-
-	string name = node->mName.C_Str(); 
-
-	if (file != nullptr && file->HasMeshes())
+	if (file != nullptr && file->HasMeshes()) // Load file scene succesfully
 	{
-		for (int i = 0; i < file->mNumMeshes; ++i)
+		const aiNode* node = file->mRootNode;
+
+		GameObject* goLoader = App->scene_intro->CreateGameObject();
+		goLoader->name = App->GetNameFromPath(full_path);
+
+		aiVector3D position;
+		aiVector3D scaling;
+		aiQuaternion rotation;
+
+		node->mTransformation.Decompose(scaling, rotation, position);
+
+		float3 pos(position.x, position.y, position.z);
+		float3 scale(scaling.x, scaling.y, scaling.z);
+		Quat rot(rotation.x, rotation.y, rotation.z, rotation.w);
+
+		//Adding mTransformation to the Loader GameObject
+		//goLoader->transform->SetPosition(pos);
+		//goLoader->transform->SetScale(scale);
+		//goLoader->transform->SetQuatRotation(rot);
+		goLoader->transform->position = pos;
+		goLoader->transform->scale = scale;
+		goLoader->transform->rotation = rot;
+
+		goLoader->transform->UpdateLocalTransform(); 
+
+		App->scene_intro->root->DefineChilds(goLoader);
+
+		if (file != nullptr && file->HasMeshes()) //Load sucesful
 		{
-			GameObject* obj = App->scene_intro->CreateGameObject(); //GameObject* obj = creategameobject(); 
-
-			aiMesh *new_mesh = file->mMeshes[i];
-
-			obj->mesh->num_vertex = new_mesh->mNumVertices; //obj->getcomponentmesh->num_vertex
-			obj->mesh->vertices = new float3[obj->mesh->num_vertex];
-			memcpy(obj->mesh->vertices, new_mesh->mVertices, sizeof(float3) * obj->mesh->num_vertex);
-
-			App->Console_Log("New mesh with %d vertices", obj->mesh->num_vertex);
-
-			for (uint i = 0; i < new_mesh->mNumVertices; ++i)
+			// Use scene->mNumMeshes to iterate on scene->mMeshes array
+			for (int i = 0; i < file->mNumMeshes; i++)
 			{
-				obj->mesh->vertices[i].x = new_mesh->mVertices[i].x;
-				obj->mesh->vertices[i].y = new_mesh->mVertices[i].y;
-				obj->mesh->vertices[i].z = new_mesh->mVertices[i].z;
-			}
+				GameObject* obj = App->scene_intro->CreateGameObject();
+				goLoader->DefineChilds(obj);
 
-			if (new_mesh->HasFaces())
-			{
-				obj->mesh->num_index = new_mesh->mNumFaces * 3;
-				obj->mesh->indices = new uint[obj->mesh->num_index]; // assume each face is a triangle
+				aiNode* nodeGO = node->mChildren[i];
 
-				for (uint i = 0; i < new_mesh->mNumFaces; ++i)
+				aiVector3D nPosition;
+				aiVector3D nScaling;
+				aiQuaternion nRotation;
+
+				nodeGO->mTransformation.Decompose(nScaling, nRotation, nPosition);
+
+				float3 pos(nPosition.x, nPosition.y, nPosition.z);
+				float3 scale(nScaling.x, nScaling.y, nScaling.z);
+				Quat rot(nRotation.x, nRotation.y, nRotation.z, nRotation.w);
+
+				//Adding mTransformation to the Loader GameObject
+			/*	obj->transform->SetPosition(pos);
+				obj->transform->SetScale(scale);
+				obj->transform->SetQuatRotation(rot);*/
+				obj->transform->position = pos; 
+				obj->transform->scale = scale;
+				obj->transform->rotation = rot; 
+
+				obj->transform->UpdateLocalTransform(); 
+
+				aiMesh* new_mesh = file->mMeshes[i];
+
+				obj->mesh->num_vertex = new_mesh->mNumVertices;
+				obj->mesh->vertices = new float3[obj->mesh->num_vertex];
+
+				for (uint i = 0; i < new_mesh->mNumVertices; ++i)
 				{
-					if (new_mesh->mFaces[i].mNumIndices != 3)
-						App->Console_Log("[WARNING]: Geometry face with != 3 indices!");
-					else
-						memcpy(&obj->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
+					obj->mesh->vertices[i].x = new_mesh->mVertices[i].x;
+					obj->mesh->vertices[i].y = new_mesh->mVertices[i].y;
+					obj->mesh->vertices[i].z = new_mesh->mVertices[i].z;
 				}
-			}
-			if (new_mesh->HasTextureCoords(0))
-			{
-				obj->mesh->num_texture = obj->mesh->num_vertex;
-				obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
 
-				for (int i = 0; i < obj->mesh->num_texture; ++i)
+				if (new_mesh->HasFaces())
 				{
-					obj->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
-					obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+					obj->mesh->num_index = new_mesh->mNumFaces * 3;
+					obj->mesh->indices = new uint[obj->mesh->num_index]; // assume each face is a triangle
+
+					for (uint i = 0; i < new_mesh->mNumFaces; ++i)
+					{
+						if (new_mesh->mFaces[i].mNumIndices != 3)
+							App->Console_Log("WARNING, geometry face with != 3 indices!");
+						else
+							memcpy(&obj->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
+					}
 				}
+				if (new_mesh->HasTextureCoords(0))
+				{
+					obj->mesh->num_texture = obj->mesh->num_vertex;
+					obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
+
+					for (int i = 0; i < obj->mesh->num_texture; ++i)
+					{
+						obj->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
+						obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+					}
+				}
+				//Generate buffer for each mesh and send vertex, indices and textures to VRAM
+				VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
+				IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
+				TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
 			}
-			//Generate buffer for each mesh and send vertex and indices to VRAM
-			VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
-			IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
-			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);	
-		}	
-		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-		aiReleaseImport(file);
-		App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
+			// Use scene->mNumMeshes to iterate on scene->mMeshes array
+			aiReleaseImport(file);
+			App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
+	}
 	}
 	else
 		App->Console_Log("[WARNING]: Error loading mesh with path %s", full_path);
