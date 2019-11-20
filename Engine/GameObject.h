@@ -33,7 +33,7 @@ public:
 	std::vector<Component*> components; 
 
 	ComponentMesh* mesh = nullptr; 
-	ComponentTexture* texture = nullptr;
+	ComponentTexture* Ctexture = nullptr;
 	ComponentTransform* transform = nullptr;
 
 	GameObject* parent = nullptr; 

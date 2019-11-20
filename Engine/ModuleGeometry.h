@@ -28,7 +28,7 @@ public:
 	bool CleanUp();
 
 	void LoadFileFromPath(const char* full_path);
-	//void LoadNodeFromFile(const aiScene* file, aiNode* node, GameObject* go, const char* full_path);
+	void LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* go, const char* full_path);
 	void LoadParShapes(par_shapes_mesh* par_mesh, Position pos);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);

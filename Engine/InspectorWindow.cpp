@@ -22,10 +22,12 @@ bool InspectorWindow::Draw()
 		if (selected_go != nullptr && selected_go->id != 0)
 		{
 			ImGui::Checkbox("Active", &selected_go->active);
+			ImGui::SameLine(); 
+			ImGui::TextColored(ImVec4(1, 0.9, 0, 1), selected_go->name.c_str()); 
 
 			if (selected_go->active)
 			{
-				if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
+				if (ImGui::CollapsingHeader("Transformation", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
 				{
 					ImGui::Text("RESET:");
 					ImGui::SameLine();
@@ -81,12 +83,12 @@ bool InspectorWindow::Draw()
 
 				if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
 				{
-					ImGui::Text("Texture ID: %d", selected_go->texture->texture->textureID);
-					ImGui::Text("Texture Width: %d", selected_go->texture->texture->width);
-					ImGui::Text("Texture Height: %d", selected_go->texture->texture->height);
-					ImGui::Text("Texture Path: %s", selected_go->texture->texture->path.c_str());
+					ImGui::Text("Texture ID: %d", selected_go->Ctexture->texture->textureID);
+					ImGui::Text("Texture Width: %d", selected_go->Ctexture->texture->width);
+					ImGui::Text("Texture Height: %d", selected_go->Ctexture->texture->height);
+					ImGui::Text("Texture Path: %s", selected_go->Ctexture->texture->path.c_str());
 					ImGui::Text("Preview:");
-					ImGui::Image((ImTextureID*)selected_go->texture->texture->textureID, ImVec2(200, 200));
+					ImGui::Image((ImTextureID*)selected_go->Ctexture->texture->textureID, ImVec2(200, 200));
 				}
 			}
 		}

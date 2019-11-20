@@ -25,7 +25,7 @@ public:
 	ModuleCamera3D*			camera = nullptr;
 	ModuleGui*				gui = nullptr;
 	ModuleGeometry*			geometry = nullptr;
-	ModuleTexture*			texture = nullptr;
+	ModuleTexture*			Mtexture = nullptr;
 	ModuleFileSystem*		filesystem = nullptr; 
 
 private:

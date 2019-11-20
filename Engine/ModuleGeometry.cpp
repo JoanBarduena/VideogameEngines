@@ -63,38 +63,59 @@ bool ModuleGeometry::CleanUp()
 void ModuleGeometry::LoadFileFromPath(const char* full_path)
 {
 	const aiScene* file = aiImportFile(full_path, aiProcessPreset_TargetRealtime_MaxQuality);
-	aiNode* node = file->mRootNode;
-
-	GameObject* goLoader = App->scene_intro->CreateGameObject();
-	goLoader->name = App->GetNameFromPath(full_path);
-
-	aiVector3D position;
-	aiVector3D scaling;
-	aiQuaternion rotation;
-
-	node->mTransformation.Decompose(scaling, rotation, position);
-
-	float3 pos(position.x, position.y, position.z);
-	float3 scale(1,1,1);
-	Quat rot(rotation.x, rotation.y, rotation.z, rotation.w);
-
-	//Adding mTransformation to the Loader GameObject
-	goLoader->transform->SetPosition(pos);
-	goLoader->transform->SetScale(scale);
-	goLoader->transform->SetQuatRotation(rot);
-
-	//Define the gameobject as a child of the RootNode
-	App->scene_intro->root->DefineChilds(goLoader);
 
 	if (file != nullptr && file->HasMeshes()) //Load sucesful
 	{
+		aiNode* node = file->mRootNode;
+
+		GameObject* goLoader = App->scene_intro->CreateGameObject();
+		goLoader->name = App->GetNameFromPath(full_path);
+
+		aiVector3D position;
+		aiVector3D scaling;
+		aiQuaternion rotation;
+
+		node->mTransformation.Decompose(scaling, rotation, position);
+
+		float3 pos(position.x, position.y, position.z);
+		float3 scale(1, 1, 1);
+		Quat rot(rotation.x, rotation.y, rotation.z, rotation.w);
+
+		//Adding mTransformation to the Loader GameObject
+		goLoader->transform->SetPosition(pos);
+		goLoader->transform->SetScale(scale);
+		goLoader->transform->SetQuatRotation(rot);
+
+		//Define the gameobject as a child of the RootNode
+		App->scene_intro->root->DefineChilds(goLoader);
+
+		if (node->mNumChildren > 0)
+		{
+			for (int i = 0; i < node->mNumChildren; ++i)
+			{
+				LoadNodeFromParent(file, node, goLoader, full_path); 
+			}
+		}
+
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-		for (int i = 0; i < file->mNumMeshes; i++)
+		aiReleaseImport(file);
+		App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
+	}
+	else
+		App->Console_Log("[WARNING]: Error loading mesh with path %s", full_path);
+}
+
+void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path)
+{
+	if (node != nullptr && node->mNumMeshes > 0)
+	{
+	// Use scene->mNumMeshes to iterate on scene->mMeshes array
+		for (int i = 0; i < node->mNumMeshes; ++i)
 		{
 			GameObject* obj = App->scene_intro->CreateGameObject();
-			goLoader->DefineChilds(obj);
+			parent->DefineChilds(obj);
 
-			aiNode* nodeGO = node->mChildren[i];
+			aiNode* nodeGO = node;
 
 			aiVector3D nPosition;
 			aiVector3D nScaling;
@@ -103,7 +124,7 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 			nodeGO->mTransformation.Decompose(nScaling, nRotation, nPosition);
 
 			float3 pos(nPosition.x, nPosition.y, nPosition.z);
-			float3 scale(1,1,1);
+			float3 scale(1, 1, 1);
 			Quat rot(nRotation.x, nRotation.y, nRotation.z, nRotation.w);
 
 			//Adding mTransformation to the Loader GameObject
@@ -111,7 +132,7 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 			obj->transform->SetScale(scale);
 			obj->transform->SetQuatRotation(rot);
 
-			aiMesh* new_mesh = file->mMeshes[i];
+			aiMesh* new_mesh = file->mMeshes[node->mMeshes[i]];
 
 			obj->mesh->num_vertex = new_mesh->mNumVertices;
 			obj->mesh->vertices = new float3[obj->mesh->num_vertex];
@@ -159,7 +180,11 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 				directory.append("/");
 				directory.append(path.C_Str());
 
-				obj->texture->texture = App->texture->LoadTexturePath(directory.c_str());
+				obj->Ctexture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
+			}
+			else
+			{
+				obj->Ctexture->texture = App->Mtexture->DefaultTexture;
 			}
 
 			obj->mesh->UpdateAABB();
@@ -167,15 +192,17 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 			//Generate buffer for each mesh and send vertex, indices and textures to VRAM
 			VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
 			IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
-			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);		
+			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
 		}
-		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-		aiReleaseImport(file);
-		App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
-	
 	}
-	else
-		App->Console_Log("[WARNING]: Error loading mesh with path %s", full_path);
+
+	if (node->mNumChildren > 0)
+	{
+		for (int i = 0; i < node->mNumChildren; ++i)
+		{
+			LoadNodeFromParent(file, node->mChildren[i], parent, full_path);
+		}
+	}
 }
 
 void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
@@ -212,11 +239,7 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 		obj->mesh->texture_coords[i] = par_mesh->tcoords[i];
 
 	//Checkers texture to primitive
-	obj->texture->texture = App->texture->CreateCheckerTexture();
-
-	//obj->transform->position.x = pos.x;
-	//obj->transform->position.y = pos.y;
-	//obj->transform->position.z = pos.z; 
+	obj->Ctexture->texture = App->Mtexture->CreateCheckerTexture();
 
 	//Generate the buffers 
 	VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);

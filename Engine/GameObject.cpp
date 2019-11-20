@@ -9,7 +9,7 @@ GameObject::GameObject(string name_)
 	this->active = true; 
 	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
 	mesh = (ComponentMesh*)CreateComponent(Component::Type::Mesh); 
-	texture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
+	Ctexture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
 }
 
 GameObject::~GameObject()
@@ -23,9 +23,9 @@ void GameObject::CleanUp()
 	{
 		this->mesh->CleanUp();
 	}
-	if (this->texture != nullptr)
+	if (this->Ctexture != nullptr)
 	{
-		this->texture->CleanUp();
+		this->Ctexture->CleanUp();
 	}
 
 	//Clear GameObjects

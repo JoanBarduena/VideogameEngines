@@ -29,7 +29,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->LookAt(vec3(0, 0, 0));
 
 	//HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
-	App->geometry->LoadFileFromPath("Assets/BakerHouse.fbx"); 
+	//App->geometry->LoadFileFromPath("Assets/BakerHouse.fbx"); 
+	App->geometry->LoadFileFromPath("Assets/Street/Street environment_V01.fbx"); 
 
 	//Create_Cube(0,0,0,2);
 	//Create_Sphere(50,20,5,1,0,1); 

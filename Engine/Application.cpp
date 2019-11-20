@@ -9,7 +9,7 @@ Application::Application()
 	camera =		new ModuleCamera3D(this);
 	gui =			new ModuleGui(this); 
 	geometry =		new ModuleGeometry(this);
-	texture =		new ModuleTexture(this);
+	Mtexture =		new ModuleTexture(this);
 	filesystem =	new ModuleFileSystem(this, ASSETS_FOLDER);
 
 	// The order of calls is very important!
@@ -23,7 +23,7 @@ Application::Application()
 
 	//Geometry and textures
 	AddModule(geometry);
-	AddModule(texture);
+	AddModule(Mtexture);
 
 	// Scenes
 	AddModule(scene_intro);
