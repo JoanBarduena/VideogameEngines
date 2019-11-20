@@ -34,3 +34,33 @@ void ComponentMesh::CleanUp()
 		texture_coords = nullptr;
 	}
 }
+
+void ComponentMesh::DrawAABB()
+{
+	float3 minPoint = float3(aabb.minPoint);
+	float3 maxPoint = float3(aabb.maxPoint);
+
+	int num_v = aabb.NumVerticesInEdgeList();
+	math::float3* vertices = new math::float3[num_v];
+	aabb.ToEdgeList((float3*)vertices);
+
+	glBegin(GL_LINES);
+	glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+
+	for (uint i = 0; i < aabb.NumVerticesInEdgeList(); i++)
+	{
+		glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
+	}
+
+	delete[] vertices; 
+
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	glEnd();
+
+}
+
+void ComponentMesh::UpdateAABB()
+{
+	aabb.SetNegativeInfinity();
+	aabb.Enclose(vertices, num_vertex);
+}

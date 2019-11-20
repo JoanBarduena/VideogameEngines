@@ -187,4 +187,6 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	glDisableClientState(GL_VERTEX_ARRAY);
+
+	GO->mesh->DrawAABB(); 
 }

@@ -162,10 +162,12 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 				obj->texture->texture = App->texture->LoadTexturePath(directory.c_str());
 			}
 
+			obj->mesh->UpdateAABB();
+
 			//Generate buffer for each mesh and send vertex, indices and textures to VRAM
 			VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
 			IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
-			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
+			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);		
 		}
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		aiReleaseImport(file);
