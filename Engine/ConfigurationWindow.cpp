@@ -67,6 +67,11 @@ bool ConfigurationWindow::Draw()
 			ImGui::Text("Peak Alloc Unit Count: %u", stats.peakAllocUnitCount);
 		}
 
+		if (ImGui::CollapsingHeader("Render"))
+		{
+			ImGui::Checkbox("AABB", &App->renderer3D->render_aabb);
+		}
+
 		if (ImGui::CollapsingHeader("Window"))
 		{
 			if (ImGui::SliderFloat("Brightness", &App->window->brightness, 0.0f, 1.0f))

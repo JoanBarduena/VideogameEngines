@@ -188,5 +188,6 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 
-	GO->mesh->DrawAABB(); 
+	if(render_aabb)
+		GO->mesh->DrawAABB(); 
 }

@@ -22,6 +22,8 @@ public:
 
 	void DrawMesh(GameObject* GO);
 
+	bool render_aabb = false; 
+
 public:
 
 	Light lights[MAX_LIGHTS];
