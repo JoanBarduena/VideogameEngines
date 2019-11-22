@@ -83,12 +83,12 @@ bool InspectorWindow::Draw()
 
 				if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
 				{
-					ImGui::Text("Texture ID: %d", selected_go->Ctexture->texture->textureID);
-					ImGui::Text("Texture Width: %d", selected_go->Ctexture->texture->width);
-					ImGui::Text("Texture Height: %d", selected_go->Ctexture->texture->height);
-					ImGui::Text("Texture Path: %s", selected_go->Ctexture->texture->path.c_str());
+					ImGui::Text("Texture ID: %d", selected_go->Ctexture->texture.textureID);
+					ImGui::Text("Texture Width: %d", selected_go->Ctexture->texture.width);
+					ImGui::Text("Texture Height: %d", selected_go->Ctexture->texture.height);
+					ImGui::Text("Texture Path: %s", selected_go->Ctexture->texture.path.c_str());
 					ImGui::Text("Preview:");
-					ImGui::Image((ImTextureID*)selected_go->Ctexture->texture->textureID, ImVec2(200, 200));
+					ImGui::Image((ImTextureID*)selected_go->Ctexture->texture.textureID, ImVec2(200, 200));
 				}
 			}
 		}

@@ -68,7 +68,7 @@ bool ModuleTexture::CleanUp()
 	return ret;
 }
 
-TextureStruct* ModuleTexture::CreateCheckerTexture() const
+TextureStruct ModuleTexture::CreateCheckerTexture() const
 {
 	GLubyte checkImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
@@ -81,14 +81,14 @@ TextureStruct* ModuleTexture::CreateCheckerTexture() const
 		}
 	}
 
-	TextureStruct* texture = new TextureStruct();
+	TextureStruct texture;
 
-	texture->path = "NoPath"; 
+	texture.path = "NoPath"; 
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-	glGenTextures(1, &texture->textureID);
-	glBindTexture(GL_TEXTURE_2D, texture->textureID);
+	glGenTextures(1, &texture.textureID);
+	glBindTexture(GL_TEXTURE_2D, texture.textureID);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -99,18 +99,18 @@ TextureStruct* ModuleTexture::CreateCheckerTexture() const
 	
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	texture->width = CHECKERS_WIDTH; 
-	texture->height = CHECKERS_HEIGHT; 
+	texture.width = CHECKERS_WIDTH; 
+	texture.height = CHECKERS_HEIGHT; 
 
 	return texture;
 }
 
-TextureStruct* ModuleTexture::LoadTexturePath(const char* image_path)
+TextureStruct ModuleTexture::LoadTexturePath(const char* image_path)
 {
-	TextureStruct* texture = new TextureStruct();
+	TextureStruct texture;
 
 	//Texture loading success
-	texture->textureID = 0;
+	texture.textureID = 0;
 
 	//Generate and set current image ID
 	ILuint imgID = 0;
@@ -135,7 +135,11 @@ TextureStruct* ModuleTexture::LoadTexturePath(const char* image_path)
 		if (success == IL_TRUE)
 		{
 			//Create texture from file pixels
-			texture->textureID = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
+			texture.textureID = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
+
+			texture.height = (GLuint)ilGetInteger(IL_IMAGE_HEIGHT);
+			texture.width = (GLuint)ilGetInteger(IL_IMAGE_WIDTH);
+			texture.path = image_path;
 
 			ImportTexture(image_path);
 		}
@@ -144,10 +148,6 @@ TextureStruct* ModuleTexture::LoadTexturePath(const char* image_path)
 	}
 	else
 		App->Console_Log("Unable to load image path: %s", image_path); 
-
-	texture->height = (GLuint)ilGetInteger(IL_IMAGE_HEIGHT);
-	texture->width = (GLuint)ilGetInteger(IL_IMAGE_WIDTH);
-	texture->path = image_path; 
 
 	return texture; //return TEXTURE STRUCT (WIDHT, HEIGHT, ID, PATH)
 }
@@ -190,14 +190,14 @@ uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, ui
 	return TextureID; 
 }
 
-TextureStruct* ModuleTexture::CreateDefeaultTexture() const
+TextureStruct ModuleTexture::CreateDefeaultTexture() const
 {
-	TextureStruct* default_tex = new TextureStruct;
+	TextureStruct default_tex;
 
-	default_tex->textureID = 0; 
-	default_tex->path = "No Path";
-	default_tex->width = 0;
-	default_tex->height = 0; 
+	default_tex.textureID = 0; 
+	default_tex.path = "No Path";
+	default_tex.width = 0;
+	default_tex.height = 0; 
 
 	return default_tex;
 }

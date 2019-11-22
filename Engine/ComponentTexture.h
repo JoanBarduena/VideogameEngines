@@ -11,5 +11,5 @@ public:
 	~ComponentTexture(); 
 	void CleanUp(); 
 
-	TextureStruct* texture = nullptr; 
+	TextureStruct texture; 
 };
