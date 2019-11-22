@@ -71,20 +71,7 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 		GameObject* goLoader = App->scene_intro->CreateGameObject();
 		goLoader->name = App->GetNameFromPath(full_path);
 
-		aiVector3D position;
-		aiVector3D scaling;
-		aiQuaternion rotation;
-
-		node->mTransformation.Decompose(scaling, rotation, position);
-
-		float3 pos(position.x, position.y, position.z);
-		float3 scale(1, 1, 1);
-		Quat rot(rotation.x, rotation.y, rotation.z, rotation.w);
-
-		//Adding mTransformation to the Loader GameObject
-		goLoader->transform->SetPosition(pos);
-		goLoader->transform->SetScale(scale);
-		goLoader->transform->SetQuatRotation(rot);
+		DefineTransformation(node, goLoader, -1.5708, 1.5708);
 
 		//Define the gameobject as a child of the RootNode
 		App->scene_intro->root->DefineChilds(goLoader);
@@ -117,22 +104,11 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 
 			aiNode* nodeGO = node;
 
-			aiVector3D nPosition;
-			aiVector3D nScaling;
-			aiQuaternion nRotation;
-
-			nodeGO->mTransformation.Decompose(nScaling, nRotation, nPosition);
-
-			float3 pos(nPosition.x, nPosition.y, nPosition.z);
-			float3 scale(1, 1, 1);
-			Quat rot(nRotation.x, nRotation.y, nRotation.z, nRotation.w);
-
-			//Adding mTransformation to the Loader GameObject
-			obj->transform->SetPosition(pos);
-			obj->transform->SetScale(scale);
-			obj->transform->SetQuatRotation(rot);
+			DefineTransformation(nodeGO, obj, 0, 0);
 
 			aiMesh* new_mesh = file->mMeshes[node->mMeshes[i]];
+
+			DefineTextureType(file, new_mesh, obj, full_path); 
 
 			obj->mesh->num_vertex = new_mesh->mNumVertices;
 			obj->mesh->vertices = new float3[obj->mesh->num_vertex];
@@ -168,25 +144,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 					obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
 				}
 			}
-			aiMaterial* material = file->mMaterials[new_mesh->mMaterialIndex];
-			uint numTextures = material->GetTextureCount(aiTextureType_DIFFUSE);
-
-			aiString path;
-			material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
-
-			if (path.C_Str() != nullptr)
-			{
-				std::string directory = App->GetDirectoryFromPath(full_path);
-				directory.append("/");
-				directory.append(path.C_Str());
-
-				obj->Ctexture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
-			}
-			else
-			{
-				obj->Ctexture->texture = App->Mtexture->DefaultTexture;
-			}
-
+		
 			obj->mesh->UpdateAABB();
 
 			//Generate buffer for each mesh and send vertex, indices and textures to VRAM
@@ -270,4 +228,45 @@ void ModuleGeometry::TextureBuffer(uint &id, uint &num_texture, float* texture_p
 	glBindBuffer(GL_ARRAY_BUFFER, id);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * num_texture * 2, texture_pos, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_mesh, GameObject* obj, const char* full_path)
+{
+	aiMaterial* material = file->mMaterials[new_mesh->mMaterialIndex];
+	uint numTextures = material->GetTextureCount(aiTextureType_DIFFUSE);
+
+	aiString path;
+	material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
+
+	if (path.C_Str() != nullptr)
+	{
+		LOG("PEPE")
+			std::string directory = App->GetDirectoryFromPath(full_path);
+		directory.append("/");
+		directory.append(path.C_Str());
+
+		obj->Ctexture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
+	}
+	else
+	{
+		obj->Ctexture->texture = App->Mtexture->DefaultTexture;
+	}
+}
+
+void ModuleGeometry::DefineTransformation(const aiNode* node, GameObject* go, float x_rot, float w_rot)
+{
+	aiVector3D position;
+	aiVector3D scaling;
+	aiQuaternion rotation;
+
+	node->mTransformation.Decompose(scaling, rotation, position);
+
+	float3 pos(position.x, position.y, position.z);
+	float3 scale(1, 1, 1);
+	Quat rot(x_rot, rotation.y, rotation.z, w_rot);
+
+	//Adding mTransformation to the Loader GameObject
+	go->transform->SetPosition(pos);
+	go->transform->SetScale(scale);
+	go->transform->SetQuatRotation(rot);
 }

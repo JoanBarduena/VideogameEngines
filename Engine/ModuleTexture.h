@@ -29,8 +29,9 @@ public:
 	TextureStruct * CreateDefeaultTexture() const;
 
 	TextureStruct* DefaultTexture = nullptr; 
+	TextureStruct* CheckerTexture = nullptr;
 
-	bool ModuleTexture::ImportTexture(const void* buffer, uint size, const char* file);
+	bool ModuleTexture::ImportTexture(const char* path);
 
 	GLuint image_name = 0;
 };

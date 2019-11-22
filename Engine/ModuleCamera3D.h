@@ -35,7 +35,7 @@ public:
 
 private:
 
-	vec3 InitialPos = vec3(0.0f, 0.0f, 5.0f);
+	vec3 InitialPos = vec3(0.0f, 0.0f, 100.0f);
 	vec3 InitialRef = vec3(0.0f, 0.0f, 0.0f);
 	vec3 OffSet = vec3(0.0f, 5.0f, 15.0f);
 

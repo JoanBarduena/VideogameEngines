@@ -46,19 +46,21 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 
 	bool nodeOpen = false; 
 
-	if (go == App->gui->inspector_w->selected_go)
+	if (go == App->gui->inspector_w->selected_go) // Draw selected TreeNode as selected
 		node_flags |= ImGuiTreeNodeFlags_Selected;
 
 	if (go != nullptr)
 	{
-		if (go->active == false)
+		if (go->active) // Active GameObjects
+		{
+			nodeOpen = ImGui::TreeNodeEx(go->name.c_str(), node_flags);
+		}		
+		else // Unactive GameObjects
 		{
 			ImGui::PushStyleColor(0, ImVec4(1, 1, 1, 0.5f)); //make the text grey and add [not active] 
 			nodeOpen = ImGui::TreeNodeEx(go->unactive_name.c_str(), node_flags);
-			ImGui::PopStyleColor(); 
-		}		
-		else
-			nodeOpen = ImGui::TreeNodeEx(go->name.c_str(), node_flags);
+			ImGui::PopStyleColor();
+		}	
 	}
 	else
 		nodeOpen = ImGui::TreeNode("[NULL] Game Object"); 
@@ -71,7 +73,7 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 
 	if (nodeOpen)
 	{
-		if (go->childs.size() > 0) 
+		if (go->childs.size() > 0) // Draw all childs of the GO (root)
 		{
 			for (std::vector<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
 			{

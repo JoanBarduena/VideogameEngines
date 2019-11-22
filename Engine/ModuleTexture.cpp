@@ -51,6 +51,7 @@ bool ModuleTexture::Start()
 	bool ret = true;
 
 	DefaultTexture = CreateDefeaultTexture(); 
+	CheckerTexture = CreateCheckerTexture(); 
 
 	return ret;
 }
@@ -199,25 +200,28 @@ TextureStruct* ModuleTexture::CreateDefeaultTexture() const
 	return default_tex;
 }
 
-bool ModuleTexture::ImportTexture(const void* buffer, uint size, const char* original_file)
+bool ModuleTexture::ImportTexture(const char* path)
 {
 	bool ret = true;  
 
-	ILuint BufferSize;
-	ILubyte* data;
+	string output_file, name; 
+	name = App->GetNameFromPath(path); 
+
+	ILuint bufferSize;
+	ILubyte* bufferData;
 
 	ilSetInteger(IL_DXTC_FORMAT, IL_DXT5);// To pick a specific DXT compression use
 
-	BufferSize = ilSaveL(IL_DDS, NULL, 0); // Get the size of the data buffer
+	bufferSize = ilSaveL(IL_DDS, NULL, 0); // Get the size of the data buffer
 
-	if (BufferSize > 0)
+	if (bufferSize > 0)
 	{
-		data = new ILubyte[BufferSize]; // allocate data buffer
+		bufferData = new ILubyte[bufferSize]; // allocate data buffer
 
-		if (ilSaveL(IL_DDS, data, BufferSize) > 0) // Save to buffer with the ilSaveIL function
-			ret = App->filesystem->Save(LIBRARY_TEXTURES_FOLDER, data, BufferSize);
+		if (ilSaveL(IL_DDS, bufferData, bufferSize) > 0) // Save to buffer with the ilSaveIL function
+			ret = App->filesystem->SaveUnique(output_file, bufferData, bufferSize, LIBRARY_TEXTURES_FOLDER, name.c_str(), "dds");
 
-		RELEASE_ARRAY(data);
+		RELEASE_ARRAY(bufferData);
 	}
 
 	return ret;
