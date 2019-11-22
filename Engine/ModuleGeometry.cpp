@@ -71,8 +71,6 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 		GameObject* goLoader = App->scene_intro->CreateGameObject();
 		goLoader->name = App->GetNameFromPath(full_path);
 
-		DefineTransformation(node, goLoader, -1.5708, 1.5708);
-
 		//Define the gameobject as a child of the RootNode
 		App->scene_intro->root->DefineChilds(goLoader);
 
@@ -96,15 +94,60 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 {
 	if (node != nullptr && node->mNumMeshes > 0)
 	{
-	// Use scene->mNumMeshes to iterate on scene->mMeshes array
+		aiVector3D position;
+		aiVector3D scaling;
+		aiQuaternion rotation;
+
+		//Decomposing transform matrix into translation rotation and scale
+		node->mTransformation.Decompose(scaling, rotation, position);
+
+		float3 pos(position.x, position.y, position.z);
+		float3 scale(scaling.x, scaling.y, scaling.z);
+		Quat rot(rotation.x, rotation.y, rotation.z, rotation.w);
+
+		std::string name = node->mName.C_Str();
+
+		bool dummyFound = true;
+
+		while (dummyFound)
+		{
+			//All dummy modules have one children (next dummy module or last module containing the mesh)
+			if (name.find("$AssimpFbx$") != std::string::npos && node->mNumChildren == 1)
+			{
+				//Dummy module have only one child node, so we use that one as our next GameObject
+				node = node->mChildren[0];
+
+				// Accumulate transform 
+				node->mTransformation.Decompose(scaling, rotation, position);
+				pos += float3(position.x, position.y, position.z);
+				scale = float3(scale.x * scaling.x, scale.y * scaling.y, scale.z * scaling.z);
+				rot = rot * Quat(rotation.x, rotation.y, rotation.z, rotation.w);
+
+				name = node->mName.C_Str();
+
+				//if we find a dummy node we "change" our current node into the dummy one and search
+				//for other dummy nodes inside that one.
+				dummyFound = true;
+			}
+			else
+				dummyFound = false;
+		}
+
+		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		for (int i = 0; i < node->mNumMeshes; ++i)
 		{
 			GameObject* obj = App->scene_intro->CreateGameObject();
+
+			//Adding mTransformation to the Loader GameObject
+			obj->transform->SetPosition(pos);
+			obj->transform->SetScale(scale);
+			obj->transform->SetQuatRotation(rot);
+
+			// Childs of parent 
 			parent->DefineChilds(obj);
+			obj->name = name; 
 
 			aiNode* nodeGO = node;
-
-			DefineTransformation(nodeGO, obj, 0, 0);
 
 			aiMesh* new_mesh = file->mMeshes[node->mMeshes[i]];
 
@@ -240,8 +283,7 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 
 	if (path.C_Str() != nullptr)
 	{
-		LOG("PEPE")
-			std::string directory = App->GetDirectoryFromPath(full_path);
+		std::string directory = App->GetDirectoryFromPath(full_path);
 		directory.append("/");
 		directory.append(path.C_Str());
 
@@ -251,22 +293,4 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 	{
 		obj->Ctexture->texture = App->Mtexture->DefaultTexture;
 	}
-}
-
-void ModuleGeometry::DefineTransformation(const aiNode* node, GameObject* go, float x_rot, float w_rot)
-{
-	aiVector3D position;
-	aiVector3D scaling;
-	aiQuaternion rotation;
-
-	node->mTransformation.Decompose(scaling, rotation, position);
-
-	float3 pos(position.x, position.y, position.z);
-	float3 scale(1, 1, 1);
-	Quat rot(x_rot, rotation.y, rotation.z, w_rot);
-
-	//Adding mTransformation to the Loader GameObject
-	go->transform->SetPosition(pos);
-	go->transform->SetScale(scale);
-	go->transform->SetQuatRotation(rot);
 }

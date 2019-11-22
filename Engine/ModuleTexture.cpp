@@ -136,6 +136,8 @@ TextureStruct* ModuleTexture::LoadTexturePath(const char* image_path)
 		{
 			//Create texture from file pixels
 			texture->textureID = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
+
+			ImportTexture(image_path);
 		}
 		//Delete file from memory
 		//ilDeleteImages(1, &imgID);

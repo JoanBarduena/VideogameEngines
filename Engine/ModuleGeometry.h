@@ -36,7 +36,6 @@ public:
 	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos);
 
 	void DefineTextureType(const aiScene* file, const aiMesh* new_mesh, GameObject* obj, const char* full_path);
-	void DefineTransformation(const aiNode* node, GameObject* go, float x_rot, float w_rot);
 };
 
 
