@@ -215,7 +215,7 @@ TextureStruct ModuleTexture::CreateDefeaultTexture() const
 
 bool ModuleTexture::ImportTexture(const char* path)
 {
-	bool ret = true;  
+	bool ret = false;  
 
 	string output_file, name; 
 	name = App->GetNameFromPath(path); 
@@ -232,7 +232,7 @@ bool ModuleTexture::ImportTexture(const char* path)
 		bufferData = new ILubyte[bufferSize]; // allocate data buffer
 
 		if (ilSaveL(IL_DDS, bufferData, bufferSize) > 0) // Save to buffer with the ilSaveIL function
-			ret = App->filesystem->SaveUnique(output_file, bufferData, bufferSize, LIBRARY_TEXTURES_FOLDER, name.c_str(), "dds");
+			ret = App->filesystem->SaveUnique(output_file, bufferData, bufferSize, LIBRARY_TEXTURES_FOLDER, name.data(), "dds");
 
 		RELEASE_ARRAY(bufferData);
 	}

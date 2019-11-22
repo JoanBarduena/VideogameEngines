@@ -74,11 +74,15 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 		//Define the gameobject as a child of the RootNode
 		App->scene_intro->root->DefineChilds(goLoader);
 
+		//Importer mesh
+		SceneImporter exporter; 
+		std::string output_file; 
+
 		if (node->mNumChildren > 0)
 		{
 			for (int i = 0; i < node->mNumChildren; ++i)
 			{
-				LoadNodeFromParent(file, node->mChildren[i], goLoader, full_path); 
+				LoadNodeFromParent(file, node->mChildren[i], goLoader, full_path, exporter, output_file); 
 			}
 		}
 
@@ -90,7 +94,7 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 		App->Console_Log("[WARNING]: Error loading mesh with path %s", full_path);
 }
 
-void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path)
+void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path, SceneImporter exporter, std::string output_file)
 {
 	aiVector3D nPosition;
 	aiVector3D nScaling;
@@ -211,6 +215,8 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 	
 		obj->mesh->UpdateAABB();
 
+		exporter.ExportMesh(obj->name.data(), LIBRARY_MESH_FOLDER, output_file, obj);
+
 		//Generate buffer for each mesh and send vertex, indices and textures to VRAM
 		VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
 		IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
@@ -221,7 +227,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 	{
 		for (int i = 0; i < node->mNumChildren; ++i)
 		{
-			LoadNodeFromParent(file, node->mChildren[i], obj, full_path);
+			LoadNodeFromParent(file, node->mChildren[i], obj, full_path, exporter, output_file);
 		}
 	}
 }

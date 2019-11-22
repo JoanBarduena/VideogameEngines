@@ -35,10 +35,17 @@ ModuleFileSystem::ModuleFileSystem(bool start_enabled, const char* game_path) : 
 
 	// Make sure standard paths exist
 	const char* dirs[] = {
-		SETTINGS_FOLDER, ASSETS_FOLDER, LIBRARY_FOLDER,
-		LIBRARY_AUDIO_FOLDER, LIBRARY_MESH_FOLDER,
-		LIBRARY_MATERIAL_FOLDER, LIBRARY_SCENE_FOLDER, LIBRARY_MODEL_FOLDER,
-		LIBRARY_TEXTURES_FOLDER, LIBRARY_ANIMATION_FOLDER, LIBRARY_STATE_MACHINE_FOLDER,
+		SETTINGS_FOLDER, 
+		ASSETS_FOLDER, 
+		LIBRARY_FOLDER,
+		//LIBRARY_AUDIO_FOLDER,
+		LIBRARY_MESH_FOLDER,
+		//LIBRARY_MATERIAL_FOLDER,
+		//LIBRARY_SCENE_FOLDER, 
+		//LIBRARY_MODEL_FOLDER,
+		LIBRARY_TEXTURES_FOLDER, 
+		//LIBRARY_ANIMATION_FOLDER,
+		//LIBRARY_STATE_MACHINE_FOLDER,
 	};
 
 	for (uint i = 0; i < sizeof(dirs) / sizeof(const char*); ++i)
@@ -368,7 +375,7 @@ bool ModuleFileSystem::SaveUnique(string& name, const void * buffer, uint size, 
 {
 	char result[250];
 
-	sprintf_s(result, 250, "%s%s_%llu.%s", path, prefix, /*App->resources->GenerateNewUID(),*/ extension);
+	sprintf_s(result, 250, "%s%s.%s", path, prefix, extension);
 	NormalizePath(result);
 	if (Save(result, buffer, size) > 0)
 	{

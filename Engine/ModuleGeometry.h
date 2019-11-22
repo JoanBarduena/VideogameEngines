@@ -13,6 +13,7 @@
 class aiNode; 
 class aiScene; 
 class aiMesh; 
+class SceneImporter; 
 
 class ModuleGeometry : public Module
 {
@@ -28,7 +29,7 @@ public:
 	bool CleanUp();
 
 	void LoadFileFromPath(const char* full_path);
-	void LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* go, const char* full_path);
+	void LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path, SceneImporter exporter, std::string output_file);
 	void LoadParShapes(par_shapes_mesh* par_mesh, Position pos);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);

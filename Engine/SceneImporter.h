@@ -10,6 +10,6 @@ public:
 
 	bool Init();
 
-	bool ImportMesh(const char* file, const char* path, std::string& output_file, GameObject* go);
-	bool ExportMesh(const char* file, const char* path, std::string& output_file, GameObject* go);
+	bool ImportMesh(const char* path, GameObject* go);
+	bool ExportMesh(const char* name, const char* path, std::string& output_file, GameObject* go);
 };

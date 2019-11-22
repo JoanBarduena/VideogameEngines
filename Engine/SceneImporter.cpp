@@ -44,15 +44,12 @@ bool SceneImporter::Init()
 	return ret; 
 }
 
-bool SceneImporter::ImportMesh(const char* file, const char* path, std::string& output_file, GameObject* go)
+bool SceneImporter::ImportMesh(const char* path, GameObject* go)
 {
 	bool ret = true;
 
-	output_file = path; 
-	output_file += file; 
-
 	char* buffer = nullptr; 
-	App->filesystem->Load(output_file.data(), &buffer);
+	App->filesystem->Load(path, &buffer);
 
 	char* cursor = buffer;
 
@@ -88,7 +85,7 @@ bool SceneImporter::ImportMesh(const char* file, const char* path, std::string& 
 
 
 
-bool SceneImporter::ExportMesh(const char* file, const char* path, std::string& output_file, GameObject* go)
+bool SceneImporter::ExportMesh(const char* name, const char* path, std::string& output_file, GameObject* go)
 {
 	bool ret = true; 
 
@@ -122,7 +119,7 @@ bool SceneImporter::ExportMesh(const char* file, const char* path, std::string& 
 	memcpy(cursor, go->mesh->texture_coords, bytes); 
 
 	// Save a new extension .mesh 
-	App->filesystem->SaveUnique(output_file, data, size, path, file, "mesh"); 
+	App->filesystem->SaveUnique(output_file, data, size, path, name, "mesh"); 
 
 	//RELEASE_ARRAY(data);
 	return ret;
