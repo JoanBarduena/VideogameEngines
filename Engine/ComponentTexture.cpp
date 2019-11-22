@@ -14,8 +14,4 @@ ComponentTexture::~ComponentTexture()
 
 void ComponentTexture::CleanUp()
 {
-	/*if (texture != nullptr)
-	{
-		RELEASE(texture); 
-	}*/
 }

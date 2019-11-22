@@ -17,7 +17,6 @@ public:
 	Component* CreateComponent(Component::Type type);
 
 	void DefineChilds(GameObject* GO);
-	void DeleteGameObjects(); 
 
 	void Update(float dt);
 	void UpdateTransformation(GameObject* GO);
@@ -29,6 +28,11 @@ public:
 	string unactive_name; 
 	bool active; 
 	uint id; 
+
+	//Values to reset initial pos, scale and rotation
+	float3 reset_pos = float3::zero; 
+	float3 reset_scale = float3::one; 
+	Quat reset_rotation = Quat::identity; 
 
 	std::vector<Component*> components; 
 

@@ -33,5 +33,7 @@ public:
 
 	bool ModuleTexture::ImportTexture(const char* path);
 
+	vector<TextureStruct>textureList; 
+
 	GLuint image_name = 0;
 };

@@ -109,6 +109,15 @@ TextureStruct ModuleTexture::LoadTexturePath(const char* image_path)
 {
 	TextureStruct texture;
 
+	// List of textures, so if a texture is already loaded, it will not be loaded again. 
+	for (std::vector<TextureStruct>::iterator it = textureList.begin(); it != textureList.end(); ++it)
+	{
+		if ((*it).path == image_path)
+		{
+			return (*it); 
+		}
+	}
+
 	//Texture loading success
 	texture.textureID = 0;
 
@@ -148,6 +157,8 @@ TextureStruct ModuleTexture::LoadTexturePath(const char* image_path)
 	}
 	else
 		App->Console_Log("Unable to load image path: %s", image_path); 
+
+	textureList.push_back(texture); 
 
 	return texture; //return TEXTURE STRUCT (WIDHT, HEIGHT, ID, PATH)
 }

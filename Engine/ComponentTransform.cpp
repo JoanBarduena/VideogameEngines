@@ -102,32 +102,3 @@ void ComponentTransform::UpdateTransformInGame(const float4x4 &parent_global)
 
 	is_transformed = false; 
 }
-
-// ----------- Reset() Functions ------------
-
-void ComponentTransform::ResetPosition()
-{
-	position = float3::zero;
-	UpdateLocalTransform();
-}
-
-void ComponentTransform::ResetEulerRotation()
-{
-	rotation = Quat::identity;
-	UpdateLocalTransform();
-}
-
-void ComponentTransform::ResetScale()
-{
-	scale = float3::one;
-	UpdateLocalTransform();
-}
-
-void ComponentTransform::ResetALL()
-{
-	position = float3::zero;
-	scale = float3::one;
-	rotation = Quat::identity;
-
-	UpdateLocalTransform();
-}

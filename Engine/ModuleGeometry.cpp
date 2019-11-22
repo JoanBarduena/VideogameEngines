@@ -134,7 +134,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 
 	GameObject* obj = App->scene_intro->CreateGameObject();
 
-	//Adding mTransformation to the Loader GameObject
+	//Adding mTransformation to the Loader GameObject.
 	obj->transform->SetPosition(nPos);
 	obj->transform->SetScale(nScale);
 	obj->transform->SetQuatRotation(nRot);
@@ -142,6 +142,11 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 	// Childs of parent 
 	parent->DefineChilds(obj);
 	obj->name = node_name;
+
+	// Store initial values so then we can RESET the position, scale and rotation.
+	obj->reset_pos = nPos; 
+	obj->reset_rotation = nRot; 
+	obj->reset_scale = nScale; 
 
 	// Use scene->mNumMeshes to iterate on scene->mMeshes array
 	for (int i = 0; i < node->mNumMeshes; ++i)

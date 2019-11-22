@@ -111,7 +111,9 @@ update_status ModuleInput::PreUpdate(float dt)
 				App->geometry->LoadFileFromPath(dropped_filedir);
 				App->Console_Log("File .FBX dropped with root: %s", dropped_filedir);
 			}	
-			else if (GetFileExtension(dropped_filedir) == "png" || GetFileExtension(dropped_filedir) == "dds" || GetFileExtension(dropped_filedir) == "tga")
+			else if (GetFileExtension(dropped_filedir) == "png" || GetFileExtension(dropped_filedir) == "dds" || 
+				GetFileExtension(dropped_filedir) == "tga" || GetFileExtension(dropped_filedir) == "TGA" || 
+				GetFileExtension(dropped_filedir) == "PNG")
 			{
 				if (App->gui->inspector_w->selected_go != nullptr)
 				{

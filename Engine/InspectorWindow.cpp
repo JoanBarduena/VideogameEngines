@@ -29,28 +29,31 @@ bool InspectorWindow::Draw()
 			{
 				if (ImGui::CollapsingHeader("Transformation", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->transform != nullptr)
 				{
-					ImGui::Text("RESET:");
-					ImGui::SameLine();
-					if (ImGui::Button("Position", ImVec2(0, 0)))
+					ImGui::Text("Reset:");
+					
+					if (ImGui::Button("Position", ImVec2(0, 0))) // Reset initial position
 					{
-						selected_go->transform->ResetPosition();
+						selected_go->transform->SetPosition(selected_go->reset_pos); 
 					}
-					ImGui::SameLine();
-					if (ImGui::Button("Rotation", ImVec2(0, 0)))
+					
+					if (ImGui::Button("Rotation", ImVec2(0, 0))) // Reset initial rotation
 					{
-						selected_go->transform->ResetEulerRotation();
+						selected_go->transform->SetQuatRotation(selected_go->reset_rotation); 
 					}
-					ImGui::SameLine();
-					if (ImGui::Button("Scale", ImVec2(0, 0)))
+					
+					if (ImGui::Button("Scale", ImVec2(0, 0))) // Reset initial scale
 					{
-						selected_go->transform->ResetScale();
+						selected_go->transform->SetScale(selected_go->reset_scale); 
 					}
-					ImGui::SameLine(); 
-					if (ImGui::Button("ALL", ImVec2(0, 0)))
+					
+					if (ImGui::Button("All Transformations", ImVec2(0, 0))) // Reset ALL initial transformations
 					{
-						selected_go->transform->ResetALL(); 
+						selected_go->transform->SetPosition(selected_go->reset_pos);
+						selected_go->transform->SetQuatRotation(selected_go->reset_rotation);
+						selected_go->transform->SetScale(selected_go->reset_scale);
 					}
 
+					ImGui::Text("");
 					float3 position = selected_go->transform->GetPosition();
 
 					if (ImGui::DragFloat3("Position", (float*)&position, 0.05f))
