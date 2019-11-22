@@ -32,6 +32,8 @@ public:
 	uint num_indices = 36; 
 	bool cube_created = false; 
 
+	bool render_grid = true; 
+
 	uint id_vertex;
 	uint id_index;
 	uint id_texture;

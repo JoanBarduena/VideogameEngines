@@ -70,6 +70,7 @@ bool ConfigurationWindow::Draw()
 		if (ImGui::CollapsingHeader("Render"))
 		{
 			ImGui::Checkbox("AABB", &App->renderer3D->render_aabb);
+			ImGui::Checkbox("Grid", &App->scene_intro->render_grid); 
 		}
 
 		if (ImGui::CollapsingHeader("Window"))

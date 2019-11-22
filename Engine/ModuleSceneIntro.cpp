@@ -23,7 +23,7 @@ bool ModuleSceneIntro::Start()
 
 	// Initialize root 
 	root = CreateGameObject();
-	root->name = "Root";	
+	root->name = "ROOT";	
 
 	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
@@ -50,26 +50,28 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-	glLineWidth(2.0f);
-
-	// Grid plane made with GL_Lines
-	glBegin(GL_LINES);
-	glColor3ub(255, 255, 255);
-	for (float i = -10; i <= 10; ++i)
+	if (render_grid)
 	{
-		glVertex3f(i, 0.f, 0.f);
-		glVertex3f(i, 0, 10.f);
+		glLineWidth(2.0f);
+		// Grid plane made with GL_Lines
+		glBegin(GL_LINES);
+		glColor3ub(255, 255, 255);
+		for (float i = -50; i <= 50; ++i)
+		{
+			glVertex3f(i, 0.f, 0.f);
+			glVertex3f(i, 0, 50.0f);
 
-		glVertex3f(0.f, 0.f, i);
-		glVertex3f(10.f, 0, i);
+			glVertex3f(0.f, 0.f, i);
+			glVertex3f(50.f, 0, i);
 
-		glVertex3f(i, 0.f, 0.f);
-		glVertex3f(i, 0, -10.f);
+			glVertex3f(i, 0.f, 0.f);
+			glVertex3f(i, 0, -50.f);
 
-		glVertex3f(0.f, 0.f, i);
-		glVertex3f(-10.f, 0, i);
+			glVertex3f(0.f, 0.f, i);
+			glVertex3f(-50.f, 0, i);
+		}
+		glEnd();
 	}
-	glEnd();
 
 	root->Update(dt); 
 

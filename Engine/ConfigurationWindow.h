@@ -22,7 +22,7 @@ public:
 	bool gl_cull_face = true;
 	bool gl_lighting = true;
 	bool gl_color_material = true;
-	bool gl_texture_2D = false;
+	bool gl_texture_2D = true;
 
 	int cpu_count = 0, system_ram = 0, cpu_cache = 0;
 	SDL_bool RDTSC, MMX, SSE, SSE2, SSE3;

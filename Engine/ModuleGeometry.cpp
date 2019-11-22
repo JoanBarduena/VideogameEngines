@@ -78,7 +78,7 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 		{
 			for (int i = 0; i < node->mNumChildren; ++i)
 			{
-				LoadNodeFromParent(file, node, goLoader, full_path); 
+				LoadNodeFromParent(file, node->mChildren[i], goLoader, full_path); 
 			}
 		}
 
@@ -92,116 +92,131 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 
 void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path)
 {
-	if (node != nullptr && node->mNumMeshes > 0)
+	aiVector3D nPosition;
+	aiVector3D nScaling;
+	aiQuaternion nRotation;
+
+	//Decomposing transform matrix into translation rotation and scale
+	node->mTransformation.Decompose(nScaling, nRotation, nPosition);
+
+	float3 nPos(nPosition.x, nPosition.y, nPosition.z);
+	float3 nScale(nScaling.x, nScaling.y, nScaling.z);
+	Quat nRot(nRotation.x, nRotation.y, nRotation.z, nRotation.w);
+
+	//Skipp all dummy modules. Assimp loads this fbx nodes to stack all transformations
+	std::string node_name = node->mName.C_Str();
+
+	bool dummyFound = true;
+
+	while (dummyFound)
 	{
-		aiVector3D position;
-		aiVector3D scaling;
-		aiQuaternion rotation;
-
-		//Decomposing transform matrix into translation rotation and scale
-		node->mTransformation.Decompose(scaling, rotation, position);
-
-		float3 pos(position.x, position.y, position.z);
-		float3 scale(scaling.x, scaling.y, scaling.z);
-		Quat rot(rotation.x, rotation.y, rotation.z, rotation.w);
-
-		std::string name = node->mName.C_Str();
-
-		bool dummyFound = true;
-
-		while (dummyFound)
+		//All dummy modules have one children (next dummy module or last module containing the mesh)
+		if (node_name.find("_$AssimpFbx$_") != std::string::npos && node->mNumChildren == 1)
 		{
-			//All dummy modules have one children (next dummy module or last module containing the mesh)
-			if (name.find("$AssimpFbx$") != std::string::npos && node->mNumChildren == 1)
-			{
-				//Dummy module have only one child node, so we use that one as our next GameObject
-				node = node->mChildren[0];
+			//Dummy module have only one child node, so we use that one as our next GameObject
+			node = node->mChildren[0];
 
-				// Accumulate transform 
-				node->mTransformation.Decompose(scaling, rotation, position);
-				pos += float3(position.x, position.y, position.z);
-				scale = float3(scale.x * scaling.x, scale.y * scaling.y, scale.z * scaling.z);
-				rot = rot * Quat(rotation.x, rotation.y, rotation.z, rotation.w);
+			// Accumulate transform 
+			node->mTransformation.Decompose(nScaling, nRotation, nPosition);
+			nPos += float3(nPosition.x, nPosition.y, nPosition.z);
+			nScale = float3(nScale.x * nScaling.x, nScale.y * nScaling.y, nScale.z * nScaling.z);
+			nRot = nRot * Quat(nRotation.x, nRotation.y, nRotation.z, nRotation.w);
 
-				name = node->mName.C_Str();
+			node_name = node->mName.C_Str();
 
-				//if we find a dummy node we "change" our current node into the dummy one and search
-				//for other dummy nodes inside that one.
-				dummyFound = true;
-			}
-			else
-				dummyFound = false;
+			//if we find a dummy node we "change" our current node into the dummy one and search
+			//for other dummy nodes inside that one.
+			dummyFound = true;
+		}
+		else
+			dummyFound = false;
+	}
+
+	GameObject* obj = App->scene_intro->CreateGameObject();
+
+	//Adding mTransformation to the Loader GameObject
+	obj->transform->SetPosition(nPos);
+	obj->transform->SetScale(nScale);
+	obj->transform->SetQuatRotation(nRot);
+
+	// Childs of parent 
+	parent->DefineChilds(obj);
+	obj->name = node_name;
+
+	// Use scene->mNumMeshes to iterate on scene->mMeshes array
+	for (int i = 0; i < node->mNumMeshes; ++i)
+	{
+		aiMesh* new_mesh = file->mMeshes[node->mMeshes[i]];
+
+		GameObject* child = nullptr;
+
+		if (node->mNumMeshes > 1)
+		{
+			node_name = new_mesh->mName.C_Str();
+
+			if (node_name == "")
+				node_name = obj->name + "_submesh";
+			if (i > 0)
+				node_name.append(" (" + std::to_string(i+1) + ")");
+
+			child = App->scene_intro->CreateGameObject(); 
+			obj->DefineChilds(child);
+			child->name = node_name; 
+		}
+		else
+		{
+			child = obj;
+		}
+		DefineTextureType(file, new_mesh, obj, full_path); 
+
+		obj->mesh->num_vertex = new_mesh->mNumVertices;
+		obj->mesh->vertices = new float3[obj->mesh->num_vertex];
+
+		for (uint i = 0; i < new_mesh->mNumVertices; ++i)
+		{
+			obj->mesh->vertices[i].x = new_mesh->mVertices[i].x;
+			obj->mesh->vertices[i].y = new_mesh->mVertices[i].y;
+			obj->mesh->vertices[i].z = new_mesh->mVertices[i].z;
 		}
 
-		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-		for (int i = 0; i < node->mNumMeshes; ++i)
+		if (new_mesh->HasFaces())
 		{
-			GameObject* obj = App->scene_intro->CreateGameObject();
+			obj->mesh->num_index = new_mesh->mNumFaces * 3;
+			obj->mesh->indices = new uint[obj->mesh->num_index]; // assume each face is a triangle
 
-			//Adding mTransformation to the Loader GameObject
-			obj->transform->SetPosition(pos);
-			obj->transform->SetScale(scale);
-			obj->transform->SetQuatRotation(rot);
-
-			// Childs of parent 
-			parent->DefineChilds(obj);
-			obj->name = name; 
-
-			aiNode* nodeGO = node;
-
-			aiMesh* new_mesh = file->mMeshes[node->mMeshes[i]];
-
-			DefineTextureType(file, new_mesh, obj, full_path); 
-
-			obj->mesh->num_vertex = new_mesh->mNumVertices;
-			obj->mesh->vertices = new float3[obj->mesh->num_vertex];
-
-			for (uint i = 0; i < new_mesh->mNumVertices; ++i)
+			for (uint i = 0; i < new_mesh->mNumFaces; ++i)
 			{
-				obj->mesh->vertices[i].x = new_mesh->mVertices[i].x;
-				obj->mesh->vertices[i].y = new_mesh->mVertices[i].y;
-				obj->mesh->vertices[i].z = new_mesh->mVertices[i].z;
+				if (new_mesh->mFaces[i].mNumIndices != 3)
+					App->Console_Log("WARNING, geometry face with != 3 indices!");
+				else
+					memcpy(&obj->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
 			}
-
-			if (new_mesh->HasFaces())
-			{
-				obj->mesh->num_index = new_mesh->mNumFaces * 3;
-				obj->mesh->indices = new uint[obj->mesh->num_index]; // assume each face is a triangle
-
-				for (uint i = 0; i < new_mesh->mNumFaces; ++i)
-				{
-					if (new_mesh->mFaces[i].mNumIndices != 3)
-						App->Console_Log("WARNING, geometry face with != 3 indices!");
-					else
-						memcpy(&obj->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
-				}
-			}
-			if (new_mesh->HasTextureCoords(0))
-			{
-				obj->mesh->num_texture = obj->mesh->num_vertex;
-				obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
-
-				for (int i = 0; i < obj->mesh->num_texture; ++i)
-				{
-					obj->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
-					obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
-				}
-			}
-		
-			obj->mesh->UpdateAABB();
-
-			//Generate buffer for each mesh and send vertex, indices and textures to VRAM
-			VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
-			IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
-			TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
 		}
+		if (new_mesh->HasTextureCoords(0))
+		{
+			obj->mesh->num_texture = obj->mesh->num_vertex;
+			obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
+
+			for (int i = 0; i < obj->mesh->num_texture; ++i)
+			{
+				obj->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
+				obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+			}
+		}
+	
+		obj->mesh->UpdateAABB();
+
+		//Generate buffer for each mesh and send vertex, indices and textures to VRAM
+		VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
+		IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
+		TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
 	}
 
 	if (node->mNumChildren > 0)
 	{
 		for (int i = 0; i < node->mNumChildren; ++i)
 		{
-			LoadNodeFromParent(file, node->mChildren[i], parent, full_path);
+			LoadNodeFromParent(file, node->mChildren[i], obj, full_path);
 		}
 	}
 }
