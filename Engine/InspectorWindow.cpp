@@ -21,9 +21,11 @@ bool InspectorWindow::Draw()
 
 		if (selected_go != nullptr && selected_go->id != 0)
 		{
+			ImGui::TextColored(ImVec4(1, 0.9, 0, 1), selected_go->name.c_str());
+
 			ImGui::Checkbox("Active", &selected_go->active);
-			ImGui::SameLine(); 
-			ImGui::TextColored(ImVec4(1, 0.9, 0, 1), selected_go->name.c_str()); 
+			if (ImGui::Checkbox("Static", &selected_go->go_static))
+				App->scene_intro->SetGameObjectStatic(selected_go); 
 
 			if (selected_go->active)
 			{
@@ -31,22 +33,22 @@ bool InspectorWindow::Draw()
 				{
 					ImGui::Text("Reset:");
 					
-					if (ImGui::Button("Position", ImVec2(0, 0))) // Reset initial position
+					if (ImGui::Button("Position", ImVec2(0, 0)) && !selected_go->go_static) // Reset initial position
 					{
 						selected_go->transform->SetPosition(selected_go->reset_pos); 
 					}
 					
-					if (ImGui::Button("Rotation", ImVec2(0, 0))) // Reset initial rotation
+					if (ImGui::Button("Rotation", ImVec2(0, 0)) && !selected_go->go_static) // Reset initial rotation
 					{
 						selected_go->transform->SetQuatRotation(selected_go->reset_rotation); 
 					}
 					
-					if (ImGui::Button("Scale", ImVec2(0, 0))) // Reset initial scale
+					if (ImGui::Button("Scale", ImVec2(0, 0)) && !selected_go->go_static) // Reset initial scale
 					{
 						selected_go->transform->SetScale(selected_go->reset_scale); 
 					}
 					
-					if (ImGui::Button("All Transformations", ImVec2(0, 0))) // Reset ALL initial transformations
+					if (ImGui::Button("All Transformations", ImVec2(0, 0)) && !selected_go->go_static) // Reset ALL initial transformations
 					{
 						selected_go->transform->SetPosition(selected_go->reset_pos);
 						selected_go->transform->SetQuatRotation(selected_go->reset_rotation);
@@ -56,21 +58,21 @@ bool InspectorWindow::Draw()
 					ImGui::Text("");
 					float3 position = selected_go->transform->GetPosition();
 
-					if (ImGui::DragFloat3("Position", (float*)&position, 0.05f))
+					if (ImGui::DragFloat3("Position", (float*)&position, 0.05f) && !selected_go->go_static)
 					{
 						selected_go->transform->SetPosition(position);
 					}
 
 					float3 rotation = selected_go->transform->GetEulerRotation();
 
-					if (ImGui::DragFloat3("Rotation", (float*)&rotation, 0.20f))
+					if (ImGui::DragFloat3("Rotation", (float*)&rotation, 0.20f) && !selected_go->go_static)
 					{
 						selected_go->transform->SetEulerRotation(rotation); 
 					}
 
 					float3 scale = selected_go->transform->GetScale(); 
 
-					if (ImGui::DragFloat3("Scale", (float*)&scale, 0.10f))
+					if (ImGui::DragFloat3("Scale", (float*)&scale, 0.10f) && !selected_go->go_static)
 					{
 						selected_go->transform->SetScale(scale);
 					}

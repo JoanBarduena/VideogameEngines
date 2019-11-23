@@ -47,6 +47,26 @@ bool ModuleSceneIntro::CleanUp()
 	return true;
 }
 
+void ModuleSceneIntro::SetGameObjectStatic(GameObject* go)
+{
+	if (go->go_static == true)
+	{
+		static_meshes.push_back(go->mesh);
+	}
+	else
+	{
+		for (std::vector<ComponentMesh*>::iterator i = static_meshes.begin(); i != static_meshes.end(); ++i)
+		{
+			if ((*i)->my_go->id == go->id)
+			{
+				static_meshes.erase(i);
+				break; 
+			}
+		}
+	}
+
+}
+
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {

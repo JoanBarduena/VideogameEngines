@@ -29,6 +29,9 @@ public:
 
 	bool CleanUp();
 
+	void SetGameObjectStatic(GameObject* go); 
+	std::vector<ComponentMesh*> static_meshes; 
+
 	uint num_indices = 36; 
 	bool cube_created = false; 
 

@@ -28,6 +28,7 @@ public:
 	string unactive_name; 
 	bool active; 
 	uint id; 
+	bool go_static; 
 
 	//Values to reset initial pos, scale and rotation
 	float3 reset_pos = float3::zero; 

@@ -10,6 +10,7 @@ GameObject::GameObject(string name_)
 	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
 	mesh = (ComponentMesh*)CreateComponent(Component::Type::Mesh); 
 	Ctexture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
+	this->go_static = true; 
 }
 
 GameObject::~GameObject()
