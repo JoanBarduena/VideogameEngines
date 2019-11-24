@@ -1,9 +1,8 @@
-# VideogameEngines
+# Gringo Engines
 ## About
 This engine is under development by [Joan Barduena](https://github.com/JoanBarduena) and [Clara Ratera](https://github.com/RustikTie), students of the third year of Video Game Design and Development at CITM UPC Barcelona as part of the 3D Engines subject. 
 
 [See the GitHub repo.](https://github.com/JoanBarduena/VideogameEngines)
-
 
 ## Instructions of Use
 
@@ -14,6 +13,7 @@ This engine is under development by [Joan Barduena](https://github.com/JoanBardu
 - Maintain LShift to duplicate movement speed
 - Windows can be closed and docked in different positions. 
 - To reopen them go to "View" on the top menu bar and search the window's name. 
+- Delete to delete a game object selected. 
 
 
 ## External Libraries in Use
@@ -26,6 +26,8 @@ This engine is under development by [Joan Barduena](https://github.com/JoanBardu
 - [OpenGL](opengl.org) version: 4.6.0 NVIDIA 398.11
 - [RapidJson](https://rapidjson.org/) version= 1.1.0
 - [SDL](https://www.libsdl.org/) version: 2.0.10
+- [ParShapes](https://github.com/prideout/par) 
+- [PCG](http://www.pcg-random.org/)
 
 ## License
 ### MIT License
