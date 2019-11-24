@@ -96,6 +96,12 @@ bool InspectorWindow::Draw()
 					ImGui::Image((ImTextureID*)selected_go->Ctexture->texture.textureID, ImVec2(200, 200));
 				}
 			}
+			if (App->input->GetKey(SDL_SCANCODE_DELETE) == KEY_DOWN && selected_go != nullptr)
+			{
+				App->Console_Log("[DELETED GAME OBJECT]: %s", selected_go->name.data());
+				selected_go->DeleteGO(selected_go, true);
+				selected_go = nullptr;
+			}
 		}
 		ImGui::End(); 
 		ImGui::PopStyleVar();

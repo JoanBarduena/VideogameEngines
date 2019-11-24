@@ -19,6 +19,8 @@ public:
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
 
+	void DrawRecursively(GameObject* GO);
+
 	GameObject* CreateGameObject(); 
 
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);

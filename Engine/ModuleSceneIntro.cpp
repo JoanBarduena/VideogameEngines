@@ -100,22 +100,30 @@ update_status ModuleSceneIntro::Update(float dt)
 
 update_status ModuleSceneIntro::PostUpdate(float dt)
 {
-
-	for (std::vector<GameObject*>::iterator iterator = game_objects.begin(); iterator != game_objects.end(); iterator++)
-	{
-		if ((*iterator)->active)
-		{
-			glPushMatrix();
-			glMultMatrixf((GLfloat*) & (*iterator)->transform->GetGlobalTransform().Transposed());
-			App->renderer3D->DrawMesh((*iterator));
-			glPopMatrix(); 
-		}
-			
-	}
+	DrawRecursively(root); 
 
 	return UPDATE_CONTINUE;
 }
 
+void ModuleSceneIntro::DrawRecursively(GameObject* GO)
+{
+	// Not the root and GO is active
+	if (GO->id != 0 && GO->active == true)
+	{
+		glPushMatrix();
+		glMultMatrixf((GLfloat*)&GO->transform->GetGlobalTransform().Transposed());
+		App->renderer3D->DrawMesh(GO);
+		glPopMatrix();
+	}
+
+	if (GO->childs.size() > 0)
+	{
+		for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
+		{
+			DrawRecursively(*it);
+		}
+	}
+}
 
 GameObject * ModuleSceneIntro::CreateGameObject()
 {

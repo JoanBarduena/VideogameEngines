@@ -133,7 +133,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
-	DrawAABB(); 
+	//DrawAABB(); 
 	App->gui->Draw(); 
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;
@@ -169,25 +169,28 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	glBindBuffer(GL_ARRAY_BUFFER, GO->mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
-	glVertexPointer(3, GL_FLOAT, 0, NULL);
-
 	if (GO->Ctexture != nullptr)
 		glBindTexture(GL_TEXTURE_2D, GO->Ctexture->texture.textureID); //getcomponenttexture->structtexture->id
 	else
 		glBindTexture(GL_TEXTURE_2D, App->Mtexture->DefaultTexture.textureID);
 
-	glBindBuffer(GL_ARRAY_BUFFER, GO->mesh->id_texture);
-	glTexCoordPointer(2, GL_FLOAT, 0, NULL);
+	if (GO->mesh != nullptr)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, GO->mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
+		glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, GO->mesh->id_index);
-	glDrawElements(GL_TRIANGLES, GO->mesh->num_index, GL_UNSIGNED_INT, nullptr);
+		glBindBuffer(GL_ARRAY_BUFFER, GO->mesh->id_texture);
+		glTexCoordPointer(2, GL_FLOAT, 0, NULL);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, GO->mesh->id_index);
+		glDrawElements(GL_TRIANGLES, GO->mesh->num_index, GL_UNSIGNED_INT, nullptr);
 
-	glDisableClientState(GL_VERTEX_ARRAY);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		glDisableClientState(GL_VERTEX_ARRAY);
+	}
 
 	if(render_aabb)
 		GO->mesh->DrawAABB(); 
