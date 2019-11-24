@@ -27,5 +27,5 @@ public:
 
 	Component::Type type;
 	bool active;
-	GameObject* my_go; 
+	GameObject* my_go = nullptr; 
 };

@@ -223,7 +223,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 		IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
 		TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
 
-		App->scene_intro->static_meshes.push_back(obj->mesh);
+		//App->scene_intro->static_meshes.push_back(obj->mesh);
 	}
 
 	if (node->mNumChildren > 0)
