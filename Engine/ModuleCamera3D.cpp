@@ -43,7 +43,7 @@ bool ModuleCamera3D::CleanUp()
 update_status ModuleCamera3D::Update(float dt)
 {
 	vec3 newPos(0, 0, 0);
-	float speed = 3.0f * dt;
+	float speed = velocity * dt;
 	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 		speed = 8.0f * dt;
 
@@ -61,7 +61,7 @@ update_status ModuleCamera3D::Update(float dt)
 	Reference += newPos;
 
 	// Mouse motion ----------------
-	float Sensitivity = 0.25f;
+	float Sensitivity = mouse_sensitivity;
 
 	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
 	{

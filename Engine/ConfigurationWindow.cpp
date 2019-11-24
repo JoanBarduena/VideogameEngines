@@ -71,6 +71,21 @@ bool ConfigurationWindow::Draw()
 		{
 			ImGui::Checkbox("AABB", &App->renderer3D->render_aabb);
 			ImGui::Checkbox("Grid", &App->scene_intro->render_grid); 
+
+			ImGui::Checkbox("DEPTH TEST", &gl_depth_test);
+			SetGLEnum(gl_depth_test, GL_DEPTH_TEST);
+
+			ImGui::Checkbox("CULL FACE", &gl_cull_face);
+			SetGLEnum(gl_cull_face, GL_CULL_FACE);
+
+			ImGui::Checkbox("LIGHTING", &gl_lighting);
+			SetGLEnum(gl_lighting, GL_LIGHTING);
+
+			ImGui::Checkbox("COLOR MATERIAL", &gl_color_material);
+			SetGLEnum(gl_color_material, GL_COLOR_MATERIAL);
+
+			ImGui::Checkbox("TEXTURE 2D", &gl_texture_2D);
+			SetGLEnum(gl_texture_2D, GL_TEXTURE_2D);
 		}
 
 		if (ImGui::CollapsingHeader("Window"))
@@ -103,7 +118,8 @@ bool ConfigurationWindow::Draw()
 
 		if (ImGui::CollapsingHeader("Camera"))
 		{
-			if (ImGui::SliderFloat("Sensitivity", &App->camera->Sensitivity, 0.0f, 10.0f));
+			if (ImGui::SliderFloat("Sensitivity", &App->camera->mouse_sensitivity, 0.0f, 5.0f));
+			if (ImGui::SliderFloat("Speed", &App->camera->velocity, 0.0f, 50.0f)); 
 		}
 		if (ImGui::CollapsingHeader("Hardware and Software"))
 		{
@@ -139,23 +155,6 @@ bool ConfigurationWindow::Draw()
 			ImGui::BulletText("SDL Version: %d.%d.%d.", ver.major, ver.minor, ver.patch);
 			
 
-		}
-		if (ImGui::CollapsingHeader("OpenGL"))
-		{
-			ImGui::Checkbox("DEPTH TEST", &gl_depth_test);
-			SetGLEnum(gl_depth_test, GL_DEPTH_TEST);
-
-			ImGui::Checkbox("CULL FACE", &gl_cull_face);
-			SetGLEnum(gl_cull_face, GL_CULL_FACE);
-
-			ImGui::Checkbox("LIGHTING", &gl_lighting);
-			SetGLEnum(gl_lighting, GL_LIGHTING);
-
-			ImGui::Checkbox("COLOR MATERIAL", &gl_color_material);
-			SetGLEnum(gl_color_material, GL_COLOR_MATERIAL);
-
-			ImGui::Checkbox("TEXTURE 2D", &gl_texture_2D);
-			SetGLEnum(gl_texture_2D, GL_TEXTURE_2D);
 		}
 		ImGui::End();
 		ImGui::PopStyleVar();

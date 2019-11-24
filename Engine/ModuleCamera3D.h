@@ -27,8 +27,8 @@ private:
 public:
 	
 	vec3 X, Y, Z, Position, Reference;
-	float Sensitivity = 3.0f;
-
+	float mouse_sensitivity = 0.25f;
+	float velocity = 10.0f;
 
 	bool game_active = false; 
 	Color background = Color(0, 0, 0, 255); 

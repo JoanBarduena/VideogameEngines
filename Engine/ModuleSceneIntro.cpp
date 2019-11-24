@@ -25,7 +25,7 @@ bool ModuleSceneIntro::Start()
 	root = CreateGameObject();
 	root->name = "ROOT";	
 
-	App->camera->Move(vec3(0.0f, 5.0f, 15.0f));
+	App->camera->Move(vec3(0.0f, 50.0f, 25.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
 	//HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
@@ -41,7 +41,7 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	App->Console_Log("Unloading Intro scene");
-	
+
 	root->DeleteGO(root, true); 
 
 	return true;

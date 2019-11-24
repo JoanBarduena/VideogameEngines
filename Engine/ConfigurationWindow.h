@@ -20,7 +20,7 @@ public:
 
 	bool gl_depth_test = true;
 	bool gl_cull_face = true;
-	bool gl_lighting = true;
+	bool gl_lighting = false;
 	bool gl_color_material = true;
 	bool gl_texture_2D = true;
 

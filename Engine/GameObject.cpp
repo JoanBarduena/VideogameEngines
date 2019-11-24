@@ -37,7 +37,6 @@ void GameObject::CleanUp()
 	}
 	childs.clear(); 
 
-	App->scene_intro->game_objects.clear();
 }
 
 Component* GameObject::CreateComponent(Component::Type type)
