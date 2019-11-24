@@ -1,6 +1,7 @@
 #include "ComponentMesh.h"
 
 #include "mmgr/mmgr.h"
+#include "Color.h"
 
 ComponentMesh::ComponentMesh(GameObject * GObj):Component(GObj, Type::Mesh)
 {
@@ -63,4 +64,10 @@ void ComponentMesh::UpdateAABB()
 {
 	aabb.SetNegativeInfinity();
 	aabb.Enclose(vertices, num_vertex);
+}
+
+
+const AABB& ComponentMesh::GetAABB() const
+{
+	return aabb;
 }

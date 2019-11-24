@@ -18,9 +18,10 @@ public:
 
 	void DrawAABB();
 	void UpdateAABB();
+	const AABB& GetAABB() const;
 
 	AABB aabb; 
-
+	
 	uint id_index = 0; // index in VRAM
 	uint num_index = 0;
 	uint* indices = nullptr;

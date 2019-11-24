@@ -133,6 +133,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
+	DrawAABB(); 
 	App->gui->Draw(); 
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;
@@ -190,4 +191,66 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 
 	if(render_aabb)
 		GO->mesh->DrawAABB(); 
+}
+
+void ModuleRenderer3D::AddAABB(const AABB& container, const Color& color)
+{
+	aabbs.push_back(RenderBox<AABB>(&container, color));
+}
+
+void ModuleRenderer3D::DrawAABB()
+{
+	glDisable(GL_LIGHTING);
+	glBegin(GL_LINES);
+
+	for(uint i = 0; i < aabbs.size(); i++)
+	{
+		DrawContainer(*aabbs[i].container, aabbs[i].color); 
+	}	
+	aabbs.clear(); 
+
+	glEnd();
+	glEnable(GL_LIGHTING);
+}
+
+void ModuleRenderer3D::DrawContainerCube(const float3* corners, Color color)
+{
+	glColor4f(color.r, color.g, color.b, color.a);
+
+	//Between-planes right
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[7]);
+	glVertex3fv((GLfloat*)&corners[3]);
+
+	//Between-planes left
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[2]);
+	glVertex3fv((GLfloat*)&corners[6]);
+
+	//Far plane horizontal
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[6]);
+	glVertex3fv((GLfloat*)&corners[7]);
+
+	//Near plane horizontal
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[3]);
+	glVertex3fv((GLfloat*)&corners[2]);
+
+	//Near plane vertical
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[3]);
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[2]);
+
+	//Far plane vertical
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[7]);
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[6]);
+
 }

@@ -387,6 +387,9 @@
     <ClInclude Include="FrameBuffer.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -603,6 +606,9 @@
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
     <ClCompile Include="FrameBuffer.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,6 +7,16 @@
 
 #define MAX_LIGHTS 8
 
+template <typename Container>
+struct RenderBox
+{
+	RenderBox(const Container* container, const Color& color) : container(container), color(color)
+	{}
+
+	const Container* container;
+	Color color;
+};
+
 class ModuleRenderer3D : public Module
 {
 public:
@@ -22,7 +32,21 @@ public:
 
 	void DrawMesh(GameObject* GO);
 
+	void AddAABB(const AABB& container, const Color& color);
+	void DrawAABB();
+
+	std::vector<RenderBox<AABB>> aabbs;
 	bool render_aabb = false; 
+
+	template <typename Box>
+	static void DrawContainer(const Box& box, Color color)
+	{
+		float3 corners[8];
+		box.GetCornerPoints(corners);
+		DrawContainerCube(corners, color);
+	}
+
+	static void DrawContainerCube(const float3* corners, Color color); 
 
 public:
 

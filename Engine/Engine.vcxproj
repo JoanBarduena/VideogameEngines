@@ -173,6 +173,7 @@
     <ClInclude Include="ModuleGeometry.h" />
     <ClInclude Include="ModuleGui.h" />
     <ClInclude Include="PhysFS\include\physfs.h" />
+    <ClInclude Include="QuadTree.h" />
     <ClInclude Include="SceneImporter.h" />
     <ClInclude Include="ModuleRenderer3D.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -249,6 +250,7 @@
     <ClCompile Include="ModuleFileSystem.cpp" />
     <ClCompile Include="ModuleGeometry.cpp" />
     <ClCompile Include="ModuleGui.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="SceneImporter.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRenderer3D.cpp" />
