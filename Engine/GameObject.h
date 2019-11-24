@@ -21,6 +21,9 @@ public:
 	void Update(float dt);
 	void UpdateTransformation(GameObject* GO);
 
+	void DeleteGO(GameObject* GO, bool original);
+	void RemoveChild(GameObject* go);
+
 
 public:
 

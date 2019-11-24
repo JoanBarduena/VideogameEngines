@@ -19,20 +19,25 @@ GameObject::~GameObject()
 
 void GameObject::CleanUp()
 {
-	//Clean components
 	if (this->mesh != nullptr)
 	{
-		this->mesh->CleanUp();
+		this->mesh->CleanUp(); 
 	}
+
 	if (this->Ctexture != nullptr)
 	{
 		this->Ctexture->CleanUp();
 	}
 
 	//Clear GameObjects
-	for (std::vector<GameObject*>::iterator it = App->scene_intro->game_objects.begin(); it != App->scene_intro->game_objects.end(); it++)
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
 	{
-		RELEASE(*it);
+		delete(*it); 
+	}
+
+	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
+	{
+		RELEASE(*it); 
 	}
 }
 
@@ -96,5 +101,38 @@ void GameObject::UpdateTransformation(GameObject* GO)
 	for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
 	{
 		UpdateTransformation(*it);
+	}
+}
+
+void GameObject::DeleteGO(GameObject* go, bool original)
+{
+
+	//delete its childrens (if it has)
+	if (go->childs.size() > 0)
+	{
+		for (std::vector<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
+		{
+			DeleteGO(*it, false);
+		}
+
+		go->childs.clear();
+	}
+
+	if (go->parent != nullptr && original == true)
+		go->parent->RemoveChild(go);
+
+	go->CleanUp();
+	delete go;
+}
+
+void GameObject::RemoveChild(GameObject* go)
+{
+	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
+	{
+		if ((*it)->id == go->id)
+		{
+			childs.erase(it);
+			break;
+		}
 	}
 }

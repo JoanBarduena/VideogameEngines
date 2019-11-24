@@ -107,8 +107,6 @@ TextureStruct ModuleTexture::CreateCheckerTexture() const
 
 TextureStruct ModuleTexture::LoadTexturePath(const char* image_path)
 {
-	TextureStruct texture;
-
 	// List of textures, so if a texture is already loaded, it will not be loaded again. 
 	for (std::vector<TextureStruct>::iterator it = textureList.begin(); it != textureList.end(); ++it)
 	{
@@ -118,46 +116,54 @@ TextureStruct ModuleTexture::LoadTexturePath(const char* image_path)
 		}
 	}
 
+	TextureStruct texture;
+
 	//Texture loading success
 	texture.textureID = 0;
 
-	//Generate and set current image ID
-	ILuint imgID = 0;
-	ilGenImages(1, &imgID);
-	ilBindImage(imgID);
-
-	//Load image
-	ILboolean success = ilLoadImage(image_path);
-
-	//Image loaded successfully
-	if (success == IL_TRUE)
+	if (image_path != nullptr)
 	{
-		ILinfo ImgInfo;
-		iluGetImageInfo(&ImgInfo);
+		//Generate and set current image ID
+		ILuint imgID = 0;
+		ilGenImages(1, &imgID);
+		ilBindImage(imgID);
 
-		if (ImgInfo.Origin == IL_ORIGIN_UPPER_LEFT)
-			iluFlipImage();
+		//Load image
+		ILboolean success = ilLoadImage(image_path);
 
-		//Convert image to RGBA
-		success = ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
-
+		//Image loaded successfully
 		if (success == IL_TRUE)
 		{
-			//Create texture from file pixels
-			texture.textureID = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
+			ILinfo ImgInfo;
+			iluGetImageInfo(&ImgInfo);
 
-			texture.height = (GLuint)ilGetInteger(IL_IMAGE_HEIGHT);
-			texture.width = (GLuint)ilGetInteger(IL_IMAGE_WIDTH);
-			texture.path = image_path;
+			if (ImgInfo.Origin == IL_ORIGIN_UPPER_LEFT)
+				iluFlipImage();
 
-			ImportTexture(image_path);
+			//Convert image to RGBA
+			success = ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
+
+			if (success == IL_TRUE)
+			{
+				//Create texture from file pixels
+				texture.textureID = LoadTextureFromPixels((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT), (GLuint)ilGetInteger(IL_IMAGE_FORMAT));
+
+				texture.height = (GLuint)ilGetInteger(IL_IMAGE_HEIGHT);
+				texture.width = (GLuint)ilGetInteger(IL_IMAGE_WIDTH);
+				texture.path = image_path;
+
+				ImportTexture(image_path);
+			}
+			//Delete file from memory
+			//ilDeleteImages(1, &imgID);
 		}
-		//Delete file from memory
-		//ilDeleteImages(1, &imgID);
+		else
+			App->Console_Log("Unable to load image path: %s", image_path);
 	}
 	else
-		App->Console_Log("Unable to load image path: %s", image_path); 
-
+	{
+		App->Console_Log("[WARNING]: Image with path %s could not be loaded as it was NULL", image_path); 
+	}
 	textureList.push_back(texture); 
 
 	return texture; //return TEXTURE STRUCT (WIDHT, HEIGHT, ID, PATH)

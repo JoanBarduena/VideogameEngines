@@ -1,11 +1,12 @@
 #pragma once
-class GameObject; 
+#include "Globals.h"
 
-
+class GameObject;
 
 class Component
 {
 public:
+	ALIGN_CLASS_TO_16
 
 	enum class Type
 	{

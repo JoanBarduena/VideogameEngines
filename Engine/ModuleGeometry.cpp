@@ -176,6 +176,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 		{
 			child = obj;
 		}
+
 		DefineTextureType(file, new_mesh, child, full_path); 
 
 		obj->mesh->num_vertex = new_mesh->mNumVertices;

@@ -42,7 +42,7 @@ bool ModuleSceneIntro::CleanUp()
 {
 	App->Console_Log("Unloading Intro scene");
 	
-	root->CleanUp(); 
+	root->DeleteGO(root, true); 
 
 	return true;
 }
@@ -128,10 +128,10 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 
 	object->unactive_name = GOname.append(" [not active]");
 
-	game_objects.push_back(object); 
-
 	if (object->id != 0)
 		root->DefineChilds(object); 
+
+	game_objects.push_back(object);
 
 	return object; 
 }
