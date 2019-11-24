@@ -24,21 +24,20 @@ void GameObject::CleanUp()
 		this->mesh->CleanUp(); 
 	}
 
-	if (this->Ctexture != nullptr)
-	{
-		this->Ctexture->CleanUp();
-	}
-
 	//Clear GameObjects
 	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
 	{
 		delete(*it); 
 	}
+	components.clear(); 
 
 	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
 	{
-		RELEASE(*it); 
+		(*it)->CleanUp();
 	}
+	childs.clear(); 
+
+	App->scene_intro->game_objects.clear();
 }
 
 Component* GameObject::CreateComponent(Component::Type type)
@@ -106,8 +105,6 @@ void GameObject::UpdateTransformation(GameObject* GO)
 
 void GameObject::DeleteGO(GameObject* go, bool original)
 {
-
-	//delete its childrens (if it has)
 	if (go->childs.size() > 0)
 	{
 		for (std::vector<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
@@ -135,4 +132,17 @@ void GameObject::RemoveChild(GameObject* go)
 			break;
 		}
 	}
+}
+
+ComponentMesh* GameObject::DeleteMesh()
+{
+	Component* mesh = nullptr;
+	for (std::vector<Component*>::iterator iterator = components.begin(); iterator != components.end(); iterator++)
+	{
+		if ((*iterator)->type == Component::Type::Mesh)
+		{
+			return (ComponentMesh*)*iterator;
+		}
+	}
+	return (ComponentMesh*)mesh;
 }

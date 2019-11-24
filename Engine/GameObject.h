@@ -24,6 +24,7 @@ public:
 	void DeleteGO(GameObject* GO, bool original);
 	void RemoveChild(GameObject* go);
 
+	ComponentMesh* DeleteMesh();
 
 public:
 
