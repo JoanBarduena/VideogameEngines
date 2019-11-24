@@ -179,49 +179,49 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 
 		DefineTextureType(file, new_mesh, child, full_path); 
 
-		obj->mesh->num_vertex = new_mesh->mNumVertices;
-		obj->mesh->vertices = new float3[obj->mesh->num_vertex];
+		child->mesh->num_vertex = new_mesh->mNumVertices;
+		child->mesh->vertices = new float3[child->mesh->num_vertex];
 
 		for (uint i = 0; i < new_mesh->mNumVertices; ++i)
 		{
-			obj->mesh->vertices[i].x = new_mesh->mVertices[i].x;
-			obj->mesh->vertices[i].y = new_mesh->mVertices[i].y;
-			obj->mesh->vertices[i].z = new_mesh->mVertices[i].z;
+			child->mesh->vertices[i].x = new_mesh->mVertices[i].x;
+			child->mesh->vertices[i].y = new_mesh->mVertices[i].y;
+			child->mesh->vertices[i].z = new_mesh->mVertices[i].z;
 		}
 
 		if (new_mesh->HasFaces())
 		{
-			obj->mesh->num_index = new_mesh->mNumFaces * 3;
-			obj->mesh->indices = new uint[obj->mesh->num_index]; // assume each face is a triangle
+			child->mesh->num_index = new_mesh->mNumFaces * 3;
+			child->mesh->indices = new uint[child->mesh->num_index]; // assume each face is a triangle
 
 			for (uint i = 0; i < new_mesh->mNumFaces; ++i)
 			{
 				if (new_mesh->mFaces[i].mNumIndices != 3)
 					App->Console_Log("WARNING, geometry face with != 3 indices!");
 				else
-					memcpy(&obj->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
+					memcpy(&child->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
 			}
 		}
 		if (new_mesh->HasTextureCoords(0))
 		{
-			obj->mesh->num_texture = obj->mesh->num_vertex;
-			obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
+			child->mesh->num_texture = child->mesh->num_vertex;
+			child->mesh->texture_coords = new float[child->mesh->num_texture * 2];
 
-			for (int i = 0; i < obj->mesh->num_texture; ++i)
+			for (int i = 0; i < child->mesh->num_texture; ++i)
 			{
-				obj->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
-				obj->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+				child->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
+				child->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
 			}
 		}
 	
-		obj->mesh->UpdateAABB();
+		child->mesh->UpdateAABB();
 
-		exporter.ExportMesh(obj->name.data(), LIBRARY_MESH_FOLDER, output_file, obj);
+		exporter.ExportMesh(child->name.data(), LIBRARY_MESH_FOLDER, output_file, child);
 
 		//Generate buffer for each mesh and send vertex, indices and textures to VRAM
-		VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
-		IndexBuffer(obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
-		TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
+		VertexBuffer(child->mesh->id_vertex, child->mesh->num_vertex, child->mesh->vertices);
+		IndexBuffer(child->mesh->id_index, child->mesh->num_index, child->mesh->indices);
+		TextureBuffer(child->mesh->id_texture, child->mesh->num_texture, child->mesh->texture_coords);
 
 		//App->scene_intro->static_meshes.push_back(obj->mesh);
 	}
