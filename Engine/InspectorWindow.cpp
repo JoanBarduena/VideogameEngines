@@ -78,7 +78,7 @@ bool InspectorWindow::Draw()
 					}
 				}
 
-				if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
+				if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->mesh != nullptr)
 				{
 					ImGui::Text("Vertices ID: %d", selected_go->mesh->id_vertex);
 					ImGui::Text("Vertices Num: %d", selected_go->mesh->num_vertex);
@@ -86,7 +86,7 @@ bool InspectorWindow::Draw()
 					ImGui::Text("Indices Num: %d", selected_go->mesh->num_index);
 				}
 
-				if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
+				if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->Ctexture != nullptr)
 				{
 					ImGui::Text("Texture ID: %d", selected_go->Ctexture->texture.textureID);
 					ImGui::Text("Texture Width: %d", selected_go->Ctexture->texture.width);

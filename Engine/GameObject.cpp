@@ -8,8 +8,6 @@ GameObject::GameObject(string name_)
 	this->name = name_; 
 	this->active = true; 
 	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
-	mesh = (ComponentMesh*)CreateComponent(Component::Type::Mesh); 
-	Ctexture = (ComponentTexture*)CreateComponent(Component::Type::Texture);
 	this->go_static = true; 
 }
 
@@ -29,13 +27,13 @@ void GameObject::CleanUp()
 	{
 		delete(*it); 
 	}
-	components.clear(); 
-
+	
 	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
 	{
 		(*it)->CleanUp();
 	}
-	childs.clear(); 
+
+	components.clear();
 
 }
 

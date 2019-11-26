@@ -177,6 +177,8 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			child = obj;
 		}
 
+		child->mesh = (ComponentMesh*)child->CreateComponent(Component::Type::Mesh);
+
 		DefineTextureType(file, new_mesh, child, full_path); 
 
 		child->mesh->num_vertex = new_mesh->mNumVertices;
@@ -310,16 +312,14 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 	aiString path;
 	material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
 
-	if (path.C_Str() != nullptr)
+	if (path.C_Str() != nullptr && path.length > 0)
 	{
 		std::string directory = App->GetDirectoryFromPath(full_path);
 		directory.append("/");
 		directory.append(path.C_Str());
 
+		obj->Ctexture = (ComponentTexture*)obj->CreateComponent(Component::Type::Texture);
+
 		obj->Ctexture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
-	}
-	else
-	{
-		obj->Ctexture->texture = App->Mtexture->DefaultTexture;
 	}
 }
