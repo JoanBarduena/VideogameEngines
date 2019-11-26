@@ -155,7 +155,7 @@ TextureStruct ModuleTexture::LoadTexturePath(const char* image_path)
 				ImportTexture(image_path);
 			}
 			//Delete file from memory
-			//ilDeleteImages(1, &imgID);
+			ilDeleteImages(1, &imgID);
 		}
 		else
 			App->Console_Log("Unable to load image path: %s", image_path);

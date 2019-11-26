@@ -1,5 +1,6 @@
 #pragma once
 #include "Globals.h"
+#include "mmgr/mmgr.h"
 
 void log(const char file[], int line, const char* format, ...)
 {

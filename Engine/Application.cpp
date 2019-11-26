@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "mmgr/mmgr.h"
 
 Application::Application()
 {
@@ -20,6 +21,7 @@ Application::Application()
 	AddModule(window);
 	AddModule(camera);
 	AddModule(input);
+	AddModule(filesystem); 
 
 	//Geometry and textures
 	AddModule(geometry);
@@ -113,6 +115,7 @@ bool Application::CleanUp()
 	for (list<Module*>::reverse_iterator item = list_modules.rbegin(); item != list_modules.rend() && ret == true; item++)
 	{
 		ret = (*item)->CleanUp();
+		RELEASE(*item); 
 	}
 
 	return ret;

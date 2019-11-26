@@ -1,4 +1,5 @@
 #include "Window.h"
+
 #include "mmgr/mmgr.h"
 
 Window::Window() {}

@@ -1,6 +1,8 @@
 #include "QuadTree.h"
 #include "Application.h"
 
+#include "mmgr/mmgr.h"
+
 Quadtree::Quadtree(const AABB& container)
 {
 	root = new QuadtreeNode(container); 

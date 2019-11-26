@@ -18,7 +18,10 @@
 
 SceneImporter::SceneImporter(){}
 
-SceneImporter::~SceneImporter() {}
+SceneImporter::~SceneImporter() 
+{
+
+}
 
 bool SceneImporter::Init()
 {
@@ -121,6 +124,6 @@ bool SceneImporter::ExportMesh(const char* name, const char* path, std::string& 
 	// Save a new extension .mesh 
 	App->filesystem->SaveUnique(output_file, data, size, path, name, "mesh"); 
 
-	//RELEASE_ARRAY(data);
+	RELEASE_ARRAY(data);
 	return ret;
 }

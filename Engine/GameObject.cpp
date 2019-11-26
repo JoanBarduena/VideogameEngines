@@ -132,16 +132,3 @@ void GameObject::RemoveChild(GameObject* go)
 		}
 	}
 }
-
-ComponentMesh* GameObject::DeleteMesh()
-{
-	Component* mesh = nullptr;
-	for (std::vector<Component*>::iterator iterator = components.begin(); iterator != components.end(); iterator++)
-	{
-		if ((*iterator)->type == Component::Type::Mesh)
-		{
-			return (ComponentMesh*)*iterator;
-		}
-	}
-	return (ComponentMesh*)mesh;
-}
