@@ -14,7 +14,7 @@ public:
 		Transform,
 		Mesh,
 		Texture, 
-		Canvas
+		UI
 	};
 
 	Component(GameObject* my_GO, Component::Type comp_type); 

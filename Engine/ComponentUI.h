@@ -1,22 +1,25 @@
 #ifndef __COMPONENTUI_H__
 #define __COMPONENTUI_H__
 
-#include "Component.h"
+#include "Globals.h"
 
-enum class TypeUI
-{
-	UI_Canvas,
-	UI_Image,
-	UI_Button,
-	UI_Label,
-	UI_Checkbox,
-	UI_InputText
-};
+class GameObject;
 
-class ComponentUI : public Component
+class ComponentUI 
 {
 public:
-	ComponentUI(GameObject* GO, TypeUI UI_type, uint h, uint w);
+	enum class TypeUI
+	{
+		UI_Canvas,
+		UI_Image,
+		UI_Button,
+		UI_Label,
+		UI_Checkbox,
+		UI_InputText
+	};
+
+
+	ComponentUI(GameObject* GO, TypeUI typeUI, uint h, uint w);
 	~ComponentUI();
 
 	virtual void SceneDraw() {};
@@ -24,10 +27,14 @@ public:
 
 	virtual bool Update() { return true; };
 
+	bool active;
+
 protected: 
 
+	ComponentUI::TypeUI type_UI;
 	uint height = 0, width = 0; 
-
+	GameObject* go_ui = nullptr; 
+	
 };
 
 

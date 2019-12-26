@@ -7,7 +7,7 @@ class ComponentCanvas : public ComponentUI
 {
 public: 
 
-	ComponentCanvas(GameObject* GO, TypeUI UI_type, uint h, uint w);
+	ComponentCanvas(GameObject* GO, uint h, uint w);
 	~ComponentCanvas();
 
 	bool Update(); 

@@ -52,14 +52,29 @@ Component* GameObject::CreateComponent(Component::Type type)
 	case Component::Type::Transform:
 		comp = new ComponentTransform(this); 
 		break; 
-	case Component::Type::Canvas:
-		comp = new ComponentUI(this, TypeUI::UI_Canvas, 40, 25);
-		break; 
 	}
 	if(comp != nullptr )
 		components.push_back(comp); 
 
 	return comp; 
+}
+
+ComponentUI* GameObject::CreateComponentUI(ComponentUI::TypeUI typeUI)
+{
+	ComponentUI* comp_UI = nullptr; 
+
+	switch (typeUI)
+	{
+	case ComponentUI::TypeUI::UI_Canvas:
+		comp_UI = new ComponentCanvas(this, 50, 40); 
+		break; 
+	}
+	if (comp_UI != nullptr)
+	{
+		componentsUI.push_back(comp_UI); 
+	}
+
+	return comp_UI; 
 }
 
 void GameObject::DefineChilds(GameObject* GO)
@@ -90,6 +105,18 @@ void GameObject::Update(float dt)
 	{
 		if ((*it)->active)
 			(*it)->Update(dt);
+	}
+
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
+	{
+		if ((*it)->active)
+			(*it)->Update();
+	}
+
+	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); it++)
+	{
+		if ((*it)->active)
+			(*it)->Update();
 	}
 }
 

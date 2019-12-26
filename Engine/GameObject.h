@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Globals.h"
+
 #include "Component.h"
 #include "ComponentMesh.h"
 #include "ComponentTexture.h"
 #include "ComponentTransform.h"
+
 #include "ComponentUI.h"
+#include "ComponentCanvas.h"
 
 class GameObject
 {
@@ -16,6 +19,7 @@ public:
 	void CleanUp();
 
 	Component* CreateComponent(Component::Type type);
+	ComponentUI* CreateComponentUI(ComponentUI::TypeUI typeUI);
 
 	void DefineChilds(GameObject* GO);
 
@@ -42,10 +46,7 @@ public:
 	Quat reset_rotation = Quat::identity; 
 
 	std::vector<Component*> components; 
-
-	/*ComponentMesh* mesh = nullptr; 
-	ComponentTexture* Ctexture = nullptr;
-	ComponentTransform* transform = nullptr;*/
+	std::vector<ComponentUI*> componentsUI;
 
 	GameObject* parent = nullptr; 
 	std::vector<GameObject*> childs; 

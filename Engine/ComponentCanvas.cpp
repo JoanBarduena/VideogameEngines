@@ -1,7 +1,7 @@
 #include "ComponentCanvas.h"
 #include "GameObject.h"
 
-ComponentCanvas::ComponentCanvas(GameObject* GO, TypeUI UI_type, uint h, uint w):ComponentUI(GO, UI_type, h, w)
+ComponentCanvas::ComponentCanvas(GameObject* GO, uint h, uint w) :ComponentUI(GO, TypeUI::UI_Canvas, h, w)
 {
 	height = h; 
 	width = w; 
@@ -13,16 +13,16 @@ ComponentCanvas::~ComponentCanvas()
 
 bool ComponentCanvas::Update()
 {
-	SceneDraw(); 
+	SceneDraw();
 
-	return true;
+	return false;
 }
 
 void ComponentCanvas::SceneDraw()
 {
-	ComponentTransform* transform = my_go->GetComponentTransform(); 
+	ComponentTransform* transform = go_ui->GetComponentTransform(); 
 
-	glBegin(GL_LINE_LOOP); 
+	glBegin(GL_LINE_LOOP);
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f); 
 
 	float3 pos = transform->GetPosition(); 

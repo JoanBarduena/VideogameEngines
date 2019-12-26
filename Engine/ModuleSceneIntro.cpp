@@ -152,16 +152,14 @@ GameObject* ModuleSceneIntro::CreateCanvas()
 
 	GameObject* canvas = nullptr; 
 	canvas = new GameObject(CanvasName); 
-
 	canvas->unactive_name = CanvasName.append(" [not active]"); 
 
-	canvas->CreateComponent(Component::Type::Canvas); 
+	canvas->CreateComponentUI(ComponentUI::TypeUI::UI_Canvas); 
 
 	root->DefineChilds(canvas); 
-
 	ui_objects.push_back(canvas); 
 
-	App->Console_Log("Creating Canvas"); 
+	App->Console_Log("[CREATING UI OBJECT]: Canvas"); 
 
 	return canvas; 
 }

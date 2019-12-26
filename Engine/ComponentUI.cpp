@@ -1,10 +1,9 @@
 #include "ComponentUI.h"
 
-ComponentUI::ComponentUI(GameObject* GO, TypeUI UI_type, uint h, uint w):Component(GO, Component::Type::Canvas)
+ComponentUI::ComponentUI(GameObject* GO, TypeUI typeUI, uint h, uint w)
 {
-	this->type = type; 
-	height = h; 
-	width = w; 
+	go_ui = GO; 
+	this->type_UI = typeUI; 
 }
 
 ComponentUI::~ComponentUI()

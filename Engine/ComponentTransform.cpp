@@ -15,6 +15,11 @@ void ComponentTransform::CleanUp()
 {
 }
 
+bool ComponentTransform::Update()
+{
+	return true; 
+}
+
 // ----------- Get() Functions -----------
 
 float3 ComponentTransform::GetPosition() const 
