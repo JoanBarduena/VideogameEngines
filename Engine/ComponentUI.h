@@ -22,6 +22,8 @@ public:
 	virtual void SceneDraw() {};
 	virtual void DebugDraw() {}; 
 
+	virtual bool Update() { return true; };
+
 protected: 
 
 	uint height = 0, width = 0; 

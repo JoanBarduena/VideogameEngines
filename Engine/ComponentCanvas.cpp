@@ -11,6 +11,13 @@ ComponentCanvas::~ComponentCanvas()
 {
 }
 
+bool ComponentCanvas::Update()
+{
+	SceneDraw(); 
+
+	return true;
+}
+
 void ComponentCanvas::SceneDraw()
 {
 	ComponentTransform* transform = my_go->GetComponentTransform(); 

@@ -8,7 +8,7 @@ GameObject::GameObject(string name_)
 	this->name = name_; 
 	this->active = true; 
 	CreateComponent(Component::Type::Transform);
-	this->go_static = true; 
+	this->go_static = false; 
 }
 
 GameObject::~GameObject()

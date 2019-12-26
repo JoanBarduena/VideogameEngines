@@ -10,6 +10,8 @@ public:
 	ComponentCanvas(GameObject* GO, TypeUI UI_type, uint h, uint w);
 	~ComponentCanvas();
 
+	bool Update(); 
+
 	void SceneDraw(); 
 
 protected: 

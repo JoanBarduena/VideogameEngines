@@ -34,6 +34,7 @@ bool ModuleSceneIntro::Start()
 	//App->geometry->LoadFileFromPath("Assets/BakerHouse.fbx"); 
 	App->geometry->LoadFileFromPath("Assets/Street/Street environment_V01.fbx"); 
 
+	CreateCanvas(); 
 	//Create_Cube(0,0,0,2);
 	//Create_Sphere(50,20,5,1,0,1); 
 	return ret;
@@ -136,8 +137,6 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 	object = new GameObject(GOname);
 	object->id = game_objects.size();
 
-	object->unactive_name = GOname.append(" [not active]");
-
 	if (object->id != 0)
 		root->DefineChilds(object); 
 
@@ -149,14 +148,20 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 GameObject* ModuleSceneIntro::CreateCanvas()
 {
 	std::string CanvasName = "Canvas "; 
-	CanvasName.append(std::to_string(canvas_list)); 
+	CanvasName.append(std::to_string(ui_objects.size() + 1)); 
 
 	GameObject* canvas = nullptr; 
 	canvas = new GameObject(CanvasName); 
 
 	canvas->unactive_name = CanvasName.append(" [not active]"); 
 
-	game_objects.push_back(canvas); 
+	canvas->CreateComponent(Component::Type::Canvas); 
+
+	root->DefineChilds(canvas); 
+
+	ui_objects.push_back(canvas); 
+
+	App->Console_Log("Creating Canvas"); 
 
 	return canvas; 
 }

@@ -60,16 +60,19 @@ bool ModuleGeometry::CleanUp()
 	return ret;
 }
 
-void ModuleGeometry::LoadFileFromPath(const char* full_path)
+void ModuleGeometry::LoadFileFromPath(std::string full_path)
 {
-	const aiScene* file = aiImportFile(full_path, aiProcessPreset_TargetRealtime_MaxQuality);
+	const aiScene* file = aiImportFile(full_path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
 
 	if (file != nullptr && file->HasMeshes()) //Load sucesful
 	{
 		aiNode* node = file->mRootNode;
 
 		GameObject* goLoader = App->scene_intro->CreateGameObject();
-		goLoader->name = App->GetNameFromPath(full_path);
+		std::string goName = App->GetNameFromPath(full_path); 
+
+		goLoader->name = goName;
+		goLoader->unactive_name = goName.append(" [not active]");
 
 		//Define the gameobject as a child of the RootNode
 		App->scene_intro->root->DefineChilds(goLoader);
@@ -94,7 +97,7 @@ void ModuleGeometry::LoadFileFromPath(const char* full_path)
 		App->Console_Log("[WARNING]: Error loading mesh with path %s", full_path);
 }
 
-void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path, SceneImporter exporter, std::string output_file)
+void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, std::string full_path, SceneImporter exporter, std::string output_file)
 {
 	aiVector3D nPosition;
 	aiVector3D nScaling;
@@ -147,6 +150,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 	// Childs of parent 
 	parent->DefineChilds(obj);
 	obj->name = node_name;
+	obj->unactive_name = node_name.append(" [not active]");
 
 	// Store initial values so then we can RESET the position, scale and rotation.
 	obj->reset_pos = nPos; 
@@ -172,6 +176,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			child = App->scene_intro->CreateGameObject(); 
 			obj->DefineChilds(child);
 			child->name = node_name; 
+			child->unactive_name = node_name.append(" [not active]");
 		}
 		else
 		{
@@ -309,7 +314,7 @@ void ModuleGeometry::TextureBuffer(uint &id, uint &num_texture, float* texture_p
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_mesh, GameObject* obj, const char* full_path)
+void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_mesh, GameObject* obj, std::string full_path)
 {
 	aiMaterial* material = file->mMaterials[new_mesh->mMaterialIndex];
 	uint numTextures = material->GetTextureCount(aiTextureType_DIFFUSE);

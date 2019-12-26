@@ -28,15 +28,15 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	void LoadFileFromPath(const char* full_path);
-	void LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, const char* full_path, SceneImporter exporter, std::string output_file);
+	void LoadFileFromPath(std::string full_path);
+	void LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, std::string full_path, SceneImporter exporter, std::string output_file);
 	void LoadParShapes(par_shapes_mesh* par_mesh, Position pos);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);
 	void TextureBuffer(uint & id, uint & num_texture, float * texture_pos);
 
-	void DefineTextureType(const aiScene* file, const aiMesh* new_mesh, GameObject* obj, const char* full_path);
+	void DefineTextureType(const aiScene* file, const aiMesh* new_mesh, GameObject* obj, std::string full_path);
 };
 
 
