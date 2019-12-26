@@ -1,6 +1,6 @@
 #include "ComponentUI.h"
 
-ComponentUI::ComponentUI(GameObject* GO, Type comp_type, uint h, uint w):Component(GO, comp_type)
+ComponentUI::ComponentUI(GameObject* GO, TypeUI UI_type, uint h, uint w):Component(GO, Component::Type::Canvas)
 {
 	this->type = type; 
 	height = h; 
@@ -9,5 +9,4 @@ ComponentUI::ComponentUI(GameObject* GO, Type comp_type, uint h, uint w):Compone
 
 ComponentUI::~ComponentUI()
 {
-
 };

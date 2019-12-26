@@ -52,6 +52,9 @@ Component* GameObject::CreateComponent(Component::Type type)
 	case Component::Type::Transform:
 		comp = new ComponentTransform(this); 
 		break; 
+	case Component::Type::Canvas:
+		comp = new ComponentUI(this, TypeUI::UI_Canvas, 40, 25);
+		break; 
 	}
 	if(comp != nullptr )
 		components.push_back(comp); 

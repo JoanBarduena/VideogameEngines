@@ -3,6 +3,8 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 
+#include "ComponentUI.h"
+
 #include "SDL/include/SDL_opengl.h"
 #include "par/parshapes.h"
 
@@ -142,6 +144,21 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 	game_objects.push_back(object);
 
 	return object; 
+}
+
+GameObject* ModuleSceneIntro::CreateCanvas()
+{
+	std::string CanvasName = "Canvas "; 
+	CanvasName.append(std::to_string(canvas_list)); 
+
+	GameObject* canvas = nullptr; 
+	canvas = new GameObject(CanvasName); 
+
+	canvas->unactive_name = CanvasName.append(" [not active]"); 
+
+	game_objects.push_back(canvas); 
+
+	return canvas; 
 }
 
 void ModuleSceneIntro::Create_Sphere(int slices, int stacks, float x, float y, float z, float size)

@@ -21,7 +21,9 @@ public:
 
 	void DrawRecursively(GameObject* GO);
 
-	GameObject* CreateGameObject(); 
+	GameObject* CreateGameObject();
+	GameObject* CreateCanvas();
+
 
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);
 	void Create_Cube(float x, float y, float z, float size);
@@ -51,5 +53,7 @@ public:
 	Position position; 
 
 	std::vector<GameObject*> game_objects;
+	uint canvas_list = 1; 
+
 	GameObject* root = nullptr; 
 };

@@ -5,6 +5,7 @@
 #include "ComponentMesh.h"
 #include "ComponentTexture.h"
 #include "ComponentTransform.h"
+#include "ComponentUI.h"
 
 class GameObject
 {
