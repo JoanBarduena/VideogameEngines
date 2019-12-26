@@ -13,10 +13,11 @@ public:
 		NONE = -1,
 		Transform,
 		Mesh,
-		Texture
+		Texture, 
+		Canvas
 	};
 
-	Component(GameObject* my_GO, Component::Type type_); 
+	Component(GameObject* my_GO, Component::Type comp_type); 
 	~Component(); 
 
 	virtual bool Enable(); 

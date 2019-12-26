@@ -55,6 +55,9 @@
     <Filter Include="Sources\Tools\mathgeolib\time">
       <UniqueIdentifier>{f77ea460-1464-450c-a9d6-16dd78bce6d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Modules\GameObject\UI">
+      <UniqueIdentifier>{1026b925-3ceb-41b8-a58b-710fb4957dcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModuleCamera3D.h">
@@ -390,6 +393,12 @@
     <ClInclude Include="QuadTree.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentCanvas.h">
+      <Filter>Sources\Modules\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentUI.h">
+      <Filter>Sources\Modules\GameObject\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -610,6 +619,12 @@
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentCanvas.cpp">
+      <Filter>Sources\Modules\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentUI.cpp">
+      <Filter>Sources\Modules\GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

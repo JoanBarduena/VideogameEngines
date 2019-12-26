@@ -1,10 +1,10 @@
 #include "Component.h"
 #include "mmgr/mmgr.h"
 
-Component::Component(GameObject * my_GO, Component::Type type_)
+Component::Component(GameObject * my_GO, Component::Type comp_type)
 {
 	my_go = my_GO; 
-	this->type = type_; 
+	this->type = comp_type;
 }
 
 Component::~Component()

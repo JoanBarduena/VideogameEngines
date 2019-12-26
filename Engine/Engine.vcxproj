@@ -79,9 +79,11 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentCanvas.h" />
     <ClInclude Include="ComponentMesh.h" />
     <ClInclude Include="ComponentTexture.h" />
     <ClInclude Include="ComponentTransform.h" />
+    <ClInclude Include="ComponentUI.h" />
     <ClInclude Include="ConfigurationWindow.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleWindow.h" />
@@ -192,9 +194,11 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentCanvas.cpp" />
     <ClCompile Include="ComponentMesh.cpp" />
     <ClCompile Include="ComponentTexture.cpp" />
     <ClCompile Include="ComponentTransform.cpp" />
+    <ClCompile Include="ComponentUI.cpp" />
     <ClCompile Include="ConfigurationWindow.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
