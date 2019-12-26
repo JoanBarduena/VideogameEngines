@@ -117,7 +117,7 @@ update_status ModuleInput::PreUpdate(float dt)
 			{
 				if (App->gui->inspector_w->selected_go != nullptr)
 				{
-					App->gui->inspector_w->selected_go->Ctexture->texture = App->Mtexture->LoadTexturePath(dropped_filedir);
+					App->gui->inspector_w->selected_go->GetComponentTexture()->texture = App->Mtexture->LoadTexturePath(dropped_filedir);
 					App->Console_Log("Texture dropped with root: %s", dropped_filedir);
 				}
 				else

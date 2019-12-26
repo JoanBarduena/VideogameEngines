@@ -7,7 +7,7 @@ GameObject::GameObject(string name_)
 {
 	this->name = name_; 
 	this->active = true; 
-	transform = (ComponentTransform*)CreateComponent(Component::Type::Transform);
+	CreateComponent(Component::Type::Transform);
 	this->go_static = true; 
 }
 
@@ -17,9 +17,9 @@ GameObject::~GameObject()
 
 void GameObject::CleanUp()
 {
-	if (this->mesh != nullptr)
+	if (this->GetComponentMesh() != nullptr)
 	{
-		this->mesh->CleanUp(); 
+		this->GetComponentMesh()->CleanUp(); 
 	}
 
 	//Clear GameObjects
@@ -80,7 +80,7 @@ void GameObject::DefineChilds(GameObject* GO)
 
 void GameObject::Update(float dt)
 {
-	if (this->transform->is_transformed)
+	if (this->GetComponentTransform()->is_transformed)
 		UpdateTransformation(this);
 
 	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
@@ -92,7 +92,9 @@ void GameObject::Update(float dt)
 
 void GameObject::UpdateTransformation(GameObject* GO)
 {
-	GO->transform->UpdateTransformInGame(GO->parent->transform->GetGlobalTransform());
+	ComponentTransform* transform = GO->GetComponentTransform(); 
+
+	transform->UpdateTransformInGame(GO->parent->GetComponentTransform()->GetGlobalTransform());
 
 	for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
 	{
@@ -129,4 +131,39 @@ void GameObject::RemoveChild(GameObject* go)
 			break;
 		}
 	}
+}
+
+// --------------------- GETTERS() -----------------------------
+
+ComponentTransform* GameObject::GetComponentTransform()
+{
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
+	{
+		if ((*it)->type == Component::Type::Transform)
+			return (ComponentTransform*)(*it); 
+	}
+
+	return nullptr; 
+}
+
+ComponentMesh* GameObject::GetComponentMesh()
+{
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
+	{
+		if ((*it)->type == Component::Type::Mesh)
+			return (ComponentMesh*)(*it);
+	}
+
+	return nullptr; 
+}
+
+ComponentTexture* GameObject::GetComponentTexture()
+{
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
+	{
+		if ((*it)->type == Component::Type::Texture)
+			return (ComponentTexture*)(*it);
+	}
+
+	return nullptr;
 }

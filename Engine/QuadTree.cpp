@@ -47,7 +47,7 @@ QuadtreeNode::~QuadtreeNode()
 
 bool QuadtreeNode::AddGameobject(const GameObject* go)
 {
-	if (container.Intersects(go->mesh->GetAABB()))
+	/*if (container.Intersects(go->mesh->GetAABB()))
 	{
 		if (childs.empty())
 		{
@@ -64,7 +64,7 @@ bool QuadtreeNode::AddGameobject(const GameObject* go)
 		}
 
 	}
-	else
+	else*/
 		return false;
 
 }
@@ -102,11 +102,11 @@ bool QuadtreeNode::SendToChilds(const GameObject* go)
 
 	for (uint i = 0; i < childs.size(); i++)
 	{
-		if (childs[i].container.Intersects(go->mesh->GetAABB()))
+		/*if (childs[i].container.Intersects(go->mesh->GetAABB()))
 		{
 			intersectionCount++;
 			intersectionChild = i;
-		}
+		}*/
 	}
 	if (intersectionCount == 1)
 	{

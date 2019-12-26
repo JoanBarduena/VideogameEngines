@@ -54,9 +54,12 @@ bool ModuleRenderer3D::Init()
 			ret = false;
 		}
 
+		//Orthogonal view
+		glOrtho(0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 1.0f, -1.0f);
+
 		//Initialize Modelview Matrix
 		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
+		//glLoadIdentity();
 
 		//Check for error
 		error = glGetError();
@@ -118,7 +121,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	glMatrixMode(GL_MODELVIEW);
+	//glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(App->camera->GetViewMatrix());
 
 	// light 0 on cam pos
@@ -169,21 +172,24 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	if (GO->Ctexture != nullptr)
-		glBindTexture(GL_TEXTURE_2D, GO->Ctexture->texture.textureID); //getcomponenttexture->structtexture->id
+	ComponentMesh* mesh = GO->GetComponentMesh();
+	ComponentTexture* c_texture = GO->GetComponentTexture(); 
+
+	if (c_texture != nullptr)
+		glBindTexture(GL_TEXTURE_2D, c_texture->texture.textureID); //getcomponenttexture->structtexture->id
 	else
 		glBindTexture(GL_TEXTURE_2D, App->Mtexture->DefaultTexture.textureID);
 
-	if (GO->mesh != nullptr)
+	if (mesh != nullptr)
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, GO->mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
+		glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex); //Gameobject->Getcomponentmesh->id_vertex
 		glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-		glBindBuffer(GL_ARRAY_BUFFER, GO->mesh->id_texture);
+		glBindBuffer(GL_ARRAY_BUFFER, mesh->id_texture);
 		glTexCoordPointer(2, GL_FLOAT, 0, NULL);
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, GO->mesh->id_index);
-		glDrawElements(GL_TRIANGLES, GO->mesh->num_index, GL_UNSIGNED_INT, nullptr);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
+		glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, nullptr);
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -193,7 +199,7 @@ void ModuleRenderer3D::DrawMesh(GameObject* GO)
 	}
 
 	if(render_aabb)
-		GO->mesh->DrawAABB(); 
+		mesh->DrawAABB(); 
 }
 
 void ModuleRenderer3D::AddAABB(const AABB& container, const Color& color)

@@ -24,6 +24,9 @@ public:
 	void DeleteGO(GameObject* GO, bool original);
 	void RemoveChild(GameObject* go);
 
+	ComponentTransform* GetComponentTransform(); 
+	ComponentMesh* GetComponentMesh();
+	ComponentTexture* GetComponentTexture();
 public:
 
 	string name; 
@@ -39,9 +42,9 @@ public:
 
 	std::vector<Component*> components; 
 
-	ComponentMesh* mesh = nullptr; 
+	/*ComponentMesh* mesh = nullptr; 
 	ComponentTexture* Ctexture = nullptr;
-	ComponentTransform* transform = nullptr;
+	ComponentTransform* transform = nullptr;*/
 
 	GameObject* parent = nullptr; 
 	std::vector<GameObject*> childs; 

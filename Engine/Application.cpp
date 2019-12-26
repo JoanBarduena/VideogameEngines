@@ -21,20 +21,22 @@ Application::Application()
 	AddModule(window);
 	AddModule(camera);
 	AddModule(input);
-	AddModule(filesystem); 
 
-	//Geometry and textures
+	// Geometry and textures
 	AddModule(geometry);
 	AddModule(Mtexture);
+
+	// FileSystem
+	AddModule(filesystem);
 
 	// Scenes
 	AddModule(scene_intro);
 
+	// Gui
+	AddModule(gui);
+
 	// Renderer last!
 	AddModule(renderer3D);
-
-	//Gui
-	AddModule(gui);
 }
 
 Application::~Application()

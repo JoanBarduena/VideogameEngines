@@ -137,11 +137,12 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 	}
 
 	GameObject* obj = App->scene_intro->CreateGameObject();
+	ComponentTransform* transform = obj->GetComponentTransform();
 
 	//Adding mTransformation to the Loader GameObject.
-	obj->transform->SetPosition(nPos);
-	obj->transform->SetScale(nScale);
-	obj->transform->SetQuatRotation(nRot);
+	transform->SetPosition(nPos);
+	transform->SetScale(nScale);
+	transform->SetQuatRotation(nRot);
 
 	// Childs of parent 
 	parent->DefineChilds(obj);
@@ -177,53 +178,54 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			child = obj;
 		}
 
-		child->mesh = (ComponentMesh*)child->CreateComponent(Component::Type::Mesh);
+		child->CreateComponent(Component::Type::Mesh);
+		ComponentMesh* mesh = child->GetComponentMesh();
 
 		DefineTextureType(file, new_mesh, child, full_path); 
 
-		child->mesh->num_vertex = new_mesh->mNumVertices;
-		child->mesh->vertices = new float3[child->mesh->num_vertex];
+		mesh->num_vertex = new_mesh->mNumVertices;
+		mesh->vertices = new float3[mesh->num_vertex];
 
 		for (uint i = 0; i < new_mesh->mNumVertices; ++i)
 		{
-			child->mesh->vertices[i].x = new_mesh->mVertices[i].x;
-			child->mesh->vertices[i].y = new_mesh->mVertices[i].y;
-			child->mesh->vertices[i].z = new_mesh->mVertices[i].z;
+			mesh->vertices[i].x = new_mesh->mVertices[i].x;
+			mesh->vertices[i].y = new_mesh->mVertices[i].y;
+			mesh->vertices[i].z = new_mesh->mVertices[i].z;
 		}
 
 		if (new_mesh->HasFaces())
 		{
-			child->mesh->num_index = new_mesh->mNumFaces * 3;
-			child->mesh->indices = new uint[child->mesh->num_index]; // assume each face is a triangle
+			mesh->num_index = new_mesh->mNumFaces * 3;
+			mesh->indices = new uint[mesh->num_index]; // assume each face is a triangle
 
 			for (uint i = 0; i < new_mesh->mNumFaces; ++i)
 			{
 				if (new_mesh->mFaces[i].mNumIndices != 3)
 					App->Console_Log("WARNING, geometry face with != 3 indices!");
 				else
-					memcpy(&child->mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
+					memcpy(&mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
 			}
 		}
 		if (new_mesh->HasTextureCoords(0))
 		{
-			child->mesh->num_texture = child->mesh->num_vertex;
-			child->mesh->texture_coords = new float[child->mesh->num_texture * 2];
+			mesh->num_texture = mesh->num_vertex;
+			mesh->texture_coords = new float[mesh->num_texture * 2];
 
-			for (int i = 0; i < child->mesh->num_texture; ++i)
+			for (int i = 0; i < mesh->num_texture; ++i)
 			{
-				child->mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
-				child->mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+				mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
+				mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
 			}
 		}
 	
-		child->mesh->UpdateAABB();
+		mesh->UpdateAABB();
 
-		exporter.ExportMesh(child->name.data(), LIBRARY_MESH_FOLDER, output_file, child);
+		exporter.ExportMesh(child->name.data(), LIBRARY_MESH_FOLDER, output_file, mesh);
 
 		//Generate buffer for each mesh and send vertex, indices and textures to VRAM
-		VertexBuffer(child->mesh->id_vertex, child->mesh->num_vertex, child->mesh->vertices);
-		IndexBuffer(child->mesh->id_index, child->mesh->num_index, child->mesh->indices);
-		TextureBuffer(child->mesh->id_texture, child->mesh->num_texture, child->mesh->texture_coords);
+		VertexBuffer(mesh->id_vertex, mesh->num_vertex, mesh->vertices);
+		IndexBuffer(mesh->id_index, mesh->num_index, mesh->indices);
+		TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
 
 		//App->scene_intro->static_meshes.push_back(obj->mesh);
 	}
@@ -241,43 +243,46 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 {
 	GameObject* obj = App->scene_intro->CreateGameObject();
 
-	// VERTEX ----------------
-	obj->mesh->num_vertex = par_mesh->npoints;
-	obj->mesh->vertices = new float3[obj->mesh->num_vertex];
+	ComponentMesh* mesh = obj->GetComponentMesh();
 
-	for (int i = 0; i < obj->mesh->num_vertex; i++)
+	// VERTEX ----------------
+	mesh->num_vertex = par_mesh->npoints;
+	mesh->vertices = new float3[mesh->num_vertex];
+
+	for (int i = 0; i < mesh->num_vertex; i++)
 	{
 		int j = i * 3;
-		obj->mesh->vertices[i].x = par_mesh->points[j];
-		obj->mesh->vertices[i].y = par_mesh->points[j + 1];
-		obj->mesh->vertices[i].z = par_mesh->points[j + 2];
+		mesh->vertices[i].x = par_mesh->points[j];
+		mesh->vertices[i].y = par_mesh->points[j + 1];
+		mesh->vertices[i].z = par_mesh->points[j + 2];
 	}
 
 	// INDEX ------------
-	obj->mesh->num_index = par_mesh->ntriangles * 3;
-	obj->mesh->indices = new uint[obj->mesh->num_index];
+	mesh->num_index = par_mesh->ntriangles * 3;
+	mesh->indices = new uint[mesh->num_index];
 
-	for (int i = 0; i < obj->mesh->num_index; i++)
+	for (int i = 0; i < mesh->num_index; i++)
 	{
-		obj->mesh->indices[i] = (uint)par_mesh->triangles[i];
+		mesh->indices[i] = (uint)par_mesh->triangles[i];
 	}
 
 	// TEXTURE ----------------
-	obj->mesh->num_texture = par_mesh->npoints;
-	obj->mesh->texture_coords = new float[obj->mesh->num_texture * 2];
+	mesh->num_texture = par_mesh->npoints;
+	mesh->texture_coords = new float[mesh->num_texture * 2];
 
 	//Copy the par_shapes texture coordinates
-	for (int i = 0; i < obj->mesh->num_texture * 2; ++i)
-		obj->mesh->texture_coords[i] = par_mesh->tcoords[i];
+	for (int i = 0; i < mesh->num_texture * 2; ++i)
+		mesh->texture_coords[i] = par_mesh->tcoords[i];
 
 	//Checkers texture to primitive
-	obj->Ctexture->texture = App->Mtexture->CreateCheckerTexture();
+	ComponentTexture* c_texture = obj->GetComponentTexture(); 
+	c_texture->texture = App->Mtexture->CreateCheckerTexture();
 
 	//Generate the buffers 
-	VertexBuffer(obj->mesh->id_vertex, obj->mesh->num_vertex, obj->mesh->vertices);
-	IndexBuffer( obj->mesh->id_index, obj->mesh->num_index, obj->mesh->indices);
+	VertexBuffer(mesh->id_vertex, mesh->num_vertex, mesh->vertices);
+	IndexBuffer(mesh->id_index,mesh->num_index,mesh->indices);
 	//Generate the buffer for texture coords
-	TextureBuffer(obj->mesh->id_texture, obj->mesh->num_texture, obj->mesh->texture_coords);
+	TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
 }
 
 void ModuleGeometry::VertexBuffer(uint &id, uint &size, float3* vertices)
@@ -317,9 +322,10 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 		std::string directory = App->GetDirectoryFromPath(full_path);
 		directory.append("/");
 		directory.append(path.C_Str());
+		ComponentTexture* c_texture = obj->GetComponentTexture(); 
 
-		obj->Ctexture = (ComponentTexture*)obj->CreateComponent(Component::Type::Texture);
+		c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::Texture);
 
-		obj->Ctexture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
+		c_texture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
 	}
 }

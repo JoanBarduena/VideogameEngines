@@ -51,7 +51,7 @@ void ModuleSceneIntro::SetGameObjectStatic(GameObject* go)
 {
 	if (go->go_static == true)
 	{
-		static_meshes.push_back(go->mesh);
+		static_meshes.push_back(go->GetComponentMesh());
 	}
 	else
 	{
@@ -111,7 +111,7 @@ void ModuleSceneIntro::DrawRecursively(GameObject* GO)
 	if (GO->id != 0 && GO->active == true)
 	{
 		glPushMatrix();
-		glMultMatrixf((GLfloat*)&GO->transform->GetGlobalTransform().Transposed());
+		glMultMatrixf((GLfloat*)&GO->GetComponentTransform()->GetGlobalTransform().Transposed());
 		App->renderer3D->DrawMesh(GO);
 		glPopMatrix();
 	}

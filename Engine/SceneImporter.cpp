@@ -47,7 +47,7 @@ bool SceneImporter::Init()
 	return ret; 
 }
 
-bool SceneImporter::ImportMesh(const char* path, GameObject* go)
+bool SceneImporter::ImportMesh(const char* path, ComponentMesh* mesh)
 {
 	bool ret = true;
 
@@ -61,42 +61,42 @@ bool SceneImporter::ImportMesh(const char* path, GameObject* go)
 	uint bytes = sizeof(ranges);
 	memcpy(ranges, cursor, bytes);
 
-	go->mesh->num_index = ranges[0]; // indices
-	go->mesh->num_vertex = ranges[1]; // vertices 
-	go->mesh->num_texture = ranges[2]; // texture_coords
+	mesh->num_index = ranges[0]; // indices
+	mesh->num_vertex = ranges[1]; // vertices 
+	mesh->num_texture = ranges[2]; // texture_coords
 
 	// Load indices
 	cursor += bytes;
-	bytes = sizeof(uint) * go->mesh->num_index;
-	go->mesh->indices = new uint[go->mesh->num_index];
-	memcpy(go->mesh->indices, cursor, bytes);
+	bytes = sizeof(uint) * mesh->num_index;
+	mesh->indices = new uint[mesh->num_index];
+	memcpy(mesh->indices, cursor, bytes);
 
 	// Load vertices 
 	cursor += bytes; 
-	bytes = sizeof(float) * go->mesh->num_vertex * 3; 
-	go->mesh->vertices = new float3[go->mesh->num_vertex]; 
-	memcpy(go->mesh->vertices, cursor, bytes); 
+	bytes = sizeof(float) * mesh->num_vertex * 3; 
+	mesh->vertices = new float3[mesh->num_vertex]; 
+	memcpy(mesh->vertices, cursor, bytes); 
 
 	// Load texture_coords 
 	cursor += bytes; 
-	bytes = sizeof(float) * go->mesh->num_texture * 2; 
-	go->mesh->texture_coords = new float[go->mesh->num_texture]; 
-	memcpy(go->mesh->texture_coords, cursor, bytes); 
+	bytes = sizeof(float) * mesh->num_texture * 2; 
+	mesh->texture_coords = new float[mesh->num_texture]; 
+	memcpy(mesh->texture_coords, cursor, bytes); 
 
 	return ret;
 }
 
 
 
-bool SceneImporter::ExportMesh(const char* name, const char* path, std::string& output_file, GameObject* go)
+bool SceneImporter::ExportMesh(const char* name, const char* path, std::string& output_file, ComponentMesh* mesh)
 {
 	bool ret = true; 
 
 	// amount of indices / vertices / colors / normals / texture_coords / AABB
-	uint ranges[3] = { go->mesh->num_index, go->mesh->num_vertex, go->mesh->num_texture };
+	uint ranges[3] = { mesh->num_index, mesh->num_vertex, mesh->num_texture };
 
 	// size of allocation for ranges, indices, vertices and texture_coords
-	uint size = sizeof(ranges) + sizeof(uint) * go->mesh->num_index + sizeof(float) * go->mesh->num_vertex * 3 + sizeof(float) * go->mesh->num_texture * 2;
+	uint size = sizeof(ranges) + sizeof(uint) * mesh->num_index + sizeof(float) * mesh->num_vertex * 3 + sizeof(float) * mesh->num_texture * 2;
 
 	// Allocate
 	char* data = new char[size];
@@ -108,18 +108,18 @@ bool SceneImporter::ExportMesh(const char* name, const char* path, std::string& 
 
 	// Store indices
 	cursor += bytes;
-	bytes = sizeof(uint) * go->mesh->num_index;
-	memcpy(cursor, go->mesh->indices, bytes);
+	bytes = sizeof(uint) * mesh->num_index;
+	memcpy(cursor, mesh->indices, bytes);
 
 	// Store vertices 
 	cursor += bytes; 
-	bytes = sizeof(float) * go->mesh->num_vertex * 3;
-	memcpy(cursor, go->mesh->vertices, bytes);
+	bytes = sizeof(float) * mesh->num_vertex * 3;
+	memcpy(cursor, mesh->vertices, bytes);
 
 	// Store texture_coords
 	cursor += bytes; 
-	bytes = sizeof(float) * go->mesh->num_texture * 2; 
-	memcpy(cursor, go->mesh->texture_coords, bytes); 
+	bytes = sizeof(float) * mesh->num_texture * 2; 
+	memcpy(cursor, mesh->texture_coords, bytes); 
 
 	// Save a new extension .mesh 
 	App->filesystem->SaveUnique(output_file, data, size, path, name, "mesh"); 
