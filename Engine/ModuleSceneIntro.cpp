@@ -149,7 +149,7 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 GameObject* ModuleSceneIntro::CreateCanvas()
 {
 	std::string CanvasName = "Canvas "; 
-	CanvasName.append(std::to_string(ui_objects)); 
+	CanvasName.append(std::to_string(num_canvas)); 
 
 	GameObject* canvas = nullptr; 
 	canvas = new GameObject(CanvasName); 
@@ -160,6 +160,7 @@ GameObject* ModuleSceneIntro::CreateCanvas()
 	root->DefineChilds(canvas); 
 
 	App->Console_Log("[CREATING UI OBJECT]: Canvas"); 
+	num_canvas++; 
 
 	return canvas; 
 }
@@ -167,7 +168,7 @@ GameObject* ModuleSceneIntro::CreateCanvas()
 GameObject* ModuleSceneIntro::CreateImage()
 {
 	std::string ImageName = "Image ";
-	ImageName.append(std::to_string(ui_objects));
+	ImageName.append(std::to_string(num_image));
 
 	GameObject* image = nullptr;
 	image = new GameObject(ImageName);
@@ -178,6 +179,7 @@ GameObject* ModuleSceneIntro::CreateImage()
 	root->DefineChilds(image);
 
 	App->Console_Log("[CREATING UI OBJECT]: Image");
+	num_image++; 
 
 	return image;
 }

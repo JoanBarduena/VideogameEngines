@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "HierarchyWindow.h"
 
+#include "imgui/imgui_internal.h"
+
 #include "mmgr/mmgr.h"
 
 HierarchyWindow::HierarchyWindow()
@@ -26,6 +28,8 @@ bool HierarchyWindow::Draw()
 		ImGui::Begin("Hierarchy");
 
 		TreeNodeHierarchy(App->scene_intro->root); 
+	
+		CreateHierarchyObjects(); 
 
 		ImGui::End();
 		ImGui::PopStyleVar();
@@ -103,5 +107,22 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 			}
 		}
 		ImGui::TreePop(); 
+	}
+}
+
+void HierarchyWindow::CreateHierarchyObjects()
+{
+	if (ImGui::BeginPopupContextWindow())
+	{
+		if (ImGui::MenuItem("Canvas"))
+		{
+			App->scene_intro->CreateCanvas();
+		}
+		if (ImGui::MenuItem("Image"))
+		{
+			App->scene_intro->CreateImage();
+		}
+
+		ImGui::EndPopup();
 	}
 }

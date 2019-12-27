@@ -55,7 +55,7 @@ public:
 	Position position; 
 
 	std::vector<GameObject*> game_objects;
-	uint ui_objects = 1; 
+	uint num_canvas = 1, num_image = 1; 
 
 	GameObject* root = nullptr; 
 };
