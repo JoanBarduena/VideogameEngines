@@ -27,6 +27,7 @@ bool HierarchyWindow::Draw()
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 		ImGui::Begin("Hierarchy");
 
+
 		TreeNodeHierarchy(App->scene_intro->root); 
 	
 		CreateHierarchyObjects(App->gui->inspector_w->selected_go);

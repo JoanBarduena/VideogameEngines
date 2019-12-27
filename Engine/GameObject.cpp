@@ -201,3 +201,25 @@ ComponentTexture* GameObject::GetComponentTexture()
 
 	return nullptr;
 }
+
+ComponentCanvas* GameObject::GetComponentCanvas()
+{
+	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); ++it)
+	{
+		if ((*it)->type_UI == ComponentUI::TypeUI::UI_Canvas)
+			return (ComponentCanvas*)(*it);
+	}
+
+	return nullptr;
+}
+
+ComponentImage* GameObject::GetComponentImage()
+{
+	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); ++it)
+	{
+		if ((*it)->type_UI == ComponentUI::TypeUI::UI_Image)
+			return (ComponentImage*)(*it);
+	}
+
+	return nullptr;
+}

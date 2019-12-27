@@ -14,9 +14,9 @@ public:
 
 	void SceneDraw(); 
 
-protected: 
+public: 
 	
-	uint height = 0, width = 0; 
+	uint height = 0, width = 0;  
 };
 
 

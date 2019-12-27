@@ -35,6 +35,9 @@ public:
 	ComponentTransform* GetComponentTransform(); 
 	ComponentMesh* GetComponentMesh();
 	ComponentTexture* GetComponentTexture();
+
+	ComponentCanvas* GetComponentCanvas();
+	ComponentImage* GetComponentImage();
 public:
 
 	string name; 

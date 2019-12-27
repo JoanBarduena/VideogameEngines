@@ -31,9 +31,9 @@ public:
 
 	bool active;
 
-protected: 
+public: 
 
-	ComponentUI::TypeUI type_UI;
+	TypeUI type_UI;
 	uint height = 0, width = 0; 
 	GameObject* go_ui = nullptr; 
 	

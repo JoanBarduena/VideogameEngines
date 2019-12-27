@@ -125,9 +125,6 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 
 			// Accumulate transform 
 			node->mTransformation.Decompose(nScaling, nRotation, nPosition);
-			nPos += float3(nPosition.x, nPosition.y, nPosition.z);
-			nScale = float3(nScale.x * nScaling.x, nScale.y * nScaling.y, nScale.z * nScaling.z);
-			nRot = nRot * Quat(nRotation.x, nRotation.y, nRotation.z, nRotation.w);
 
 			node_name = node->mName.C_Str();
 

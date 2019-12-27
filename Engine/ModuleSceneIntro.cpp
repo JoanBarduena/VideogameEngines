@@ -177,6 +177,17 @@ GameObject* ModuleSceneIntro::CreateImage(GameObject* parent)
 	image->CreateComponentUI(ComponentUI::TypeUI::UI_Image);
 
 	parent->DefineChilds(image);
+	
+	// Centered on the canvas
+	ComponentTransform* transform = parent->GetComponentTransform();
+
+	float3 pos; 
+	pos.x = parent->GetComponentTransform()->GetPosition().x + (parent->GetComponentCanvas()->width / 2) - (image->GetComponentImage()->width/2); 
+	pos.y = parent->GetComponentTransform()->GetPosition().y + (parent->GetComponentCanvas()->height / 2) - (image->GetComponentImage()->height / 2);
+	pos.z = parent->GetComponentTransform()->GetPosition().z;
+	
+	//Initial position on the canvas square
+	image->GetComponentTransform()->SetPosition(pos);
 
 	App->Console_Log("[CREATING UI OBJECT]: Image");
 	num_image++; 
