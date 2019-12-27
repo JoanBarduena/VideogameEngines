@@ -53,7 +53,7 @@ public:
 	Position position; 
 
 	std::vector<GameObject*> game_objects;
-	std::vector<GameObject*> ui_objects; 
+	uint ui_objects = 1; 
 
 	GameObject* root = nullptr; 
 };

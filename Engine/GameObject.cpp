@@ -5,8 +5,8 @@
 
 GameObject::GameObject(string name_)
 {
-	this->name = name_; 
 	this->active = true; 
+	this->name = name_; 
 	CreateComponent(Component::Type::Transform);
 	this->go_static = false; 
 }
@@ -105,12 +105,6 @@ void GameObject::Update(float dt)
 	{
 		if ((*it)->active)
 			(*it)->Update(dt);
-	}
-
-	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
-	{
-		if ((*it)->active)
-			(*it)->Update();
 	}
 
 	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); it++)

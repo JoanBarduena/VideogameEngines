@@ -36,7 +36,7 @@ public:
 
 	string name; 
 	string unactive_name; 
-	bool active; 
+	bool active = true; 
 	uint id; 
 	bool go_static = false; 
 

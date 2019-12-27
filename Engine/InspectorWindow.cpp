@@ -80,27 +80,32 @@ bool InspectorWindow::Draw()
 					}
 				}
 
-				if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->GetComponentMesh() != nullptr)
+				if (selected_go->GetComponentMesh() != nullptr)
 				{
-					ComponentMesh* mesh = selected_go->GetComponentMesh(); 
+					if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ComponentMesh* mesh = selected_go->GetComponentMesh();
 
-					ImGui::Text("Vertices ID: %d", mesh->id_vertex);
-					ImGui::Text("Vertices Num: %d",mesh->num_vertex);
-					ImGui::Text("Indices ID: %d", mesh->id_index);
-					ImGui::Text("Indices Num: %d", mesh->num_index);
+						ImGui::Text("Vertices ID: %d", mesh->id_vertex);
+						ImGui::Text("Vertices Num: %d", mesh->num_vertex);
+						ImGui::Text("Indices ID: %d", mesh->id_index);
+						ImGui::Text("Indices Num: %d", mesh->num_index);
+					}
 				}
-
-				if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen) && selected_go->GetComponentTexture() != nullptr)
+				if (selected_go->GetComponentTexture() != nullptr)
 				{
-					ComponentTexture* c_texture = selected_go->GetComponentTexture(); 
+					if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ComponentTexture* c_texture = selected_go->GetComponentTexture();
 
-					ImGui::Text("Texture ID: %d", c_texture->texture.textureID);
-					ImGui::Text("Texture Width: %d", c_texture->texture.width);
-					ImGui::Text("Texture Height: %d", c_texture->texture.height);
-					ImGui::Text("Texture Path: %s", c_texture->texture.path.c_str());
-					ImGui::Text("Preview:");
-					ImGui::Image((ImTextureID*)c_texture->texture.textureID, ImVec2(200, 200));
-				}
+						ImGui::Text("Texture ID: %d", c_texture->texture.textureID);
+						ImGui::Text("Texture Width: %d", c_texture->texture.width);
+						ImGui::Text("Texture Height: %d", c_texture->texture.height);
+						ImGui::Text("Texture Path: %s", c_texture->texture.path.c_str());
+						ImGui::Text("Preview:");
+						ImGui::Image((ImTextureID*)c_texture->texture.textureID, ImVec2(200, 200));
+					}
+				}	
 			}
 			if (App->input->GetKey(SDL_SCANCODE_DELETE) == KEY_DOWN && selected_go != nullptr)
 			{

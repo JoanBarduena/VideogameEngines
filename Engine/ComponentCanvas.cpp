@@ -22,7 +22,7 @@ void ComponentCanvas::SceneDraw()
 {
 	ComponentTransform* transform = go_ui->GetComponentTransform(); 
 
-	glBegin(GL_LINE_LOOP);
+	glBegin(GL_POLYGON);
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f); 
 
 	float3 pos = transform->GetPosition(); 

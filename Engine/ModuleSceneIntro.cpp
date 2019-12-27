@@ -123,7 +123,8 @@ void ModuleSceneIntro::DrawRecursively(GameObject* GO)
 	{
 		for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
 		{
-			DrawRecursively(*it);
+			if (GO->active == true)
+				DrawRecursively(*it);	
 		}
 	}
 }
@@ -148,7 +149,7 @@ GameObject * ModuleSceneIntro::CreateGameObject()
 GameObject* ModuleSceneIntro::CreateCanvas()
 {
 	std::string CanvasName = "Canvas "; 
-	CanvasName.append(std::to_string(ui_objects.size() + 1)); 
+	CanvasName.append(std::to_string(ui_objects)); 
 
 	GameObject* canvas = nullptr; 
 	canvas = new GameObject(CanvasName); 
@@ -157,7 +158,6 @@ GameObject* ModuleSceneIntro::CreateCanvas()
 	canvas->CreateComponentUI(ComponentUI::TypeUI::UI_Canvas); 
 
 	root->DefineChilds(canvas); 
-	ui_objects.push_back(canvas); 
 
 	App->Console_Log("[CREATING UI OBJECT]: Canvas"); 
 
