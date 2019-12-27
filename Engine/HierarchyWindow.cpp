@@ -78,8 +78,27 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 			for (std::vector<GameObject*>::iterator it = go->childs.begin(); it != go->childs.end(); ++it)
 			{
 				if (go->active == false)
-					(*it)->active == false; 
+				{
+					(*it)->active = false;
+					(*it)->was_unactive = true;
 
+					if (it == go->childs.end() - 1)
+					{
+						go->was_unactive = true;
+					}
+				}
+
+				if (go->was_unactive && go->active)
+				{
+					(*it)->active = true;
+					(*it)->was_unactive = false;
+					
+					if (it == go->childs.end() - 1)
+					{
+						go->was_unactive = false;
+					}					
+				}
+					
 				TreeNodeHierarchy(*it);
 			}
 		}

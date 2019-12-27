@@ -27,6 +27,8 @@ public:
 
 	virtual bool Update() { return true; };
 
+	virtual void RotateV4() {};
+
 	bool active;
 
 protected: 

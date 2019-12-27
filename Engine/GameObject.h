@@ -23,6 +23,8 @@ public:
 
 	void DefineChilds(GameObject* GO);
 
+	bool HasChildren() const;
+
 	void Update(float dt);
 	void UpdateTransformation(GameObject* GO);
 
@@ -37,6 +39,7 @@ public:
 	string name; 
 	string unactive_name; 
 	bool active = true; 
+	bool was_unactive = false; 
 	uint id; 
 	bool go_static = false; 
 

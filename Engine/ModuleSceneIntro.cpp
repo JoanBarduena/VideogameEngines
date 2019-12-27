@@ -123,8 +123,7 @@ void ModuleSceneIntro::DrawRecursively(GameObject* GO)
 	{
 		for (std::vector<GameObject*>::iterator it = GO->childs.begin(); it != GO->childs.end(); ++it)
 		{
-			if (GO->active == true)
-				DrawRecursively(*it);	
+			DrawRecursively(*it);	  
 		}
 	}
 }

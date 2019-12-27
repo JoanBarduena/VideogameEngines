@@ -96,6 +96,14 @@ void GameObject::DefineChilds(GameObject* GO)
 	childs.push_back(GO);
 }
 
+bool GameObject::HasChildren() const
+{
+	if (childs.empty())
+		return false;
+	else
+		return true;
+}
+
 void GameObject::Update(float dt)
 {
 	if (this->GetComponentTransform()->is_transformed)
