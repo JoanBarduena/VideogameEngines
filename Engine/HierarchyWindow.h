@@ -15,7 +15,7 @@ public:
 
 	void TreeNodeHierarchy(GameObject* go);
 
-	void CreateHierarchyObjects();
+	void CreateHierarchyObjects(GameObject* parent);
 
 	bool starts_clicked = true;
 

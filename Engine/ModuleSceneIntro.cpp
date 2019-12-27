@@ -35,7 +35,7 @@ bool ModuleSceneIntro::Start()
 	App->geometry->LoadFileFromPath("Assets/Street/Street environment_V01.fbx"); 
 
 	CreateCanvas(); 
-	CreateImage(); 
+	//CreateImage(); 
 	//Create_Cube(0,0,0,2);
 	//Create_Sphere(50,20,5,1,0,1); 
 	return ret;
@@ -165,7 +165,7 @@ GameObject* ModuleSceneIntro::CreateCanvas()
 	return canvas; 
 }
 
-GameObject* ModuleSceneIntro::CreateImage()
+GameObject* ModuleSceneIntro::CreateImage(GameObject* parent)
 {
 	std::string ImageName = "Image ";
 	ImageName.append(std::to_string(num_image));
@@ -176,7 +176,7 @@ GameObject* ModuleSceneIntro::CreateImage()
 
 	image->CreateComponentUI(ComponentUI::TypeUI::UI_Image);
 
-	root->DefineChilds(image);
+	parent->DefineChilds(image);
 
 	App->Console_Log("[CREATING UI OBJECT]: Image");
 	num_image++; 

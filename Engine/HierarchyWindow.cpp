@@ -29,7 +29,7 @@ bool HierarchyWindow::Draw()
 
 		TreeNodeHierarchy(App->scene_intro->root); 
 	
-		CreateHierarchyObjects(); 
+		CreateHierarchyObjects(App->gui->inspector_w->selected_go);
 
 		ImGui::End();
 		ImGui::PopStyleVar();
@@ -110,7 +110,7 @@ void HierarchyWindow::TreeNodeHierarchy(GameObject* go)
 	}
 }
 
-void HierarchyWindow::CreateHierarchyObjects()
+void HierarchyWindow::CreateHierarchyObjects(GameObject* parent)
 {
 	if (ImGui::BeginPopupContextWindow())
 	{
@@ -120,7 +120,7 @@ void HierarchyWindow::CreateHierarchyObjects()
 		}
 		if (ImGui::MenuItem("Image"))
 		{
-			App->scene_intro->CreateImage();
+			App->scene_intro->CreateImage(parent);
 		}
 
 		ImGui::EndPopup();

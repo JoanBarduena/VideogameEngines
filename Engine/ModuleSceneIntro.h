@@ -24,7 +24,7 @@ public:
 	GameObject* CreateGameObject();
 
 	GameObject* CreateCanvas();
-	GameObject* CreateImage();
+	GameObject* CreateImage(GameObject* parent);
 
 
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);
