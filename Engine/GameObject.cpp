@@ -68,6 +68,8 @@ ComponentUI* GameObject::CreateComponentUI(ComponentUI::TypeUI typeUI)
 	case ComponentUI::TypeUI::UI_Canvas:
 		comp_UI = new ComponentCanvas(this, 50, 40); 
 		break; 
+	case ComponentUI::TypeUI::UI_Image:
+		comp_UI = new ComponentImage(this, 20, 10, "Assets/Cottage.dds"); 
 	}
 	if (comp_UI != nullptr)
 	{

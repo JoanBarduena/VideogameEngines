@@ -80,6 +80,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentCanvas.h" />
+    <ClInclude Include="ComponentImage.h" />
     <ClInclude Include="ComponentMesh.h" />
     <ClInclude Include="ComponentTexture.h" />
     <ClInclude Include="ComponentTransform.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentCanvas.cpp" />
+    <ClCompile Include="ComponentImage.cpp" />
     <ClCompile Include="ComponentMesh.cpp" />
     <ClCompile Include="ComponentTexture.cpp" />
     <ClCompile Include="ComponentTransform.cpp" />

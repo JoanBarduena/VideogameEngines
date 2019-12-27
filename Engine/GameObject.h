@@ -9,6 +9,7 @@
 
 #include "ComponentUI.h"
 #include "ComponentCanvas.h"
+#include "ComponentImage.h"
 
 class GameObject
 {

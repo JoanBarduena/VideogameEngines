@@ -22,7 +22,9 @@ public:
 	void DrawRecursively(GameObject* GO);
 
 	GameObject* CreateGameObject();
+
 	GameObject* CreateCanvas();
+	GameObject* CreateImage();
 
 
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);
