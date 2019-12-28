@@ -17,6 +17,9 @@ public:
 	virtual bool Start();
 	virtual bool Draw();
 	virtual bool CleanUp(); 
+
+public:
+	bool active; 
 };
 
 #endif // !__WINDOW_H__

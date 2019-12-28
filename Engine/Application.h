@@ -12,6 +12,7 @@
 #include "ModuleGeometry.h"
 #include "ModuleTexture.h"
 #include "ModuleFileSystem.h"
+#include "ModuleViewport.h"
 
 using namespace std; 
 
@@ -27,6 +28,7 @@ public:
 	ModuleGeometry*			geometry = nullptr;
 	ModuleTexture*			Mtexture = nullptr;
 	ModuleFileSystem*		filesystem = nullptr; 
+	ModuleViewport*			viewport = nullptr; 
 
 private:
 

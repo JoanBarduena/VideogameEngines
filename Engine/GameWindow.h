@@ -16,12 +16,15 @@ public:
 
 	bool Start(); 
 	bool Draw(); 
-	bool CleanUp(); 
+	bool CleanUp();
+	bool OnResize();
 
 	ImVec2 size_;
 	ImVec2 new_size;
 
 private:
 
-	FrameBuffer* fbo = nullptr;   
+	FrameBuffer* fbo = nullptr; 
+	float worldposx = 0; 
+	float worldposy = 0; 
 };

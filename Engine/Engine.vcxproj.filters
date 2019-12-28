@@ -55,6 +55,9 @@
     <Filter Include="Sources\Tools\mathgeolib\time">
       <UniqueIdentifier>{f77ea460-1464-450c-a9d6-16dd78bce6d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Modules\SubModules">
+      <UniqueIdentifier>{01b60fb8-d8b6-4209-b1c3-8b2c06f6c1f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModuleCamera3D.h">
@@ -193,9 +196,6 @@
       <Filter>Sources\Tools\mmgr</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFileSystem.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneImporter.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
     <ClInclude Include="PhysFS\include\physfs.h">
@@ -384,17 +384,23 @@
     <ClInclude Include="GameWindow.h">
       <Filter>Sources\Modules\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="FrameBuffer.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="QuadTree.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ComponentImage.h">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="ComponentCanvas.h">
       <Filter>Sources\Modules\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameBuffer.h">
+      <Filter>Sources\Modules\SubModules</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneImporter.h">
+      <Filter>Sources\Modules\SubModules</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Sources\Modules\SubModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleViewport.h">
+      <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -506,9 +512,6 @@
     <ClCompile Include="ModuleFileSystem.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="SceneImporter.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="MathGeoLib\include\Math\SSEMath.cpp">
       <Filter>Sources\Tools\mathgeolib\math</Filter>
     </ClCompile>
@@ -611,17 +614,23 @@
     <ClCompile Include="GameWindow.cpp">
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="FrameBuffer.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadTree.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ComponentCanvas.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="ComponentImage.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameBuffer.cpp">
+      <Filter>Sources\Modules\SubModules</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Sources\Modules\SubModules</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneImporter.cpp">
+      <Filter>Sources\Modules\SubModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleViewport.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

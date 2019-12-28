@@ -20,18 +20,18 @@ bool GameWindow::Start()
 {
 	App->Console_Log("[CREATING] Game Window");
 
-	size_.x = 1024;
-	size_.y = 768; 
+	//size_.x = 1024;
+	//size_.y = 768; 
 
-	fbo = new FrameBuffer(); 
-	fbo->Start(size_);
+	//fbo = new FrameBuffer(); 
+	//fbo->Start(size_);
 
 	return true;
 }
 
 bool GameWindow::Draw()
 {
-	if (App->gui->show_game_window)
+	/*if (App->gui->show_game_window)
 	{
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 		ImGui::Begin("Game");
@@ -44,7 +44,7 @@ bool GameWindow::Draw()
 		new_size = ImGui::GetContentRegionAvail();
 
 
-		ImGui::Image((ImTextureID)fbo->texture, ImVec2(size_.x, size_.y), ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::Image((ImTextureID)fbo->fboTexture, ImVec2(size_.x, size_.y), ImVec2(0, 1), ImVec2(1, 0));
 
 		ImGui::End();
 		ImGui::PopStyleVar();
@@ -58,7 +58,17 @@ bool GameWindow::Draw()
 	}
 
 
-	fbo->Draw();
+	fbo->Draw();*/
+
+	ImGui::Begin("SceneWindow", &active, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+
+	ImGui::Image((ImTextureID)App->framebuffer->GetTexture(), App->framebuffer->GetTextureSize(), ImVec2(0, 1), ImVec2(1, 0));
+	size_ = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
+
+	worldposx = App->input->GetMouseX() - ImGui::GetCursorScreenPos().x;
+	worldposy = App->input->GetMouseY() - ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y;
+
+	ImGui::End();
 
 	return true;
 }
@@ -69,4 +79,15 @@ bool GameWindow::CleanUp()
 	delete fbo; 
 
 	return true;
+}
+
+bool GameWindow::OnResize()
+{
+	if (size_.x != new_size.x || size_.y != new_size.y)
+	{
+		new_size = size_;
+		return true;
+	}
+	else
+		return false;
 }
