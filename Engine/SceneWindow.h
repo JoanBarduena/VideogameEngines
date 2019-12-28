@@ -7,12 +7,12 @@
 #include "imGui/imgui_impl_sdl.h"
 #include "imGui/imgui_impl_opengl3.h"
 
-class GameWindow : public Window
+class SceneWindow : public Window
 {
 public: 
 
-	GameWindow(); 
-	~GameWindow(); 
+	SceneWindow(); 
+	~SceneWindow(); 
 
 	bool Start(); 
 	bool Draw(); 
@@ -21,8 +21,8 @@ public:
 	bool CleanUp();
 	bool OnResize();
 
-	ImVec2 Wsize;
-	ImVec2 Wnew_size;
+	ImVec2 w_Size;
+	ImVec2 w_NewSize;
 
 private:
 	FBO* fbo = nullptr; 

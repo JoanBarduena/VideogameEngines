@@ -3,7 +3,7 @@
 #include "Module.h"
 
 class FBO; 
-class GameWindow; 
+class SceneWindow; 
 
 class ModuleViewport : public Module
 {
@@ -22,5 +22,5 @@ public:
 
 	GameObject* root = nullptr;
 
-	GameWindow* g_window = nullptr; 
+	SceneWindow* g_window = nullptr; 
 };

@@ -17,8 +17,6 @@ public:
 	bool CleanUp();
 
 	void RestartBuffers();
-	void PrepareDepth();
-	void PrepareTexture();
 
 	uint GetTexture() const;
 	ImVec2 GetTextureSize() const;

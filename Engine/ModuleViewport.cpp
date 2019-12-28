@@ -34,7 +34,7 @@ update_status ModuleViewport::PostUpdate(float dt)
 {
 
 	//fbo_scene->Undraw(); 
-	//LOG("%d", App->gui->game_w->Wsize.x); 
+	//LOG("%d", App->gui->game_w->w_Size.x); 
 
 	return UPDATE_CONTINUE;
 }

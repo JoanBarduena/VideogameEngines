@@ -199,11 +199,6 @@ uint ModuleTexture::LoadTextureFromPixels(const void* img, uint TextureWidth, ui
 	//Unbind texture
 	glBindTexture(GL_TEXTURE_2D, NULL);
 
-	//Check for error
-	GLenum error = glGetError();
-	if (error)
-		App->Console_Log("[ERROR]: loading Textrure from pixels %s", error); 
-
 	return TextureID; 
 }
 

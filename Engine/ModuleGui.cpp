@@ -34,9 +34,9 @@ bool ModuleGui::Init()
 	console_w = new ConsoleWindow();
 	hierarchy_w = new HierarchyWindow(); 
 	inspector_w = new InspectorWindow(); 
-	game_w = new GameWindow(); 
+	scene_w = new SceneWindow(); 
 
-	windows.push_back(game_w);
+	windows.push_back(scene_w);
 	windows.push_back(console_w);
 	windows.push_back(config_w); 
 	windows.push_back(hierarchy_w);

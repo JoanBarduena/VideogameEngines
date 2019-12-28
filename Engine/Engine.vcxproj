@@ -89,7 +89,7 @@
     <ClInclude Include="ConsoleWindow.h" />
     <ClInclude Include="FBO.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="SceneWindow.h" />
     <ClInclude Include="glew\include\GL\eglew.h" />
     <ClInclude Include="glew\include\GL\glew.h" />
     <ClInclude Include="glew\include\GL\glxew.h" />
@@ -205,7 +205,7 @@
     <ClCompile Include="ConsoleWindow.cpp" />
     <ClCompile Include="FBO.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="SceneWindow.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="HierarchyWindow.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
