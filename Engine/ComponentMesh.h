@@ -14,6 +14,8 @@ public:
 	ComponentMesh(GameObject* GObj); 
 	~ComponentMesh();
 
+	ComponentMesh* CreateMesh(float3* vertex);
+
 	void CleanUp();
 
 	void DrawAABB();

@@ -3,7 +3,7 @@
 
 #include "mmgr/mmgr.h"
 
-ComponentTexture::ComponentTexture(GameObject * GObj) : Component(GObj, Type::Texture)
+ComponentTexture::ComponentTexture(GameObject * GObj) : Component(GObj, Type::TEXTURE)
 {
 	this->texture = App->Mtexture->DefaultTexture;
 }

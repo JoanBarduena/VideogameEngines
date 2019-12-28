@@ -32,12 +32,11 @@ bool ModuleSceneIntro::Start()
 
 	//HouseTexture = App->texture->LoadTexturePath("Assets/Baker_house.png");
 	//App->geometry->LoadFileFromPath("Assets/BakerHouse.fbx"); 
+
 	App->geometry->LoadFileFromPath("Assets/Street/Street environment_V01.fbx"); 
 
 	CreateCanvas(); 
-	//CreateImage(); 
-	//Create_Cube(0,0,0,2);
-	//Create_Sphere(50,20,5,1,0,1); 
+
 	return ret;
 }
 
@@ -154,44 +153,57 @@ GameObject* ModuleSceneIntro::CreateCanvas()
 	GameObject* canvas = nullptr; 
 	canvas = new GameObject(CanvasName); 
 	canvas->unactive_name = CanvasName.append(" [not active]"); 
+	canvas->id = game_objects.size();
 
-	canvas->CreateComponentUI(ComponentUI::TypeUI::UI_Canvas); 
+	canvas->CreateComponent(Component::Type::CANVAS); 
 
 	root->DefineChilds(canvas); 
 
 	App->Console_Log("[CREATING UI OBJECT]: Canvas"); 
 	num_canvas++; 
+	game_objects.push_back(canvas); 
 
 	return canvas; 
 }
 
 GameObject* ModuleSceneIntro::CreateImage(GameObject* parent)
 {
-	std::string ImageName = "Image ";
-	ImageName.append(std::to_string(num_image));
-
 	GameObject* image = nullptr;
-	image = new GameObject(ImageName);
-	image->unactive_name = ImageName.append(" [not active]");
 
-	image->CreateComponentUI(ComponentUI::TypeUI::UI_Image);
+	if (parent != nullptr)
+	{
+		std::string ImageName = "Image ";
+		ImageName.append(std::to_string(num_image));
 
-	parent->DefineChilds(image);
+		image = new GameObject(ImageName);
+		image->unactive_name = ImageName.append(" [not active]");
+		image->id = game_objects.size(); 
+
+		//load image path ( path fbx, go_image) 
+
+		image->CreateComponent(Component::Type::IMAGE);
+
+		////Centered on the canvas
+		//ComponentTransform* transform = parent->GetComponentTransform();
+		//ComponentCanvas* canvas = parent->GetComponentCanvas();
+
+		//float3 pos;
+		//pos.x = transform->GetPosition().x + (canvas->width / 2) - (image->GetComponentImage()->width / 2);
+		//pos.y = transform->GetPosition().y + (canvas->height / 2) - (image->GetComponentImage()->height / 2);
+		//pos.z = transform->GetPosition().z;
+
+		////Initial position on the canvas square
+		//image->GetComponentTransform()->SetPosition(pos);
+
+		//image->reset_pos = pos;
+
+		App->Console_Log("[CREATING UI OBJECT]: Image");
+		num_image++;
+		game_objects.push_back(image); 
+
+		parent->DefineChilds(image);
+	}
 	
-	// Centered on the canvas
-	ComponentTransform* transform = parent->GetComponentTransform();
-
-	float3 pos; 
-	pos.x = parent->GetComponentTransform()->GetPosition().x + (parent->GetComponentCanvas()->width / 2) - (image->GetComponentImage()->width/2); 
-	pos.y = parent->GetComponentTransform()->GetPosition().y + (parent->GetComponentCanvas()->height / 2) - (image->GetComponentImage()->height / 2);
-	pos.z = parent->GetComponentTransform()->GetPosition().z;
-	
-	//Initial position on the canvas square
-	image->GetComponentTransform()->SetPosition(pos);
-
-	App->Console_Log("[CREATING UI OBJECT]: Image");
-	num_image++; 
-
 	return image;
 }
 
@@ -211,7 +223,7 @@ void ModuleSceneIntro::Create_Sphere(int slices, int stacks, float x, float y, f
 
 void ModuleSceneIntro::Create_Cube(float x, float y, float z, float size)
 {
-	Body = par_shapes_create_cube();
+	/*Body = par_shapes_create_cube();
 
 	position.x = x;
 	position.y = y;
@@ -220,58 +232,58 @@ void ModuleSceneIntro::Create_Cube(float x, float y, float z, float size)
 	par_shapes_scale(Body, size, size, size);
 	par_shapes_translate(Body, position.x, position.y, position.z);
 
-	App->geometry->LoadParShapes(Body, position); 
+	App->geometry->LoadParShapes(Body, position);*/ 
 
-	//float vertices[] = {
-	//	//front
-	//	x + 0.0,	y + 0.0,	z + size,
-	//	x + size,	y + 0.0,	z + size,
-	//	x + size,   y + size,	z + size,
-	//	x + 0.0,	y + size,	z + size,
-	//	// back
-	//	x + 0.0,	y + 0.0,	z + 0.0,
-	//	x + size,	y + 0.0,    z + 0.0,
-	//	x + size,	y + size,   z + 0.0,
-	//	x + 0.0,	y + size,	z + 0.0
-	//};
+	/*float vertices[] = {
+		//front
+		x + 0.0,	y + 0.0,	z + size,
+		x + size,	y + 0.0,	z + size,
+		x + size,   y + size,	z + size,
+		x + 0.0,	y + size,	z + size,
+		// back
+		x + 0.0,	y + 0.0,	z + 0.0,
+		x + size,	y + 0.0,    z + 0.0,
+		x + size,	y + size,   z + 0.0,
+		x + 0.0,	y + size,	z + 0.0
+	};
 
-	//uint indices[] = {
-	//	//front
-	//		0, 1, 2,
-	//		2, 3, 0,
-	//		// right
-	//		1, 5, 6,
-	//		6, 2, 1,
-	//		// back
-	//		7, 6, 5,
-	//		5, 4, 7,
-	//		// left
-	//		4, 0, 3,
-	//		3, 7, 4,
-	//		// bottom
-	//		4, 5, 1,
-	//		1, 0, 4,
-	//		// top
-	//		3, 2, 6,
-	//		6, 7, 3
-	//};
+	uint indices[] = {
+		//front
+			0, 1, 2,
+			2, 3, 0,
+			// right
+			1, 5, 6,
+			6, 2, 1,
+			// back
+			7, 6, 5,
+			5, 4, 7,
+			// left
+			4, 0, 3,
+			3, 7, 4,
+			// bottom
+			4, 5, 1,
+			1, 0, 4,
+			// top
+			3, 2, 6,
+			6, 7, 3
+	};
 
-	//uint my_id = 0;
-	//glGenBuffers(1, (GLuint*) &(my_id));
-	//glBindBuffer(GL_ARRAY_BUFFER, my_id);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	uint my_id = 0;
+	glGenBuffers(1, (GLuint*) &(my_id));
+	glBindBuffer(GL_ARRAY_BUFFER, my_id);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//uint my_indices = 0;
-	//glGenBuffers(1, (GLuint*) &(my_indices));
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, my_indices);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	uint my_indices = 0;
+	glGenBuffers(1, (GLuint*) &(my_indices));
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, my_indices);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	//glEnableClientState(GL_VERTEX_ARRAY);
-	//glVertexPointer(3, GL_FLOAT, 0, NULL);
-	//glDrawElements(GL_TRIANGLES, num_indices, GL_UNSIGNED_INT, NULL);
-	//glDisableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, NULL);
+	glDrawElements(GL_TRIANGLES, num_indices, GL_UNSIGNED_INT, NULL);
+	glDisableClientState(GL_VERTEX_ARRAY);
 
-	//glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);*/
 }
 
 void ModuleSceneIntro::Create_Cylinder(float x, float y, float z, uint size, int slices, uint stacks)

@@ -2,7 +2,7 @@
 
 #include "mmgr/mmgr.h"
 
-ComponentTransform::ComponentTransform(GameObject* GObj) : Component(GObj, Component::Type::Transform)
+ComponentTransform::ComponentTransform(GameObject* GObj) : Component(GObj, Component::Type::TRANSFORM)
 {
 	transform_local = float4x4::FromTRS(position, rotation, scale);
 }

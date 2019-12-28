@@ -180,7 +180,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			child = obj;
 		}
 
-		child->CreateComponent(Component::Type::Mesh);
+		child->CreateComponent(Component::Type::MESH);
 		ComponentMesh* mesh = child->GetComponentMesh();
 
 		DefineTextureType(file, new_mesh, child, full_path); 
@@ -244,7 +244,9 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 {
 	GameObject* obj = App->scene_intro->CreateGameObject();
+	App->scene_intro->root->DefineChilds(obj); 
 
+	obj->CreateComponent(Component::Type::MESH);
 	ComponentMesh* mesh = obj->GetComponentMesh();
 
 	// VERTEX ----------------
@@ -277,7 +279,9 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 		mesh->texture_coords[i] = par_mesh->tcoords[i];
 
 	//Checkers texture to primitive
+	obj->CreateComponent(Component::Type::TEXTURE);
 	ComponentTexture* c_texture = obj->GetComponentTexture(); 
+	
 	c_texture->texture = App->Mtexture->CreateCheckerTexture();
 
 	//Generate the buffers 
@@ -286,6 +290,29 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 	//Generate the buffer for texture coords
 	TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
 }
+
+//void ModuleGeometry::LoadUIElement(float3* vertex)
+//{
+//	mesh->vertices = vertex;
+//	mesh->num_vertex = 4;
+//
+//	mesh->num_index = 6;
+//	mesh->indices = new uint[6];
+//	mesh->indices[0] = 0;
+//	mesh->indices[1] = 1;
+//	mesh->indices[2] = 2;
+//	mesh->indices[3] = 2;
+//	mesh->indices[4] = 1;
+//	mesh->indices[5] = 3;
+//
+//	//GO->CreateComponent(Component::Type::Texture);
+//	//ComponentTexture* c_texture = GO->GetComponentTexture();
+//	//c_texture->texture = App->Mtexture->CreateCheckerTexture();
+//
+//	VertexBuffer(mesh->id_vertex, mesh->num_vertex, mesh->vertices);
+//	IndexBuffer(mesh->id_index, mesh->num_index, mesh->indices);
+//	//TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
+//}
 
 void ModuleGeometry::VertexBuffer(uint &id, uint &size, float3* vertices)
 {
@@ -326,7 +353,7 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 		directory.append(path.C_Str());
 		ComponentTexture* c_texture = obj->GetComponentTexture(); 
 
-		c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::Texture);
+		c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::TEXTURE);
 
 		c_texture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
 	}

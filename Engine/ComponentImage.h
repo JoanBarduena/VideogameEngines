@@ -3,7 +3,7 @@
 
 #include "ComponentUI.h"
 
-class ComponentImage : public ComponentUI
+class ComponentImage : public Component
 {
 public:
 
@@ -16,7 +16,7 @@ public:
 
 public:
 
-	uint height = 0, width = 0;
+	GameObject* parent = nullptr; 
 };
 
 #endif

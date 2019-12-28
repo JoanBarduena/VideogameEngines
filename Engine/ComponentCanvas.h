@@ -1,9 +1,9 @@
 #ifndef __COMPONENT_CANVAS_H__
 #define __COMPONENT_CANVAS_H__
 
-#include "ComponentUI.h"
+#include "Component.h"
 
-class ComponentCanvas : public ComponentUI
+class ComponentCanvas : public Component
 {
 public: 
 
@@ -13,12 +13,6 @@ public:
 	bool Update(); 
 
 	void SceneDraw(); 
-
-public: 
-	
-	uint height = 0, width = 0;  
 };
-
-
 
 #endif

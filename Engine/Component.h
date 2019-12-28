@@ -11,10 +11,11 @@ public:
 	enum class Type
 	{
 		NONE = -1,
-		Transform,
-		Mesh,
-		Texture, 
-		UI
+		TRANSFORM,
+		MESH,
+		TEXTURE, 
+		CANVAS, 
+		IMAGE
 	};
 
 	Component(GameObject* my_GO, Component::Type comp_type); 
@@ -29,4 +30,5 @@ public:
 	Component::Type type;
 	bool active;
 	GameObject* my_go = nullptr; 
+	uint height = 0, width = 0; 
 };

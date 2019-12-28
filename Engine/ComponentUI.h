@@ -2,10 +2,11 @@
 #define __COMPONENTUI_H__
 
 #include "Globals.h"
+#include "Component.h"
 
 class GameObject;
 
-class ComponentUI 
+class ComponentUI : public Component
 {
 public:
 	enum class TypeUI
@@ -19,7 +20,7 @@ public:
 	};
 
 
-	ComponentUI(GameObject* GO, TypeUI typeUI, uint h, uint w);
+	ComponentUI(GameObject* GO);
 	~ComponentUI();
 
 	virtual void SceneDraw() {};
@@ -35,7 +36,6 @@ public:
 
 	TypeUI type_UI;
 	uint height = 0, width = 0; 
-	GameObject* go_ui = nullptr; 
 	
 };
 

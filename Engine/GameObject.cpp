@@ -7,7 +7,7 @@ GameObject::GameObject(string name_)
 {
 	this->active = true; 
 	this->name = name_; 
-	CreateComponent(Component::Type::Transform);
+	CreateComponent(Component::Type::TRANSFORM);
 	this->go_static = false; 
 }
 
@@ -43,41 +43,47 @@ Component* GameObject::CreateComponent(Component::Type type)
 
 	switch (type)
 	{
-	case Component::Type::Mesh:
+	case Component::Type::MESH:
 		comp = new ComponentMesh(this); 
 		break; 
-	case Component::Type::Texture:
+	case Component::Type::TEXTURE:
 		comp = new ComponentTexture(this); 
 		break; 
-	case Component::Type::Transform:
+	case Component::Type::TRANSFORM:
 		comp = new ComponentTransform(this); 
 		break; 
+	case Component::Type::CANVAS:
+		comp = new ComponentCanvas(this, 40, 20); 
+		break; 
+	case Component::Type::IMAGE:
+		comp = new ComponentImage(this, 20, 10, "Assets/Cottage.dds"); 
+		break; 
 	}
-	if(comp != nullptr )
+	if(comp != nullptr)
 		components.push_back(comp); 
 
 	return comp; 
 }
 
-ComponentUI* GameObject::CreateComponentUI(ComponentUI::TypeUI typeUI)
-{
-	ComponentUI* comp_UI = nullptr; 
-
-	switch (typeUI)
-	{
-	case ComponentUI::TypeUI::UI_Canvas:
-		comp_UI = new ComponentCanvas(this, 50, 40); 
-		break; 
-	case ComponentUI::TypeUI::UI_Image:
-		comp_UI = new ComponentImage(this, 20, 10, "Assets/Cottage.dds"); 
-	}
-	if (comp_UI != nullptr)
-	{
-		componentsUI.push_back(comp_UI); 
-	}
-
-	return comp_UI; 
-}
+//ComponentUI* GameObject::CreateComponentUI(ComponentUI::TypeUI typeUI)
+//{
+//	ComponentUI* comp_UI = nullptr; 
+//
+//	switch (typeUI)
+//	{
+//	case ComponentUI::TypeUI::UI_Canvas:
+//		comp_UI = new ComponentCanvas(this, 50, 40); 
+//		break; 
+//	case ComponentUI::TypeUI::UI_Image:
+//		comp_UI = new ComponentImage(this, 20, 10, "Assets/Cottage.dds"); 
+//	}
+//	if (comp_UI != nullptr)
+//	{
+//		componentsUI.push_back(comp_UI); 
+//	}
+//
+//	return comp_UI; 
+//}
 
 void GameObject::DefineChilds(GameObject* GO)
 {
@@ -117,7 +123,7 @@ void GameObject::Update(float dt)
 			(*it)->Update(dt);
 	}
 
-	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); it++)
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
 	{
 		if ((*it)->active)
 			(*it)->Update();
@@ -173,7 +179,7 @@ ComponentTransform* GameObject::GetComponentTransform()
 {
 	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
 	{
-		if ((*it)->type == Component::Type::Transform)
+		if ((*it)->type == Component::Type::TRANSFORM)
 			return (ComponentTransform*)(*it); 
 	}
 
@@ -184,7 +190,7 @@ ComponentMesh* GameObject::GetComponentMesh()
 {
 	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
 	{
-		if ((*it)->type == Component::Type::Mesh)
+		if ((*it)->type == Component::Type::MESH)
 			return (ComponentMesh*)(*it);
 	}
 
@@ -195,7 +201,7 @@ ComponentTexture* GameObject::GetComponentTexture()
 {
 	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
 	{
-		if ((*it)->type == Component::Type::Texture)
+		if ((*it)->type == Component::Type::TEXTURE)
 			return (ComponentTexture*)(*it);
 	}
 

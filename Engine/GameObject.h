@@ -44,7 +44,7 @@ public:
 	string unactive_name; 
 	bool active = true; 
 	bool was_unactive = false; 
-	uint id; 
+	int id = -1; 
 	bool go_static = false; 
 
 	//Values to reset initial pos, scale and rotation

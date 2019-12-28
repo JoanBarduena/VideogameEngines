@@ -4,12 +4,17 @@
 #include "mmgr/mmgr.h"
 #include "Color.h"
 
-ComponentMesh::ComponentMesh(GameObject * GObj):Component(GObj, Type::Mesh)
+ComponentMesh::ComponentMesh(GameObject * GObj):Component(GObj, Type::MESH)
 {
 }
 
 ComponentMesh::~ComponentMesh()
 {
+}
+
+ComponentMesh* ComponentMesh::CreateMesh(float3* vertex)
+{
+	return this;
 }
 
 void ComponentMesh::CleanUp()
