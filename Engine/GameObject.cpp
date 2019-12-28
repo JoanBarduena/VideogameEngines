@@ -53,10 +53,10 @@ Component* GameObject::CreateComponent(Component::Type type)
 		comp = new ComponentTransform(this); 
 		break; 
 	case Component::Type::CANVAS:
-		comp = new ComponentCanvas(this, 40, 20); 
+		comp = new ComponentCanvas(this, 30, 60); 
 		break; 
 	case Component::Type::IMAGE:
-		comp = new ComponentImage(this, 20, 10, "Assets/Cottage.dds"); 
+		comp = new ComponentImage(this); 
 		break; 
 	}
 	if(comp != nullptr)
@@ -210,9 +210,9 @@ ComponentTexture* GameObject::GetComponentTexture()
 
 ComponentCanvas* GameObject::GetComponentCanvas()
 {
-	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); ++it)
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
 	{
-		if ((*it)->type_UI == ComponentUI::TypeUI::UI_Canvas)
+		if ((*it)->type == Component::Type::CANVAS)
 			return (ComponentCanvas*)(*it);
 	}
 
@@ -221,9 +221,9 @@ ComponentCanvas* GameObject::GetComponentCanvas()
 
 ComponentImage* GameObject::GetComponentImage()
 {
-	for (std::vector<ComponentUI*>::iterator it = componentsUI.begin(); it != componentsUI.end(); ++it)
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
 	{
-		if ((*it)->type_UI == ComponentUI::TypeUI::UI_Image)
+		if ((*it)->type == Component::Type::IMAGE)
 			return (ComponentImage*)(*it);
 	}
 

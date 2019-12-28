@@ -179,29 +179,26 @@ GameObject* ModuleSceneIntro::CreateImage(GameObject* parent)
 		image->unactive_name = ImageName.append(" [not active]");
 		image->id = game_objects.size(); 
 
-		App->geometry->LoadImageFBX("Assets/CanvasUI.fbx", image); 
+		App->geometry->LoadImageFBX("Assets/ImageUI.fbx", image); 
+
+		parent->DefineChilds(image);
 
 		image->CreateComponent(Component::Type::IMAGE);
 
-		////Centered on the canvas
-		//ComponentTransform* transform = parent->GetComponentTransform();
-		//ComponentCanvas* canvas = parent->GetComponentCanvas();
+		// Centered on the canvas
+		ComponentTransform* transform_ = parent->GetComponentTransform();
 
-		//float3 pos;
-		//pos.x = transform->GetPosition().x + (canvas->width / 2) - (image->GetComponentImage()->width / 2);
-		//pos.y = transform->GetPosition().y + (canvas->height / 2) - (image->GetComponentImage()->height / 2);
-		//pos.z = transform->GetPosition().z;
+		float3 pos_;
+		pos_.x = transform_->GetPosition().x + (parent->GetComponentCanvas()->width / 2) - (image->GetComponentImage()->width / 2);
+		pos_.y = transform_->GetPosition().y + (parent->GetComponentCanvas()->height / 2) - (image->GetComponentImage()->height / 2);
+		pos_.z = transform_->GetPosition().z;
 
-		////Initial position on the canvas square
-		//image->GetComponentTransform()->SetPosition(pos);
-
-		//image->reset_pos = pos;
+		//Initial position on the canvas square
+		image->GetComponentTransform()->SetPosition(pos_);
 
 		App->Console_Log("[CREATING UI OBJECT]: Image");
 		num_image++;
-		game_objects.push_back(image); 
-
-		parent->DefineChilds(image);
+		game_objects.push_back(image);	
 	}
 	
 	return image;

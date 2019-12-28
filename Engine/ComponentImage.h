@@ -7,7 +7,7 @@ class ComponentImage : public Component
 {
 public:
 
-	ComponentImage(GameObject* GO, uint h, uint w, const char* path);
+	ComponentImage(GameObject* GO);
 	~ComponentImage();
 
 	bool Update();

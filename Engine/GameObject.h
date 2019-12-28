@@ -53,7 +53,6 @@ public:
 	Quat reset_rotation = Quat::identity; 
 
 	std::vector<Component*> components; 
-	std::vector<ComponentUI*> componentsUI;
 
 	GameObject* parent = nullptr; 
 	std::vector<GameObject*> childs; 

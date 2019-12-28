@@ -21,18 +21,18 @@
 ModuleGeometry::ModuleGeometry(bool start_enabled) : Module(start_enabled)
 {}
 
-ModuleGeometry::~ModuleGeometry() 
+ModuleGeometry::~ModuleGeometry()
 {}
 
 bool ModuleGeometry::Start()
 {
-	bool ret = true; 
+	bool ret = true;
 
 	struct aiLogStream stream;
 	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr);
 	aiAttachLogStream(&stream);
 
-	return ret; 
+	return ret;
 }
 
 update_status ModuleGeometry::PreUpdate(float dt)
@@ -69,7 +69,7 @@ void ModuleGeometry::LoadFileFromPath(std::string full_path)
 		aiNode* node = file->mRootNode;
 
 		GameObject* goLoader = App->scene_intro->CreateGameObject();
-		std::string goName = App->GetNameFromPath(full_path); 
+		std::string goName = App->GetNameFromPath(full_path);
 
 		goLoader->name = goName;
 		goLoader->unactive_name = goName.append(" [not active]");
@@ -78,14 +78,14 @@ void ModuleGeometry::LoadFileFromPath(std::string full_path)
 		App->scene_intro->root->DefineChilds(goLoader);
 
 		//Importer mesh
-		SceneImporter exporter; 
-		std::string output_file; 
+		SceneImporter exporter;
+		std::string output_file;
 
 		if (node->mNumChildren > 0)
 		{
 			for (int i = 0; i < node->mNumChildren; ++i)
 			{
-				LoadNodeFromParent(file, node->mChildren[i], goLoader, full_path, exporter, output_file); 
+				LoadNodeFromParent(file, node->mChildren[i], goLoader, full_path, exporter, output_file);
 			}
 		}
 
@@ -150,9 +150,9 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 	obj->unactive_name = node_name.append(" [not active]");
 
 	// Store initial values so then we can RESET the position, scale and rotation.
-	obj->reset_pos = nPos; 
-	obj->reset_rotation = nRot; 
-	obj->reset_scale = nScale; 
+	obj->reset_pos = nPos;
+	obj->reset_rotation = nRot;
+	obj->reset_scale = nScale;
 
 	// Use scene->mNumMeshes to iterate on scene->mMeshes array
 	for (int i = 0; i < node->mNumMeshes; ++i)
@@ -168,11 +168,11 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			if (node_name == "")
 				node_name = obj->name + "_submesh";
 			if (i > 0)
-				node_name.append(" (" + std::to_string(i+1) + ")");
+				node_name.append(" (" + std::to_string(i + 1) + ")");
 
-			child = App->scene_intro->CreateGameObject(); 
+			child = App->scene_intro->CreateGameObject();
 			obj->DefineChilds(child);
-			child->name = node_name; 
+			child->name = node_name;
 			child->unactive_name = node_name.append(" [not active]");
 		}
 		else
@@ -183,7 +183,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 		child->CreateComponent(Component::Type::MESH);
 		ComponentMesh* mesh = child->GetComponentMesh();
 
-		DefineTextureType(file, new_mesh, child, full_path); 
+		DefineTextureType(file, new_mesh, child, full_path);
 
 		mesh->num_vertex = new_mesh->mNumVertices;
 		mesh->vertices = new float3[mesh->num_vertex];
@@ -219,7 +219,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 				mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
 			}
 		}
-	
+
 		mesh->UpdateAABB();
 
 		exporter.ExportMesh(child->name.data(), LIBRARY_MESH_FOLDER, output_file, mesh);
@@ -244,7 +244,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 {
 	GameObject* obj = App->scene_intro->CreateGameObject();
-	App->scene_intro->root->DefineChilds(obj); 
+	App->scene_intro->root->DefineChilds(obj);
 
 	obj->CreateComponent(Component::Type::MESH);
 	ComponentMesh* mesh = obj->GetComponentMesh();
@@ -280,13 +280,13 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 
 	//Checkers texture to primitive
 	obj->CreateComponent(Component::Type::TEXTURE);
-	ComponentTexture* c_texture = obj->GetComponentTexture(); 
-	
+	ComponentTexture* c_texture = obj->GetComponentTexture();
+
 	c_texture->texture = App->Mtexture->CreateCheckerTexture();
 
 	//Generate the buffers 
 	VertexBuffer(mesh->id_vertex, mesh->num_vertex, mesh->vertices);
-	IndexBuffer(mesh->id_index,mesh->num_index,mesh->indices);
+	IndexBuffer(mesh->id_index, mesh->num_index, mesh->indices);
 	//Generate the buffer for texture coords
 	TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
 }
@@ -295,12 +295,15 @@ void ModuleGeometry::LoadImageFBX(std::string full_path, GameObject* goImage)
 {
 	const aiScene* scene = aiImportFile(full_path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
 
+	float3 scale(0.1, 0.1, 0.1); 
+	goImage->GetComponentTransform()->SetScale(scale); 
+
 	if (scene != nullptr && scene->HasMeshes())
 	{
 		for (int i = 0; i < scene->mNumMeshes; ++i)
 		{
 			goImage->CreateComponent(Component::Type::MESH);
-			ComponentMesh* mesh = goImage->GetComponentMesh(); 
+			ComponentMesh* mesh = goImage->GetComponentMesh();
 
 			aiMesh* new_mesh = scene->mMeshes[i];
 
@@ -356,7 +359,7 @@ void ModuleGeometry::LoadImageFBX(std::string full_path, GameObject* goImage)
 	}
 	else
 		App->Console_Log("[ERROR]: Loading image %s", full_path);
-	
+
 }
 
 //void ModuleGeometry::LoadUIElement(float3* vertex)
@@ -382,25 +385,25 @@ void ModuleGeometry::LoadImageFBX(std::string full_path, GameObject* goImage)
 //	//TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
 //}
 
-void ModuleGeometry::VertexBuffer(uint &id, uint &size, float3* vertices)
+void ModuleGeometry::VertexBuffer(uint& id, uint& size, float3* vertices)
 {
-	glGenBuffers(1, (GLuint*) &(id));
+	glGenBuffers(1, (GLuint*) & (id));
 	glBindBuffer(GL_ARRAY_BUFFER, id);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float3)*size, vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float3) * size, vertices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void ModuleGeometry::IndexBuffer(uint &id, uint &size, const uint* indices)
+void ModuleGeometry::IndexBuffer(uint& id, uint& size, const uint* indices)
 {
-	glGenBuffers(1, (GLuint*) &(id));
+	glGenBuffers(1, (GLuint*) & (id));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint)*size, indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint) * size, indices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void ModuleGeometry::TextureBuffer(uint &id, uint &num_texture, float* texture_pos)
+void ModuleGeometry::TextureBuffer(uint& id, uint& num_texture, float* texture_pos)
 {
-	glGenBuffers(1, (GLuint*) &(id));
+	glGenBuffers(1, (GLuint*) & (id));
 	glBindBuffer(GL_ARRAY_BUFFER, id);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * num_texture * 2, texture_pos, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -416,7 +419,6 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 
 	ComponentTexture* c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::TEXTURE);
 
-	App->Console_Log("WEAPON"); 
 
 	if (path.C_Str() != nullptr && path.length > 0)
 	{
