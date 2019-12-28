@@ -12,6 +12,7 @@ ComponentTexture::~ComponentTexture()
 {
 }
 
-void ComponentTexture::CleanUp()
+bool ComponentTexture::CleanUp()
 {
+	return true; 
 }

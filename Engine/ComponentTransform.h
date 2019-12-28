@@ -14,7 +14,7 @@ public:
 
 	ComponentTransform(GameObject* GObj);
 	~ComponentTransform(); 
-	void CleanUp(); 
+	bool CleanUp(); 
 
 	//bool Enable();
 

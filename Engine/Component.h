@@ -24,6 +24,7 @@ public:
 	virtual bool Enable(); 
 	virtual bool Update(); 
 	virtual bool Disable(); 
+	virtual bool CleanUp(); 
 
 public: 
 

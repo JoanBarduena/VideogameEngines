@@ -12,7 +12,7 @@ Application::Application()
 	geometry =		new ModuleGeometry(this);
 	Mtexture =		new ModuleTexture(this);
 	filesystem =	new ModuleFileSystem(this, ASSETS_FOLDER);
-	viewport  =		new ModuleViewport(this);
+	//viewport  =		new ModuleViewport(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order

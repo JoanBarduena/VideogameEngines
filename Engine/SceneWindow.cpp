@@ -69,6 +69,7 @@ bool SceneWindow::CleanUp()
 {
 	fbo->CleanUp(); 
 	delete fbo; 
+	fbo = nullptr; 
 
 	return true;
 }

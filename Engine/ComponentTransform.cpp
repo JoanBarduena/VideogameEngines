@@ -11,8 +11,9 @@ ComponentTransform::~ComponentTransform()
 {
 }
 
-void ComponentTransform::CleanUp()
+bool ComponentTransform::CleanUp()
 {
+	return true; 
 }
 
 bool ComponentTransform::Update()

@@ -9,7 +9,7 @@ public:
 
 	ComponentTexture(GameObject* GObj);
 	~ComponentTexture(); 
-	void CleanUp(); 
+	bool CleanUp(); 
 
 	TextureStruct texture; 
 };

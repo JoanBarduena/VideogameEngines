@@ -15,26 +15,26 @@ GameObject::~GameObject()
 {
 }
 
-void GameObject::CleanUp()
+bool GameObject::CleanUp()
 {
-	if (this->GetComponentMesh() != nullptr)
-	{
-		this->GetComponentMesh()->CleanUp(); 
-	}
-
 	//Clear GameObjects
 	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
 	{
+		(*it)->CleanUp(); 
 		delete(*it); 
+		(*it) = nullptr; 
 	}
 	
 	for (std::vector<GameObject*>::iterator it = childs.begin(); it != childs.end(); it++)
 	{
 		(*it)->CleanUp();
+		delete(*it); 
+		(*it) = nullptr;
 	}
 
-	components.clear();
+	components.clear(); 
 
+	return true; 
 }
 
 Component* GameObject::CreateComponent(Component::Type type)
@@ -64,26 +64,6 @@ Component* GameObject::CreateComponent(Component::Type type)
 
 	return comp; 
 }
-
-//ComponentUI* GameObject::CreateComponentUI(ComponentUI::TypeUI typeUI)
-//{
-//	ComponentUI* comp_UI = nullptr; 
-//
-//	switch (typeUI)
-//	{
-//	case ComponentUI::TypeUI::UI_Canvas:
-//		comp_UI = new ComponentCanvas(this, 50, 40); 
-//		break; 
-//	case ComponentUI::TypeUI::UI_Image:
-//		comp_UI = new ComponentImage(this, 20, 10, "Assets/Cottage.dds"); 
-//	}
-//	if (comp_UI != nullptr)
-//	{
-//		componentsUI.push_back(comp_UI); 
-//	}
-//
-//	return comp_UI; 
-//}
 
 void GameObject::DefineChilds(GameObject* GO)
 {
@@ -159,6 +139,7 @@ void GameObject::DeleteGO(GameObject* go, bool original)
 
 	go->CleanUp();
 	delete go;
+	go = nullptr; 
 }
 
 void GameObject::RemoveChild(GameObject* go)

@@ -16,7 +16,7 @@ public:
 
 	ComponentMesh* CreateMesh(float3* vertex);
 
-	void CleanUp();
+	bool CleanUp();
 
 	void DrawAABB();
 	void UpdateAABB();

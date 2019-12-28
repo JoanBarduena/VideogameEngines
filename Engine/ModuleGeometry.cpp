@@ -362,29 +362,6 @@ void ModuleGeometry::LoadImageFBX(std::string full_path, GameObject* goImage)
 
 }
 
-//void ModuleGeometry::LoadUIElement(float3* vertex)
-//{
-//	mesh->vertices = vertex;
-//	mesh->num_vertex = 4;
-//
-//	mesh->num_index = 6;
-//	mesh->indices = new uint[6];
-//	mesh->indices[0] = 0;
-//	mesh->indices[1] = 1;
-//	mesh->indices[2] = 2;
-//	mesh->indices[3] = 2;
-//	mesh->indices[4] = 1;
-//	mesh->indices[5] = 3;
-//
-//	//GO->CreateComponent(Component::Type::Texture);
-//	//ComponentTexture* c_texture = GO->GetComponentTexture();
-//	//c_texture->texture = App->Mtexture->CreateCheckerTexture();
-//
-//	VertexBuffer(mesh->id_vertex, mesh->num_vertex, mesh->vertices);
-//	IndexBuffer(mesh->id_index, mesh->num_index, mesh->indices);
-//	//TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
-//}
-
 void ModuleGeometry::VertexBuffer(uint& id, uint& size, float3* vertices)
 {
 	glGenBuffers(1, (GLuint*) & (id));
@@ -418,7 +395,6 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 	material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
 
 	ComponentTexture* c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::TEXTURE);
-
 
 	if (path.C_Str() != nullptr && path.length > 0)
 	{

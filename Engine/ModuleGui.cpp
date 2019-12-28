@@ -120,7 +120,9 @@ bool ModuleGui::CleanUp()
 	
 	for (std::list<Window*>::iterator it = windows.begin(); it != windows.end(); it++)
 	{
+		(*it)->CleanUp(); 
 		delete (*it); 
+		(*it) = nullptr; 
 	}
 
 	io->Fonts->ClearFonts();

@@ -17,7 +17,7 @@ ComponentMesh* ComponentMesh::CreateMesh(float3* vertex)
 	return this;
 }
 
-void ComponentMesh::CleanUp()
+bool ComponentMesh::CleanUp()
 {
 	glDeleteBuffers(1, (GLuint*)&id_vertex); 
 	glDeleteBuffers(1, (GLuint*)&id_index);
@@ -40,6 +40,7 @@ void ComponentMesh::CleanUp()
 		delete[] texture_coords;
 		texture_coords = nullptr;
 	}
+	return true; 
 }
 
 void ComponentMesh::DrawAABB()

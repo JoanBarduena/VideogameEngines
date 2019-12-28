@@ -17,10 +17,9 @@ public:
 
 	GameObject(string name);
 	~GameObject();
-	void CleanUp();
+	bool CleanUp();
 
 	Component* CreateComponent(Component::Type type);
-	ComponentUI* CreateComponentUI(ComponentUI::TypeUI typeUI);
 
 	void DefineChilds(GameObject* GO);
 

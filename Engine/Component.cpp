@@ -26,3 +26,8 @@ bool Component::Disable()
 	return true;
 }
 
+bool Component::CleanUp()
+{
+	return true;
+}
+
