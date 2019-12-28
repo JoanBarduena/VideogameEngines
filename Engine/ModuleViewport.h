@@ -1,9 +1,9 @@
 #pragma once
 #include "Globals.h"
 #include "Module.h"
-#include "Application.h"
 
-class FrameBuffer; 
+class FBO; 
+class GameWindow; 
 
 class ModuleViewport : public Module
 {
@@ -16,4 +16,9 @@ public:
 	update_status PostUpdate(float dt); 
 	bool CleanUp(); 
 
+public: 
+	FBO* fbo_scene = nullptr; 
+	FBO* fbo_game = nullptr; 
+
+	GameObject* root = nullptr;
 };

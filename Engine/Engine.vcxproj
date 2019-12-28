@@ -87,7 +87,7 @@
     <ClInclude Include="ConfigurationWindow.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleWindow.h" />
-    <ClInclude Include="FrameBuffer.h" />
+    <ClInclude Include="FBO.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="glew\include\GL\eglew.h" />
@@ -203,7 +203,7 @@
     <ClCompile Include="ConfigurationWindow.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
-    <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="FBO.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="glmath.cpp" />

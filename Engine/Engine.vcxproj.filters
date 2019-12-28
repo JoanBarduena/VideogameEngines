@@ -390,9 +390,6 @@
     <ClInclude Include="ComponentCanvas.h">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="FrameBuffer.h">
-      <Filter>Sources\Modules\SubModules</Filter>
-    </ClInclude>
     <ClInclude Include="SceneImporter.h">
       <Filter>Sources\Modules\SubModules</Filter>
     </ClInclude>
@@ -401,6 +398,9 @@
     </ClInclude>
     <ClInclude Include="ModuleViewport.h">
       <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="FBO.h">
+      <Filter>Sources\Modules\SubModules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -620,9 +620,6 @@
     <ClCompile Include="ComponentImage.cpp">
       <Filter>Sources\Modules\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="FrameBuffer.cpp">
-      <Filter>Sources\Modules\SubModules</Filter>
-    </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>Sources\Modules\SubModules</Filter>
     </ClCompile>
@@ -631,6 +628,9 @@
     </ClCompile>
     <ClCompile Include="ModuleViewport.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="FBO.cpp">
+      <Filter>Sources\Modules\SubModules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

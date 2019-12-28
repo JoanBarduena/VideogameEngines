@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "SDL/include/SDL.h"
+#include "ImGui/imgui.h"
 
 class Application;
 
@@ -28,14 +29,16 @@ public:
 
 	void SetWindowSize(int w, int h);
 
+	ImVec2 GetWinSize() const;
+
 	bool fullscreen = false; 
 	bool borderless = false; 
 	bool fullscreendesktop = false; 
 	bool resizable = false; 
 
 	float brightness = 1.0f; 
-	int width = SCREEN_WIDTH;
-	int height = SCREEN_HEIGHT;
+	int width = 0;
+	int height = 0;
 
 public:
 	//The window we'll be rendering to

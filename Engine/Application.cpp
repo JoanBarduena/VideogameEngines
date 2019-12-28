@@ -32,6 +32,7 @@ Application::Application()
 
 	// Scenes
 	AddModule(scene_intro);
+	AddModule(viewport);
 
 	// Gui
 	AddModule(gui);

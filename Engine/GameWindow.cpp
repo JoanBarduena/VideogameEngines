@@ -20,11 +20,11 @@ bool GameWindow::Start()
 {
 	App->Console_Log("[CREATING] Game Window");
 
-	//size_.x = 1024;
-	//size_.y = 768; 
+	//Wsize.x = 1024;
+	//Wsize.y = 768; 
 
-	//fbo = new FrameBuffer(); 
-	//fbo->Start(size_);
+	fbo = new FBO(); 
+	fbo->Start(Wsize.x, Wsize.y);
 
 	return true;
 }
@@ -41,29 +41,35 @@ bool GameWindow::Draw()
 			App->camera->game_active = ImGui::IsWindowHovered();
 		}
 
-		new_size = ImGui::GetContentRegionAvail();
+		Wnew_size = ImGui::GetContentRegionAvail();
 
 
-		ImGui::Image((ImTextureID)fbo->fboTexture, ImVec2(size_.x, size_.y), ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::Image((ImTextureID)fbo_b->fboTexture, ImVec2(Wsize.x, Wsize.y), ImVec2(0, 1), ImVec2(1, 0));
 
 		ImGui::End();
 		ImGui::PopStyleVar();
 	}
 
-	if (size_.x != new_size.x || size_.y != new_size.y)
+	if (Wsize.x != Wnew_size.x || Wsize.y != Wnew_size.y)
 	{
-		size_ = new_size;
-		fbo->Start(size_);
-		App->renderer3D->OnResize(size_.x, size_.y);
+		Wsize = Wnew_size;
+		fbo_b->Start(Wsize);
+		App->renderer3D->OnResize(Wsize.x, Wsize.y);
 	}
 
 
-	fbo->Draw();*/
+	fbo_b->Draw();*/
+	//fbo->Draw(); 
 
 	ImGui::Begin("SceneWindow", &active, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
-	ImGui::Image((ImTextureID)App->framebuffer->GetTexture(), App->framebuffer->GetTextureSize(), ImVec2(0, 1), ImVec2(1, 0));
-	size_ = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
+	pos_y = ImGui::GetCursorScreenPos().y;
+	pos_x = ImGui::GetCursorScreenPos().x;
+	width = ImGui::GetWindowWidth();
+	height = ImGui::GetWindowHeight();
+
+	ImGui::Image((ImTextureID)fbo->fboTexture, ImVec2(Wsize.x, Wsize.y), ImVec2(0, 1), ImVec2(1, 0));
+	Wsize = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
 
 	worldposx = App->input->GetMouseX() - ImGui::GetCursorScreenPos().x;
 	worldposy = App->input->GetMouseY() - ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y;
@@ -73,19 +79,30 @@ bool GameWindow::Draw()
 	return true;
 }
 
+update_status GameWindow::PreUpdate(float dt)
+{
+
+	return UPDATE_CONTINUE;
+}
+
+update_status GameWindow::PostUpdate(float dt)
+{
+	return UPDATE_CONTINUE;
+}
+
 bool GameWindow::CleanUp()
 {
-	fbo->CleanUp(); 
-	delete fbo; 
+	//fbo->CleanUp(); 
+	//delete fbo; 
 
 	return true;
 }
 
 bool GameWindow::OnResize()
 {
-	if (size_.x != new_size.x || size_.y != new_size.y)
+	if (Wsize.x != Wnew_size.x || Wsize.y != Wnew_size.y)
 	{
-		new_size = size_;
+		Wnew_size = Wsize;
 		return true;
 	}
 	else

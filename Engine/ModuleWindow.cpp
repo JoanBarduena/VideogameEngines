@@ -29,8 +29,8 @@ bool ModuleWindow::Init()
 	else
 	{
 		//Create window
-		int width = SCREEN_WIDTH * SCREEN_SIZE;
-		int height = SCREEN_HEIGHT * SCREEN_SIZE;
+		width = SCREEN_WIDTH * SCREEN_SIZE;
+		height = SCREEN_HEIGHT * SCREEN_SIZE;
 		Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
 
 		//Use OpenGL 2.1
@@ -140,4 +140,11 @@ void ModuleWindow::SetBrightness(float b)
 void ModuleWindow::SetWindowSize(int w, int h)
 {
 	SDL_SetWindowSize(window, w, h);
+}
+
+ImVec2 ModuleWindow::GetWinSize() const {
+
+	ImVec2 v(width, height);
+
+	return v;
 }

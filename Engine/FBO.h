@@ -1,31 +1,33 @@
 #pragma once
 
+#include "Globals.h"
 #include "imGui/imgui.h"
 #include "glew/include/GL/glew.h"
 
-class FrameBuffer
+class FBO
 {
 public:
 
-	FrameBuffer();
-	~FrameBuffer();
+	FBO();
+	~FBO();
 
-	bool Start(ImVec2 size);
+	bool Start(uint width, uint height);
 	bool Draw();
+	void Undraw();
 	bool CleanUp();
 
 	void RestartBuffers();
 	void PrepareDepth();
 	void PrepareTexture();
 
-	GLuint GetTexture() const;
+	uint GetTexture() const;
 	ImVec2 GetTextureSize() const;
 
 public:
 
-	GLuint fbo = 0;
-	GLuint rbo = 0;
-	GLuint fboTexture = 0;
+	uint fbo_b = 0;
+	uint rbo = 0;
+	uint fboTexture = 0;
 
-	ImVec2 Fsize; 
+	ImVec2 size; 
 };
