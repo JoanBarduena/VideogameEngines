@@ -29,10 +29,10 @@ Application::Application()
 
 	// FileSystem
 	AddModule(filesystem);
+	//AddModule(viewport);
 
 	// Scenes
 	AddModule(scene_intro);
-	AddModule(viewport);
 
 	// Gui
 	AddModule(gui);

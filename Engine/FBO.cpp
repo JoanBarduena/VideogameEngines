@@ -48,6 +48,10 @@ bool FBO::Start(uint width, uint height)
 	//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	RestartBuffers();
+
+	size.x = width; 
+	size.y = height; 
+
 	//Generate the FBO and bind it, continue if FBO is complete
 	glGenFramebuffers(1, &fbo_b);
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo_b);

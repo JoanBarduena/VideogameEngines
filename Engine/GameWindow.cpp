@@ -68,6 +68,8 @@ bool GameWindow::Draw()
 	width = ImGui::GetWindowWidth();
 	height = ImGui::GetWindowHeight();
 
+	Wnew_size = ImGui::GetContentRegionAvail(); 
+
 	ImGui::Image((ImTextureID)fbo->fboTexture, ImVec2(Wsize.x, Wsize.y), ImVec2(0, 1), ImVec2(1, 0));
 	Wsize = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
 
@@ -81,12 +83,18 @@ bool GameWindow::Draw()
 
 update_status GameWindow::PreUpdate(float dt)
 {
-
+	if (OnResize())
+	{
+		fbo->Start(Wsize.x, Wsize.y); 
+		App->renderer3D->OnResize(Wsize.x, Wsize.y); 
+	}
+	fbo->Draw();
 	return UPDATE_CONTINUE;
 }
 
 update_status GameWindow::PostUpdate(float dt)
 {
+	fbo->Undraw(); 
 	return UPDATE_CONTINUE;
 }
 

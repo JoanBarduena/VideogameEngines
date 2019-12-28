@@ -21,4 +21,6 @@ public:
 	FBO* fbo_game = nullptr; 
 
 	GameObject* root = nullptr;
+
+	GameWindow* g_window = nullptr; 
 };

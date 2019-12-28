@@ -88,6 +88,11 @@ update_status ModuleGui::PreUpdate(float dt)
 		font = io->Fonts->AddFontFromFileTTF("Assets/Ruda-Bold.ttf",15.0f);
 		font_loaded = false;
 	}
+
+	for (std::list<Window*>::const_iterator iterator = windows.begin(); iterator != windows.end(); iterator++)
+	{
+		(*iterator)->PreUpdate(dt);
+	}
 		
 	return UPDATE_CONTINUE;
 }
@@ -102,7 +107,10 @@ update_status ModuleGui::Update(float dt)
 
 update_status ModuleGui::PostUpdate(float dt)
 {
-
+	for (std::list<Window*>::const_iterator iterator = windows.begin(); iterator != windows.end(); iterator++)
+	{
+		(*iterator)->PostUpdate(dt);
+	}
 	return UPDATE_CONTINUE;
 }
 
