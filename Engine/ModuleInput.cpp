@@ -117,8 +117,15 @@ update_status ModuleInput::PreUpdate(float dt)
 			{
 				if (App->gui->inspector_w->selected_go != nullptr)
 				{
-					App->gui->inspector_w->selected_go->GetComponentTexture()->texture = App->Mtexture->LoadTexturePath(dropped_filedir);
-					App->Console_Log("Texture dropped with root: %s", dropped_filedir);
+					if (App->gui->inspector_w->selected_go->GetComponentTexture() != nullptr)
+					{
+						App->gui->inspector_w->selected_go->GetComponentTexture()->texture = App->Mtexture->LoadTexturePath(dropped_filedir);
+						App->Console_Log("Texture dropped with root: %s", dropped_filedir);
+					}
+					else
+					{
+						App->Console_Log("[WARNING]: Select a GameObject with a ComponentTexture."); 
+					}
 				}
 				else
 					App->Console_Log("[WARNING]: A Game Object must be selected before dropping a file.");

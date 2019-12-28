@@ -291,6 +291,74 @@ void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 	TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
 }
 
+void ModuleGeometry::LoadImageFBX(std::string full_path, GameObject* goImage)
+{
+	const aiScene* scene = aiImportFile(full_path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
+
+	if (scene != nullptr && scene->HasMeshes())
+	{
+		for (int i = 0; i < scene->mNumMeshes; ++i)
+		{
+			goImage->CreateComponent(Component::Type::MESH);
+			ComponentMesh* mesh = goImage->GetComponentMesh(); 
+
+			aiMesh* new_mesh = scene->mMeshes[i];
+
+			mesh->num_vertex = new_mesh->mNumVertices; //obj->getcomponentmesh->num_vertex
+			mesh->vertices = new float3[mesh->num_vertex];
+			//memcpy(m->vertex, new_mesh->mVertices, sizeof(float) * m->num_vertex);
+
+			//App->Console_Log("New mesh with %d vertices", mesh->num_vertex);
+
+			for (uint i = 0; i < new_mesh->mNumVertices; ++i)
+			{
+				mesh->vertices[i].x = new_mesh->mVertices[i].x;
+				mesh->vertices[i].y = new_mesh->mVertices[i].y;
+				mesh->vertices[i].z = new_mesh->mVertices[i].z;
+			}
+
+			if (new_mesh->HasFaces())
+			{
+				mesh->num_index = new_mesh->mNumFaces * 3;
+				mesh->indices = new uint[mesh->num_index]; // assume each face is a triangle
+
+				for (uint i = 0; i < new_mesh->mNumFaces; ++i)
+				{
+					if (new_mesh->mFaces[i].mNumIndices != 3)
+						App->Console_Log("WARNING, geometry face with != 3 indices!");
+					else
+						memcpy(&mesh->indices[i * 3], new_mesh->mFaces[i].mIndices, 3 * sizeof(uint));
+				}
+			}
+
+			ComponentTexture* c_texture = goImage->GetComponentTexture();
+			c_texture = (ComponentTexture*)goImage->CreateComponent(Component::Type::TEXTURE);
+
+			if (new_mesh->HasTextureCoords(0))
+			{
+				mesh->num_texture = mesh->num_vertex;
+				mesh->texture_coords = new float[mesh->num_texture * 2];
+
+				for (int i = 0; i < mesh->num_texture; ++i)
+				{
+					mesh->texture_coords[i * 2] = new_mesh->mTextureCoords[0][i].x;
+					mesh->texture_coords[(i * 2) + 1] = new_mesh->mTextureCoords[0][i].y;
+				}
+			}
+			//Generate buffer for each mesh and send vertex and indices to VRAM
+			VertexBuffer(mesh->id_vertex, mesh->num_vertex, mesh->vertices);
+			IndexBuffer(mesh->id_index, mesh->num_index, mesh->indices);
+			TextureBuffer(mesh->id_texture, mesh->num_texture, mesh->texture_coords);
+		}
+		// Use scene->mNumMeshes to iterate on scene->mMeshes array
+		aiReleaseImport(scene);
+		//App->Console_Log("Succesfully loaded mesh with path: %s", full_path);
+	}
+	else
+		App->Console_Log("[ERROR]: Loading image %s", full_path);
+	
+}
+
 //void ModuleGeometry::LoadUIElement(float3* vertex)
 //{
 //	mesh->vertices = vertex;
@@ -346,14 +414,15 @@ void ModuleGeometry::DefineTextureType(const aiScene* file, const aiMesh* new_me
 	aiString path;
 	material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
 
+	ComponentTexture* c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::TEXTURE);
+
+	App->Console_Log("WEAPON"); 
+
 	if (path.C_Str() != nullptr && path.length > 0)
 	{
 		std::string directory = App->GetDirectoryFromPath(full_path);
 		directory.append("/");
 		directory.append(path.C_Str());
-		ComponentTexture* c_texture = obj->GetComponentTexture(); 
-
-		c_texture = (ComponentTexture*)obj->CreateComponent(Component::Type::TEXTURE);
 
 		c_texture->texture = App->Mtexture->LoadTexturePath(directory.c_str());
 	}

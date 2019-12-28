@@ -31,7 +31,7 @@ public:
 	void LoadFileFromPath(std::string full_path);
 	void LoadNodeFromParent(const aiScene* file, aiNode* node, GameObject* parent, std::string full_path, SceneImporter exporter, std::string output_file);
 	void LoadParShapes(par_shapes_mesh* par_mesh, Position pos);
-	void LoadUIElement(float3* vertex);
+	void LoadImageFBX(std::string full_path, GameObject* goImage);
 
 	void VertexBuffer(uint &id, uint &size, float3 * vertices);
 	void IndexBuffer(uint &id, uint &size, const uint * indices);

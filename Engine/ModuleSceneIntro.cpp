@@ -179,7 +179,7 @@ GameObject* ModuleSceneIntro::CreateImage(GameObject* parent)
 		image->unactive_name = ImageName.append(" [not active]");
 		image->id = game_objects.size(); 
 
-		//load image path ( path fbx, go_image) 
+		App->geometry->LoadImageFBX("Assets/CanvasUI.fbx", image); 
 
 		image->CreateComponent(Component::Type::IMAGE);
 
