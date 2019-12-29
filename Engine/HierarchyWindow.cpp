@@ -28,7 +28,7 @@ bool HierarchyWindow::Draw()
 		ImGui::Begin("Hierarchy");
 
 
-		TreeNodeHierarchy(App->scene_intro->root); 
+		TreeNodeHierarchy(App->viewport->root); 
 	
 		CreateHierarchyObjects(App->gui->inspector_w->selected_go);
 
@@ -117,11 +117,11 @@ void HierarchyWindow::CreateHierarchyObjects(GameObject* parent)
 	{
 		if (ImGui::MenuItem("Canvas"))
 		{
-			App->scene_intro->CreateCanvas();
+			App->viewport->CreateCanvas();
 		}
 		if (ImGui::MenuItem("Image"))
 		{
-			App->scene_intro->CreateImage(parent);
+			App->viewport->CreateImage(parent);
 		}
 
 		ImGui::EndPopup();

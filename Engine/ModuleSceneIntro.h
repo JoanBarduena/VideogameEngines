@@ -19,14 +19,6 @@ public:
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
 
-	void DrawRecursively(GameObject* GO);
-
-	GameObject* CreateGameObject();
-
-	GameObject* CreateCanvas();
-	GameObject* CreateImage(GameObject* parent);
-
-
 	void Create_Sphere(int slices, int stacks, float x, float y, float z, float size);
 	void Create_Cube(float x, float y, float z, float size);
 	void Create_Cylinder(float x, float y, float z, uint size, int slices, uint stacks);
@@ -35,13 +27,8 @@ public:
 
 	bool CleanUp();
 
-	void SetGameObjectStatic(GameObject* go); 
-	std::vector<ComponentMesh*> static_meshes; 
-
 	uint num_indices = 36; 
 	bool cube_created = false; 
-
-	bool render_grid = false; 
 
 	uint id_vertex;
 	uint id_index;
@@ -53,9 +40,4 @@ public:
 	std::vector<par_shapes_mesh_s*> vector_shapes;
 
 	Position position; 
-
-	std::vector<GameObject*> game_objects;
-	uint num_canvas = 1, num_image = 1; 
-
-	GameObject* root = nullptr; 
 };

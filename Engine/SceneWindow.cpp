@@ -20,9 +20,6 @@ bool SceneWindow::Start()
 {
 	App->Console_Log("[CREATING]: Scene Window");
 
-	fbo = new FBO(); 
-	fbo->Start(w_Size.x, w_Size.y);
-
 	return true;
 }
 
@@ -39,7 +36,7 @@ bool SceneWindow::Draw()
 
 		w_NewSize = ImGui::GetContentRegionAvail();
 
-		ImGui::Image((ImTextureID)fbo->fboTexture, ImVec2(w_Size.x, w_Size.y), ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::Image((ImTextureID)App->viewport->fbo_scene->fboTexture, ImVec2(w_Size.x, w_Size.y), ImVec2(0, 1), ImVec2(1, 0));
 		w_Size = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
 
 		worldposx = App->input->GetMouseX() - ImGui::GetCursorScreenPos().x;
@@ -48,37 +45,6 @@ bool SceneWindow::Draw()
 		ImGui::End();
 
 	}	
-	return true;
-}
-
-update_status SceneWindow::PreUpdate(float dt)
-{
-	if (this->active)
-	{
-		if (OnResize())
-		{
-			fbo->Start(w_Size.x, w_Size.y);
-			App->renderer3D->OnResize(w_Size.x, w_Size.y);
-		}
-		fbo->Draw();
-		LOG("PEE"); 
-	}
-	return UPDATE_CONTINUE;
-}
-
-update_status SceneWindow::PostUpdate(float dt)
-{
-	if (this->active)
-		fbo->Undraw(); 
-	return UPDATE_CONTINUE;
-}
-
-bool SceneWindow::CleanUp()
-{
-	fbo->CleanUp(); 
-	delete fbo; 
-	fbo = nullptr; 
-
 	return true;
 }
 

@@ -70,7 +70,7 @@ bool ConfigurationWindow::Draw()
 		if (ImGui::CollapsingHeader("Render"))
 		{
 			ImGui::Checkbox("AABB", &App->renderer3D->render_aabb);
-			ImGui::Checkbox("Grid", &App->scene_intro->render_grid); 
+			ImGui::Checkbox("Grid", &App->viewport->render_grid); 
 
 			ImGui::Checkbox("DEPTH TEST", &gl_depth_test);
 			SetGLEnum(gl_depth_test, GL_DEPTH_TEST);

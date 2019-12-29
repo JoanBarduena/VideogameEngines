@@ -68,14 +68,14 @@ void ModuleGeometry::LoadFileFromPath(std::string full_path)
 	{
 		aiNode* node = file->mRootNode;
 
-		GameObject* goLoader = App->scene_intro->CreateGameObject();
+		GameObject* goLoader = App->viewport->CreateGameObject();
 		std::string goName = App->GetNameFromPath(full_path);
 
 		goLoader->name = goName;
 		goLoader->unactive_name = goName.append(" [not active]");
 
 		//Define the gameobject as a child of the RootNode
-		App->scene_intro->root->DefineChilds(goLoader);
+		App->viewport->root->DefineChilds(goLoader);
 
 		//Importer mesh
 		SceneImporter exporter;
@@ -136,7 +136,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			dummyFound = false;
 	}
 
-	GameObject* obj = App->scene_intro->CreateGameObject();
+	GameObject* obj = App->viewport->CreateGameObject();
 	ComponentTransform* transform = obj->GetComponentTransform();
 
 	//Adding mTransformation to the Loader GameObject.
@@ -170,7 +170,7 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 			if (i > 0)
 				node_name.append(" (" + std::to_string(i + 1) + ")");
 
-			child = App->scene_intro->CreateGameObject();
+			child = App->viewport->CreateGameObject();
 			obj->DefineChilds(child);
 			child->name = node_name;
 			child->unactive_name = node_name.append(" [not active]");
@@ -243,8 +243,8 @@ void ModuleGeometry::LoadNodeFromParent(const aiScene* file, aiNode* node, GameO
 
 void ModuleGeometry::LoadParShapes(par_shapes_mesh* par_mesh, Position pos)
 {
-	GameObject* obj = App->scene_intro->CreateGameObject();
-	App->scene_intro->root->DefineChilds(obj);
+	GameObject* obj = App->viewport->CreateGameObject();
+	App->viewport->root->DefineChilds(obj);
 
 	obj->CreateComponent(Component::Type::MESH);
 	ComponentMesh* mesh = obj->GetComponentMesh();

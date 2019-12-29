@@ -16,9 +16,6 @@ public:
 
 	bool Start();
 	bool Draw();
-	update_status PreUpdate(float dt);
-	update_status PostUpdate(float dt);
-	bool CleanUp();
 	bool OnResize();
 
 	ImVec2 w_Size;

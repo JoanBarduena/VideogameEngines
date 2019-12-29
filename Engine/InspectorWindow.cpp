@@ -25,7 +25,7 @@ bool InspectorWindow::Draw()
 
 			ImGui::Checkbox("Active", &selected_go->active);
 			if (ImGui::Checkbox("Static", &selected_go->go_static))
-				App->scene_intro->SetGameObjectStatic(selected_go); 
+				App->viewport->SetGameObjectStatic(selected_go);
 
 			if (selected_go->active)
 			{
