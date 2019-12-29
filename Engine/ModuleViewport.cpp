@@ -20,13 +20,14 @@ bool ModuleViewport::Start()
 
 	App->geometry->LoadFileFromPath("Assets/Street/Street environment_V01.fbx");
 
-	CreateCanvas();
+	canvas = CreateCanvas();
+	image = CreateImage(canvas);
 
 	fbo_scene = new FBO(); 
 	fbo_scene->Start(App->gui->scene_w->w_Size.x, App->gui->scene_w->w_Size.y);
 
-	fbo_game = new FBO(); 
-	fbo_game->Start(App->gui->game_w->w_Size.x, App->gui->game_w->w_Size.y); 
+	//fbo_game = new FBO(); 
+	//fbo_game->Start(App->gui->game_w->w_Size.x, App->gui->game_w->w_Size.y); 
 	
 	return ret;
 }
@@ -39,11 +40,11 @@ update_status ModuleViewport::PreUpdate(float dt)
 		App->renderer3D->OnResize(App->gui->scene_w->w_Size.x, App->gui->scene_w->w_Size.y);
 	}
 
-	if (App->gui->game_w->OnResize())
-	{
-		fbo_scene->Start(App->gui->game_w->w_Size.x, App->gui->game_w->w_Size.y);
-		App->renderer3D->OnResize(App->gui->game_w->w_Size.x, App->gui->game_w->w_Size.y);
-	}
+	//if (App->gui->game_w->OnResize())
+	//{
+	//	fbo_scene->Start(App->gui->game_w->w_Size.x, App->gui->game_w->w_Size.y);
+	//	App->renderer3D->OnResize(App->gui->game_w->w_Size.x, App->gui->game_w->w_Size.y);
+	//}
 
 	fbo_scene->Draw();
 	//fbo_game->Draw();
@@ -71,6 +72,11 @@ update_status ModuleViewport::PreUpdate(float dt)
 		glEnd();
 	}
 
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleViewport::Update(float dt)
+{
 	root->Update(dt);
 
 	return UPDATE_CONTINUE;
@@ -90,7 +96,7 @@ bool ModuleViewport::CleanUp()
 	bool ret = true;
 
 	RELEASE(fbo_scene); 
-	RELEASE(fbo_game); 
+	//RELEASE(fbo_game); 
 
 	root->DeleteGO(root, true);
 

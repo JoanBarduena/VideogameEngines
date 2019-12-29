@@ -14,6 +14,7 @@ public:
 
 	bool Start(); 
 	update_status PreUpdate(float dt); 
+	update_status Update(float dt); 
 	update_status PostUpdate(float dt); 
 	bool CleanUp();
 
@@ -30,6 +31,9 @@ public:
 	FBO* fbo_game = nullptr; 
 
 	GameObject* root = nullptr;
+	GameObject* canvas = nullptr; 
+	GameObject* image = nullptr; 
+
 	std::vector<GameObject*> game_objects;
 	uint num_canvas = 1, num_image = 1;
 

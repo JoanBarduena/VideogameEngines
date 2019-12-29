@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "FBO.h"
 #include "glew/include/GL/glew.h"
+#include "glmath.h"
 
 #include "imGui/imgui.h"
 #include "imGui/imgui_impl_sdl.h"
@@ -27,4 +28,7 @@ private:
 	float worldposy = 0; 
 	float width, height; 
 	float pos_y, pos_x; 
+
+	bool canvas_on_camera = false; 
+
 };

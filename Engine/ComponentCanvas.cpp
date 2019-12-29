@@ -25,7 +25,7 @@ void ComponentCanvas::SceneDraw()
 	glBegin(GL_LINE_LOOP);
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f); 
 
-	float3 pos = transform->GetPosition(); 
+	pos = transform->GetPosition(); 
 
 	glVertex3f(pos.x, pos.y, pos.z);					// Vertex 1
 	glVertex3f(pos.x + width, pos.y, pos.z);			// Vertex 2
