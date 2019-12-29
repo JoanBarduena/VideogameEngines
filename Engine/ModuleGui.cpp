@@ -189,8 +189,12 @@ void ModuleGui::CreateMainWorkingSpace()
 			if (ImGui::Checkbox("Configuration", &show_config_window));
 			if (ImGui::Checkbox("Console", &show_app_console));
 			if (ImGui::Checkbox("Hierarchy", &show_hierarchy_window));
+			if (ImGui::Checkbox("Inspector", &show_inspector_window));
+			if (ImGui::Checkbox("Scene", &show_scene_window)); 
+			if (ImGui::Checkbox("Game", &show_game_window)); 
 			if (ImGui::Checkbox("RNG", &show_random_num_window));
 			if (ImGui::Checkbox("DemoGUI", &show_demo_window));
+
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Create"))
@@ -214,7 +218,7 @@ void ModuleGui::CreateMainWorkingSpace()
 			if (ImGui::MenuItem("See repository")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/wiki"); }
 			if (ImGui::MenuItem("Download latest")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/releases"); }
 			if (ImGui::MenuItem("Report a bug")) { App->RequestBrowser("https://github.com/JoanBarduena/VideogameEngines/issues"); }
-			if (ImGui::MenuItem("About", "F1", false, true)) { show_about_modal = !show_about_modal; }
+			if (ImGui::MenuItem("About", false, true)) { show_about_modal = !show_about_modal; }
 			ImGui::EndMenu();
 		}
 
@@ -225,7 +229,7 @@ void ModuleGui::CreateMainWorkingSpace()
 			if (ImGui::BeginPopupModal("About", NULL, ImGuiWindowFlags_AlwaysAutoResize))
 			{
 				ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
-				ImGui::Text("The Engine engine");
+				ImGui::Text("GRINGO ENGINE");
 				ImGui::Separator();
 				ImGui::Text("This engine has been developed as part of the Game Engines subject at UPC-CITM.\n");
 				ImGui::Text("by");

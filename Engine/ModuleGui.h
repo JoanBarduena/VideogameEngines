@@ -72,6 +72,7 @@ public:
 	bool show_hierarchy_window = true; 
 	bool show_inspector_window = true; 
 	bool show_scene_window = true; 
+	bool show_game_window = true; 
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };
