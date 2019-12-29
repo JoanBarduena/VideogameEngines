@@ -295,9 +295,6 @@ void ModuleGeometry::LoadImageFBX(std::string full_path, GameObject* goImage)
 {
 	const aiScene* scene = aiImportFile(full_path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
 
-	float3 scale(0.1, 0.1, 0.1); 
-	goImage->GetComponentTransform()->SetScale(scale); 
-
 	if (scene != nullptr && scene->HasMeshes())
 	{
 		for (int i = 0; i < scene->mNumMeshes; ++i)

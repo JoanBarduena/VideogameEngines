@@ -36,7 +36,7 @@ public:
 
 	bool Update(); 
 
-private:
+public:
 
 	float3 position = float3::zero;
 	Quat rotation = Quat::identity; 

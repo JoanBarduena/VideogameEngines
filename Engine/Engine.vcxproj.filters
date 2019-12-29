@@ -405,6 +405,9 @@
     <ClInclude Include="GameWindow.h">
       <Filter>Sources\Modules\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentButton.h">
+      <Filter>Sources\Modules\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -637,6 +640,9 @@
     </ClCompile>
     <ClCompile Include="GameWindow.cpp">
       <Filter>Sources\Modules\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentButton.cpp">
+      <Filter>Sources\Modules\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

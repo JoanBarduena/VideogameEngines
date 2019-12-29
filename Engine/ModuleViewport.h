@@ -25,6 +25,8 @@ public:
 	GameObject* CreateCanvas();
 	GameObject* CreateImage(GameObject* parent);
 
+	GameObject* CreateButton(GameObject* parent);
+
 
 public: 
 	FBO* fbo_scene = nullptr; 
@@ -33,9 +35,10 @@ public:
 	GameObject* root = nullptr;
 	GameObject* canvas = nullptr; 
 	GameObject* image = nullptr; 
+	GameObject* button = nullptr; 
 
 	std::vector<GameObject*> game_objects;
-	uint num_canvas = 1, num_image = 1;
+	uint num_canvas = 1, num_image = 1, num_button = 1; 
 
 	std::vector<ComponentMesh*> static_meshes;
 

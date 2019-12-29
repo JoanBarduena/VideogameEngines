@@ -20,6 +20,8 @@ bool SceneWindow::Start()
 {
 	App->Console_Log("[CREATING]: Scene Window");
 
+	w_Size = { 1000, 700 }; 
+
 	return true;
 }
 
@@ -45,26 +47,32 @@ bool SceneWindow::Draw()
 		if (ImGui::Button("PLAY"))
 		{
 			canvas_on_camera = true; 
+			App->camera->Position = { 0,20,20 };
 		}
+
 		ImGui::SameLine();
 		ImGui::Button("STOP");
 
-		LOG("camera: %f", App->camera->Position.x);
-		LOG("canvas: %f", App->viewport->canvas->GetComponentCanvas()->pos.x);
+	//	LOG("canvas: %f", App->viewport->canvas->GetComponentCanvas()->pos.x);
 
 		if (canvas_on_camera)
-		{ 
-			App->viewport->canvas->GetComponentCanvas()->pos.x = -App->camera->Position.x;
-			App->viewport->canvas->GetComponentCanvas()->pos.y = -App->camera->Position.y;
-			App->viewport->canvas->GetComponentCanvas()->pos.z = -App->camera->Position.z;
-			App->viewport->canvas->GetComponentTransform()->SetPosition(App->viewport->canvas->GetComponentCanvas()->pos);
+		{/* 
+			App->viewport->image->GetComponentTransform()->position.x = -App->camera->Position.x;
+			App->viewport->image->GetComponentTransform()->position.y = -App->camera->Position.y;
+			App->viewport->image->GetComponentTransform()->position.z = -App->camera->Position.z;
+																	    
+			App->viewport->image->GetComponentTransform()->rotation.x = -App->camera->Reference.x;
+			App->viewport->image->GetComponentTransform()->rotation.y = -App->camera->Reference.y;
+			App->viewport->image->GetComponentTransform()->rotation.z = -App->camera->Reference.z;
+
+			App->viewport->image->GetComponentTransform()->SetPosition(App->viewport->image->GetComponentTransform()->position);
+			App->viewport->image->GetComponentTransform()->SetQuatRotation(App->viewport->image->GetComponentTransform()->rotation);*/
 		}
 		 
 		LOG("%f", App->camera->Position.x); 
 
 		ImGui::Image((ImTextureID)App->viewport->fbo_scene->fboTexture, ImVec2(w_Size.x, w_Size.y), ImVec2(0, 1), ImVec2(1, 0));
-		w_Size = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
-
+		
 		worldposx = App->input->GetMouseX() - ImGui::GetCursorScreenPos().x;
 		worldposy = App->input->GetMouseY() - ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y;
 

@@ -15,7 +15,8 @@ public:
 		MESH,
 		TEXTURE, 
 		CANVAS, 
-		IMAGE
+		IMAGE, 
+		BUTTON
 	};
 
 	Component(GameObject* my_GO, Component::Type comp_type); 

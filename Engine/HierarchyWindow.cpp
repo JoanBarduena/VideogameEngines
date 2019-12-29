@@ -123,6 +123,10 @@ void HierarchyWindow::CreateHierarchyObjects(GameObject* parent)
 		{
 			App->viewport->CreateImage(parent);
 		}
+		if (ImGui::MenuItem("Button"))
+		{
+			App->viewport->CreateButton(parent); 
+		}
 
 		ImGui::EndPopup();
 	}

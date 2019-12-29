@@ -35,9 +35,9 @@ public:
 
 private:
 
-	vec3 InitialPos = vec3(0.0f, 0.0f, 100.0f);
-	vec3 InitialRef = vec3(0.0f, 0.0f, 0.0f);
-	vec3 OffSet = vec3(0.0f, 5.0f, 15.0f);
+	vec3 InitialPos = vec3(49.0f, -20.0f, 87.0f);
+	vec3 InitialRef = vec3(-8.5f, -6.3f, -25.2f);
+	vec3 OffSet = vec3(0.0f, 0.0f, 0.0f);
 
 	mat4x4 ViewMatrix, ViewMatrixInverse;
 

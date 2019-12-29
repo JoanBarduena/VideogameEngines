@@ -58,6 +58,8 @@ Component* GameObject::CreateComponent(Component::Type type)
 	case Component::Type::IMAGE:
 		comp = new ComponentImage(this); 
 		break; 
+	case Component::Type::BUTTON:
+		comp = new ComponentButton(this, "Assets/ButtonUI.png"); 
 	}
 	if(comp != nullptr)
 		components.push_back(comp); 
@@ -92,7 +94,7 @@ bool GameObject::HasChildren() const
 		return true;
 }
 
-void GameObject::Update(float dt)
+bool GameObject::Update(float dt)
 {
 	if (this->GetComponentTransform()->is_transformed)
 		UpdateTransformation(this);
@@ -108,6 +110,8 @@ void GameObject::Update(float dt)
 		if ((*it)->active)
 			(*it)->Update();
 	}
+
+	return true; 
 }
 
 void GameObject::UpdateTransformation(GameObject* GO)
@@ -206,6 +210,17 @@ ComponentImage* GameObject::GetComponentImage()
 	{
 		if ((*it)->type == Component::Type::IMAGE)
 			return (ComponentImage*)(*it);
+	}
+
+	return nullptr;
+}
+
+ComponentButton* GameObject::GetComponentButton()
+{
+	for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
+	{
+		if ((*it)->type == Component::Type::BUTTON)
+			return (ComponentButton*)(*it);
 	}
 
 	return nullptr;

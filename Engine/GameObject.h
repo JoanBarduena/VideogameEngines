@@ -7,9 +7,9 @@
 #include "ComponentTexture.h"
 #include "ComponentTransform.h"
 
-#include "ComponentUI.h"
 #include "ComponentCanvas.h"
 #include "ComponentImage.h"
+#include "ComponentButton.h"
 
 class GameObject
 {
@@ -25,7 +25,7 @@ public:
 
 	bool HasChildren() const;
 
-	void Update(float dt);
+	bool Update(float dt);
 	void UpdateTransformation(GameObject* GO);
 
 	void DeleteGO(GameObject* GO, bool original);
@@ -37,6 +37,8 @@ public:
 
 	ComponentCanvas* GetComponentCanvas();
 	ComponentImage* GetComponentImage();
+	ComponentButton* GetComponentButton(); 
+
 public:
 
 	string name; 

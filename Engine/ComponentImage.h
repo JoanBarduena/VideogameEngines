@@ -1,7 +1,7 @@
 #ifndef __COMPONENT_IMAGE_H__
 #define __COMPONENT_IMAGE_H__
 
-#include "ComponentUI.h"
+#include "Component.h"
 
 class ComponentImage : public Component
 {
@@ -12,7 +12,6 @@ public:
 
 	bool Update();
 
-	void SceneDraw();
 
 public:
 

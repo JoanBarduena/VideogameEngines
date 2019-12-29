@@ -20,8 +20,12 @@ bool ModuleViewport::Start()
 
 	App->geometry->LoadFileFromPath("Assets/Street/Street environment_V01.fbx");
 
+	// ------ DEMO UI -------
 	canvas = CreateCanvas();
 	image = CreateImage(canvas);
+	button = CreateButton(canvas); 
+	image->GetComponentTexture()->texture = App->Mtexture->LoadTexturePath("Assets/ImageDemo.png");
+	// ----------------------
 
 	fbo_scene = new FBO(); 
 	fbo_scene->Start(App->gui->scene_w->w_Size.x, App->gui->scene_w->w_Size.y);
@@ -202,17 +206,77 @@ GameObject* ModuleViewport::CreateImage(GameObject* parent)
 		// Centered on the canvas
 		ComponentTransform* transform_ = parent->GetComponentTransform();
 
-		float3 pos_;
-		pos_.x = transform_->GetPosition().x + (parent->GetComponentCanvas()->width / 2) - (image->GetComponentImage()->width / 2);
-		pos_.y = transform_->GetPosition().y + (parent->GetComponentCanvas()->height / 2) - (image->GetComponentImage()->height / 2);
-		pos_.z = transform_->GetPosition().z;
+		if (parent->GetComponentCanvas() != nullptr)
+		{
+			float3 pos_;
+			pos_.x = transform_->GetPosition().x + (parent->GetComponentCanvas()->width / 2);
+			pos_.y = transform_->GetPosition().y + (parent->GetComponentCanvas()->height / 2);
+			pos_.z = transform_->GetPosition().z;
 
-		//Initial position on the canvas square
-		image->GetComponentTransform()->SetPosition(pos_);
+			// Scale
+			float3 scale_;
+			scale_.x = 8;
+			scale_.y = 8;
+			scale_.z = 1;
+
+			//Initial position on the canvas square
+			image->GetComponentTransform()->SetPosition(pos_);
+
+			image->GetComponentTransform()->SetScale(scale_);
+		}
 
 		App->Console_Log("[CREATING UI OBJECT]: Image");
 		num_image++;
 		game_objects.push_back(image);
+	}
+
+	return image;
+}
+
+GameObject* ModuleViewport::CreateButton(GameObject* parent)
+{
+	GameObject* button = nullptr;
+
+	if (parent != nullptr)
+	{
+		std::string ButtonName = "Button ";
+		ButtonName.append(std::to_string(num_button));
+
+		button = new GameObject(ButtonName);
+		button->unactive_name = ButtonName.append(" [not active]");
+		button->id = game_objects.size();
+
+		App->geometry->LoadImageFBX("Assets/ImageUI.fbx", button);
+
+		parent->DefineChilds(button);
+
+		button->CreateComponent(Component::Type::BUTTON);
+
+		// Centered on the canvas
+		ComponentTransform* transform_ = parent->GetComponentTransform();
+
+		if (parent->GetComponentCanvas() != nullptr)
+		{
+			float3 pos_;
+
+			pos_.x = transform_->GetPosition().x + (parent->GetComponentCanvas()->width / 2) - 10;
+			pos_.y = transform_->GetPosition().y + (parent->GetComponentCanvas()->height / 2);
+			pos_.z = transform_->GetPosition().z;
+
+			// Scale
+			float3 scale_;
+			scale_.x = 6;
+			scale_.y = 2;
+			scale_.z = 1;
+
+			//Initial position on the canvas square
+			button->GetComponentTransform()->SetPosition(pos_);
+
+			button->GetComponentTransform()->SetScale(scale_);
+		}
+		App->Console_Log("[CREATING UI OBJECT]: Button");
+		num_button++;
+		game_objects.push_back(button);
 	}
 
 	return image;
