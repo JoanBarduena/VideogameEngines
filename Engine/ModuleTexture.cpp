@@ -65,6 +65,9 @@ bool ModuleTexture::CleanUp()
 {
 	bool ret = true;
 
+	glDeleteTextures(1, (GLuint*)&DefaultTexture.textureID);
+	glDeleteTextures(1, (GLuint*)&CheckerTexture.textureID);
+
 	return ret;
 }
 

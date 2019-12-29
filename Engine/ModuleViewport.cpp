@@ -24,7 +24,7 @@ bool ModuleViewport::Start()
 	canvas = CreateCanvas();
 	image = CreateImage(canvas);
 	button = CreateButton(canvas); 
-	image->GetComponentTexture()->texture = App->Mtexture->LoadTexturePath("Assets/ImageDemo.png");
+	image->GetComponentTexture()->texture = App->Mtexture->LoadTexturePath("Assets/UI/ImageDemo.png");
 	// ----------------------
 
 	fbo_scene = new FBO(); 
@@ -100,7 +100,6 @@ bool ModuleViewport::CleanUp()
 	bool ret = true;
 
 	RELEASE(fbo_scene); 
-	//RELEASE(fbo_game); 
 
 	root->DeleteGO(root, true);
 
@@ -197,7 +196,7 @@ GameObject* ModuleViewport::CreateImage(GameObject* parent)
 		image->unactive_name = ImageName.append(" [not active]");
 		image->id = game_objects.size();
 
-		App->geometry->LoadImageFBX("Assets/ImageUI.fbx", image);
+		App->geometry->LoadImageFBX("Assets/UI/ImageUI.fbx", image);
 
 		parent->DefineChilds(image);
 
@@ -246,7 +245,7 @@ GameObject* ModuleViewport::CreateButton(GameObject* parent)
 		button->unactive_name = ButtonName.append(" [not active]");
 		button->id = game_objects.size();
 
-		App->geometry->LoadImageFBX("Assets/ImageUI.fbx", button);
+		App->geometry->LoadImageFBX("Assets/UI/ImageUI.fbx", button);
 
 		parent->DefineChilds(button);
 

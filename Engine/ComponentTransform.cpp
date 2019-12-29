@@ -1,5 +1,4 @@
 #include "ComponentTransform.h"
-
 #include "mmgr/mmgr.h"
 
 ComponentTransform::ComponentTransform(GameObject* GObj) : Component(GObj, Component::Type::TRANSFORM)

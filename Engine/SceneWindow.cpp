@@ -69,8 +69,6 @@ bool SceneWindow::Draw()
 			App->viewport->image->GetComponentTransform()->SetQuatRotation(App->viewport->image->GetComponentTransform()->rotation);*/
 		}
 		 
-		LOG("%f", App->camera->Position.x); 
-
 		ImGui::Image((ImTextureID)App->viewport->fbo_scene->fboTexture, ImVec2(w_Size.x, w_Size.y), ImVec2(0, 1), ImVec2(1, 0));
 		
 		worldposx = App->input->GetMouseX() - ImGui::GetCursorScreenPos().x;

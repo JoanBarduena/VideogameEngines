@@ -4,6 +4,8 @@
 #include "Component.h"
 #include "MathGeoLib/include/MathGeoLib.h"
 
+class GameObject; 
+
 class ComponentCanvas : public Component
 {
 public: 
@@ -12,8 +14,6 @@ public:
 	~ComponentCanvas();
 
 	bool Update(); 
-
-	void SceneDraw(); 
 
 public:
 
