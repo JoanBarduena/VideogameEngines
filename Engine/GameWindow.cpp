@@ -1,4 +1,4 @@
-#include "SceneWindow.h"
+#include "GameWindow.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
 
@@ -8,34 +8,34 @@
 
 #include "mmgr/mmgr.h"
 
-SceneWindow::SceneWindow() : Window()
+GameWindow::GameWindow() : Window()
 {
 }
 
-SceneWindow::~SceneWindow()
+GameWindow::~GameWindow()
 {
 }
 
-bool SceneWindow::Start()
+bool GameWindow::Start()
 {
-	App->Console_Log("[CREATING]: Scene Window");
+	App->Console_Log("[CREATING]: Game Window");
 
-	fbo = new FBO(); 
+	fbo = new FBO();
 	fbo->Start(w_Size.x, w_Size.y);
 
 	return true;
 }
 
-bool SceneWindow::Draw()
+bool GameWindow::Draw()
 {
-	ImGui::Begin("Scene", &active, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+	ImGui::Begin("Game", &active, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
 	pos_y = ImGui::GetCursorScreenPos().y;
 	pos_x = ImGui::GetCursorScreenPos().x;
 	width = ImGui::GetWindowWidth();
 	height = ImGui::GetWindowHeight();
 
-	w_NewSize = ImGui::GetContentRegionAvail(); 
+	w_NewSize = ImGui::GetContentRegionAvail();
 
 	ImGui::Image((ImTextureID)fbo->fboTexture, ImVec2(w_Size.x, w_Size.y), ImVec2(0, 1), ImVec2(1, 0));
 	w_Size = ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
@@ -48,33 +48,33 @@ bool SceneWindow::Draw()
 	return true;
 }
 
-update_status SceneWindow::PreUpdate(float dt)
+update_status GameWindow::PreUpdate(float dt)
 {
 	if (OnResize())
 	{
-		fbo->Start(w_Size.x, w_Size.y); 
-		App->renderer3D->OnResize(w_Size.x, w_Size.y); 
+		fbo->Start(w_Size.x, w_Size.y);
+		App->renderer3D->OnResize(w_Size.x, w_Size.y);
 	}
 	fbo->Draw();
 	return UPDATE_CONTINUE;
 }
 
-update_status SceneWindow::PostUpdate(float dt)
+update_status GameWindow::PostUpdate(float dt)
 {
-	fbo->Undraw(); 
+	fbo->Undraw();
 	return UPDATE_CONTINUE;
 }
 
-bool SceneWindow::CleanUp()
+bool GameWindow::CleanUp()
 {
-	fbo->CleanUp(); 
-	delete fbo; 
-	fbo = nullptr; 
+	fbo->CleanUp();
+	delete fbo;
+	fbo = nullptr;
 
 	return true;
 }
 
-bool SceneWindow::OnResize()
+bool GameWindow::OnResize()
 {
 	if (w_Size.x != w_NewSize.x || w_Size.y != w_NewSize.y)
 	{

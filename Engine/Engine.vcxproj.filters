@@ -402,6 +402,9 @@
     <ClInclude Include="SceneWindow.h">
       <Filter>Sources\Modules\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="GameWindow.h">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -630,6 +633,9 @@
       <Filter>Sources\Modules\SubModules</Filter>
     </ClCompile>
     <ClCompile Include="SceneWindow.cpp">
+      <Filter>Sources\Modules\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow.cpp">
       <Filter>Sources\Modules\Windows</Filter>
     </ClCompile>
   </ItemGroup>

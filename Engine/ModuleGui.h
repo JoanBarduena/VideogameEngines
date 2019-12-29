@@ -21,6 +21,7 @@
 #include "HierarchyWindow.h"
 #include "InspectorWindow.h"
 #include "SceneWindow.h"
+#include "GameWindow.h"
 
 class ModuleGui : public Module
 {
@@ -56,6 +57,7 @@ public:
 	InspectorWindow* inspector_w = nullptr;
 	HierarchyWindow* hierarchy_w = nullptr; 
 	SceneWindow* scene_w = nullptr; 
+	GameWindow* game_w = nullptr; 
 
 	std::list<Window*> windows;
 
