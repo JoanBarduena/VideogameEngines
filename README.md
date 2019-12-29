@@ -13,7 +13,11 @@ This engine is under development by [Joan Barduena](https://github.com/JoanBardu
 - Maintain LShift to duplicate movement speed
 - Windows can be closed and docked in different positions. 
 - To reopen them go to "View" on the top menu bar and search the window's name. 
-- Delete to delete a game object selected. 
+
+### Hierarchy 
+- DeleteKey to delete a game object selected. 
+- Select a gameObject and right click to create a UI child. 
+- Select an Image or Button and drop a Texture on the engine. 
 
 
 ## External Libraries in Use
